@@ -1,29 +1,20 @@
-
-var React = require('react');
-var ReactDOM = require('react-dom');
+var jQuery = require('jquery');
+var $ = require('jquery');
+var React = require('react')
+var ReactDOM = require('react-dom')
+var fullPage = require('./fullpage.js')
+// var jQueryEasings = require('../../node_modules/fullpage.js/vendors/jquery.easings.min.js')
+var jQueryFullPage = require('../../node_modules/fullpage.js/jquery.fullPage.js')
 
 ReactDOM.render(
-  <h1>Hello, world!</h1>,
+  	<div>
+		 <div id="fullpage">
+		    <div className="section">Hello World</div>
+		    <div className="section">How is it going?</div>
+		    <div className="section">Fine Thanks</div>
+		    <div className="section">Ok, cheers</div>
+		    <div className="section">No, you hang up first</div>
+		</div>
+	</div>,
   document.getElementById('react-app')
 );
-
-
-// $(document).ready(function() {
-//     $('#fullpage').fullpage({
-//         sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'],
-//         anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
-//         menu: '#menu',
-//         css3: true,
-//         scrollingSpeed: 1000
-//     });
-
-//     $('#showExamples').click(function(e){
-//         e.stopPropagation();
-//         e.preventDefault();
-//         $('#examplesList').toggle();
-//     });
-
-//     $('html').click(function(){
-//         $('#examplesList').hide();
-//     });
-// });
