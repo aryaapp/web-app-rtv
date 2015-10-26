@@ -58182,37 +58182,91 @@ var fullPage = require('./fullpage.js');
 var jQueryFullPage = require('../../node_modules/fullpage.js/jquery.fullPage.js');
 
 ReactDOM.render(React.createElement(
+	'div',
+	{ className: 'container' },
+	React.createElement(
 		'div',
-		null,
+		{ id: 'fullpage' },
 		React.createElement(
+			'div',
+			{ className: 'section' },
+			React.createElement(
 				'div',
-				{ id: 'fullpage' },
+				{ className: 'row' },
 				React.createElement(
-						'div',
-						{ className: 'section' },
+					'div',
+					{ className: 'col-sm-12' },
+					React.createElement(
+						'h3',
+						null,
 						'Hello World'
-				),
-				React.createElement(
-						'div',
-						{ className: 'section' },
-						'How is it going?'
-				),
-				React.createElement(
-						'div',
-						{ className: 'section' },
-						'Fine Thanks'
-				),
-				React.createElement(
-						'div',
-						{ className: 'section' },
-						'Ok, cheers'
-				),
-				React.createElement(
-						'div',
-						{ className: 'section' },
-						'No, you hang up first'
+					),
+					React.createElement(
+						'form',
+						{ className: 'margin-top' },
+						React.createElement(
+							'div',
+							{ className: 'mc-field-group control-group' },
+							React.createElement(
+								'div',
+								{ className: 'controls' },
+								React.createElement('input', { type: 'email', placeholder: 'input', name: 'EMAIL', className: 'required email form-control', id: 'mce-EMAIL' })
+							)
+						)
+					)
 				)
+			)
+		),
+		React.createElement(
+			'div',
+			{ className: 'section' },
+			React.createElement(
+				'h3',
+				null,
+				'How is it going?'
+			)
+		),
+		React.createElement(
+			'div',
+			{ className: 'section' },
+			React.createElement(
+				'h3',
+				null,
+				'Fine Thanks'
+			)
+		),
+		React.createElement(
+			'div',
+			{ className: 'section' },
+			React.createElement(
+				'h3',
+				null,
+				'Ok, cheers'
+			)
+		),
+		React.createElement(
+			'div',
+			{ className: 'section' },
+			React.createElement(
+				'div',
+				{ className: 'row' },
+				React.createElement(
+					'div',
+					{ className: 'col-sm-12' },
+					React.createElement(
+						'h3',
+						null,
+						'No, you hang up first'
+					),
+					React.createElement(
+						'button',
+						{ className: 'btn btn-lg arya-btn margin-top' },
+						'Hang Up'
+					)
+				)
+			)
 		)
+	)
 ), document.getElementById('react-app'));
 
 },{"../../node_modules/fullpage.js/jquery.fullPage.js":1,"./fullpage.js":305,"jquery":4,"react":303,"react-dom":5}],305:[function(require,module,exports){
@@ -58223,7 +58277,7 @@ ReactDOM.render(React.createElement(
 
 $(document).ready(function () {
     $('#fullpage').fullpage({
-        sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'],
+        // sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'],
         anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
         menu: '#menu',
         css3: true,
