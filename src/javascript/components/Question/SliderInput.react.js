@@ -31,5 +31,3 @@ var SliderInput = React.createClass({
 
 
 module.exports = SliderInput
-
-
