@@ -58171,6 +58171,152 @@ module.exports = require('./lib/React');
 
 
 },{"./lib/React":172}],304:[function(require,module,exports){
+/**
+* @module ARYA Dashboard
+* @submodule Components
+*/
+
+"use strict";
+
+var React = require('react');
+
+/**
+* Description
+* moar description
+* @class Classname
+* @constructor
+*/
+
+var MoodTracker = React.createClass({
+		displayName: "MoodTracker",
+
+		getInitialState: function getInitialState() {
+				return {
+						data: []
+				};
+		},
+		componentDidMount: function componentDidMount() {},
+		_onSubjectStoreChange: function _onSubjectStoreChange() {},
+		componentWillUnmount: function componentWillUnmount() {},
+
+		render: function render() {
+				return React.createElement(
+						"div",
+						{ id: "fullpage" },
+						React.createElement(
+								"div",
+								{ className: "section", id: "section1" },
+								React.createElement(
+										"div",
+										{ className: "row" },
+										React.createElement(
+												"div",
+												{ className: "col-sm-12" },
+												React.createElement(
+														"h3",
+														null,
+														"Wie fühlst du dich?"
+												)
+										)
+								)
+						),
+						React.createElement(
+								"div",
+								{ className: "section", id: "section2" },
+								React.createElement(
+										"div",
+										{ className: "row" },
+										React.createElement(
+												"div",
+												{ className: "col-sm-12" },
+												React.createElement(
+														"h3",
+														null,
+														"Wie fühlst sich dein Körper an?"
+												)
+										)
+								)
+						),
+						React.createElement(
+								"div",
+								{ className: "section", id: "section3" },
+								React.createElement(
+										"div",
+										{ className: "row" },
+										React.createElement(
+												"div",
+												{ className: "col-sm-12" },
+												React.createElement(
+														"h3",
+														null,
+														React.createElement("i", { "class": "fa fa-heart" }),
+														"Was sind deine Gedanken?"
+												),
+												React.createElement(
+														"form",
+														{ className: "margin-top" },
+														React.createElement(
+																"div",
+																{ className: "mc-field-group control-group" },
+																React.createElement(
+																		"div",
+																		{ className: "controls" },
+																		React.createElement("input", { type: "email", placeholder: "input", name: "EMAIL", className: "required email form-control", id: "mce-EMAIL" })
+																)
+														)
+												)
+										)
+								)
+						),
+						React.createElement(
+								"div",
+								{ className: "section", id: "section4" },
+								React.createElement(
+										"div",
+										{ className: "row" },
+										React.createElement(
+												"div",
+												{ className: "col-sm-12" },
+												React.createElement(
+														"h3",
+														null,
+														"Ok, cheers"
+												)
+										)
+								)
+						),
+						React.createElement(
+								"div",
+								{ className: "section", id: "section5" },
+								React.createElement(
+										"div",
+										{ className: "row" },
+										React.createElement(
+												"div",
+												{ className: "col-sm-12" },
+												React.createElement(
+														"h3",
+														null,
+														"No, you hang up first"
+												),
+												React.createElement(
+														"button",
+														{ className: "btn btn-lg arya-btn margin-top" },
+														"Hang Up"
+												)
+										)
+								)
+						)
+				);
+		}
+
+});
+
+module.exports = MoodTracker;
+
+// arya-animation translate-up
+
+},{"react":303}],305:[function(require,module,exports){
 'use strict';
 
 var jQuery = require('jquery');
@@ -58178,98 +58324,13 @@ var $ = require('jquery');
 var React = require('react');
 var ReactDOM = require('react-dom');
 var fullPage = require('./fullpage.js');
+var MoodTracker = require('./components/MoodTracker.react.js');
 // var jQueryEasings = require('../../node_modules/fullpage.js/vendors/jquery.easings.min.js')
 var jQueryFullPage = require('../../node_modules/fullpage.js/jquery.fullPage.js');
 
-ReactDOM.render(React.createElement(
-	'div',
-	{ className: 'container' },
-	React.createElement(
-		'div',
-		{ id: 'fullpage' },
-		React.createElement(
-			'div',
-			{ className: 'section' },
-			React.createElement(
-				'div',
-				{ className: 'row' },
-				React.createElement(
-					'div',
-					{ className: 'col-sm-12' },
-					React.createElement(
-						'h3',
-						null,
-						'Hello World'
-					),
-					React.createElement(
-						'form',
-						{ className: 'margin-top' },
-						React.createElement(
-							'div',
-							{ className: 'mc-field-group control-group' },
-							React.createElement(
-								'div',
-								{ className: 'controls' },
-								React.createElement('input', { type: 'email', placeholder: 'input', name: 'EMAIL', className: 'required email form-control', id: 'mce-EMAIL' })
-							)
-						)
-					)
-				)
-			)
-		),
-		React.createElement(
-			'div',
-			{ className: 'section' },
-			React.createElement(
-				'h3',
-				null,
-				'How is it going?'
-			)
-		),
-		React.createElement(
-			'div',
-			{ className: 'section' },
-			React.createElement(
-				'h3',
-				null,
-				'Fine Thanks'
-			)
-		),
-		React.createElement(
-			'div',
-			{ className: 'section' },
-			React.createElement(
-				'h3',
-				null,
-				'Ok, cheers'
-			)
-		),
-		React.createElement(
-			'div',
-			{ className: 'section' },
-			React.createElement(
-				'div',
-				{ className: 'row' },
-				React.createElement(
-					'div',
-					{ className: 'col-sm-12' },
-					React.createElement(
-						'h3',
-						null,
-						'No, you hang up first'
-					),
-					React.createElement(
-						'button',
-						{ className: 'btn btn-lg arya-btn margin-top' },
-						'Hang Up'
-					)
-				)
-			)
-		)
-	)
-), document.getElementById('react-app'));
+ReactDOM.render(React.createElement(MoodTracker, null), document.getElementById('react-app'));
 
-},{"../../node_modules/fullpage.js/jquery.fullPage.js":1,"./fullpage.js":305,"jquery":4,"react":303,"react-dom":5}],305:[function(require,module,exports){
+},{"../../node_modules/fullpage.js/jquery.fullPage.js":1,"./components/MoodTracker.react.js":304,"./fullpage.js":306,"jquery":4,"react":303,"react-dom":5}],306:[function(require,module,exports){
 // var $ = require('jquery')
 // var jQueryFullPage = require('../../node_modules/fullpage.js/jquery.fullPage.js')
 
@@ -58281,18 +58342,10 @@ $(document).ready(function () {
         anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
         menu: '#menu',
         css3: true,
+        navigation: true,
+        navigationPosition: 'right',
         scrollingSpeed: 1000
-    });
-
-    $('#showExamples').click(function (e) {
-        e.stopPropagation();
-        e.preventDefault();
-        $('#examplesList').toggle();
-    });
-
-    $('html').click(function () {
-        $('#examplesList').hide();
     });
 });
 
-},{}]},{},[304])
+},{}]},{},[305])
