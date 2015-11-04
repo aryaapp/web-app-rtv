@@ -35,7 +35,9 @@ var App = React.createClass({
                 </div>
                 <pre>Feeling: {this.state.feeling}</pre>
             </div>
-            <div className="section"><h3>How is it going?</h3></div>
+            <div className="section">
+              <h3>How is it going?</h3>
+            </div>
             <div className="section"><h3>Fine Thanks</h3></div>
             <div className="section"><h3>Ok, cheers</h3></div>
             <div className="section">
