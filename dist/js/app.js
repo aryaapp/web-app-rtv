@@ -28219,7 +28219,7 @@ var FeelingQuestion = _react2['default'].createClass({
   getDefaultProps: function getDefaultProps() {
     return {
       feeling: 50,
-      headline: "Wie fühlst du dich?"
+      title: "Wie fühlst du dich?"
     };
   },
 
@@ -28243,9 +28243,9 @@ var FeelingQuestion = _react2['default'].createClass({
       _react2['default'].createElement(
         'h1',
         null,
-        this.props.headline
+        this.props.title
       ),
-      _react2['default'].createElement(SliderInput, { value: this.props.feeling, onChance: this.update })
+      _react2['default'].createElement(SliderInput, { value: this.props.feeling, onChange: this.update })
     );
   }
 });
@@ -28310,7 +28310,7 @@ var SliderInput = _react2["default"].createClass({
     };
   },
   update: function update(e) {
-    this.props.onChance(e.target.value);
+    this.props.onChange(e.target.value);
   },
   render: function render() {
     return _react2["default"].createElement(
@@ -28462,17 +28462,9 @@ $(document).ready(function () {
         anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
         menu: '#menu',
         css3: true,
+        navigation: true,
+        navigationPosition: 'right',
         scrollingSpeed: 1000
-    });
-
-    $('#showExamples').click(function (e) {
-        e.stopPropagation();
-        e.preventDefault();
-        $('#examplesList').toggle();
-    });
-
-    $('html').click(function () {
-        $('#examplesList').hide();
     });
 });
 
