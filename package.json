@@ -1,0 +1,33 @@
+{
+  "name": "rtv-mood-tracking",
+  "version": "0.0.1",
+  "description": "A mood tracker for the rtv-website",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aryaapp/web-app-rtv.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aryaapp/web-app-rtv/issues"
+  },
+  "homepage": "https://github.com/aryaapp/web-app-rtv",
+  "dependencies": {
+    "bootstrap": "^3.3.5",
+    "fullpage.js": "^2.7.4",
+    "jquery": "^2.1.4",
+    "react": "^0.14.2",
+    "react-dom": "^0.14.2"
+  },
+  "devDependencies": {
+    "babel": "^6.0.15",
+    "browserify": "^12.0.1",
+    "gulp-livereload": "^3.8.1",
+    "gulp-watch": "^4.3.5",
+    "watchify": "^3.6.0"
+  }
+}

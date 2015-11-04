@@ -1,2 +1,4 @@
 node_modules/
 src/js5/
+*.sublime-project
+*.sublime-workspace

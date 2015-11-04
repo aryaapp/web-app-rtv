@@ -95,10 +95,10 @@
         // Create some defaults, extending them with any options that were provided
         options = $.extend({
             //navigation
-            menu: true,
+            menu: false,
             anchors:[],
             lockAnchors: false,
-            navigation: true,
+            navigation: false,
             navigationPosition: 'right',
             navigationTooltips: [],
             showActiveTooltip: false,

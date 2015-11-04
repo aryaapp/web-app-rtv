@@ -75,7 +75,8 @@ gulp.task('bower', function() {
 gulp.task('connect', function() {
   connect.server({
     root: 'dist',
-    livereload: true
+    livereload: true,
+    port: 4444
   });
 });
 gulp.task('html', function () {
