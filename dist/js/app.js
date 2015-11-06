@@ -28252,7 +28252,7 @@ var FeelingQuestion = _react2['default'].createClass({
 
 module.exports = FeelingQuestion;
 
-},{"./QuestionModal.react.js":162,"./SliderInput.react.js":164,"react":159}],161:[function(require,module,exports){
+},{"./QuestionModal.react.js":162,"./SliderInput.react.js":165,"react":159}],161:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -28407,6 +28407,61 @@ var _react2 = _interopRequireDefault(_react);
 var QuestionModal = require('./QuestionModal.react.js');
 var ListInput = require('./ListInput.react.js');
 
+var ReactionQuestion = _react2['default'].createClass({
+  displayName: 'ReactionQuestion',
+
+  getDefaultProps: function getDefaultProps() {
+    return {
+      situation: [],
+      title: "Wie war deine Reaktion?"
+    };
+  },
+
+  update: function update(value) {
+    this.props.onChange(value);
+  },
+
+  render: function render() {
+    return _react2['default'].createElement(
+      'div',
+      { className: 'col-sm-12' },
+      _react2['default'].createElement(
+        QuestionModal,
+        null,
+        _react2['default'].createElement(
+          'p',
+          null,
+          'Hello Situation!'
+        )
+      ),
+      _react2['default'].createElement(
+        'h1',
+        null,
+        this.props.title
+      ),
+      _react2['default'].createElement(ListInput, { value: this.props.reaction, onChange: this.update })
+    );
+  }
+});
+
+module.exports = ReactionQuestion;
+
+},{"./ListInput.react.js":161,"./QuestionModal.react.js":162,"react":159}],164:[function(require,module,exports){
+/**
+* @module rtv-mood tracker
+* @submodule Question
+*/
+'use strict';
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var QuestionModal = require('./QuestionModal.react.js');
+var ListInput = require('./ListInput.react.js');
+
 var SituationQuestion = _react2['default'].createClass({
   displayName: 'SituationQuestion',
 
@@ -28446,7 +28501,7 @@ var SituationQuestion = _react2['default'].createClass({
 
 module.exports = SituationQuestion;
 
-},{"./ListInput.react.js":161,"./QuestionModal.react.js":162,"react":159}],164:[function(require,module,exports){
+},{"./ListInput.react.js":161,"./QuestionModal.react.js":162,"react":159}],165:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -28492,7 +28547,7 @@ var SliderInput = _react2["default"].createClass({
 
 module.exports = SliderInput;
 
-},{"react":159}],165:[function(require,module,exports){
+},{"react":159}],166:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -28529,7 +28584,7 @@ var TextInput = _react2['default'].createClass({
 
 module.exports = TextInput;
 
-},{"react":159}],166:[function(require,module,exports){
+},{"react":159}],167:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -28584,7 +28639,7 @@ var ThoughtsQuestion = _react2['default'].createClass({
 
 module.exports = ThoughtsQuestion;
 
-},{"./QuestionModal.react.js":162,"./TextInput.react.js":165,"react":159}],167:[function(require,module,exports){
+},{"./QuestionModal.react.js":162,"./TextInput.react.js":166,"react":159}],168:[function(require,module,exports){
 'use strict';
 
 var jQuery = require('jquery');
@@ -28597,6 +28652,7 @@ var fullPage = require('./fullpage.js');
 var FeelingQuestion = require('./components/Question/FeelingQuestion.react.js');
 var ThoughtsQuestion = require('./components/Question/ThoughtsQuestion.react.js');
 var SituationQuestion = require('./components/Question/SituationQuestion.react.js');
+var ReactionQuestion = require('./components/Question/ReactionQuestion.react.js');
 
 var App = React.createClass({
   displayName: 'App',
@@ -28604,9 +28660,10 @@ var App = React.createClass({
   getInitialState: function getInitialState() {
     return {
       feeling: 50,
-      thoughts: '',
       body: {},
-      situation: ['test1', 'test2']
+      thoughts: '',
+      situation: ['test1', 'test2'],
+      reaction: ['reak1', 'reak2']
     };
   },
   handleQuestionChange: function handleQuestionChange(question, value) {
@@ -28706,11 +28763,30 @@ var App = React.createClass({
           'div',
           { className: 'section' },
           React.createElement(
-            'h3',
+            'div',
+            { className: 'row' },
+            React.createElement(ReactionQuestion, {
+              reaction: this.state.reaction,
+              onChange: this.handleQuestionChange.bind(this, 'reaction')
+            })
+          ),
+          React.createElement(
+            'div',
+            { className: 'row footer' },
+            React.createElement(
+              'p',
+              null,
+              'Swipe down'
+            )
+          ),
+          React.createElement(
+            'pre',
             null,
-            'Ok, cheers'
+            'Reaction: ',
+            this.state.reaction
           )
         ),
+        '            ',
         React.createElement(
           'div',
           { className: 'section' },
@@ -28740,7 +28816,7 @@ var App = React.createClass({
 
 ReactDOM.render(React.createElement(App, null), document.getElementById('react-app'));
 
-},{"./components/Question/FeelingQuestion.react.js":160,"./components/Question/SituationQuestion.react.js":163,"./components/Question/ThoughtsQuestion.react.js":166,"./fullpage.js":168,"jquery":2,"react":159,"react-dom":3}],168:[function(require,module,exports){
+},{"./components/Question/FeelingQuestion.react.js":160,"./components/Question/ReactionQuestion.react.js":163,"./components/Question/SituationQuestion.react.js":164,"./components/Question/ThoughtsQuestion.react.js":167,"./fullpage.js":169,"jquery":2,"react":159,"react-dom":3}],169:[function(require,module,exports){
 // var $ = require('jquery')
 // var jQueryFullPage = require('../../node_modules/fullpage.js/jquery.fullPage.js')
 
@@ -28758,4 +28834,4 @@ $(document).ready(function () {
     });
 });
 
-},{}]},{},[167])
+},{}]},{},[168])
