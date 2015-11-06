@@ -10,7 +10,7 @@ var ListInput = require('./ListInput.react.js');
 var ReactionQuestion = React.createClass({
   getDefaultProps: function () {
     return {
-      situation: [],
+      reaction: [],
       title: "Wie war deine Reaktion?"
     };
   },
@@ -22,8 +22,8 @@ var ReactionQuestion = React.createClass({
   render() {
     return (
       <div className="col-sm-12">
-        <QuestionModal><p>Hello Situation!</p></QuestionModal>
-        <h1>{this.props.title}</h1>
+        <QuestionModal><p>Hello Reaction!</p></QuestionModal>
+        <h2>{this.props.title}</h2>
         <ListInput value={this.props.reaction} onChange={this.update} />
       </div>
     );

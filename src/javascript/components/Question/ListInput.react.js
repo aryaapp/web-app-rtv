@@ -32,21 +32,15 @@ var ListInput = React.createClass({
       return false;
     }
 
-    console.log('addValue', this.state.newValue)
-
     var newParentState = this.props.value.slice()
     newParentState.push(this.state.newValue)
-
-    console.log('newArray', newParentState)
 
     this.update(newParentState)
     this.setState({ newValue: '' })
   },
   removeValue: function(i) {
-    console.log('index', i)
     var newParentState = this.props.value.slice()
     newParentState.splice(i,1)
-    console.log('newArray', newParentState)
     this.update(newParentState)
 
   },

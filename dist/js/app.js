@@ -28241,7 +28241,7 @@ var FeelingQuestion = _react2['default'].createClass({
         )
       ),
       _react2['default'].createElement(
-        'h1',
+        'h2',
         null,
         this.props.title
       ),
@@ -28295,21 +28295,15 @@ var ListInput = _react2['default'].createClass({
       return false;
     }
 
-    console.log('addValue', this.state.newValue);
-
     var newParentState = this.props.value.slice();
     newParentState.push(this.state.newValue);
-
-    console.log('newArray', newParentState);
 
     this.update(newParentState);
     this.setState({ newValue: '' });
   },
   removeValue: function removeValue(i) {
-    console.log('index', i);
     var newParentState = this.props.value.slice();
     newParentState.splice(i, 1);
-    console.log('newArray', newParentState);
     this.update(newParentState);
   },
   render: function render() {
@@ -28412,7 +28406,7 @@ var ReactionQuestion = _react2['default'].createClass({
 
   getDefaultProps: function getDefaultProps() {
     return {
-      situation: [],
+      reaction: [],
       title: "Wie war deine Reaktion?"
     };
   },
@@ -28431,11 +28425,11 @@ var ReactionQuestion = _react2['default'].createClass({
         _react2['default'].createElement(
           'p',
           null,
-          'Hello Situation!'
+          'Hello Reaction!'
         )
       ),
       _react2['default'].createElement(
-        'h1',
+        'h2',
         null,
         this.props.title
       ),
@@ -28490,7 +28484,7 @@ var SituationQuestion = _react2['default'].createClass({
         )
       ),
       _react2['default'].createElement(
-        'h1',
+        'h2',
         null,
         this.props.title
       ),
@@ -28628,7 +28622,7 @@ var ThoughtsQuestion = _react2['default'].createClass({
         )
       ),
       _react2['default'].createElement(
-        'h1',
+        'h2',
         null,
         this.props.title
       ),
@@ -28640,6 +28634,134 @@ var ThoughtsQuestion = _react2['default'].createClass({
 module.exports = ThoughtsQuestion;
 
 },{"./QuestionModal.react.js":162,"./TextInput.react.js":166,"react":159}],168:[function(require,module,exports){
+/**
+* @module rtv-mood tracker
+* @submodule Question
+*/
+'use strict';
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var ResultsScreen = _react2['default'].createClass({
+  displayName: 'ResultsScreen',
+
+  getDefaultProps: function getDefaultProps() {
+    return {
+      title: "Hier deine Eingabe",
+      feeling: 50,
+      body: {},
+      thoughts: '',
+      situation: ['sit1', 'sit2'],
+      reaction: ['reak1', 'reak2']
+    };
+  },
+  getInitialState: function getInitialState() {
+    return {
+      email: 'max.muster@example.com'
+    };
+  },
+  update: function update(e) {
+    this.setState({ email: e.target.value });
+  },
+
+  checkEMail: function checkEMail(e) {
+    if (this.state.email != '') {
+      return true;
+    } else {
+      return false;
+    }
+  },
+  sendResults: function sendResults(e) {
+    if (this.checkEMail()) {
+      console.log('E-Mail results to:', this.state.email);
+    }
+  },
+
+  render: function render() {
+    return _react2['default'].createElement(
+      'div',
+      { className: 'col-sm-12' },
+      _react2['default'].createElement(
+        'h2',
+        null,
+        this.props.title
+      ),
+      _react2['default'].createElement(
+        'dl',
+        null,
+        _react2['default'].createElement(
+          'dt',
+          null,
+          'Deine Befinden'
+        ),
+        _react2['default'].createElement(
+          'dd',
+          null,
+          this.props.feeling
+        ),
+        _react2['default'].createElement(
+          'dt',
+          null,
+          'Deine Körper'
+        ),
+        _react2['default'].createElement(
+          'dd',
+          null,
+          this.props.body
+        ),
+        _react2['default'].createElement(
+          'dt',
+          null,
+          'Deine Gedanken'
+        ),
+        _react2['default'].createElement(
+          'dd',
+          null,
+          this.props.thoughts
+        ),
+        _react2['default'].createElement(
+          'dt',
+          null,
+          'Deine Situation'
+        ),
+        _react2['default'].createElement(
+          'dd',
+          null,
+          this.props.situation
+        ),
+        _react2['default'].createElement(
+          'dt',
+          null,
+          'Deine Reaktion'
+        ),
+        _react2['default'].createElement(
+          'dd',
+          null,
+          this.props.reaction
+        )
+      ),
+      _react2['default'].createElement('input', { type: 'email', value: this.state.email, onChange: this.update, placeholder: 'z.B. max.muster@example.de' }),
+      _react2['default'].createElement(
+        'button',
+        { onClick: this.props.clearData },
+        'löschen'
+      ),
+      _react2['default'].createElement(
+        'button',
+        { onClick: this.sendResults },
+        'Report verschicken'
+      )
+    );
+  }
+});
+
+module.exports = ResultsScreen;
+
+},{"react":159}],169:[function(require,module,exports){
 'use strict';
 
 var jQuery = require('jquery');
@@ -28653,6 +28775,7 @@ var FeelingQuestion = require('./components/Question/FeelingQuestion.react.js');
 var ThoughtsQuestion = require('./components/Question/ThoughtsQuestion.react.js');
 var SituationQuestion = require('./components/Question/SituationQuestion.react.js');
 var ReactionQuestion = require('./components/Question/ReactionQuestion.react.js');
+var ResultsScreen = require('./components/ResultsScreen.react.js');
 
 var App = React.createClass({
   displayName: 'App',
@@ -28660,8 +28783,8 @@ var App = React.createClass({
   getInitialState: function getInitialState() {
     return {
       feeling: 50,
-      body: {},
-      thoughts: '',
+      body: 'body not yet',
+      thoughts: 'don\' think just do it!',
       situation: ['test1', 'test2'],
       reaction: ['reak1', 'reak2']
     };
@@ -28670,6 +28793,9 @@ var App = React.createClass({
     var newState = {};
     newState[question] = value;
     this.setState(newState);
+  },
+  clearData: function clearData() {
+    this.setState(this.getInitialState());
   },
   render: function render() {
     return React.createElement(
@@ -28697,12 +28823,6 @@ var App = React.createClass({
               null,
               'Swipe down'
             )
-          ),
-          React.createElement(
-            'pre',
-            null,
-            'Feeling: ',
-            this.state.feeling
           )
         ),
         React.createElement(
@@ -28724,12 +28844,6 @@ var App = React.createClass({
               null,
               'Swipe down'
             )
-          ),
-          React.createElement(
-            'pre',
-            null,
-            'Thoughts: ',
-            this.state.thoughts
           )
         ),
         React.createElement(
@@ -28751,12 +28865,6 @@ var App = React.createClass({
               null,
               'Swipe down'
             )
-          ),
-          React.createElement(
-            'pre',
-            null,
-            'Situation: ',
-            this.state.situation
           )
         ),
         React.createElement(
@@ -28778,35 +28886,21 @@ var App = React.createClass({
               null,
               'Swipe down'
             )
-          ),
-          React.createElement(
-            'pre',
-            null,
-            'Reaction: ',
-            this.state.reaction
           )
         ),
-        '            ',
         React.createElement(
           'div',
           { className: 'section' },
           React.createElement(
             'div',
             { className: 'row' },
-            React.createElement(
-              'div',
-              { className: 'col-sm-12' },
-              React.createElement(
-                'h3',
-                null,
-                'No, you hang up first'
-              ),
-              React.createElement(
-                'button',
-                { className: 'btn btn-lg arya-btn margin-top' },
-                'Hang Up'
-              )
-            )
+            React.createElement(ResultsScreen, {
+              feeling: this.state.feeling,
+              body: this.state.body,
+              thoughts: this.state.thoughts,
+              situation: this.state.situation,
+              reaction: this.state.reaction,
+              clearData: this.clearData })
           )
         )
       )
@@ -28816,7 +28910,7 @@ var App = React.createClass({
 
 ReactDOM.render(React.createElement(App, null), document.getElementById('react-app'));
 
-},{"./components/Question/FeelingQuestion.react.js":160,"./components/Question/ReactionQuestion.react.js":163,"./components/Question/SituationQuestion.react.js":164,"./components/Question/ThoughtsQuestion.react.js":167,"./fullpage.js":169,"jquery":2,"react":159,"react-dom":3}],169:[function(require,module,exports){
+},{"./components/Question/FeelingQuestion.react.js":160,"./components/Question/ReactionQuestion.react.js":163,"./components/Question/SituationQuestion.react.js":164,"./components/Question/ThoughtsQuestion.react.js":167,"./components/ResultsScreen.react.js":168,"./fullpage.js":170,"jquery":2,"react":159,"react-dom":3}],170:[function(require,module,exports){
 // var $ = require('jquery')
 // var jQueryFullPage = require('../../node_modules/fullpage.js/jquery.fullPage.js')
 
@@ -28834,4 +28928,4 @@ $(document).ready(function () {
     });
 });
 
-},{}]},{},[168])
+},{}]},{},[169])
