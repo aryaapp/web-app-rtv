@@ -30344,14 +30344,14 @@ var ThoughtsQuestion = _react2['default'].createClass({
   render: function render() {
     return _react2['default'].createElement(
       'div',
-      { className: 'col-sm-12' },
+      { className: 'col-sm-12 style-me' },
       _react2['default'].createElement(
         QuestionModal,
         null,
         _react2['default'].createElement(
           'p',
           null,
-          'Hello Thoguhts!'
+          'Hello Thoughts!'
         )
       ),
       _react2['default'].createElement(

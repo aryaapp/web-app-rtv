@@ -21,8 +21,8 @@ var ThoughtsQuestion = React.createClass({
 
   render() {
     return (
-      <div className="col-sm-12">
-        <QuestionModal><p>Hello Thoguhts!</p></QuestionModal>
+      <div className="col-sm-12 style-me">
+        <QuestionModal><p>Hello Thoughts!</p></QuestionModal>
         <h2>{this.props.title}</h2>
         <TextInput value={this.props.thoughts} onChange={this.update} />
       </div>
