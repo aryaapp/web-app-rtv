@@ -9,22 +9,25 @@ var FeelingQuestion = require('./components/Question/FeelingQuestion.react.js');
 var ThoughtsQuestion = require('./components/Question/ThoughtsQuestion.react.js');
 var SituationQuestion = require('./components/Question/SituationQuestion.react.js');
 var ReactionQuestion = require('./components/Question/ReactionQuestion.react.js');
-
+var ResultsScreen = require('./components/ResultsScreen.react.js');
 
 var App = React.createClass({
   getInitialState: function() {
     return {
       feeling: 50,
-      body: {},
-      thoughts: '',
+      body: 'body not yet',
+      thoughts: 'don\' think just do it!',
       situation:  ['test1','test2'],
-      reaction: ['reak1','reak2']
+      reaction: ['reak1','reak2'],
     };
   },
   handleQuestionChange: function(question, value) {
     var newState = {}
     newState[question] = value
     this.setState(newState);
+  },
+  clearData: function() {
+    this.setState(this.getInitialState())
   },
   render: function() {
     return (
@@ -40,7 +43,6 @@ var App = React.createClass({
                 <div className="row footer">
                     <p>Swipe down</p>
                 </div>
-                <pre>Feeling: {this.state.feeling}</pre>
             </div>
             <div className="section">
               <div className="row">
@@ -52,7 +54,6 @@ var App = React.createClass({
               <div className="row footer">
                   <p>Swipe down</p>
               </div>
-              <pre>Thoughts: {this.state.thoughts}</pre>
             </div>
             <div className="section">
               <div className="row">
@@ -64,7 +65,6 @@ var App = React.createClass({
               <div className="row footer">
                   <p>Swipe down</p>
               </div>
-              <pre>Situation: {this.state.situation}</pre>
             </div>
             <div className="section">
               <div className="row">
@@ -76,13 +76,16 @@ var App = React.createClass({
               <div className="row footer">
                   <p>Swipe down</p>
               </div>
-              <pre>Reaction: {this.state.reaction}</pre>
-            </div>            <div className="section">
+            </div>
+            <div className="section">
                 <div className="row">
-                    <div className="col-sm-12">
-                        <h3>No, you hang up first</h3>
-                        <button className="btn btn-lg arya-btn margin-top">Hang Up</button>
-                    </div>
+                    <ResultsScreen
+                      feeling={this.state.feeling}
+                      body={this.state.body}
+                      thoughts={this.state.thoughts}
+                      situation={this.state.situation}
+                      reaction={this.state.reaction}
+                      clearData={this.clearData} />
                 </div>
             </div>
         </div>
