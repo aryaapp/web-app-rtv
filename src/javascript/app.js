@@ -8,15 +8,17 @@ var fullPage = require('./fullpage.js');
 var FeelingQuestion = require('./components/Question/FeelingQuestion.react.js');
 var ThoughtsQuestion = require('./components/Question/ThoughtsQuestion.react.js');
 var SituationQuestion = require('./components/Question/SituationQuestion.react.js');
+var ReactionQuestion = require('./components/Question/ReactionQuestion.react.js');
 
 
 var App = React.createClass({
   getInitialState: function() {
     return {
       feeling: 50,
-      thoughts: '',
       body: {},
+      thoughts: '',
       situation:  ['test1','test2'],
+      reaction: ['reak1','reak2']
     };
   },
   handleQuestionChange: function(question, value) {
@@ -64,8 +66,18 @@ var App = React.createClass({
               </div>
               <pre>Situation: {this.state.situation}</pre>
             </div>
-            <div className="section"><h3>Ok, cheers</h3></div>
             <div className="section">
+              <div className="row">
+                <ReactionQuestion
+                  reaction={this.state.reaction}
+                  onChange={this.handleQuestionChange.bind(this, 'reaction' )}
+                />
+              </div>
+              <div className="row footer">
+                  <p>Swipe down</p>
+              </div>
+              <pre>Reaction: {this.state.reaction}</pre>
+            </div>            <div className="section">
                 <div className="row">
                     <div className="col-sm-12">
                         <h3>No, you hang up first</h3>
