@@ -3,21 +3,32 @@ var $ = require('jquery');
 var React = require('react');
 var ReactDOM = require('react-dom');
 var fullPage = require('./fullpage.js');
+
 // var jQueryFullPage = require('../../node_modules/fullpage.js/jquery.fullPage.js');
 
 var FeelingQuestion = require('./components/Question/FeelingQuestion.react.js');
+var ThoughtsQuestion = require('./components/Question/ThoughtsQuestion.react.js');
+var SituationQuestion = require('./components/Question/SituationQuestion.react.js');
+var ReactionQuestion = require('./components/Question/ReactionQuestion.react.js');
+var ResultsScreen = require('./components/ResultsScreen.react.js');
 
 var App = React.createClass({
   getInitialState: function() {
     return {
       feeling: 50,
-      body: {}
+      body: 'body not yet',
+      thoughts: 'don\' think just do it!',
+      situation:  ['Erste Situation','Zweite Situation'],
+      reaction: ['Erste Reaktion','Zweite Reaktion'],
     };
   },
   handleQuestionChange: function(question, value) {
     var newState = {}
     newState[question] = value
     this.setState(newState);
+  },
+  clearData: function() {
+    this.setState(this.getInitialState())
   },
   render: function() {
     return (
@@ -33,17 +44,49 @@ var App = React.createClass({
                 <div className="row footer">
                     <p>Swipe down</p>
                 </div>
-                <pre>Feeling: {this.state.feeling}</pre>
             </div>
-            <div className="section"><h3>How is it going?</h3></div>
-            <div className="section"><h3>Fine Thanks</h3></div>
-            <div className="section"><h3>Ok, cheers</h3></div>
+            <div className="section">
+              <div className="row">
+                <ThoughtsQuestion
+                  thoughts={this.state.thoughts}
+                  onChange={this.handleQuestionChange.bind(this, 'thoughts' )}
+                />
+              </div>
+              <div className="row footer">
+                  <p>Swipe down</p>
+              </div>
+            </div>
+            <div className="section">
+              <div className="row">
+                <SituationQuestion
+                  situation={this.state.situation}
+                  onChange={this.handleQuestionChange.bind(this, 'situation' )}
+                />
+              </div>
+              <div className="row footer">
+                  <p>Swipe down</p>
+              </div>
+            </div>
+            <div className="section">
+              <div className="row">
+                <ReactionQuestion
+                  reaction={this.state.reaction}
+                  onChange={this.handleQuestionChange.bind(this, 'reaction' )}
+                />
+              </div>
+              <div className="row footer">
+                  <p>Swipe down</p>
+              </div>
+            </div>
             <div className="section">
                 <div className="row">
-                    <div className="col-sm-12">
-                        <h3>No, you hang up first</h3>
-                        <button className="btn btn-lg arya-btn margin-top">Hang Up</button>
-                    </div>
+                    <ResultsScreen
+                      feeling={this.state.feeling}
+                      body={this.state.body}
+                      thoughts={this.state.thoughts}
+                      situation={this.state.situation}
+                      reaction={this.state.reaction}
+                      clearData={this.clearData} />
                 </div>
             </div>
         </div>

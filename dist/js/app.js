@@ -28219,7 +28219,7 @@ var FeelingQuestion = _react2['default'].createClass({
   getDefaultProps: function getDefaultProps() {
     return {
       feeling: 50,
-      headline: "Wie fühlst du dich?"
+      title: "Wie fühlst du dich?"
     };
   },
 
@@ -28241,18 +28241,115 @@ var FeelingQuestion = _react2['default'].createClass({
         )
       ),
       _react2['default'].createElement(
-        'h1',
+        'h2',
         null,
-        this.props.headline
+        this.props.title
       ),
-      _react2['default'].createElement(SliderInput, { value: this.props.feeling, onChance: this.update })
+      _react2['default'].createElement(SliderInput, { value: this.props.feeling, onChange: this.update })
     );
   }
 });
 
 module.exports = FeelingQuestion;
 
-},{"./QuestionModal.react.js":161,"./SliderInput.react.js":162,"react":159}],161:[function(require,module,exports){
+},{"./QuestionModal.react.js":162,"./SliderInput.react.js":165,"react":159}],161:[function(require,module,exports){
+/**
+* @module rtv-mood tracker
+* @submodule Question
+*/
+'use strict';
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var ListInput = _react2['default'].createClass({
+  displayName: 'ListInput',
+
+  getDefaultProps: function getDefaultProps() {
+    return {
+      value: []
+    };
+  },
+  getInitialState: function getInitialState() {
+    return {
+      newValue: ''
+    };
+  },
+  update: function update(value) {
+    this.props.onChange(value);
+  },
+  updateState: function updateState(e) {
+    this.setState({ newValue: e.target.value });
+  },
+  addValue: function addValue(e) {
+    e.preventDefault();
+    // check if value is there
+    if (this.state.newValue.length == 0) {
+      return false;
+    }
+    // check if value is allready there
+    if (this.props.value.indexOf(this.state.newValue) != -1) {
+      return false;
+    }
+
+    var newParentState = this.props.value.slice();
+    newParentState.push(this.state.newValue);
+
+    this.update(newParentState);
+    this.setState({ newValue: '' });
+  },
+  removeValue: function removeValue(i) {
+    var newParentState = this.props.value.slice();
+    newParentState.splice(i, 1);
+    this.update(newParentState);
+  },
+  render: function render() {
+    var that = this;
+    return _react2['default'].createElement(
+      'div',
+      null,
+      _react2['default'].createElement(
+        'form',
+        { onSubmit: this.addValue },
+        _react2['default'].createElement('input', {
+          type: 'text',
+          value: this.state.newValue,
+          onChange: this.updateState,
+          placeholder: 'z. B. Ich sitze im Büro.' }),
+        _react2['default'].createElement(
+          'button',
+          { type: 'submit', onClick: this.addValue },
+          'add'
+        )
+      ),
+      _react2['default'].createElement(
+        'ul',
+        null,
+        this.props.value.map(function (element, i) {
+          return _react2['default'].createElement(
+            'li',
+            {
+              key: i },
+            element,
+            ' ',
+            _react2['default'].createElement(
+              'i',
+              { style: { cursor: 'pointer' }, onClick: that.removeValue.bind(null, i) },
+              'x'
+            )
+          );
+        })
+      )
+    );
+  }
+});
+
+module.exports = ListInput;
+
+},{"react":159}],162:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -28288,7 +28385,117 @@ var QuestionModal = _react2['default'].createClass({
 
 module.exports = QuestionModal;
 
-},{"react":159}],162:[function(require,module,exports){
+},{"react":159}],163:[function(require,module,exports){
+/**
+* @module rtv-mood tracker
+* @submodule Question
+*/
+'use strict';
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var QuestionModal = require('./QuestionModal.react.js');
+var ListInput = require('./ListInput.react.js');
+
+var ReactionQuestion = _react2['default'].createClass({
+  displayName: 'ReactionQuestion',
+
+  getDefaultProps: function getDefaultProps() {
+    return {
+      reaction: [],
+      title: "Wie war deine Reaktion?"
+    };
+  },
+
+  update: function update(value) {
+    this.props.onChange(value);
+  },
+
+  render: function render() {
+    return _react2['default'].createElement(
+      'div',
+      { className: 'col-sm-12' },
+      _react2['default'].createElement(
+        QuestionModal,
+        null,
+        _react2['default'].createElement(
+          'p',
+          null,
+          'Hello Reaction!'
+        )
+      ),
+      _react2['default'].createElement(
+        'h2',
+        null,
+        this.props.title
+      ),
+      _react2['default'].createElement(ListInput, { value: this.props.reaction, onChange: this.update })
+    );
+  }
+});
+
+module.exports = ReactionQuestion;
+
+},{"./ListInput.react.js":161,"./QuestionModal.react.js":162,"react":159}],164:[function(require,module,exports){
+/**
+* @module rtv-mood tracker
+* @submodule Question
+*/
+'use strict';
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var QuestionModal = require('./QuestionModal.react.js');
+var ListInput = require('./ListInput.react.js');
+
+var SituationQuestion = _react2['default'].createClass({
+  displayName: 'SituationQuestion',
+
+  getDefaultProps: function getDefaultProps() {
+    return {
+      situation: [],
+      title: "Wie ist deine Situation?"
+    };
+  },
+
+  update: function update(value) {
+    this.props.onChange(value);
+  },
+
+  render: function render() {
+    return _react2['default'].createElement(
+      'div',
+      { className: 'col-sm-12' },
+      _react2['default'].createElement(
+        QuestionModal,
+        null,
+        _react2['default'].createElement(
+          'p',
+          null,
+          'Hello Situation!'
+        )
+      ),
+      _react2['default'].createElement(
+        'h2',
+        null,
+        this.props.title
+      ),
+      _react2['default'].createElement(ListInput, { value: this.props.situation, onChange: this.update })
+    );
+  }
+});
+
+module.exports = SituationQuestion;
+
+},{"./ListInput.react.js":161,"./QuestionModal.react.js":162,"react":159}],165:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -28310,7 +28517,7 @@ var SliderInput = _react2["default"].createClass({
     };
   },
   update: function update(e) {
-    this.props.onChance(e.target.value);
+    this.props.onChange(e.target.value);
   },
   render: function render() {
     return _react2["default"].createElement(
@@ -28334,7 +28541,246 @@ var SliderInput = _react2["default"].createClass({
 
 module.exports = SliderInput;
 
-},{"react":159}],163:[function(require,module,exports){
+},{"react":159}],166:[function(require,module,exports){
+/**
+* @module rtv-mood tracker
+* @submodule Question
+*/
+'use strict';
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var TextInput = _react2['default'].createClass({
+  displayName: 'TextInput',
+
+  getDefaultProps: function getDefaultProps() {
+    return {
+      value: ''
+    };
+  },
+  update: function update(e) {
+    this.props.onChange(e.target.value);
+  },
+  render: function render() {
+    return _react2['default'].createElement(
+      'div',
+      null,
+      _react2['default'].createElement('textarea', {
+        value: this.props.value,
+        onChange: this.update })
+    );
+  }
+});
+
+module.exports = TextInput;
+
+},{"react":159}],167:[function(require,module,exports){
+/**
+* @module rtv-mood tracker
+* @submodule Question
+*/
+'use strict';
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var QuestionModal = require('./QuestionModal.react.js');
+var TextInput = require('./TextInput.react.js');
+
+var ThoughtsQuestion = _react2['default'].createClass({
+  displayName: 'ThoughtsQuestion',
+
+  getDefaultProps: function getDefaultProps() {
+    return {
+      thoughts: '',
+      title: "Was sind deine Gedanken?"
+    };
+  },
+
+  update: function update(value) {
+    this.props.onChange(value);
+  },
+
+  render: function render() {
+    return _react2['default'].createElement(
+      'div',
+      { className: 'col-sm-12' },
+      _react2['default'].createElement(
+        QuestionModal,
+        null,
+        _react2['default'].createElement(
+          'p',
+          null,
+          'Hello Thoguhts!'
+        )
+      ),
+      _react2['default'].createElement(
+        'h2',
+        null,
+        this.props.title
+      ),
+      _react2['default'].createElement(TextInput, { value: this.props.thoughts, onChange: this.update })
+    );
+  }
+});
+
+module.exports = ThoughtsQuestion;
+
+},{"./QuestionModal.react.js":162,"./TextInput.react.js":166,"react":159}],168:[function(require,module,exports){
+/**
+* @module rtv-mood tracker
+* @submodule Question
+*/
+'use strict';
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var ResultsScreen = _react2['default'].createClass({
+  displayName: 'ResultsScreen',
+
+  getDefaultProps: function getDefaultProps() {
+    return {
+      title: "Hier deine Eingabe",
+      feeling: 50,
+      body: {},
+      thoughts: '',
+      situation: ['sit1', 'sit2'],
+      reaction: ['reak1', 'reak2']
+    };
+  },
+  getInitialState: function getInitialState() {
+    return {
+      email: ''
+    };
+  },
+  update: function update(e) {
+    this.setState({ email: e.target.value });
+  },
+
+  checkEMail: function checkEMail(e) {
+    if (this.state.email != '') {
+      return true;
+    } else {
+      return false;
+    }
+  },
+  sendResults: function sendResults(e) {
+    if (this.checkEMail()) {
+      console.log('E-Mail results to:', this.state.email);
+    }
+  },
+
+  render: function render() {
+    return _react2['default'].createElement(
+      'div',
+      { className: 'col-sm-12' },
+      _react2['default'].createElement(
+        'h2',
+        null,
+        this.props.title
+      ),
+      _react2['default'].createElement(
+        'dl',
+        null,
+        _react2['default'].createElement(
+          'dt',
+          null,
+          'Deine Befinden'
+        ),
+        _react2['default'].createElement(
+          'dd',
+          null,
+          this.props.feeling
+        ),
+        _react2['default'].createElement(
+          'dt',
+          null,
+          'Deine Körper'
+        ),
+        _react2['default'].createElement(
+          'dd',
+          null,
+          this.props.body
+        ),
+        _react2['default'].createElement(
+          'dt',
+          null,
+          'Deine Gedanken'
+        ),
+        _react2['default'].createElement(
+          'dd',
+          null,
+          this.props.thoughts
+        ),
+        _react2['default'].createElement(
+          'dt',
+          null,
+          'Deine Situation'
+        ),
+        _react2['default'].createElement(
+          'dd',
+          null,
+          this.props.situation
+        ),
+        _react2['default'].createElement(
+          'dt',
+          null,
+          'Deine Reaktion'
+        ),
+        _react2['default'].createElement(
+          'dd',
+          null,
+          this.props.reaction
+        )
+      ),
+      _react2['default'].createElement(
+        'div',
+        { 'class': 'input-group' },
+        _react2['default'].createElement(
+          'span',
+          { className: 'input-group-addon', id: 'basic-addon1' },
+          '@'
+        ),
+        _react2['default'].createElement('input', {
+          className: 'form-control',
+          type: 'email',
+          placeholder: 'z.B. max.muster@example.de',
+          'aria-describedby': 'basic-addon1',
+          value: this.state.email,
+          onChange: this.update })
+      ),
+      _react2['default'].createElement(
+        'div',
+        { 'class': 'btn-group', role: 'group' },
+        _react2['default'].createElement(
+          'button',
+          { className: 'btn btn-default', onClick: this.props.clearData },
+          'löschen'
+        ),
+        _react2['default'].createElement(
+          'button',
+          { className: 'btn btn-default', onClick: this.sendResults },
+          'Report verschicken'
+        )
+      )
+    );
+  }
+});
+
+module.exports = ResultsScreen;
+
+},{"react":159}],169:[function(require,module,exports){
 'use strict';
 
 var jQuery = require('jquery');
@@ -28342,9 +28788,14 @@ var $ = require('jquery');
 var React = require('react');
 var ReactDOM = require('react-dom');
 var fullPage = require('./fullpage.js');
+
 // var jQueryFullPage = require('../../node_modules/fullpage.js/jquery.fullPage.js');
 
 var FeelingQuestion = require('./components/Question/FeelingQuestion.react.js');
+var ThoughtsQuestion = require('./components/Question/ThoughtsQuestion.react.js');
+var SituationQuestion = require('./components/Question/SituationQuestion.react.js');
+var ReactionQuestion = require('./components/Question/ReactionQuestion.react.js');
+var ResultsScreen = require('./components/ResultsScreen.react.js');
 
 var App = React.createClass({
   displayName: 'App',
@@ -28352,13 +28803,19 @@ var App = React.createClass({
   getInitialState: function getInitialState() {
     return {
       feeling: 50,
-      body: {}
+      body: 'body not yet',
+      thoughts: 'don\' think just do it!',
+      situation: ['Erste Situation', 'Zweite Situation'],
+      reaction: ['Erste Reaktion', 'Zweite Reaktion']
     };
   },
   handleQuestionChange: function handleQuestionChange(question, value) {
     var newState = {};
     newState[question] = value;
     this.setState(newState);
+  },
+  clearData: function clearData() {
+    this.setState(this.getInitialState());
   },
   render: function render() {
     return React.createElement(
@@ -28386,39 +28843,6 @@ var App = React.createClass({
               null,
               'Swipe down'
             )
-          ),
-          React.createElement(
-            'pre',
-            null,
-            'Feeling: ',
-            this.state.feeling
-          )
-        ),
-        React.createElement(
-          'div',
-          { className: 'section' },
-          React.createElement(
-            'h3',
-            null,
-            'How is it going?'
-          )
-        ),
-        React.createElement(
-          'div',
-          { className: 'section' },
-          React.createElement(
-            'h3',
-            null,
-            'Fine Thanks'
-          )
-        ),
-        React.createElement(
-          'div',
-          { className: 'section' },
-          React.createElement(
-            'h3',
-            null,
-            'Ok, cheers'
           )
         ),
         React.createElement(
@@ -28427,20 +28851,76 @@ var App = React.createClass({
           React.createElement(
             'div',
             { className: 'row' },
+            React.createElement(ThoughtsQuestion, {
+              thoughts: this.state.thoughts,
+              onChange: this.handleQuestionChange.bind(this, 'thoughts')
+            })
+          ),
+          React.createElement(
+            'div',
+            { className: 'row footer' },
             React.createElement(
-              'div',
-              { className: 'col-sm-12' },
-              React.createElement(
-                'h3',
-                null,
-                'No, you hang up first'
-              ),
-              React.createElement(
-                'button',
-                { className: 'btn btn-lg arya-btn margin-top' },
-                'Hang Up'
-              )
+              'p',
+              null,
+              'Swipe down'
             )
+          )
+        ),
+        React.createElement(
+          'div',
+          { className: 'section' },
+          React.createElement(
+            'div',
+            { className: 'row' },
+            React.createElement(SituationQuestion, {
+              situation: this.state.situation,
+              onChange: this.handleQuestionChange.bind(this, 'situation')
+            })
+          ),
+          React.createElement(
+            'div',
+            { className: 'row footer' },
+            React.createElement(
+              'p',
+              null,
+              'Swipe down'
+            )
+          )
+        ),
+        React.createElement(
+          'div',
+          { className: 'section' },
+          React.createElement(
+            'div',
+            { className: 'row' },
+            React.createElement(ReactionQuestion, {
+              reaction: this.state.reaction,
+              onChange: this.handleQuestionChange.bind(this, 'reaction')
+            })
+          ),
+          React.createElement(
+            'div',
+            { className: 'row footer' },
+            React.createElement(
+              'p',
+              null,
+              'Swipe down'
+            )
+          )
+        ),
+        React.createElement(
+          'div',
+          { className: 'section' },
+          React.createElement(
+            'div',
+            { className: 'row' },
+            React.createElement(ResultsScreen, {
+              feeling: this.state.feeling,
+              body: this.state.body,
+              thoughts: this.state.thoughts,
+              situation: this.state.situation,
+              reaction: this.state.reaction,
+              clearData: this.clearData })
           )
         )
       )
@@ -28450,7 +28930,7 @@ var App = React.createClass({
 
 ReactDOM.render(React.createElement(App, null), document.getElementById('react-app'));
 
-},{"./components/Question/FeelingQuestion.react.js":160,"./fullpage.js":164,"jquery":2,"react":159,"react-dom":3}],164:[function(require,module,exports){
+},{"./components/Question/FeelingQuestion.react.js":160,"./components/Question/ReactionQuestion.react.js":163,"./components/Question/SituationQuestion.react.js":164,"./components/Question/ThoughtsQuestion.react.js":167,"./components/ResultsScreen.react.js":168,"./fullpage.js":170,"jquery":2,"react":159,"react-dom":3}],170:[function(require,module,exports){
 // var $ = require('jquery')
 // var jQueryFullPage = require('../../node_modules/fullpage.js/jquery.fullPage.js')
 
@@ -28462,18 +28942,10 @@ $(document).ready(function () {
         anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
         menu: '#menu',
         css3: true,
+        navigation: true,
+        navigationPosition: 'right',
         scrollingSpeed: 1000
-    });
-
-    $('#showExamples').click(function (e) {
-        e.stopPropagation();
-        e.preventDefault();
-        $('#examplesList').toggle();
-    });
-
-    $('html').click(function () {
-        $('#examplesList').hide();
     });
 });
 
-},{}]},{},[163])
+},{}]},{},[169])
