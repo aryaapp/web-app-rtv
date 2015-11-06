@@ -25,7 +25,6 @@ var FeelingQuestion = React.createClass({
         <QuestionModal><p>Hello Feeling!</p></QuestionModal>
         <h1>{this.props.title}</h1>
         <SliderInput value={this.props.feeling} onChange={this.update} />
-
       </div>
     );
   }
