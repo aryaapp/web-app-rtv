@@ -28252,7 +28252,110 @@ var FeelingQuestion = _react2['default'].createClass({
 
 module.exports = FeelingQuestion;
 
-},{"./QuestionModal.react.js":161,"./SliderInput.react.js":162,"react":159}],161:[function(require,module,exports){
+},{"./QuestionModal.react.js":162,"./SliderInput.react.js":164,"react":159}],161:[function(require,module,exports){
+/**
+* @module rtv-mood tracker
+* @submodule Question
+*/
+'use strict';
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var ListInput = _react2['default'].createClass({
+  displayName: 'ListInput',
+
+  getDefaultProps: function getDefaultProps() {
+    return {
+      value: []
+    };
+  },
+  getInitialState: function getInitialState() {
+    return {
+      newValue: ''
+    };
+  },
+  update: function update(value) {
+    this.props.onChange(value);
+  },
+  updateState: function updateState(e) {
+    this.setState({ newValue: e.target.value });
+  },
+  addValue: function addValue(e) {
+    e.preventDefault();
+    // check if value is there
+    if (this.state.newValue.length == 0) {
+      return false;
+    }
+    // check if value is allready there
+    if (this.props.value.indexOf(this.state.newValue) != -1) {
+      return false;
+    }
+
+    console.log('addValue', this.state.newValue);
+
+    var newParentState = this.props.value.slice();
+    newParentState.push(this.state.newValue);
+
+    console.log('newArray', newParentState);
+
+    this.update(newParentState);
+    this.setState({ newValue: '' });
+  },
+  removeValue: function removeValue(i) {
+    console.log('index', i);
+    var newParentState = this.props.value.slice();
+    newParentState.splice(i, 1);
+    console.log('newArray', newParentState);
+    this.update(newParentState);
+  },
+  render: function render() {
+    var that = this;
+    return _react2['default'].createElement(
+      'div',
+      null,
+      _react2['default'].createElement(
+        'form',
+        { onSubmit: this.addValue },
+        _react2['default'].createElement('input', {
+          type: 'text',
+          value: this.state.newValue,
+          onChange: this.updateState,
+          placeholder: 'z. B. Ich sitze im Büro.' }),
+        _react2['default'].createElement(
+          'button',
+          { type: 'submit', onClick: this.addValue },
+          'add'
+        )
+      ),
+      _react2['default'].createElement(
+        'ul',
+        null,
+        this.props.value.map(function (element, i) {
+          return _react2['default'].createElement(
+            'li',
+            {
+              key: i },
+            element,
+            ' ',
+            _react2['default'].createElement(
+              'i',
+              { style: { cursor: 'pointer' }, onClick: that.removeValue.bind(null, i) },
+              'x'
+            )
+          );
+        })
+      )
+    );
+  }
+});
+
+module.exports = ListInput;
+
+},{"react":159}],162:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -28288,7 +28391,62 @@ var QuestionModal = _react2['default'].createClass({
 
 module.exports = QuestionModal;
 
-},{"react":159}],162:[function(require,module,exports){
+},{"react":159}],163:[function(require,module,exports){
+/**
+* @module rtv-mood tracker
+* @submodule Question
+*/
+'use strict';
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var QuestionModal = require('./QuestionModal.react.js');
+var ListInput = require('./ListInput.react.js');
+
+var SituationQuestion = _react2['default'].createClass({
+  displayName: 'SituationQuestion',
+
+  getDefaultProps: function getDefaultProps() {
+    return {
+      situation: [],
+      title: "Wie ist deine Situation?"
+    };
+  },
+
+  update: function update(value) {
+    this.props.onChange(value);
+  },
+
+  render: function render() {
+    return _react2['default'].createElement(
+      'div',
+      { className: 'col-sm-12' },
+      _react2['default'].createElement(
+        QuestionModal,
+        null,
+        _react2['default'].createElement(
+          'p',
+          null,
+          'Hello Situation!'
+        )
+      ),
+      _react2['default'].createElement(
+        'h1',
+        null,
+        this.props.title
+      ),
+      _react2['default'].createElement(ListInput, { value: this.props.situation, onChange: this.update })
+    );
+  }
+});
+
+module.exports = SituationQuestion;
+
+},{"./ListInput.react.js":161,"./QuestionModal.react.js":162,"react":159}],164:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -28334,7 +28492,99 @@ var SliderInput = _react2["default"].createClass({
 
 module.exports = SliderInput;
 
-},{"react":159}],163:[function(require,module,exports){
+},{"react":159}],165:[function(require,module,exports){
+/**
+* @module rtv-mood tracker
+* @submodule Question
+*/
+'use strict';
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var TextInput = _react2['default'].createClass({
+  displayName: 'TextInput',
+
+  getDefaultProps: function getDefaultProps() {
+    return {
+      value: ''
+    };
+  },
+  update: function update(e) {
+    this.props.onChange(e.target.value);
+  },
+  render: function render() {
+    return _react2['default'].createElement(
+      'div',
+      null,
+      _react2['default'].createElement('textarea', {
+        value: this.props.value,
+        onChange: this.update })
+    );
+  }
+});
+
+module.exports = TextInput;
+
+},{"react":159}],166:[function(require,module,exports){
+/**
+* @module rtv-mood tracker
+* @submodule Question
+*/
+'use strict';
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var QuestionModal = require('./QuestionModal.react.js');
+var TextInput = require('./TextInput.react.js');
+
+var ThoughtsQuestion = _react2['default'].createClass({
+  displayName: 'ThoughtsQuestion',
+
+  getDefaultProps: function getDefaultProps() {
+    return {
+      thoughts: '',
+      title: "Was sind deine Gedanken?"
+    };
+  },
+
+  update: function update(value) {
+    this.props.onChange(value);
+  },
+
+  render: function render() {
+    return _react2['default'].createElement(
+      'div',
+      { className: 'col-sm-12' },
+      _react2['default'].createElement(
+        QuestionModal,
+        null,
+        _react2['default'].createElement(
+          'p',
+          null,
+          'Hello Thoguhts!'
+        )
+      ),
+      _react2['default'].createElement(
+        'h1',
+        null,
+        this.props.title
+      ),
+      _react2['default'].createElement(TextInput, { value: this.props.thoughts, onChange: this.update })
+    );
+  }
+});
+
+module.exports = ThoughtsQuestion;
+
+},{"./QuestionModal.react.js":162,"./TextInput.react.js":165,"react":159}],167:[function(require,module,exports){
 'use strict';
 
 var jQuery = require('jquery');
@@ -28345,6 +28595,8 @@ var fullPage = require('./fullpage.js');
 // var jQueryFullPage = require('../../node_modules/fullpage.js/jquery.fullPage.js');
 
 var FeelingQuestion = require('./components/Question/FeelingQuestion.react.js');
+var ThoughtsQuestion = require('./components/Question/ThoughtsQuestion.react.js');
+var SituationQuestion = require('./components/Question/SituationQuestion.react.js');
 
 var App = React.createClass({
   displayName: 'App',
@@ -28352,7 +28604,9 @@ var App = React.createClass({
   getInitialState: function getInitialState() {
     return {
       feeling: 50,
-      body: {}
+      thoughts: '',
+      body: {},
+      situation: ['test1', 'test2']
     };
   },
   handleQuestionChange: function handleQuestionChange(question, value) {
@@ -28398,18 +28652,54 @@ var App = React.createClass({
           'div',
           { className: 'section' },
           React.createElement(
-            'h3',
+            'div',
+            { className: 'row' },
+            React.createElement(ThoughtsQuestion, {
+              thoughts: this.state.thoughts,
+              onChange: this.handleQuestionChange.bind(this, 'thoughts')
+            })
+          ),
+          React.createElement(
+            'div',
+            { className: 'row footer' },
+            React.createElement(
+              'p',
+              null,
+              'Swipe down'
+            )
+          ),
+          React.createElement(
+            'pre',
             null,
-            'How is it going?'
+            'Thoughts: ',
+            this.state.thoughts
           )
         ),
         React.createElement(
           'div',
           { className: 'section' },
           React.createElement(
-            'h3',
+            'div',
+            { className: 'row' },
+            React.createElement(SituationQuestion, {
+              situation: this.state.situation,
+              onChange: this.handleQuestionChange.bind(this, 'situation')
+            })
+          ),
+          React.createElement(
+            'div',
+            { className: 'row footer' },
+            React.createElement(
+              'p',
+              null,
+              'Swipe down'
+            )
+          ),
+          React.createElement(
+            'pre',
             null,
-            'Fine Thanks'
+            'Situation: ',
+            this.state.situation
           )
         ),
         React.createElement(
@@ -28450,7 +28740,7 @@ var App = React.createClass({
 
 ReactDOM.render(React.createElement(App, null), document.getElementById('react-app'));
 
-},{"./components/Question/FeelingQuestion.react.js":160,"./fullpage.js":164,"jquery":2,"react":159,"react-dom":3}],164:[function(require,module,exports){
+},{"./components/Question/FeelingQuestion.react.js":160,"./components/Question/SituationQuestion.react.js":163,"./components/Question/ThoughtsQuestion.react.js":166,"./fullpage.js":168,"jquery":2,"react":159,"react-dom":3}],168:[function(require,module,exports){
 // var $ = require('jquery')
 // var jQueryFullPage = require('../../node_modules/fullpage.js/jquery.fullPage.js')
 
@@ -28468,4 +28758,4 @@ $(document).ready(function () {
     });
 });
 
-},{}]},{},[163])
+},{}]},{},[167])

@@ -6,12 +6,17 @@ var fullPage = require('./fullpage.js');
 // var jQueryFullPage = require('../../node_modules/fullpage.js/jquery.fullPage.js');
 
 var FeelingQuestion = require('./components/Question/FeelingQuestion.react.js');
+var ThoughtsQuestion = require('./components/Question/ThoughtsQuestion.react.js');
+var SituationQuestion = require('./components/Question/SituationQuestion.react.js');
+
 
 var App = React.createClass({
   getInitialState: function() {
     return {
       feeling: 50,
-      body: {}
+      thoughts: '',
+      body: {},
+      situation:  ['test1','test2'],
     };
   },
   handleQuestionChange: function(question, value) {
@@ -36,9 +41,29 @@ var App = React.createClass({
                 <pre>Feeling: {this.state.feeling}</pre>
             </div>
             <div className="section">
-              <h3>How is it going?</h3>
+              <div className="row">
+                <ThoughtsQuestion
+                  thoughts={this.state.thoughts}
+                  onChange={this.handleQuestionChange.bind(this, 'thoughts' )}
+                />
+              </div>
+              <div className="row footer">
+                  <p>Swipe down</p>
+              </div>
+              <pre>Thoughts: {this.state.thoughts}</pre>
             </div>
-            <div className="section"><h3>Fine Thanks</h3></div>
+            <div className="section">
+              <div className="row">
+                <SituationQuestion
+                  situation={this.state.situation}
+                  onChange={this.handleQuestionChange.bind(this, 'situation' )}
+                />
+              </div>
+              <div className="row footer">
+                  <p>Swipe down</p>
+              </div>
+              <pre>Situation: {this.state.situation}</pre>
+            </div>
             <div className="section"><h3>Ok, cheers</h3></div>
             <div className="section">
                 <div className="row">
