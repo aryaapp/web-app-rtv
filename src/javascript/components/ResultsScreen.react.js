@@ -17,7 +17,7 @@ var ResultsScreen = React.createClass({
   },
   getInitialState: function() {
     return {
-      email: 'max.muster@example.com'
+      email: ''
     }
   },
   update: function(e) {
@@ -53,8 +53,20 @@ var ResultsScreen = React.createClass({
           <dt>Deine Reaktion</dt>
           <dd>{this.props.reaction}</dd>
         </dl>
-        <input type='email' value={this.state.email} onChange={this.update} placeholder="z.B. max.muster@example.de" />
-        <button onClick={this.props.clearData}>löschen</button><button onClick={this.sendResults}>Report verschicken</button>
+        <div class="input-group">
+          <span className="input-group-addon" id="basic-addon1">@</span>
+          <input
+            className="form-control"
+            type='email'
+            placeholder="z.B. max.muster@example.de"
+            aria-describedby="basic-addon1"
+            value={this.state.email}
+            onChange={this.update} />
+        </div>
+        <div class="btn-group" role="group">
+          <button className='btn btn-default' onClick={this.props.clearData}>löschen</button>
+          <button className='btn btn-default' onClick={this.sendResults}>Report verschicken</button>
+        </div>
       </div>
     );
   }

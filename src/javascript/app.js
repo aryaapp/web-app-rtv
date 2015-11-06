@@ -3,6 +3,7 @@ var $ = require('jquery');
 var React = require('react');
 var ReactDOM = require('react-dom');
 var fullPage = require('./fullpage.js');
+
 // var jQueryFullPage = require('../../node_modules/fullpage.js/jquery.fullPage.js');
 
 var FeelingQuestion = require('./components/Question/FeelingQuestion.react.js');
@@ -17,8 +18,8 @@ var App = React.createClass({
       feeling: 50,
       body: 'body not yet',
       thoughts: 'don\' think just do it!',
-      situation:  ['test1','test2'],
-      reaction: ['reak1','reak2'],
+      situation:  ['Erste Situation','Zweite Situation'],
+      reaction: ['Erste Reaktion','Zweite Reaktion'],
     };
   },
   handleQuestionChange: function(question, value) {

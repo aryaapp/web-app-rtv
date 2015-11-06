@@ -28661,7 +28661,7 @@ var ResultsScreen = _react2['default'].createClass({
   },
   getInitialState: function getInitialState() {
     return {
-      email: 'max.muster@example.com'
+      email: ''
     };
   },
   update: function update(e) {
@@ -28744,16 +28744,35 @@ var ResultsScreen = _react2['default'].createClass({
           this.props.reaction
         )
       ),
-      _react2['default'].createElement('input', { type: 'email', value: this.state.email, onChange: this.update, placeholder: 'z.B. max.muster@example.de' }),
       _react2['default'].createElement(
-        'button',
-        { onClick: this.props.clearData },
-        'löschen'
+        'div',
+        { 'class': 'input-group' },
+        _react2['default'].createElement(
+          'span',
+          { className: 'input-group-addon', id: 'basic-addon1' },
+          '@'
+        ),
+        _react2['default'].createElement('input', {
+          className: 'form-control',
+          type: 'email',
+          placeholder: 'z.B. max.muster@example.de',
+          'aria-describedby': 'basic-addon1',
+          value: this.state.email,
+          onChange: this.update })
       ),
       _react2['default'].createElement(
-        'button',
-        { onClick: this.sendResults },
-        'Report verschicken'
+        'div',
+        { 'class': 'btn-group', role: 'group' },
+        _react2['default'].createElement(
+          'button',
+          { className: 'btn btn-default', onClick: this.props.clearData },
+          'löschen'
+        ),
+        _react2['default'].createElement(
+          'button',
+          { className: 'btn btn-default', onClick: this.sendResults },
+          'Report verschicken'
+        )
       )
     );
   }
@@ -28769,6 +28788,7 @@ var $ = require('jquery');
 var React = require('react');
 var ReactDOM = require('react-dom');
 var fullPage = require('./fullpage.js');
+
 // var jQueryFullPage = require('../../node_modules/fullpage.js/jquery.fullPage.js');
 
 var FeelingQuestion = require('./components/Question/FeelingQuestion.react.js');
@@ -28785,8 +28805,8 @@ var App = React.createClass({
       feeling: 50,
       body: 'body not yet',
       thoughts: 'don\' think just do it!',
-      situation: ['test1', 'test2'],
-      reaction: ['reak1', 'reak2']
+      situation: ['Erste Situation', 'Zweite Situation'],
+      reaction: ['Erste Reaktion', 'Zweite Reaktion']
     };
   },
   handleQuestionChange: function handleQuestionChange(question, value) {
