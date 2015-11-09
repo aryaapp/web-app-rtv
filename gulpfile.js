@@ -11,7 +11,8 @@ var 	gulp = require('gulp'),
 		path = require('path'),
 		connect = require('gulp-connect'),
 		config = {
-			lessDir: '../arya-website/less',
+			lessDir: './src/less',
+			aryaLessDir: '../arya-website/less',
 			jsDir: './src/javascript',
 			staticDir: './src/static'
 		};
@@ -29,7 +30,7 @@ gulp.task('static', function() {
 });
 
 gulp.task('less', function () {
-  return gulp.src(config.lessDir + '/**/styles_dash.less')
+  return gulp.src([config.aryaLessDir + '/**/styles.less', config.lessDir + '/**/styles-rtv-app.less'])
     .pipe(less({
       paths: [ path.join(__dirname, 'config.lessDir', 'includes') ]
     }))
@@ -92,7 +93,7 @@ gulp.task('html', function () {
 
 // Rerun the task when a file changes
 gulp.task('watch', function() {
-	gulp.watch(config.lessDir + '/**/*.less', ['less']);
+	gulp.watch([config.lessDir + '/**/*.less', config.aryaLessDir + '/**/*.less' ] , ['less']);
 	gulp.watch(config.jsDir + '/**/*.js', ['babel','bundle']);
 	gulp.watch(config.staticDir + '/**/*.*', ['static']);
 });
