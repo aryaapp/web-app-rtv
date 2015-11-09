@@ -4,10 +4,11 @@
 */
 import React from 'react';
 
-var QuestionModal = require('./QuestionModal.react.js');
-var SliderInput = require('./SliderInput.react.js');
+let QuestionModal = require('./QuestionModal.react.js')
+let SliderInput = require('./SliderInput.react.js')
+let ScrollIndicator = require('./ScrollIndicator.react.js')
 
-var FeelingQuestion = React.createClass({
+let FeelingQuestion = React.createClass({
   getDefaultProps: function () {
     return {
       feeling: 50,
@@ -21,13 +22,23 @@ var FeelingQuestion = React.createClass({
 
   render() {
     return (
-      <div className="col-sm-12">
-        <QuestionModal><p>Hello Feeling!</p></QuestionModal>
-        <h2>{this.props.title}</h2>
-        <SliderInput value={this.props.feeling} onChange={this.update} />
+      <div className="row section relative">
+        <ScrollIndicator />
+        <div className="rtv-question">
+          <div className="col-xs-10 col-xs-push-1 text-center">
+            <h3 class="rtv-title">{this.props.title}</h3>
+          </div>
+          <div className="col-xs-12">
+            <SliderInput value={this.props.feeling} onChange={this.update} />
+          </div>
+          <div className="col-xs-12">
+            
+          </div>
+        </div>
       </div>
     );
   }
 });
 
 module.exports = FeelingQuestion
+//<QuestionModal><p>Hello Feeling!</p></QuestionModal>

@@ -29920,6 +29920,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var QuestionModal = require('./QuestionModal.react.js');
 var SliderInput = require('./SliderInput.react.js');
+var ScrollIndicator = require('./ScrollIndicator.react.js');
 
 var FeelingQuestion = _react2['default'].createClass({
   displayName: 'FeelingQuestion',
@@ -29938,29 +29939,35 @@ var FeelingQuestion = _react2['default'].createClass({
   render: function render() {
     return _react2['default'].createElement(
       'div',
-      { className: 'col-sm-12' },
+      { className: 'row section relative' },
+      _react2['default'].createElement(ScrollIndicator, null),
       _react2['default'].createElement(
-        QuestionModal,
-        null,
+        'div',
+        { className: 'rtv-question' },
         _react2['default'].createElement(
-          'p',
-          null,
-          'Hello Feeling!'
-        )
-      ),
-      _react2['default'].createElement(
-        'h2',
-        null,
-        this.props.title
-      ),
-      _react2['default'].createElement(SliderInput, { value: this.props.feeling, onChange: this.update })
+          'div',
+          { className: 'col-xs-10 col-xs-push-1 text-center' },
+          _react2['default'].createElement(
+            'h3',
+            { 'class': 'rtv-title' },
+            this.props.title
+          )
+        ),
+        _react2['default'].createElement(
+          'div',
+          { className: 'col-xs-12' },
+          _react2['default'].createElement(SliderInput, { value: this.props.feeling, onChange: this.update })
+        ),
+        _react2['default'].createElement('div', { className: 'col-xs-12' })
+      )
     );
   }
 });
 
 module.exports = FeelingQuestion;
+//<QuestionModal><p>Hello Feeling!</p></QuestionModal>
 
-},{"./QuestionModal.react.js":182,"./SliderInput.react.js":185,"react":179}],181:[function(require,module,exports){
+},{"./QuestionModal.react.js":183,"./ScrollIndicator.react.js":185,"./SliderInput.react.js":187,"react":179}],181:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -30062,6 +30069,33 @@ module.exports = ListInput;
 * @module rtv-mood tracker
 * @submodule Question
 */
+"use strict";
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var QuestionModal = _react2["default"].createClass({
+	displayName: "QuestionModal",
+
+	render: function render() {
+		return _react2["default"].createElement(
+			"div",
+			{ className: "question-button col-xs-1 nopadding" },
+			_react2["default"].createElement("i", { className: "fa fa-lg fa-question-circle" })
+		);
+	}
+});
+
+module.exports = QuestionModal;
+
+},{"react":179}],183:[function(require,module,exports){
+/**
+* @module rtv-mood tracker
+* @submodule Question
+*/
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -30118,7 +30152,7 @@ var QuestionModal = _react2['default'].createClass({
 
 module.exports = QuestionModal;
 
-},{"react":179,"react-dom":3,"react-modal":10}],183:[function(require,module,exports){
+},{"react":179,"react-dom":3,"react-modal":10}],184:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -30173,7 +30207,44 @@ var ReactionQuestion = _react2['default'].createClass({
 
 module.exports = ReactionQuestion;
 
-},{"./ListInput.react.js":181,"./QuestionModal.react.js":182,"react":179}],184:[function(require,module,exports){
+},{"./ListInput.react.js":181,"./QuestionModal.react.js":183,"react":179}],185:[function(require,module,exports){
+/**
+* @module rtv-mood tracker
+* @submodule Question
+*/
+"use strict";
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var ScrollIndicator = _react2["default"].createClass({
+  displayName: "ScrollIndicator",
+
+  render: function render() {
+    return _react2["default"].createElement(
+      "div",
+      { className: "scroll-wrapper scroll-wrapper-rtv" },
+      _react2["default"].createElement(
+        "p",
+        { className: "center-text arya-animation fade-in animation1" },
+        _react2["default"].createElement(
+          "span",
+          { className: "" },
+          "Swipe down for other questions"
+        ),
+        _react2["default"].createElement("br", null),
+        _react2["default"].createElement("i", { className: "fa fa-chevron-down" })
+      )
+    );
+  }
+});
+
+module.exports = ScrollIndicator;
+
+},{"react":179}],186:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -30228,7 +30299,7 @@ var SituationQuestion = _react2['default'].createClass({
 
 module.exports = SituationQuestion;
 
-},{"./ListInput.react.js":181,"./QuestionModal.react.js":182,"react":179}],185:[function(require,module,exports){
+},{"./ListInput.react.js":181,"./QuestionModal.react.js":183,"react":179}],187:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -30274,7 +30345,7 @@ var SliderInput = _react2["default"].createClass({
 
 module.exports = SliderInput;
 
-},{"react":179}],186:[function(require,module,exports){
+},{"react":179}],188:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -30303,6 +30374,8 @@ var TextInput = _react2['default'].createClass({
       'div',
       null,
       _react2['default'].createElement('textarea', {
+        className: 'text-input',
+        rows: '4',
         value: this.props.value,
         onChange: this.update })
     );
@@ -30311,7 +30384,7 @@ var TextInput = _react2['default'].createClass({
 
 module.exports = TextInput;
 
-},{"react":179}],187:[function(require,module,exports){
+},{"react":179}],189:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -30325,7 +30398,9 @@ var _react = require('react');
 var _react2 = _interopRequireDefault(_react);
 
 var QuestionModal = require('./QuestionModal.react.js');
+var QuestionButton = require('./QuestionButton.react.js');
 var TextInput = require('./TextInput.react.js');
+var ScrollIndicator = require('./ScrollIndicator.react.js');
 
 var ThoughtsQuestion = _react2['default'].createClass({
   displayName: 'ThoughtsQuestion',
@@ -30344,29 +30419,31 @@ var ThoughtsQuestion = _react2['default'].createClass({
   render: function render() {
     return _react2['default'].createElement(
       'div',
-      { className: 'col-sm-12 style-me' },
+      null,
+      _react2['default'].createElement(QuestionButton, { questionId: '2' }),
       _react2['default'].createElement(
-        QuestionModal,
-        null,
+        'div',
+        { className: 'col-xs-10 rtv-title text-center' },
         _react2['default'].createElement(
-          'p',
+          'h3',
           null,
-          'Hello Thoughts!'
+          this.props.title
         )
       ),
       _react2['default'].createElement(
-        'h2',
-        null,
-        this.props.title
-      ),
-      _react2['default'].createElement(TextInput, { value: this.props.thoughts, onChange: this.update })
+        'div',
+        { className: 'col-xs-12 no-padding' },
+        _react2['default'].createElement(TextInput, { value: this.props.thoughts, onChange: this.update })
+      )
     );
   }
 });
 
 module.exports = ThoughtsQuestion;
 
-},{"./QuestionModal.react.js":182,"./TextInput.react.js":186,"react":179}],188:[function(require,module,exports){
+//<QuestionModal><p>Hello Thoughts!</p></QuestionModal>
+
+},{"./QuestionButton.react.js":182,"./QuestionModal.react.js":183,"./ScrollIndicator.react.js":185,"./TextInput.react.js":188,"react":179}],190:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -30513,7 +30590,7 @@ var ResultsScreen = _react2['default'].createClass({
 
 module.exports = ResultsScreen;
 
-},{"react":179}],189:[function(require,module,exports){
+},{"react":179}],191:[function(require,module,exports){
 'use strict';
 
 var jQuery = require('jquery');
@@ -30553,31 +30630,15 @@ var App = React.createClass({
   render: function render() {
     return React.createElement(
       'div',
-      { className: 'container' },
+      { className: 'container-fluid' },
       React.createElement(
         'div',
         { id: 'fullpage' },
-        React.createElement(
-          'div',
-          { className: 'section' },
-          React.createElement(
-            'div',
-            { className: 'row' },
-            React.createElement(FeelingQuestion, {
-              feeling: this.state.feeling,
-              onChange: this.handleQuestionChange.bind(this, 'feeling')
-            })
-          ),
-          React.createElement(
-            'div',
-            { className: 'row footer' },
-            React.createElement(
-              'p',
-              null,
-              'Swipe down'
-            )
-          )
-        ),
+        React.createElement(FeelingQuestion, {
+          className: 'section',
+          feeling: this.state.feeling,
+          onChange: this.handleQuestionChange.bind(this, 'feeling')
+        }),
         React.createElement(
           'div',
           { className: 'section' },
@@ -30588,15 +30649,6 @@ var App = React.createClass({
               thoughts: this.state.thoughts,
               onChange: this.handleQuestionChange.bind(this, 'thoughts')
             })
-          ),
-          React.createElement(
-            'div',
-            { className: 'row footer' },
-            React.createElement(
-              'p',
-              null,
-              'Swipe down'
-            )
           )
         ),
         React.createElement(
@@ -30610,15 +30662,7 @@ var App = React.createClass({
               onChange: this.handleQuestionChange.bind(this, 'situation')
             })
           ),
-          React.createElement(
-            'div',
-            { className: 'row footer' },
-            React.createElement(
-              'p',
-              null,
-              'Swipe down'
-            )
-          )
+          React.createElement('div', { className: 'row footer' })
         ),
         React.createElement(
           'div',
@@ -30631,15 +30675,7 @@ var App = React.createClass({
               onChange: this.handleQuestionChange.bind(this, 'reaction')
             })
           ),
-          React.createElement(
-            'div',
-            { className: 'row footer' },
-            React.createElement(
-              'p',
-              null,
-              'Swipe down'
-            )
-          )
+          React.createElement('div', { className: 'row footer' })
         ),
         React.createElement(
           'div',
@@ -30663,7 +30699,7 @@ var App = React.createClass({
 
 ReactDOM.render(React.createElement(App, null), document.getElementById('react-app'));
 
-},{"./components/Question/FeelingQuestion.react.js":180,"./components/Question/ReactionQuestion.react.js":183,"./components/Question/SituationQuestion.react.js":184,"./components/Question/ThoughtsQuestion.react.js":187,"./components/ResultsScreen.react.js":188,"./fullpage.js":190,"jquery":2,"react":179,"react-dom":3}],190:[function(require,module,exports){
+},{"./components/Question/FeelingQuestion.react.js":180,"./components/Question/ReactionQuestion.react.js":184,"./components/Question/SituationQuestion.react.js":186,"./components/Question/ThoughtsQuestion.react.js":189,"./components/ResultsScreen.react.js":190,"./fullpage.js":192,"jquery":2,"react":179,"react-dom":3}],192:[function(require,module,exports){
 // var $ = require('jquery')
 // var jQueryFullPage = require('../../node_modules/fullpage.js/jquery.fullPage.js')
 
@@ -30681,4 +30717,4 @@ $(document).ready(function () {
     });
 });
 
-},{}]},{},[189])
+},{}]},{},[191])

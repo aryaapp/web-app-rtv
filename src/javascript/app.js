@@ -32,28 +32,19 @@ var App = React.createClass({
   },
   render: function() {
     return (
-      <div className="container">
+      <div className="container-fluid">
          <div id="fullpage">
-            <div className="section">
-                <div className="row">
-                  <FeelingQuestion
-                    feeling={this.state.feeling}
-                    onChange={this.handleQuestionChange.bind(this, 'feeling' )}
-                  />
-                </div>
-                <div className="row footer">
-                    <p>Swipe down</p>
-                </div>
-            </div>
+            <FeelingQuestion
+              className="section"
+              feeling={this.state.feeling}
+              onChange={this.handleQuestionChange.bind(this, 'feeling' )}
+            />
             <div className="section">
               <div className="row">
                 <ThoughtsQuestion
                   thoughts={this.state.thoughts}
                   onChange={this.handleQuestionChange.bind(this, 'thoughts' )}
                 />
-              </div>
-              <div className="row footer">
-                  <p>Swipe down</p>
               </div>
             </div>
             <div className="section">
@@ -64,7 +55,6 @@ var App = React.createClass({
                 />
               </div>
               <div className="row footer">
-                  <p>Swipe down</p>
               </div>
             </div>
             <div className="section">
@@ -75,7 +65,6 @@ var App = React.createClass({
                 />
               </div>
               <div className="row footer">
-                  <p>Swipe down</p>
               </div>
             </div>
             <div className="section">
