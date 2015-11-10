@@ -65,3 +65,6 @@ textarea {
 .relative {
   position: relative;
 }
+.fp-tableCell {
+  vertical-align: inherit;
+}

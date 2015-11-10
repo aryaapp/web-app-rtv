@@ -53,8 +53,8 @@ var ResultsScreen = React.createClass({
           <dt>Deine Reaktion</dt>
           <dd>{this.props.reaction}</dd>
         </dl>
-        <div class="input-group">
-          <span className="input-group-addon" id="basic-addon1">@</span>
+        <div className="input-group">
+          <label>E-Mail:</label>
           <input
             className="form-control"
             type='email'
@@ -63,7 +63,7 @@ var ResultsScreen = React.createClass({
             value={this.state.email}
             onChange={this.update} />
         </div>
-        <div class="btn-group" role="group">
+        <div className="btn-group" role="group">
           <button className='btn btn-default' onClick={this.props.clearData}>löschen</button>
           <button className='btn btn-default' onClick={this.sendResults}>Report verschicken</button>
         </div>
