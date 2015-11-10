@@ -18,11 +18,9 @@ let SituationQuestion = React.createClass({
       title: "Wie ist deine Situation?"
     };
   },
-
   update: function(value) {
     this.props.onChange(value)
   },
-
   render() {
     return (
       <Section>

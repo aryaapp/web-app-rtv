@@ -10,13 +10,22 @@ var FeelingQuestion = require('./components/Question/FeelingQuestion.react.js');
 var ThoughtsQuestion = require('./components/Question/ThoughtsQuestion.react.js');
 var SituationQuestion = require('./components/Question/SituationQuestion.react.js');
 var ReactionQuestion = require('./components/Question/ReactionQuestion.react.js');
+var BodyQuestion = require('./components/Question/BodyQuestion.react.js');
 var ResultsScreen = require('./components/ResultsScreen.react.js');
 
 var App = React.createClass({
   getInitialState: function() {
     return {
       feeling: 90,
-      body: 'body not yet',
+      body: {
+        head: [],
+        left_arm: [],
+        right_arm: [],
+        chest: [],
+        left_leg: [],
+        right_leg: [],
+        hip: []
+      },
       thoughts: '',
       situation:  [],
       reaction: [],
@@ -38,9 +47,12 @@ var App = React.createClass({
       <div className="">
          <div id="fullpage">
             <FeelingQuestion
-              className="section"
               feeling={this.state.feeling}
               onChange={this.handleQuestionChange.bind(this, 'feeling' )}
+            />
+            <BodyQuestion
+              body={this.state.body}
+              onChange={this.handleQuestionChange.bind(this, 'body' )}
             />
             <ThoughtsQuestion
               thoughts={this.state.thoughts}
@@ -50,7 +62,7 @@ var App = React.createClass({
               situation={this.state.situation}
               onChange={this.handleQuestionChange.bind(this, 'situation' )}
             />
-          
+
             <ReactionQuestion
               reaction={this.state.reaction}
               onChange={this.handleQuestionChange.bind(this, 'reaction' )}

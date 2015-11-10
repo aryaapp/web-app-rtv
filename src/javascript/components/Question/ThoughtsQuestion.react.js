@@ -31,7 +31,7 @@ let ThoughtsQuestion = React.createClass({
         <div className="col-xs-12 no-padding">
           <TextInput value={ this.props.thoughts } placeholder="Mein Gedanken" onChange={this.update} />
         </div>
-        <QuestionModal 
+        <QuestionModal
           title ={ Content.QUESTION_THOUGHTS_TITLE }
           body = { Content.QUESTION_THOUGHTS_EXPLANATION }
         />
