@@ -15,5 +15,4 @@ var QuestionModal = React.createClass({
 	}
 })
 
-
 module.exports = QuestionModal
