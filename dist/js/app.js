@@ -36779,6 +36779,7 @@ var _react2 = _interopRequireDefault(_react);
 var Section = require('./Question/Section.react.js');
 var QuestionTitle = require('./Question/QuestionTitle.react.js');
 var FixedSectionFooter = require('./Question/FixedSectionFooter.react.js');
+var ReactSlider = require('rc-slider');
 
 var ResultsScreen = _react2['default'].createClass({
   displayName: 'ResultsScreen',
@@ -36823,10 +36824,10 @@ var ResultsScreen = _react2['default'].createClass({
       _react2['default'].createElement(QuestionTitle, { title: this.props.title }),
       _react2['default'].createElement(
         'div',
-        { className: 'col-xs-10 col-xs-push-1' },
+        { className: 'col-xs-12 no-padding' },
         _react2['default'].createElement(
           'dl',
-          null,
+          { className: 'rtv-results' },
           _react2['default'].createElement(
             'dt',
             null,
@@ -36835,7 +36836,7 @@ var ResultsScreen = _react2['default'].createClass({
           _react2['default'].createElement(
             'dd',
             null,
-            this.props.feeling
+            _react2['default'].createElement(ReactSlider, { disabled: true, value: this.props.feeling })
           ),
           _react2['default'].createElement(
             'dt',
@@ -36922,7 +36923,7 @@ var ResultsScreen = _react2['default'].createClass({
 
 module.exports = ResultsScreen;
 
-},{"./Question/FixedSectionFooter.react.js":248,"./Question/QuestionTitle.react.js":252,"./Question/Section.react.js":255,"react":246}],261:[function(require,module,exports){
+},{"./Question/FixedSectionFooter.react.js":248,"./Question/QuestionTitle.react.js":252,"./Question/Section.react.js":255,"rc-slider":8,"react":246}],261:[function(require,module,exports){
 'use strict';
 
 var jQuery = require('jquery');
@@ -36944,7 +36945,7 @@ var App = React.createClass({
 
   getInitialState: function getInitialState() {
     return {
-      feeling: 50,
+      feeling: 90,
       body: 'body not yet',
       thoughts: 'Mein Gedanken',
       situation: [],

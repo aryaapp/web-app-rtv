@@ -7,6 +7,7 @@ import React from 'react';
 let Section = require('./Question/Section.react.js')
 let QuestionTitle = require('./Question/QuestionTitle.react.js')
 let FixedSectionFooter = require('./Question/FixedSectionFooter.react.js')
+let ReactSlider = require('rc-slider')
 
 var ResultsScreen = React.createClass({
   getDefaultProps: function () {
@@ -46,10 +47,10 @@ var ResultsScreen = React.createClass({
       <Section>
         <div className="col-xs-1"></div>
         <QuestionTitle title={this.props.title} />
-        <div className="col-xs-10 col-xs-push-1">
-          <dl>
+        <div className="col-xs-12 no-padding">
+          <dl className="rtv-results">
             <dt>Deine Befinden</dt>
-            <dd>{this.props.feeling}</dd>
+            <dd><ReactSlider disabled={true} value={this.props.feeling} /></dd>
             <dt>Deine Körper</dt>
             <dd>{this.props.body}</dd>
             <dt>Deine Gedanken</dt>

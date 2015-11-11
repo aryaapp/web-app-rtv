@@ -99,6 +99,20 @@ li.rtv-list-counter{
     width:100%;
 }
 
+dl.rtv-results {
+    padding-left: 32px;
+    padding-right:32px;
+    text-align: center;
+}
+
+.rtv-results dt {
+    font-weight: normal;
+}
+
+.rtv-results dd{
+    font-weight: lighter;
+}
+
 .fixed-section-footer{
     position: absolute;
     bottom: 0;
@@ -132,10 +146,11 @@ li.rtv-list-counter{
 
 .rc-slider {
     margin-top: 16px;
+    margin-bottom:8px;
 }
-.rc-slider-handle, .rc-slider-handle:hover, .rc-slider-handle:focus {
+.rc-slider-handle, .rc-slider-handle:hover, .rc-slider-handle:focus, .rc-slider-disabled .rc-slider-handle, .rc-slider-disabled .rc-slider-handle:focus{
     border-color: #05ab97; // make dynamic
 }
-.rc-slider-track {
+.rc-slider-track, .rc-slider-disabled .rc-slider-track {
     background-color: #05ab97; // make dynamic
 }

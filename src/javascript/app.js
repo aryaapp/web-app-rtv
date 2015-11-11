@@ -15,7 +15,7 @@ var ResultsScreen = require('./components/ResultsScreen.react.js');
 var App = React.createClass({
   getInitialState: function() {
     return {
-      feeling: 50,
+      feeling: 90,
       body: 'body not yet',
       thoughts: 'Mein Gedanken',
       situation:  [],
