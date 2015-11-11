@@ -4,9 +4,13 @@
 */
 import React from 'react';
 
+let Section = require('./Section.react.js')
+let QuestionButton = require('./QuestionButton.react.js')
+let QuestionTitle = require('./QuestionTitle.react.js')
 let QuestionModal = require('./QuestionModal.react.js')
 let SliderInput = require('./SliderInput.react.js')
 let ScrollIndicator = require('./ScrollIndicator.react.js')
+
 
 let FeelingQuestion = React.createClass({
   getDefaultProps: function () {
@@ -22,20 +26,14 @@ let FeelingQuestion = React.createClass({
 
   render() {
     return (
-      <div className="row section relative">
-        <ScrollIndicator />
-        <div className="rtv-question">
-          <div className="col-xs-10 col-xs-push-1 text-center">
-            <h3 class="rtv-title">{this.props.title}</h3>
-          </div>
-          <div className="col-xs-12">
-            <SliderInput value={this.props.feeling} onChange={this.update} />
-          </div>
-          <div className="col-xs-12">
-            
-          </div>
-        </div>
-      </div>
+      <Section indicator={true}>
+            <QuestionButton questionId="1" />
+            <QuestionTitle title={this.props.title} />
+            <div className="col-xs-10 col-xs-push-1">
+              <SliderInput value={this.props.feeling} onChange={this.update} />
+              <img className="emoticons" src="./images/emoticons.png" />
+            </div>
+      </Section>
     );
   }
 });

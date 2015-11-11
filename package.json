@@ -20,8 +20,8 @@
     "bootstrap": "^3.3.5",
     "fullpage.js": "^2.7.4",
     "jquery": "^2.1.4",
-    "react": "^0.14.2",
-    "react-dom": "^0.14.2",
+    "react": "~0.14.2",
+    "react-dom": "~0.14.2",
     "react-modal": "~0.6.1"
   },
   "devDependencies": {
@@ -29,6 +29,7 @@
     "browserify": "^12.0.1",
     "gulp-livereload": "^3.8.1",
     "gulp-watch": "^4.3.5",
-    "watchify": "^3.6.0"
+    "watchify": "^3.6.0",
+    "rc-slider": "~2.1.0"
   }
 }

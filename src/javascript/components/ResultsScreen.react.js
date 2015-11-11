@@ -4,6 +4,9 @@
 */
 import React from 'react';
 
+let Section = require('./Question/Section.react.js')
+let QuestionTitle = require('./Question/QuestionTitle.react.js')
+
 var ResultsScreen = React.createClass({
   getDefaultProps: function () {
     return {
@@ -39,35 +42,39 @@ var ResultsScreen = React.createClass({
 
   render() {
     return (
-      <div className="col-sm-12">
-        <h2>{this.props.title}</h2>
-        <dl>
-          <dt>Deine Befinden</dt>
-          <dd>{this.props.feeling}</dd>
-          <dt>Deine Körper</dt>
-          <dd>{this.props.body}</dd>
-          <dt>Deine Gedanken</dt>
-          <dd>{this.props.thoughts}</dd>
-          <dt>Deine Situation</dt>
-          <dd>{this.props.situation}</dd>
-          <dt>Deine Reaktion</dt>
-          <dd>{this.props.reaction}</dd>
-        </dl>
-        <div className="input-group">
-          <label>E-Mail:</label>
-          <input
-            className="form-control"
-            type='email'
-            placeholder="z.B. max.muster@example.de"
-            aria-describedby="basic-addon1"
-            value={this.state.email}
-            onChange={this.update} />
+      <Section>
+        <QuestionTitle title={this.props.title} />
+        <div className="col-xs-10 col-xs-push-1">
+          <dl>
+            <dt>Deine Befinden</dt>
+            <dd>{this.props.feeling}</dd>
+            <dt>Deine Körper</dt>
+            <dd>{this.props.body}</dd>
+            <dt>Deine Gedanken</dt>
+            <dd>{this.props.thoughts}</dd>
+            <dt>Deine Situation</dt>
+            <dd>{this.props.situation}</dd>
+            <dt>Deine Reaktion</dt>
+            <dd>{this.props.reaction}</dd>
+          </dl>
         </div>
-        <div className="btn-group" role="group">
-          <button className='btn btn-default' onClick={this.props.clearData}>löschen</button>
-          <button className='btn btn-default' onClick={this.sendResults}>Report verschicken</button>
+        <div className="col-xs-10 col-xs-push-1">
+          <div className="input-group">
+            <label>E-Mail:</label>
+            <input
+              className="form-control"
+              type='email'
+              placeholder="z.B. max.muster@example.de"
+              aria-describedby="basic-addon1"
+              value={this.state.email}
+              onChange={this.update} />
+          </div>
+          <div className="btn-group" role="group">
+            <button className='btn btn-default' onClick={this.props.clearData}>löschen</button>
+            <button className='btn btn-default' onClick={this.sendResults}>Report verschicken</button>
+          </div>
         </div>
-      </div>
+      </Section>
     );
   }
 });

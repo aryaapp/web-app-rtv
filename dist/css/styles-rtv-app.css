@@ -42,6 +42,10 @@ textarea {
   width: 100%;
   resize: none;
 }
+img.emoticons {
+  width: 100%;
+  margin-top: 16px;
+}
 .form-control:focus {
   border: 1px solid #333333;
   -webkit-box-shadow: 0 0 0px 1000px #fafafa inset;
@@ -67,4 +71,22 @@ textarea {
 }
 .fp-tableCell {
   vertical-align: inherit;
+}
+#fp-nav.right {
+  right: 0px;
+}
+#fp-nav ul li a span,
+.fp-slidesNav ul li a span {
+  background: #767676;
+}
+.rc-slider {
+  margin-top: 16px;
+}
+.rc-slider-handle,
+.rc-slider-handle:hover,
+.rc-slider-handle:focus {
+  border-color: #05ab97;
+}
+.rc-slider-track {
+  background-color: #05ab97;
 }

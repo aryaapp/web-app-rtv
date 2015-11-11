@@ -39,45 +39,26 @@ var App = React.createClass({
               feeling={this.state.feeling}
               onChange={this.handleQuestionChange.bind(this, 'feeling' )}
             />
-            <div className="section">
-              <div className="row">
-                <ThoughtsQuestion
-                  thoughts={this.state.thoughts}
-                  onChange={this.handleQuestionChange.bind(this, 'thoughts' )}
-                />
-              </div>
-            </div>
-            <div className="section">
-              <div className="row">
-                <SituationQuestion
-                  situation={this.state.situation}
-                  onChange={this.handleQuestionChange.bind(this, 'situation' )}
-                />
-              </div>
-              <div className="row footer">
-              </div>
-            </div>
-            <div className="section">
-              <div className="row">
-                <ReactionQuestion
-                  reaction={this.state.reaction}
-                  onChange={this.handleQuestionChange.bind(this, 'reaction' )}
-                />
-              </div>
-              <div className="row footer">
-              </div>
-            </div>
-            <div className="section">
-                <div className="row">
-                    <ResultsScreen
-                      feeling={this.state.feeling}
-                      body={this.state.body}
-                      thoughts={this.state.thoughts}
-                      situation={this.state.situation}
-                      reaction={this.state.reaction}
-                      clearData={this.clearData} />
-                </div>
-            </div>
+            <ThoughtsQuestion
+              thoughts={this.state.thoughts}
+              onChange={this.handleQuestionChange.bind(this, 'thoughts' )}
+            />
+            <SituationQuestion
+              situation={this.state.situation}
+              onChange={this.handleQuestionChange.bind(this, 'situation' )}
+            />
+          
+            <ReactionQuestion
+              reaction={this.state.reaction}
+              onChange={this.handleQuestionChange.bind(this, 'reaction' )}
+            />
+            <ResultsScreen
+              feeling={this.state.feeling}
+              body={this.state.body}
+              thoughts={this.state.thoughts}
+              situation={this.state.situation}
+              reaction={this.state.reaction}
+              clearData={this.clearData} />
         </div>
       </div>
     );

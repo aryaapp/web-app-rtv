@@ -44,6 +44,11 @@ textarea{
     resize:none;
 }
 
+img.emoticons{
+    width:100%;
+    margin-top: 16px
+}
+
 
 .form-control:focus {
     // .box-shadow(none);
@@ -76,4 +81,24 @@ textarea{
 // overrides Fullpage CSS
 .fp-tableCell {
     vertical-align: inherit;
+}
+
+#fp-nav.right {
+    right: 0px;
+}
+#fp-nav ul li a span, .fp-slidesNav ul li a span {
+    background: #767676;
+}
+
+
+//overrides rc-slider
+
+.rc-slider {
+    margin-top: 16px;
+}
+.rc-slider-handle, .rc-slider-handle:hover, .rc-slider-handle:focus {
+    border-color: #05ab97; // make dynamic
+}
+.rc-slider-track {
+    background-color: #05ab97; // make dynamic
 }
