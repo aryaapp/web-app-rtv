@@ -39,14 +39,10 @@ var App = React.createClass({
               feeling={this.state.feeling}
               onChange={this.handleQuestionChange.bind(this, 'feeling' )}
             />
-            <div className="section">
-              <div className="row">
-                <ThoughtsQuestion
-                  thoughts={this.state.thoughts}
-                  onChange={this.handleQuestionChange.bind(this, 'thoughts' )}
-                />
-              </div>
-            </div>
+            <ThoughtsQuestion
+              thoughts={this.state.thoughts}
+              onChange={this.handleQuestionChange.bind(this, 'thoughts' )}
+            />
             <div className="section">
               <div className="row">
                 <SituationQuestion

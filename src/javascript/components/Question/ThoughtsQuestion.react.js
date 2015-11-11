@@ -23,13 +23,17 @@ let ThoughtsQuestion = React.createClass({
 
   render() {
     return (
-      <div>
-        <QuestionButton questionId="2" />
-        <div className="col-xs-10 rtv-title text-center">
-          <h3>{this.props.title}</h3>
-        </div>
-        <div className="col-xs-12 no-padding">
-          <TextInput value={this.props.thoughts} onChange={this.update} />
+      <div className="section">
+        <div className="row relative">
+          <div className="rtv-question">
+            <QuestionButton questionId="2" />
+            <div className="col-xs-10 rtv-title text-center">
+              <h3>{this.props.title}</h3>
+            </div>
+            <div className="col-xs-12 no-padding">
+              <TextInput value={this.props.thoughts} onChange={this.update} />
+            </div>
+          </div>
         </div>
       </div>
     );
