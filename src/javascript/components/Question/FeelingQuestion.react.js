@@ -6,6 +6,7 @@ import React from 'react';
 
 let Section = require('./Section.react.js')
 let QuestionButton = require('./QuestionButton.react.js')
+let QuestionTitle = require('./QuestionTitle.react.js')
 let QuestionModal = require('./QuestionModal.react.js')
 let SliderInput = require('./SliderInput.react.js')
 let ScrollIndicator = require('./ScrollIndicator.react.js')
@@ -25,11 +26,9 @@ let FeelingQuestion = React.createClass({
 
   render() {
     return (
-      <Section>
+      <Section indicator={true}>
             <QuestionButton questionId="1" />
-            <div className="col-xs-10 rtv-title text-center">
-              <h3 class="rtv-title">{this.props.title}</h3>
-            </div>
+            <QuestionTitle title={this.props.title} />
             <div className="col-xs-10 col-xs-push-1">
               <SliderInput value={this.props.feeling} onChange={this.update} />
             </div>

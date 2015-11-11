@@ -54208,6 +54208,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var Section = require('./Section.react.js');
 var QuestionButton = require('./QuestionButton.react.js');
+var QuestionTitle = require('./QuestionTitle.react.js');
 var QuestionModal = require('./QuestionModal.react.js');
 var SliderInput = require('./SliderInput.react.js');
 var ScrollIndicator = require('./ScrollIndicator.react.js');
@@ -54229,17 +54230,9 @@ var FeelingQuestion = _react2['default'].createClass({
   render: function render() {
     return _react2['default'].createElement(
       Section,
-      null,
+      { indicator: true },
       _react2['default'].createElement(QuestionButton, { questionId: '1' }),
-      _react2['default'].createElement(
-        'div',
-        { className: 'col-xs-10 rtv-title text-center' },
-        _react2['default'].createElement(
-          'h3',
-          { 'class': 'rtv-title' },
-          this.props.title
-        )
-      ),
+      _react2['default'].createElement(QuestionTitle, { title: this.props.title }),
       _react2['default'].createElement(
         'div',
         { className: 'col-xs-10 col-xs-push-1' },
@@ -54252,7 +54245,7 @@ var FeelingQuestion = _react2['default'].createClass({
 module.exports = FeelingQuestion;
 //<QuestionModal><p>Hello Feeling!</p></QuestionModal>
 
-},{"./QuestionButton.react.js":391,"./QuestionModal.react.js":392,"./ScrollIndicator.react.js":394,"./Section.react.js":395,"./SliderInput.react.js":397,"react":388}],390:[function(require,module,exports){
+},{"./QuestionButton.react.js":391,"./QuestionModal.react.js":392,"./QuestionTitle.react.js":393,"./ScrollIndicator.react.js":395,"./Section.react.js":396,"./SliderInput.react.js":398,"react":388}],390:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -54442,6 +54435,39 @@ module.exports = QuestionModal;
 * @module rtv-mood tracker
 * @submodule Question
 */
+
+"use strict";
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var QuestionTitle = _react2["default"].createClass({
+	displayName: "QuestionTitle",
+
+	render: function render() {
+
+		return _react2["default"].createElement(
+			"div",
+			{ className: "col-xs-10 rtv-title text-center" },
+			_react2["default"].createElement(
+				"h3",
+				null,
+				this.props.title
+			)
+		);
+	}
+});
+
+module.exports = QuestionTitle;
+
+},{"react":388}],394:[function(require,module,exports){
+/**
+* @module rtv-mood tracker
+* @submodule Question
+*/
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -54450,6 +54476,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var Section = require('./Section.react.js');
+var QuestionButton = require('./QuestionButton.react.js');
+var QuestionTitle = require('./QuestionTitle.react.js');
 var QuestionModal = require('./QuestionModal.react.js');
 var ListInput = require('./ListInput.react.js');
 
@@ -54469,30 +54498,22 @@ var ReactionQuestion = _react2['default'].createClass({
 
   render: function render() {
     return _react2['default'].createElement(
-      'div',
-      { className: 'col-sm-12' },
+      Section,
+      null,
+      _react2['default'].createElement(QuestionButton, { questionId: '4' }),
+      _react2['default'].createElement(QuestionTitle, { title: this.props.title }),
       _react2['default'].createElement(
-        QuestionModal,
-        null,
-        _react2['default'].createElement(
-          'p',
-          null,
-          'Hello Reaction!'
-        )
-      ),
-      _react2['default'].createElement(
-        'h2',
-        null,
-        this.props.title
-      ),
-      _react2['default'].createElement(ListInput, { value: this.props.reaction, onChange: this.update })
+        'div',
+        { className: 'col-xs-10 col-xs-push-1' },
+        _react2['default'].createElement(ListInput, { value: this.props.reaction, onChange: this.update })
+      )
     );
   }
 });
 
 module.exports = ReactionQuestion;
 
-},{"./ListInput.react.js":390,"./QuestionModal.react.js":392,"react":388}],394:[function(require,module,exports){
+},{"./ListInput.react.js":390,"./QuestionButton.react.js":391,"./QuestionModal.react.js":392,"./QuestionTitle.react.js":393,"./Section.react.js":396,"react":388}],395:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -54529,7 +54550,7 @@ var ScrollIndicator = _react2["default"].createClass({
 
 module.exports = ScrollIndicator;
 
-},{"react":388}],395:[function(require,module,exports){
+},{"react":388}],396:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -54550,7 +54571,7 @@ var Section = _react2['default'].createClass({
 
   render: function render() {
 
-    var indicator = _react2['default'].createElement(ScrollIndicator, null);
+    var indicator = this.props.indicator ? _react2['default'].createElement(ScrollIndicator, null) : "";
 
     return _react2['default'].createElement(
       'div',
@@ -54571,9 +54592,7 @@ var Section = _react2['default'].createClass({
 
 module.exports = Section;
 
-// scrollindicator needs to be conditional with prop
-
-},{"./ScrollIndicator.react.js":394,"react":388}],396:[function(require,module,exports){
+},{"./ScrollIndicator.react.js":395,"react":388}],397:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -54586,6 +54605,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var Section = require('./Section.react.js');
+var QuestionButton = require('./QuestionButton.react.js');
+var QuestionTitle = require('./QuestionTitle.react.js');
 var QuestionModal = require('./QuestionModal.react.js');
 var ListInput = require('./ListInput.react.js');
 
@@ -54605,30 +54627,22 @@ var SituationQuestion = _react2['default'].createClass({
 
   render: function render() {
     return _react2['default'].createElement(
-      'div',
-      { className: 'col-sm-12' },
+      Section,
+      null,
+      _react2['default'].createElement(QuestionButton, { questionId: '3' }),
+      _react2['default'].createElement(QuestionTitle, { title: this.props.title }),
       _react2['default'].createElement(
-        QuestionModal,
-        null,
-        _react2['default'].createElement(
-          'p',
-          null,
-          'Hello Situation!'
-        )
-      ),
-      _react2['default'].createElement(
-        'h2',
-        null,
-        this.props.title
-      ),
-      _react2['default'].createElement(ListInput, { value: this.props.situation, onChange: this.update })
+        'div',
+        { className: 'col-xs-10 col-xs-push-1' },
+        _react2['default'].createElement(ListInput, { value: this.props.situation, onChange: this.update })
+      )
     );
   }
 });
 
 module.exports = SituationQuestion;
 
-},{"./ListInput.react.js":390,"./QuestionModal.react.js":392,"react":388}],397:[function(require,module,exports){
+},{"./ListInput.react.js":390,"./QuestionButton.react.js":391,"./QuestionModal.react.js":392,"./QuestionTitle.react.js":393,"./Section.react.js":396,"react":388}],398:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -54674,7 +54688,7 @@ module.exports = SliderInput;
 //     onChange={this.update} />
 //  </div>
 
-},{"rc-slider":8,"react":388,"react-dom":70}],398:[function(require,module,exports){
+},{"rc-slider":8,"react":388,"react-dom":70}],399:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -54713,7 +54727,7 @@ var TextInput = _react2['default'].createClass({
 
 module.exports = TextInput;
 
-},{"react":388}],399:[function(require,module,exports){
+},{"react":388}],400:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -54728,8 +54742,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var QuestionModal = require('./QuestionModal.react.js');
 var QuestionButton = require('./QuestionButton.react.js');
+var QuestionTitle = require('./QuestionTitle.react.js');
 var TextInput = require('./TextInput.react.js');
 var ScrollIndicator = require('./ScrollIndicator.react.js');
+var Section = require('./Section.react.js');
 
 var ThoughtsQuestion = _react2['default'].createClass({
   displayName: 'ThoughtsQuestion',
@@ -54747,30 +54763,14 @@ var ThoughtsQuestion = _react2['default'].createClass({
 
   render: function render() {
     return _react2['default'].createElement(
-      'div',
-      { className: 'section' },
+      Section,
+      null,
+      _react2['default'].createElement(QuestionButton, { questionId: '2' }),
+      _react2['default'].createElement(QuestionTitle, { title: this.props.title }),
       _react2['default'].createElement(
         'div',
-        { className: 'row relative' },
-        _react2['default'].createElement(
-          'div',
-          { className: 'rtv-question' },
-          _react2['default'].createElement(QuestionButton, { questionId: '2' }),
-          _react2['default'].createElement(
-            'div',
-            { className: 'col-xs-10 rtv-title text-center' },
-            _react2['default'].createElement(
-              'h3',
-              null,
-              this.props.title
-            )
-          ),
-          _react2['default'].createElement(
-            'div',
-            { className: 'col-xs-12 no-padding' },
-            _react2['default'].createElement(TextInput, { value: this.props.thoughts, onChange: this.update })
-          )
-        )
+        { className: 'col-xs-12 no-padding' },
+        _react2['default'].createElement(TextInput, { value: this.props.thoughts, onChange: this.update })
       )
     );
   }
@@ -54780,7 +54780,7 @@ module.exports = ThoughtsQuestion;
 
 //<QuestionModal><p>Hello Thoughts!</p></QuestionModal>
 
-},{"./QuestionButton.react.js":391,"./QuestionModal.react.js":392,"./ScrollIndicator.react.js":394,"./TextInput.react.js":398,"react":388}],400:[function(require,module,exports){
+},{"./QuestionButton.react.js":391,"./QuestionModal.react.js":392,"./QuestionTitle.react.js":393,"./ScrollIndicator.react.js":395,"./Section.react.js":396,"./TextInput.react.js":399,"react":388}],401:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -54792,6 +54792,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
+
+var Section = require('./Question/Section.react.js');
+var QuestionTitle = require('./Question/QuestionTitle.react.js');
 
 var ResultsScreen = _react2['default'].createClass({
   displayName: 'ResultsScreen',
@@ -54830,95 +54833,99 @@ var ResultsScreen = _react2['default'].createClass({
 
   render: function render() {
     return _react2['default'].createElement(
-      'div',
-      { className: 'col-sm-12' },
+      Section,
+      null,
+      _react2['default'].createElement(QuestionTitle, { title: this.props.title }),
       _react2['default'].createElement(
-        'h2',
-        null,
-        this.props.title
-      ),
-      _react2['default'].createElement(
-        'dl',
-        null,
+        'div',
+        { className: 'col-xs-10 col-xs-push-1' },
         _react2['default'].createElement(
-          'dt',
+          'dl',
           null,
-          'Deine Befinden'
-        ),
-        _react2['default'].createElement(
-          'dd',
-          null,
-          this.props.feeling
-        ),
-        _react2['default'].createElement(
-          'dt',
-          null,
-          'Deine Körper'
-        ),
-        _react2['default'].createElement(
-          'dd',
-          null,
-          this.props.body
-        ),
-        _react2['default'].createElement(
-          'dt',
-          null,
-          'Deine Gedanken'
-        ),
-        _react2['default'].createElement(
-          'dd',
-          null,
-          this.props.thoughts
-        ),
-        _react2['default'].createElement(
-          'dt',
-          null,
-          'Deine Situation'
-        ),
-        _react2['default'].createElement(
-          'dd',
-          null,
-          this.props.situation
-        ),
-        _react2['default'].createElement(
-          'dt',
-          null,
-          'Deine Reaktion'
-        ),
-        _react2['default'].createElement(
-          'dd',
-          null,
-          this.props.reaction
+          _react2['default'].createElement(
+            'dt',
+            null,
+            'Deine Befinden'
+          ),
+          _react2['default'].createElement(
+            'dd',
+            null,
+            this.props.feeling
+          ),
+          _react2['default'].createElement(
+            'dt',
+            null,
+            'Deine Körper'
+          ),
+          _react2['default'].createElement(
+            'dd',
+            null,
+            this.props.body
+          ),
+          _react2['default'].createElement(
+            'dt',
+            null,
+            'Deine Gedanken'
+          ),
+          _react2['default'].createElement(
+            'dd',
+            null,
+            this.props.thoughts
+          ),
+          _react2['default'].createElement(
+            'dt',
+            null,
+            'Deine Situation'
+          ),
+          _react2['default'].createElement(
+            'dd',
+            null,
+            this.props.situation
+          ),
+          _react2['default'].createElement(
+            'dt',
+            null,
+            'Deine Reaktion'
+          ),
+          _react2['default'].createElement(
+            'dd',
+            null,
+            this.props.reaction
+          )
         )
       ),
       _react2['default'].createElement(
         'div',
-        { className: 'input-group' },
+        { className: 'col-xs-10 col-xs-push-1' },
         _react2['default'].createElement(
-          'label',
-          null,
-          'E-Mail:'
-        ),
-        _react2['default'].createElement('input', {
-          className: 'form-control',
-          type: 'email',
-          placeholder: 'z.B. max.muster@example.de',
-          'aria-describedby': 'basic-addon1',
-          value: this.state.email,
-          onChange: this.update })
-      ),
-      _react2['default'].createElement(
-        'div',
-        { className: 'btn-group', role: 'group' },
-        _react2['default'].createElement(
-          'button',
-          { className: 'btn btn-default', onClick: this.props.clearData },
-          'löschen'
+          'div',
+          { className: 'input-group' },
+          _react2['default'].createElement(
+            'label',
+            null,
+            'E-Mail:'
+          ),
+          _react2['default'].createElement('input', {
+            className: 'form-control',
+            type: 'email',
+            placeholder: 'z.B. max.muster@example.de',
+            'aria-describedby': 'basic-addon1',
+            value: this.state.email,
+            onChange: this.update })
         ),
         _react2['default'].createElement(
-          'button',
-          { className: 'btn btn-default', onClick: this.sendResults },
-          'Report verschicken'
+          'div',
+          { className: 'btn-group', role: 'group' },
+          _react2['default'].createElement(
+            'button',
+            { className: 'btn btn-default', onClick: this.props.clearData },
+            'löschen'
+          ),
+          _react2['default'].createElement(
+            'button',
+            { className: 'btn btn-default', onClick: this.sendResults },
+            'Report verschicken'
+          )
         )
       )
     );
@@ -54927,7 +54934,7 @@ var ResultsScreen = _react2['default'].createClass({
 
 module.exports = ResultsScreen;
 
-},{"react":388}],401:[function(require,module,exports){
+},{"./Question/QuestionTitle.react.js":393,"./Question/Section.react.js":396,"react":388}],402:[function(require,module,exports){
 'use strict';
 
 var jQuery = require('jquery');
@@ -54980,47 +54987,21 @@ var App = React.createClass({
           thoughts: this.state.thoughts,
           onChange: this.handleQuestionChange.bind(this, 'thoughts')
         }),
-        React.createElement(
-          'div',
-          { className: 'section' },
-          React.createElement(
-            'div',
-            { className: 'row' },
-            React.createElement(SituationQuestion, {
-              situation: this.state.situation,
-              onChange: this.handleQuestionChange.bind(this, 'situation')
-            })
-          ),
-          React.createElement('div', { className: 'row footer' })
-        ),
-        React.createElement(
-          'div',
-          { className: 'section' },
-          React.createElement(
-            'div',
-            { className: 'row' },
-            React.createElement(ReactionQuestion, {
-              reaction: this.state.reaction,
-              onChange: this.handleQuestionChange.bind(this, 'reaction')
-            })
-          ),
-          React.createElement('div', { className: 'row footer' })
-        ),
-        React.createElement(
-          'div',
-          { className: 'section' },
-          React.createElement(
-            'div',
-            { className: 'row' },
-            React.createElement(ResultsScreen, {
-              feeling: this.state.feeling,
-              body: this.state.body,
-              thoughts: this.state.thoughts,
-              situation: this.state.situation,
-              reaction: this.state.reaction,
-              clearData: this.clearData })
-          )
-        )
+        React.createElement(SituationQuestion, {
+          situation: this.state.situation,
+          onChange: this.handleQuestionChange.bind(this, 'situation')
+        }),
+        React.createElement(ReactionQuestion, {
+          reaction: this.state.reaction,
+          onChange: this.handleQuestionChange.bind(this, 'reaction')
+        }),
+        React.createElement(ResultsScreen, {
+          feeling: this.state.feeling,
+          body: this.state.body,
+          thoughts: this.state.thoughts,
+          situation: this.state.situation,
+          reaction: this.state.reaction,
+          clearData: this.clearData })
       )
     );
   }
@@ -55028,7 +55009,7 @@ var App = React.createClass({
 
 ReactDOM.render(React.createElement(App, null), document.getElementById('react-app'));
 
-},{"./components/Question/FeelingQuestion.react.js":389,"./components/Question/ReactionQuestion.react.js":393,"./components/Question/SituationQuestion.react.js":396,"./components/Question/ThoughtsQuestion.react.js":399,"./components/ResultsScreen.react.js":400,"./fullpage.js":402,"jquery":2,"react":388,"react-dom":70}],402:[function(require,module,exports){
+},{"./components/Question/FeelingQuestion.react.js":389,"./components/Question/ReactionQuestion.react.js":394,"./components/Question/SituationQuestion.react.js":397,"./components/Question/ThoughtsQuestion.react.js":400,"./components/ResultsScreen.react.js":401,"./fullpage.js":403,"jquery":2,"react":388,"react-dom":70}],403:[function(require,module,exports){
 // var $ = require('jquery')
 // var jQueryFullPage = require('../../node_modules/fullpage.js/jquery.fullPage.js')
 
@@ -55046,4 +55027,4 @@ $(document).ready(function () {
     });
 });
 
-},{}]},{},[401])
+},{}]},{},[402])

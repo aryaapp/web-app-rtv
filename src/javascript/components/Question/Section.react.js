@@ -10,7 +10,7 @@ let ScrollIndicator = require('./ScrollIndicator.react.js')
 let Section = React.createClass({
 	render() {
 
-		let indicator =  <ScrollIndicator />
+		let indicator =  (this.props.indicator ? <ScrollIndicator />: "")
 
 		return (
 			<div className="section relative">
@@ -26,5 +26,3 @@ let Section = React.createClass({
 });
 
 module.exports = Section
-
-// scrollindicator needs to be conditional with prop

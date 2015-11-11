@@ -4,10 +4,13 @@
 */
 import React from 'react';
 
-var QuestionModal = require('./QuestionModal.react.js');
-var ListInput = require('./ListInput.react.js');
+let Section = require('./Section.react.js')
+let QuestionButton = require('./QuestionButton.react.js')
+let QuestionTitle = require('./QuestionTitle.react.js')
+let QuestionModal = require('./QuestionModal.react.js');
+let ListInput = require('./ListInput.react.js');
 
-var SituationQuestion = React.createClass({
+let SituationQuestion = React.createClass({
   getDefaultProps: function () {
     return {
       situation: [],
@@ -21,11 +24,13 @@ var SituationQuestion = React.createClass({
 
   render() {
     return (
-      <div className="col-sm-12">
-        <QuestionModal><p>Hello Situation!</p></QuestionModal>
-        <h2>{this.props.title}</h2>
-        <ListInput value={this.props.situation} onChange={this.update} />
-      </div>
+      <Section>
+            <QuestionButton questionId="3" />
+            <QuestionTitle title={this.props.title} />
+            <div className="col-xs-10 col-xs-push-1">
+              <ListInput value={this.props.situation} onChange={this.update} />
+            </div>
+      </Section>
     );
   }
 });
