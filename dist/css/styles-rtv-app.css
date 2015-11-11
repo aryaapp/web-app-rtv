@@ -42,6 +42,10 @@ textarea {
   width: 100%;
   resize: none;
 }
+img.emoticons {
+  width: 100%;
+  margin-top: 16px;
+}
 .form-control:focus {
   border: 1px solid #333333;
   -webkit-box-shadow: 0 0 0px 1000px #fafafa inset;

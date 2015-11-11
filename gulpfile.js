@@ -12,6 +12,7 @@ var 	gulp = require('gulp'),
 		connect = require('gulp-connect'),
 		config = {
 			lessDir: './src/less',
+			imagesDir: './src/images',
 			aryaLessDir: '../arya-website/less',
 			jsDir: './src/javascript',
 			staticDir: './src/static'
@@ -21,6 +22,12 @@ var 	gulp = require('gulp'),
 gulp.task('icons', function() {
     return gulp.src(config.bowerDir + '/fontawesome/fonts/**.*')
 		.pipe(gulp.dest('./dist/fonts'));
+});
+
+// moves images to /public folder
+gulp.task('images', function() {
+    return gulp.src(config.imagesDir + '/**.*')
+		.pipe(gulp.dest('./dist/images'));
 });
 
 // moves static folders to /public folder

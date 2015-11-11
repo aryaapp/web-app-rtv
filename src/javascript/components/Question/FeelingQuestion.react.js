@@ -31,6 +31,7 @@ let FeelingQuestion = React.createClass({
             <QuestionTitle title={this.props.title} />
             <div className="col-xs-10 col-xs-push-1">
               <SliderInput value={this.props.feeling} onChange={this.update} />
+              <img className="emoticons" src="./images/emoticons.png" />
             </div>
       </Section>
     );
