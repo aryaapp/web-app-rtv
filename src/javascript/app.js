@@ -17,9 +17,9 @@ var App = React.createClass({
     return {
       feeling: 50,
       body: 'body not yet',
-      thoughts: 'don\' think just do it!',
-      situation:  ['Erste Situation','Zweite Situation'],
-      reaction: ['Erste Reaktion','Zweite Reaktion'],
+      thoughts: 'Mein Gedanken',
+      situation:  [],
+      reaction: [],
     };
   },
   handleQuestionChange: function(question, value) {

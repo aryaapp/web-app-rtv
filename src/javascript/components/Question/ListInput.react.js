@@ -50,22 +50,24 @@ var ListInput = React.createClass({
       <div>
         <form onSubmit={this.addValue}>
           <input
+            className="form-control"
             type='text'
             value={this.state.newValue}
             onChange={this.updateState}
-            placeholder='z. B. Ich sitze im Büro.' />
-          <button type='submit' onClick={this.addValue}>add</button>
+            placeholder='Meine Situation' />
+          
         </form>
-        <ul>
+        <ul className="list rtv-list">
           {
             this.props.value.map(function(element, i) {
               return (
                 <li
-                  key={i}>{element} <i style={ {cursor: 'pointer'} } onClick={that.removeValue.bind(null,i)}>x</i>
+                  className="list-item rtv-list-item" key={i}>{element} <i style={ {cursor: 'pointer'} } className="fa fa-close rtv-list-item-delete" onClick={that.removeValue.bind(null,i)}></i>
                 </li>
               )
             })
           }
+          <li className="list-item rtv-list-counter">0 items</li>
         </ul>
       </div>
         )
@@ -74,3 +76,5 @@ var ListInput = React.createClass({
 
 
 module.exports = ListInput
+
+// <button type='submit' onClick={this.addValue}>add</button>

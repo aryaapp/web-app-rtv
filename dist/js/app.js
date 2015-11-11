@@ -36269,39 +36269,38 @@ var ListInput = _react2['default'].createClass({
         'form',
         { onSubmit: this.addValue },
         _react2['default'].createElement('input', {
+          className: 'form-control',
           type: 'text',
           value: this.state.newValue,
           onChange: this.updateState,
-          placeholder: 'z. B. Ich sitze im Büro.' }),
-        _react2['default'].createElement(
-          'button',
-          { type: 'submit', onClick: this.addValue },
-          'add'
-        )
+          placeholder: 'Meine Situation' })
       ),
       _react2['default'].createElement(
         'ul',
-        null,
+        { className: 'list rtv-list' },
         this.props.value.map(function (element, i) {
           return _react2['default'].createElement(
             'li',
             {
-              key: i },
+              className: 'list-item rtv-list-item', key: i },
             element,
             ' ',
-            _react2['default'].createElement(
-              'i',
-              { style: { cursor: 'pointer' }, onClick: that.removeValue.bind(null, i) },
-              'x'
-            )
+            _react2['default'].createElement('i', { style: { cursor: 'pointer' }, className: 'fa fa-close rtv-list-item-delete', onClick: that.removeValue.bind(null, i) })
           );
-        })
+        }),
+        _react2['default'].createElement(
+          'li',
+          { className: 'list-item rtv-list-counter' },
+          '0 items'
+        )
       )
     );
   }
 });
 
 module.exports = ListInput;
+
+// <button type='submit' onClick={this.addValue}>add</button>
 
 },{"react":246}],249:[function(require,module,exports){
 /**
@@ -36465,7 +36464,7 @@ var ReactionQuestion = _react2['default'].createClass({
       _react2['default'].createElement(QuestionTitle, { title: this.props.title }),
       _react2['default'].createElement(
         'div',
-        { className: 'col-xs-10 col-xs-push-1' },
+        { className: 'col-xs-12 no-padding' },
         _react2['default'].createElement(ListInput, { value: this.props.reaction, onChange: this.update })
       )
     );
@@ -36590,11 +36589,11 @@ var SituationQuestion = _react2['default'].createClass({
     return _react2['default'].createElement(
       Section,
       null,
-      _react2['default'].createElement(QuestionButton, { questionId: '3' }),
+      _react2['default'].createElement(QuestionButton, { questionId: '4' }),
       _react2['default'].createElement(QuestionTitle, { title: this.props.title }),
       _react2['default'].createElement(
         'div',
-        { className: 'col-xs-10 col-xs-push-1' },
+        { className: 'col-xs-12 no-padding' },
         _react2['default'].createElement(ListInput, { value: this.props.situation, onChange: this.update })
       )
     );
@@ -36919,9 +36918,9 @@ var App = React.createClass({
     return {
       feeling: 50,
       body: 'body not yet',
-      thoughts: 'don\' think just do it!',
-      situation: ['Erste Situation', 'Zweite Situation'],
-      reaction: ['Erste Reaktion', 'Zweite Reaktion']
+      thoughts: 'Mein Gedanken',
+      situation: [],
+      reaction: []
     };
   },
   handleQuestionChange: function handleQuestionChange(question, value) {
