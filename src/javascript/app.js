@@ -31,8 +31,9 @@ var App = React.createClass({
     this.setState(this.getInitialState())
   },
   render: function() {
+    //container-fluid?
     return (
-      <div className="container-fluid">
+      <div className="">
          <div id="fullpage">
             <FeelingQuestion
               className="section"
