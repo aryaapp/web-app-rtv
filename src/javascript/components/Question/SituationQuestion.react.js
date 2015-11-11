@@ -27,7 +27,7 @@ let SituationQuestion = React.createClass({
       <Section>
             <QuestionButton questionId="4" />
             <QuestionTitle title={this.props.title} />
-            <div className="col-xs-10 col-xs-push-1">
+            <div className="col-xs-12 no-padding">
               <ListInput value={this.props.situation} onChange={this.update} />
             </div>
       </Section>
