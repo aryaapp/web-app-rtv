@@ -36558,11 +36558,15 @@ var Section = _react2['default'].createClass({
       indicator,
       _react2['default'].createElement(
         'div',
-        { className: ' row ' },
+        { className: 'container-fluid' },
         _react2['default'].createElement(
           'div',
-          { className: 'rtv-question' },
-          this.props.children
+          { className: ' row ' },
+          _react2['default'].createElement(
+            'div',
+            { className: 'rtv-question' },
+            this.props.children
+          )
         )
       )
     );
