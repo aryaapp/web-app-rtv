@@ -37013,7 +37013,8 @@ $(document).ready(function () {
         css3: true,
         navigation: true,
         navigationPosition: 'right',
-        scrollingSpeed: 1000
+        scrollingSpeed: 1000,
+        scrollOverflow: true
     });
 });
 
