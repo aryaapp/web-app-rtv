@@ -6,6 +6,8 @@ import React from 'react';
 
 let Section = require('./Question/Section.react.js')
 let QuestionTitle = require('./Question/QuestionTitle.react.js')
+let FixedSectionFooter = require('./Question/FixedSectionFooter.react.js')
+let ReactSlider = require('rc-slider')
 
 var ResultsScreen = React.createClass({
   getDefaultProps: function () {
@@ -14,8 +16,8 @@ var ResultsScreen = React.createClass({
       feeling: 50,
       body: {},
       thoughts: '',
-      situation:  ['sit1','sit2'],
-      reaction: ['reak1','reak2']
+      situation:  ['keine Eingabe'],
+      reaction: ['keine Eingabe']
     };
   },
   getInitialState: function() {
@@ -43,11 +45,12 @@ var ResultsScreen = React.createClass({
   render() {
     return (
       <Section>
+        <div className="col-xs-1"></div>
         <QuestionTitle title={this.props.title} />
-        <div className="col-xs-10 col-xs-push-1">
-          <dl>
+        <div className="col-xs-12 no-padding">
+          <dl className="rtv-results">
             <dt>Deine Befinden</dt>
-            <dd>{this.props.feeling}</dd>
+            <dd><ReactSlider disabled={true} value={this.props.feeling} /></dd>
             <dt>Deine Körper</dt>
             <dd>{this.props.body}</dd>
             <dt>Deine Gedanken</dt>
@@ -58,22 +61,26 @@ var ResultsScreen = React.createClass({
             <dd>{this.props.reaction}</dd>
           </dl>
         </div>
-        <div className="col-xs-10 col-xs-push-1">
-          <div className="input-group">
-            <label>E-Mail:</label>
-            <input
-              className="form-control"
-              type='email'
-              placeholder="z.B. max.muster@example.de"
-              aria-describedby="basic-addon1"
-              value={this.state.email}
-              onChange={this.update} />
+        
+        <FixedSectionFooter>
+          <div className="col-xs-12 no-padding">
+            <div className="form-group">
+              <input
+                className="form-control"
+                type='email'
+                placeholder="email"
+                aria-describedby="basic-addon1"
+                value={this.state.email}
+                onChange={this.update} />
+            </div>
+            <div className="col-xs-4">
+              <button className='btn' onClick={this.props.clearData}>löschen</button>
+            </div>
+            <div className="col-xs-8">
+              <button className='btn btn-success' onClick={this.sendResults}>Report verschicken</button>
+            </div>
           </div>
-          <div className="btn-group" role="group">
-            <button className='btn btn-default' onClick={this.props.clearData}>löschen</button>
-            <button className='btn btn-default' onClick={this.sendResults}>Report verschicken</button>
-          </div>
-        </div>
+        </FixedSectionFooter>
       </Section>
     );
   }

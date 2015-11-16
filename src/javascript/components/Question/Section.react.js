@@ -15,12 +15,14 @@ let Section = React.createClass({
 		return (
 			<div className="section relative">
         		{ indicator }
-        		<div className=" row ">
-          			<div className="rtv-question">
-          				{this.props.children}
-          			</div>
-          		</div>
-          	</div>
+            <div className="container-fluid">
+          		<div className=" row ">
+            			<div className="rtv-question">
+            				{this.props.children}
+            			</div>
+            		</div>
+            	</div>
+            </div>
 		);
 	}
 });

@@ -36206,7 +36206,26 @@ var FeelingQuestion = _react2['default'].createClass({
 module.exports = FeelingQuestion;
 //<QuestionModal><p>Hello Feeling!</p></QuestionModal>
 
-},{"./QuestionButton.react.js":249,"./QuestionModal.react.js":250,"./QuestionTitle.react.js":251,"./ScrollIndicator.react.js":253,"./Section.react.js":254,"./SliderInput.react.js":256,"react":246}],248:[function(require,module,exports){
+},{"./QuestionButton.react.js":250,"./QuestionModal.react.js":251,"./QuestionTitle.react.js":252,"./ScrollIndicator.react.js":254,"./Section.react.js":255,"./SliderInput.react.js":257,"react":246}],248:[function(require,module,exports){
+"use strict";
+
+var React = require('react');
+
+var FixedSectionFooter = React.createClass({
+	displayName: "FixedSectionFooter",
+
+	render: function render() {
+		return React.createElement(
+			"div",
+			{ className: "fixed-section-footer" },
+			this.props.children
+		);
+	}
+});
+
+module.exports = FixedSectionFooter;
+
+},{"react":246}],249:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -36302,7 +36321,7 @@ module.exports = ListInput;
 
 // <button type='submit' onClick={this.addValue}>add</button>
 
-},{"react":246}],249:[function(require,module,exports){
+},{"react":246}],250:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -36329,7 +36348,7 @@ var QuestionModal = _react2["default"].createClass({
 
 module.exports = QuestionModal;
 
-},{"react":246}],250:[function(require,module,exports){
+},{"react":246}],251:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -36390,7 +36409,7 @@ var QuestionModal = _react2['default'].createClass({
 
 module.exports = QuestionModal;
 
-},{"react":246,"react-dom":70,"react-modal":77}],251:[function(require,module,exports){
+},{"react":246,"react-dom":70,"react-modal":77}],252:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -36423,7 +36442,7 @@ var QuestionTitle = _react2["default"].createClass({
 
 module.exports = QuestionTitle;
 
-},{"react":246}],252:[function(require,module,exports){
+},{"react":246}],253:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -36473,7 +36492,7 @@ var ReactionQuestion = _react2['default'].createClass({
 
 module.exports = ReactionQuestion;
 
-},{"./ListInput.react.js":248,"./QuestionButton.react.js":249,"./QuestionModal.react.js":250,"./QuestionTitle.react.js":251,"./Section.react.js":254,"react":246}],253:[function(require,module,exports){
+},{"./ListInput.react.js":249,"./QuestionButton.react.js":250,"./QuestionModal.react.js":251,"./QuestionTitle.react.js":252,"./Section.react.js":255,"react":246}],254:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -36510,7 +36529,7 @@ var ScrollIndicator = _react2["default"].createClass({
 
 module.exports = ScrollIndicator;
 
-},{"react":246}],254:[function(require,module,exports){
+},{"react":246}],255:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -36539,11 +36558,15 @@ var Section = _react2['default'].createClass({
       indicator,
       _react2['default'].createElement(
         'div',
-        { className: ' row ' },
+        { className: 'container-fluid' },
         _react2['default'].createElement(
           'div',
-          { className: 'rtv-question' },
-          this.props.children
+          { className: ' row ' },
+          _react2['default'].createElement(
+            'div',
+            { className: 'rtv-question' },
+            this.props.children
+          )
         )
       )
     );
@@ -36552,7 +36575,7 @@ var Section = _react2['default'].createClass({
 
 module.exports = Section;
 
-},{"./ScrollIndicator.react.js":253,"react":246}],255:[function(require,module,exports){
+},{"./ScrollIndicator.react.js":254,"react":246}],256:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -36602,7 +36625,7 @@ var SituationQuestion = _react2['default'].createClass({
 
 module.exports = SituationQuestion;
 
-},{"./ListInput.react.js":248,"./QuestionButton.react.js":249,"./QuestionModal.react.js":250,"./QuestionTitle.react.js":251,"./Section.react.js":254,"react":246}],256:[function(require,module,exports){
+},{"./ListInput.react.js":249,"./QuestionButton.react.js":250,"./QuestionModal.react.js":251,"./QuestionTitle.react.js":252,"./Section.react.js":255,"react":246}],257:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -36648,7 +36671,7 @@ module.exports = SliderInput;
 //     onChange={this.update} />
 //  </div>
 
-},{"rc-slider":8,"react":246,"react-dom":70}],257:[function(require,module,exports){
+},{"rc-slider":8,"react":246,"react-dom":70}],258:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -36687,7 +36710,7 @@ var TextInput = _react2['default'].createClass({
 
 module.exports = TextInput;
 
-},{"react":246}],258:[function(require,module,exports){
+},{"react":246}],259:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -36740,7 +36763,7 @@ module.exports = ThoughtsQuestion;
 
 //<QuestionModal><p>Hello Thoughts!</p></QuestionModal>
 
-},{"./QuestionButton.react.js":249,"./QuestionModal.react.js":250,"./QuestionTitle.react.js":251,"./ScrollIndicator.react.js":253,"./Section.react.js":254,"./TextInput.react.js":257,"react":246}],259:[function(require,module,exports){
+},{"./QuestionButton.react.js":250,"./QuestionModal.react.js":251,"./QuestionTitle.react.js":252,"./ScrollIndicator.react.js":254,"./Section.react.js":255,"./TextInput.react.js":258,"react":246}],260:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -36755,6 +36778,8 @@ var _react2 = _interopRequireDefault(_react);
 
 var Section = require('./Question/Section.react.js');
 var QuestionTitle = require('./Question/QuestionTitle.react.js');
+var FixedSectionFooter = require('./Question/FixedSectionFooter.react.js');
+var ReactSlider = require('rc-slider');
 
 var ResultsScreen = _react2['default'].createClass({
   displayName: 'ResultsScreen',
@@ -36765,8 +36790,8 @@ var ResultsScreen = _react2['default'].createClass({
       feeling: 50,
       body: {},
       thoughts: '',
-      situation: ['sit1', 'sit2'],
-      reaction: ['reak1', 'reak2']
+      situation: ['keine Eingabe'],
+      reaction: ['keine Eingabe']
     };
   },
   getInitialState: function getInitialState() {
@@ -36795,13 +36820,14 @@ var ResultsScreen = _react2['default'].createClass({
     return _react2['default'].createElement(
       Section,
       null,
+      _react2['default'].createElement('div', { className: 'col-xs-1' }),
       _react2['default'].createElement(QuestionTitle, { title: this.props.title }),
       _react2['default'].createElement(
         'div',
-        { className: 'col-xs-10 col-xs-push-1' },
+        { className: 'col-xs-12 no-padding' },
         _react2['default'].createElement(
           'dl',
-          null,
+          { className: 'rtv-results' },
           _react2['default'].createElement(
             'dt',
             null,
@@ -36810,7 +36836,7 @@ var ResultsScreen = _react2['default'].createClass({
           _react2['default'].createElement(
             'dd',
             null,
-            this.props.feeling
+            _react2['default'].createElement(ReactSlider, { disabled: true, value: this.props.feeling })
           ),
           _react2['default'].createElement(
             'dt',
@@ -36855,36 +36881,39 @@ var ResultsScreen = _react2['default'].createClass({
         )
       ),
       _react2['default'].createElement(
-        'div',
-        { className: 'col-xs-10 col-xs-push-1' },
+        FixedSectionFooter,
+        null,
         _react2['default'].createElement(
           'div',
-          { className: 'input-group' },
+          { className: 'col-xs-12 no-padding' },
           _react2['default'].createElement(
-            'label',
-            null,
-            'E-Mail:'
-          ),
-          _react2['default'].createElement('input', {
-            className: 'form-control',
-            type: 'email',
-            placeholder: 'z.B. max.muster@example.de',
-            'aria-describedby': 'basic-addon1',
-            value: this.state.email,
-            onChange: this.update })
-        ),
-        _react2['default'].createElement(
-          'div',
-          { className: 'btn-group', role: 'group' },
-          _react2['default'].createElement(
-            'button',
-            { className: 'btn btn-default', onClick: this.props.clearData },
-            'löschen'
+            'div',
+            { className: 'form-group' },
+            _react2['default'].createElement('input', {
+              className: 'form-control',
+              type: 'email',
+              placeholder: 'email',
+              'aria-describedby': 'basic-addon1',
+              value: this.state.email,
+              onChange: this.update })
           ),
           _react2['default'].createElement(
-            'button',
-            { className: 'btn btn-default', onClick: this.sendResults },
-            'Report verschicken'
+            'div',
+            { className: 'col-xs-4' },
+            _react2['default'].createElement(
+              'button',
+              { className: 'btn', onClick: this.props.clearData },
+              'löschen'
+            )
+          ),
+          _react2['default'].createElement(
+            'div',
+            { className: 'col-xs-8' },
+            _react2['default'].createElement(
+              'button',
+              { className: 'btn btn-success', onClick: this.sendResults },
+              'Report verschicken'
+            )
           )
         )
       )
@@ -36894,7 +36923,7 @@ var ResultsScreen = _react2['default'].createClass({
 
 module.exports = ResultsScreen;
 
-},{"./Question/QuestionTitle.react.js":251,"./Question/Section.react.js":254,"react":246}],260:[function(require,module,exports){
+},{"./Question/FixedSectionFooter.react.js":248,"./Question/QuestionTitle.react.js":252,"./Question/Section.react.js":255,"rc-slider":8,"react":246}],261:[function(require,module,exports){
 'use strict';
 
 var jQuery = require('jquery');
@@ -36916,7 +36945,7 @@ var App = React.createClass({
 
   getInitialState: function getInitialState() {
     return {
-      feeling: 50,
+      feeling: 90,
       body: 'body not yet',
       thoughts: 'Mein Gedanken',
       situation: [],
@@ -36932,9 +36961,10 @@ var App = React.createClass({
     this.setState(this.getInitialState());
   },
   render: function render() {
+    //container-fluid?
     return React.createElement(
       'div',
-      { className: 'container-fluid' },
+      { className: '' },
       React.createElement(
         'div',
         { id: 'fullpage' },
@@ -36969,7 +36999,7 @@ var App = React.createClass({
 
 ReactDOM.render(React.createElement(App, null), document.getElementById('react-app'));
 
-},{"./components/Question/FeelingQuestion.react.js":247,"./components/Question/ReactionQuestion.react.js":252,"./components/Question/SituationQuestion.react.js":255,"./components/Question/ThoughtsQuestion.react.js":258,"./components/ResultsScreen.react.js":259,"./fullpage.js":261,"jquery":2,"react":246,"react-dom":70}],261:[function(require,module,exports){
+},{"./components/Question/FeelingQuestion.react.js":247,"./components/Question/ReactionQuestion.react.js":253,"./components/Question/SituationQuestion.react.js":256,"./components/Question/ThoughtsQuestion.react.js":259,"./components/ResultsScreen.react.js":260,"./fullpage.js":262,"jquery":2,"react":246,"react-dom":70}],262:[function(require,module,exports){
 // var $ = require('jquery')
 // var jQueryFullPage = require('../../node_modules/fullpage.js/jquery.fullPage.js')
 
@@ -36983,8 +37013,9 @@ $(document).ready(function () {
         css3: true,
         navigation: true,
         navigationPosition: 'right',
-        scrollingSpeed: 1000
+        scrollingSpeed: 1000,
+        scrollOverflow: true
     });
 });
 
-},{}]},{},[260])
+},{}]},{},[261])
