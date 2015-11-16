@@ -36381,7 +36381,7 @@ var customStyles = {
     border: 'none',
     background: 'rgba(0,0,0,0.8)',
     borderRadius: '0',
-    padding: '16px',
+    padding: '32px',
     color: '#fff'
   }
 };
