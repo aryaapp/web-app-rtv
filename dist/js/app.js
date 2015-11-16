@@ -36739,6 +36739,7 @@ var TextInput = _react2['default'].createClass({
       _react2['default'].createElement('textarea', {
         className: 'text-input',
         rows: '4',
+        placeholder: this.props.placeholder,
         value: this.props.value,
         onChange: this.update })
     );
@@ -36773,8 +36774,7 @@ var ThoughtsQuestion = _react2['default'].createClass({
 
   getDefaultProps: function getDefaultProps() {
     return {
-      thoughts: '',
-      title: "Was sind deine Gedanken?"
+      thoughts: ''
     };
   },
 
@@ -36787,11 +36787,11 @@ var ThoughtsQuestion = _react2['default'].createClass({
       Section,
       null,
       _react2['default'].createElement('div', { className: 'col-xs-1' }),
-      _react2['default'].createElement(QuestionTitle, { title: this.props.title }),
+      _react2['default'].createElement(QuestionTitle, { title: Content.QUESTION_THOUGHTS_TITLE }),
       _react2['default'].createElement(
         'div',
         { className: 'col-xs-12 no-padding' },
-        _react2['default'].createElement(TextInput, { value: Content.QUESTION_THOUGHTS_TITLE, onChange: this.update })
+        _react2['default'].createElement(TextInput, { value: this.props.thoughts, placeholder: 'Mein Gedanken', onChange: this.update })
       ),
       _react2['default'].createElement(QuestionModal, {
         title: Content.QUESTION_THOUGHTS_TITLE,
@@ -36924,7 +36924,7 @@ var ResultsScreen = _react2['default'].createClass({
       ),
       _react2['default'].createElement(
         'div',
-        { className: 'col-xs-12 no-padding' },
+        { className: 'col-xs-12 no-padding submit-form' },
         _react2['default'].createElement(
           'div',
           { className: 'form-group' },
@@ -37089,7 +37089,7 @@ var App = React.createClass({
     return {
       feeling: 90,
       body: 'body not yet',
-      thoughts: 'Mein Gedanken',
+      thoughts: '',
       situation: [],
       reaction: []
     };
@@ -37098,13 +37098,8 @@ var App = React.createClass({
     var newState = {};
     newState[question] = value;
     this.setState(newState);
-    $('#fullpage').fullpage({
-      afterResize: function afterResize() {
-        var pluginContainer = $(this);
-        alert("The sections have finished resizing");
-      }
-    });
-    //do something here to recalculate fullscreen.js window size
+    //tell fullpage to recalculate window size
+    $.fn.fullpage.reBuild();
   },
   clearData: function clearData() {
     this.setState(this.getInitialState());

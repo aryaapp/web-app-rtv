@@ -62,7 +62,7 @@ var ResultsScreen = React.createClass({
           </dl>
         </div>
         
-        <div className="col-xs-12 no-padding">
+        <div className="col-xs-12 no-padding submit-form">
           <div className="form-group">
             <input
               className="form-control"

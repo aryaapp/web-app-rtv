@@ -17,7 +17,7 @@ var App = React.createClass({
     return {
       feeling: 90,
       body: 'body not yet',
-      thoughts: 'Mein Gedanken',
+      thoughts: '',
       situation:  [],
       reaction: [],
     };
@@ -26,13 +26,8 @@ var App = React.createClass({
     var newState = {}
     newState[question] = value
     this.setState(newState);
-    $('#fullpage').fullpage({
-        afterResize: function(){
-            var pluginContainer = $(this);
-            alert("The sections have finished resizing");
-        }
-    });
-    //do something here to recalculate fullscreen.js window size
+    //tell fullpage to recalculate window size
+    $.fn.fullpage.reBuild();
   },
   clearData: function() {
     this.setState(this.getInitialState())
