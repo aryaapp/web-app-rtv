@@ -1,8 +1,8 @@
 var jQuery = require('jquery');
-var $ = require('jquery');
+require('jquery');
 var React = require('react');
 var ReactDOM = require('react-dom');
-var fullPage = require('./fullpage.js');
+require('./fullpage.js');
 
 // var jQueryFullPage = require('../../node_modules/fullpage.js/jquery.fullPage.js');
 
@@ -26,6 +26,13 @@ var App = React.createClass({
     var newState = {}
     newState[question] = value
     this.setState(newState);
+    $('#fullpage').fullpage({
+        afterResize: function(){
+            var pluginContainer = $(this);
+            alert("The sections have finished resizing");
+        }
+    });
+    //do something here to recalculate fullscreen.js window size
   },
   clearData: function() {
     this.setState(this.getInitialState())

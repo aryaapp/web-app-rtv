@@ -28,6 +28,8 @@ var QuestionModal = React.createClass({
           onRequestClose={this.closeModal}
           style={customStyles} >
           <button onClick={this.closeModal}>x</button>
+          <h3>{this.props.title}</h3>
+          <p>{this.props.body}</p>
           {this.props.children}
         </Modal>
       </div>
