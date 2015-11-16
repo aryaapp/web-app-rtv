@@ -36192,8 +36192,8 @@ var FeelingQuestion = _react2['default'].createClass({
     return _react2['default'].createElement(
       Section,
       { indicator: true },
-      _react2['default'].createElement(QuestionButton, { questionId: '1' }),
-      _react2['default'].createElement(QuestionTitle, { title: this.props.title }),
+      _react2['default'].createElement('div', { className: 'col-xs-1' }),
+      _react2['default'].createElement(QuestionTitle, { title: Content.QUESTION_FEELING_TITLE }),
       _react2['default'].createElement(
         'div',
         { className: 'col-xs-10 col-xs-push-1' },
@@ -36371,7 +36371,20 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var Modal = require('react-modal');
 
-var customStyles = {};
+var customStyles = {
+  content: {
+    position: 'absolute',
+    top: '0',
+    left: '0',
+    right: '0',
+    bottom: '0',
+    border: 'none',
+    background: 'rgba(0,0,0,0.8)',
+    borderRadius: '0',
+    padding: '16px',
+    color: '#fff'
+  }
+};
 
 var QuestionModal = _react2['default'].createClass({
   displayName: 'QuestionModal',
@@ -36390,9 +36403,9 @@ var QuestionModal = _react2['default'].createClass({
       'div',
       null,
       _react2['default'].createElement(
-        'span',
-        { onClick: this.openModal },
-        '?'
+        'div',
+        { className: 'modal-trigger' },
+        _react2['default'].createElement('i', { className: 'fa fa-lg fa-question-circle', onClick: this.openModal })
       ),
       _react2['default'].createElement(
         Modal,
@@ -36401,13 +36414,13 @@ var QuestionModal = _react2['default'].createClass({
           onRequestClose: this.closeModal,
           style: customStyles },
         _react2['default'].createElement(
-          'button',
-          { onClick: this.closeModal },
-          'x'
+          'div',
+          { className: 'text-center' },
+          _react2['default'].createElement('i', { className: 'fa fa-lg fa-close', onClick: this.closeModal })
         ),
         _react2['default'].createElement(
           'h3',
-          null,
+          { className: 'rtv-title invert' },
           this.props.title
         ),
         _react2['default'].createElement(
@@ -36474,6 +36487,7 @@ var QuestionButton = require('./QuestionButton.react.js');
 var QuestionTitle = require('./QuestionTitle.react.js');
 var QuestionModal = require('./QuestionModal.react.js');
 var ListInput = require('./ListInput.react.js');
+var Content = require('../../constants/localizableStringsDE.js');
 
 var ReactionQuestion = _react2['default'].createClass({
   displayName: 'ReactionQuestion',
@@ -36493,20 +36507,24 @@ var ReactionQuestion = _react2['default'].createClass({
     return _react2['default'].createElement(
       Section,
       null,
-      _react2['default'].createElement(QuestionButton, { questionId: '4' }),
-      _react2['default'].createElement(QuestionTitle, { title: this.props.title }),
+      _react2['default'].createElement('div', { className: 'col-xs-1' }),
+      _react2['default'].createElement(QuestionTitle, { title: Content.QUESTION_REACTION_TITLE }),
       _react2['default'].createElement(
         'div',
         { className: 'col-xs-12 no-padding' },
         _react2['default'].createElement(ListInput, { value: this.props.reaction, onChange: this.update })
-      )
+      ),
+      _react2['default'].createElement(QuestionModal, {
+        title: Content.QUESTION_REACTION_TITLE,
+        body: Content.QUESTION_REACTION_EXPLANATION
+      })
     );
   }
 });
 
 module.exports = ReactionQuestion;
 
-},{"./ListInput.react.js":249,"./QuestionButton.react.js":250,"./QuestionModal.react.js":251,"./QuestionTitle.react.js":252,"./Section.react.js":255,"react":246}],254:[function(require,module,exports){
+},{"../../constants/localizableStringsDE.js":261,"./ListInput.react.js":249,"./QuestionButton.react.js":250,"./QuestionModal.react.js":251,"./QuestionTitle.react.js":252,"./Section.react.js":255,"react":246}],254:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -36607,6 +36625,7 @@ var QuestionButton = require('./QuestionButton.react.js');
 var QuestionTitle = require('./QuestionTitle.react.js');
 var QuestionModal = require('./QuestionModal.react.js');
 var ListInput = require('./ListInput.react.js');
+var Content = require('../../constants/localizableStringsDE.js');
 
 var SituationQuestion = _react2['default'].createClass({
   displayName: 'SituationQuestion',
@@ -36626,20 +36645,24 @@ var SituationQuestion = _react2['default'].createClass({
     return _react2['default'].createElement(
       Section,
       null,
-      _react2['default'].createElement(QuestionButton, { questionId: '4' }),
-      _react2['default'].createElement(QuestionTitle, { title: this.props.title }),
+      _react2['default'].createElement('div', { className: 'col-xs-1' }),
+      _react2['default'].createElement(QuestionTitle, { title: Content.QUESTION_CIRCUMSTANCES_TITLE }),
       _react2['default'].createElement(
         'div',
         { className: 'col-xs-12 no-padding' },
         _react2['default'].createElement(ListInput, { value: this.props.situation, onChange: this.update })
-      )
+      ),
+      _react2['default'].createElement(QuestionModal, {
+        title: Content.QUESTION_CIRCUMSTANCES_TITLE,
+        body: Content.QUESTION_CIRCUMSTANCES_EXPLANATION
+      })
     );
   }
 });
 
 module.exports = SituationQuestion;
 
-},{"./ListInput.react.js":249,"./QuestionButton.react.js":250,"./QuestionModal.react.js":251,"./QuestionTitle.react.js":252,"./Section.react.js":255,"react":246}],257:[function(require,module,exports){
+},{"../../constants/localizableStringsDE.js":261,"./ListInput.react.js":249,"./QuestionButton.react.js":250,"./QuestionModal.react.js":251,"./QuestionTitle.react.js":252,"./Section.react.js":255,"react":246}],257:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -36743,6 +36766,7 @@ var QuestionTitle = require('./QuestionTitle.react.js');
 var TextInput = require('./TextInput.react.js');
 var ScrollIndicator = require('./ScrollIndicator.react.js');
 var Section = require('./Section.react.js');
+var Content = require('../../constants/localizableStringsDE.js');
 
 var ThoughtsQuestion = _react2['default'].createClass({
   displayName: 'ThoughtsQuestion',
@@ -36762,13 +36786,17 @@ var ThoughtsQuestion = _react2['default'].createClass({
     return _react2['default'].createElement(
       Section,
       null,
-      _react2['default'].createElement(QuestionButton, { questionId: '2' }),
+      _react2['default'].createElement('div', { className: 'col-xs-1' }),
       _react2['default'].createElement(QuestionTitle, { title: this.props.title }),
       _react2['default'].createElement(
         'div',
         { className: 'col-xs-12 no-padding' },
-        _react2['default'].createElement(TextInput, { value: this.props.thoughts, onChange: this.update })
-      )
+        _react2['default'].createElement(TextInput, { value: Content.QUESTION_THOUGHTS_TITLE, onChange: this.update })
+      ),
+      _react2['default'].createElement(QuestionModal, {
+        title: Content.QUESTION_THOUGHTS_TITLE,
+        body: Content.QUESTION_THOUGHTS_EXPLANATION
+      })
     );
   }
 });
@@ -36777,7 +36805,7 @@ module.exports = ThoughtsQuestion;
 
 //<QuestionModal><p>Hello Thoughts!</p></QuestionModal>
 
-},{"./QuestionButton.react.js":250,"./QuestionModal.react.js":251,"./QuestionTitle.react.js":252,"./ScrollIndicator.react.js":254,"./Section.react.js":255,"./TextInput.react.js":258,"react":246}],260:[function(require,module,exports){
+},{"../../constants/localizableStringsDE.js":261,"./QuestionButton.react.js":250,"./QuestionModal.react.js":251,"./QuestionTitle.react.js":252,"./ScrollIndicator.react.js":254,"./Section.react.js":255,"./TextInput.react.js":258,"react":246}],260:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -36914,7 +36942,8 @@ var ResultsScreen = _react2['default'].createClass({
           _react2['default'].createElement(
             'button',
             { className: 'btn btn-full-width btn-success', onClick: this.sendResults },
-            'Report verschicken'
+            _react2['default'].createElement('i', { className: 'fa fa-envelope-o' }),
+            ' Report verschicken'
           )
         ),
         _react2['default'].createElement(
@@ -36923,7 +36952,8 @@ var ResultsScreen = _react2['default'].createClass({
           _react2['default'].createElement(
             'button',
             { className: 'btn btn-full-width', onClick: this.props.clearData },
-            'löschen'
+            _react2['default'].createElement('i', { className: 'fa fa-trash-o' }),
+            ' Löschen'
           )
         )
       )

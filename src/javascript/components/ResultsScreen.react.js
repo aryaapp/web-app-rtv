@@ -73,10 +73,10 @@ var ResultsScreen = React.createClass({
               onChange={this.update} />
           </div>
           <div className="col-xs-12">
-            <button className='btn btn-full-width btn-success' onClick={this.sendResults}>Report verschicken</button>
+            <button className='btn btn-full-width btn-success' onClick={this.sendResults}><i className="fa fa-envelope-o"></i> Report verschicken</button>
           </div>
           <div className="col-xs-12">
-            <button className='btn btn-full-width' onClick={this.props.clearData}>löschen</button>
+            <button className='btn btn-full-width' onClick={this.props.clearData}><i className="fa fa-trash-o"></i> Löschen</button>
           </div>
 
         </div>

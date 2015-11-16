@@ -28,8 +28,8 @@ let FeelingQuestion = React.createClass({
   render() {
     return (
       <Section indicator={true}>
-            <QuestionButton questionId="1" />
-            <QuestionTitle title={this.props.title} />
+            <div className="col-xs-1"></div>
+            <QuestionTitle title={ Content.QUESTION_FEELING_TITLE } />
             <div className="col-xs-10 col-xs-push-1">
               <SliderInput value={this.props.feeling} onChange={this.update} />
               <img className="emoticons" src="./images/emoticons.png" />

@@ -7,7 +7,20 @@ import ReactDOM from 'react-dom';
 
 const Modal = require('react-modal');
 
-const customStyles = {}
+const customStyles = {
+  content : {
+    position                   : 'absolute',
+    top                        : '0',
+    left                       : '0',
+    right                      : '0',
+    bottom                     : '0',
+    border                     : 'none',
+    background                 : 'rgba(0,0,0,0.8)',
+    borderRadius               : '0',
+    padding                    : '16px',
+    color                      : '#fff'
+  }
+}
 
 var QuestionModal = React.createClass({
   getInitialState() {
@@ -22,13 +35,17 @@ var QuestionModal = React.createClass({
   render() {
     return (
       <div>
-        <span onClick={this.openModal}>?</span>
+        <div className="modal-trigger">
+          <i className="fa fa-lg fa-question-circle" onClick={this.openModal}></i>
+        </div>
         <Modal
           isOpen={this.state.isOpen}
           onRequestClose={this.closeModal}
           style={customStyles} >
-          <button onClick={this.closeModal}>x</button>
-          <h3>{this.props.title}</h3>
+          <div className="text-center">
+            <i className="fa fa-lg fa-close" onClick={this.closeModal}></i>
+          </div>
+          <h3 className="rtv-title invert">{this.props.title}</h3>
           <p>{this.props.body}</p>
           {this.props.children}
         </Modal>

@@ -24,12 +24,20 @@ body {
   background: linear-gradient(left, #22b573, #05ab97);
   /* Standard syntax */
 }
-.rtv-title h3 {
+.rtv-title h3,
+.rtv-title {
   color: #333;
-  text-align: center !important;
   font-weight: normal;
   letter-spacing: -0.3px;
   margin-bottom: 18px;
+}
+.invert {
+  color: white;
+}
+.modal-trigger {
+  top: 26px;
+  position: absolute;
+  right: 16px;
 }
 .form-control {
   border-color: #d9d9d9;
@@ -134,9 +142,9 @@ dl.rtv-results {
 }
 #fp-nav ul li a span,
 .fp-slidesNav ul li a span {
-  background: #767676;
+  background: #004170;
   background: white;
-  border: 2px solid #565656;
+  border: 2px solid #004170;
 }
 .rc-slider {
   margin-top: 16px;
@@ -153,4 +161,13 @@ dl.rtv-results {
 .rc-slider-track,
 .rc-slider-disabled .rc-slider-track {
   background-color: #05ab97;
+}
+.React__Modal {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* border: 1px solid #ccc; */
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
 }
