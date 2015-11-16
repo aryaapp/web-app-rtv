@@ -49,6 +49,9 @@ textarea {
   width: 100%;
   resize: none;
 }
+.btn-full-width {
+  width: 100%;
+}
 img.emoticons {
   width: 100%;
   margin-top: 16px;

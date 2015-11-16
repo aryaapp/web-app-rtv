@@ -36554,7 +36554,7 @@ var Section = _react2['default'].createClass({
 
     return _react2['default'].createElement(
       'div',
-      { className: 'section relative' },
+      { className: 'section relative scrollable' },
       indicator,
       _react2['default'].createElement(
         'div',
@@ -36824,7 +36824,7 @@ var ResultsScreen = _react2['default'].createClass({
       _react2['default'].createElement(QuestionTitle, { title: this.props.title }),
       _react2['default'].createElement(
         'div',
-        { className: 'col-xs-12 no-padding' },
+        { className: 'col-xs-12 no-padding slim-scroll' },
         _react2['default'].createElement(
           'dl',
           { className: 'rtv-results' },
@@ -36881,39 +36881,35 @@ var ResultsScreen = _react2['default'].createClass({
         )
       ),
       _react2['default'].createElement(
-        FixedSectionFooter,
-        null,
+        'div',
+        { className: 'col-xs-12 no-padding' },
         _react2['default'].createElement(
           'div',
-          { className: 'col-xs-12 no-padding' },
+          { className: 'form-group' },
+          _react2['default'].createElement('input', {
+            className: 'form-control',
+            type: 'email',
+            placeholder: 'email',
+            'aria-describedby': 'basic-addon1',
+            value: this.state.email,
+            onChange: this.update })
+        ),
+        _react2['default'].createElement(
+          'div',
+          { className: 'col-xs-12' },
           _react2['default'].createElement(
-            'div',
-            { className: 'form-group' },
-            _react2['default'].createElement('input', {
-              className: 'form-control',
-              type: 'email',
-              placeholder: 'email',
-              'aria-describedby': 'basic-addon1',
-              value: this.state.email,
-              onChange: this.update })
-          ),
+            'button',
+            { className: 'btn btn-full-width btn-success', onClick: this.sendResults },
+            'Report verschicken'
+          )
+        ),
+        _react2['default'].createElement(
+          'div',
+          { className: 'col-xs-12' },
           _react2['default'].createElement(
-            'div',
-            { className: 'col-xs-4' },
-            _react2['default'].createElement(
-              'button',
-              { className: 'btn', onClick: this.props.clearData },
-              'löschen'
-            )
-          ),
-          _react2['default'].createElement(
-            'div',
-            { className: 'col-xs-8' },
-            _react2['default'].createElement(
-              'button',
-              { className: 'btn btn-success', onClick: this.sendResults },
-              'Report verschicken'
-            )
+            'button',
+            { className: 'btn btn-full-width', onClick: this.props.clearData },
+            'löschen'
           )
         )
       )
