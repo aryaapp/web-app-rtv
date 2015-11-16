@@ -73,10 +73,10 @@ var ResultsScreen = React.createClass({
                 value={this.state.email}
                 onChange={this.update} />
             </div>
-            <div className="col-xs-4">
+            <div className="col-xs-12">
               <button className='btn' onClick={this.props.clearData}>löschen</button>
             </div>
-            <div className="col-xs-8">
+            <div className="col-xs-12">
               <button className='btn btn-success' onClick={this.sendResults}>Report verschicken</button>
             </div>
           </div>
