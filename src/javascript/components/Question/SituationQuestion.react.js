@@ -9,6 +9,7 @@ let QuestionButton = require('./QuestionButton.react.js')
 let QuestionTitle = require('./QuestionTitle.react.js')
 let QuestionModal = require('./QuestionModal.react.js');
 let ListInput = require('./ListInput.react.js');
+let Content = require('../../constants/localizableStringsDE.js')
 
 let SituationQuestion = React.createClass({
   getDefaultProps: function () {
@@ -25,11 +26,15 @@ let SituationQuestion = React.createClass({
   render() {
     return (
       <Section>
-            <QuestionButton questionId="4" />
-            <QuestionTitle title={this.props.title} />
+            <div className="col-xs-1"></div>
+            <QuestionTitle title={ Content.QUESTION_CIRCUMSTANCES_TITLE } />
             <div className="col-xs-12 no-padding">
               <ListInput value={this.props.situation} onChange={this.update} />
             </div>
+            <QuestionModal 
+              title ={ Content.QUESTION_CIRCUMSTANCES_TITLE } 
+              body = { Content.QUESTION_CIRCUMSTANCES_EXPLANATION } 
+            />
       </Section>
     );
   }

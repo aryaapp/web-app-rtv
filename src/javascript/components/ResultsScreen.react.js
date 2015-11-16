@@ -47,7 +47,7 @@ var ResultsScreen = React.createClass({
       <Section>
         <div className="col-xs-1"></div>
         <QuestionTitle title={this.props.title} />
-        <div className="col-xs-12 no-padding">
+        <div className="col-xs-12 no-padding slim-scroll">
           <dl className="rtv-results">
             <dt>Deine Befinden</dt>
             <dd><ReactSlider disabled={true} value={this.props.feeling} /></dd>
@@ -62,25 +62,24 @@ var ResultsScreen = React.createClass({
           </dl>
         </div>
         
-        <FixedSectionFooter>
-          <div className="col-xs-12 no-padding">
-            <div className="form-group">
-              <input
-                className="form-control"
-                type='email'
-                placeholder="email"
-                aria-describedby="basic-addon1"
-                value={this.state.email}
-                onChange={this.update} />
-            </div>
-            <div className="col-xs-4">
-              <button className='btn' onClick={this.props.clearData}>löschen</button>
-            </div>
-            <div className="col-xs-8">
-              <button className='btn btn-success' onClick={this.sendResults}>Report verschicken</button>
-            </div>
+        <div className="col-xs-12 no-padding submit-form">
+          <div className="form-group">
+            <input
+              className="form-control"
+              type='email'
+              placeholder="email"
+              aria-describedby="basic-addon1"
+              value={this.state.email}
+              onChange={this.update} />
           </div>
-        </FixedSectionFooter>
+          <div className="col-xs-12">
+            <button className='btn btn-full-width btn-success' onClick={this.sendResults}><i className="fa fa-envelope-o"></i> Report verschicken</button>
+          </div>
+          <div className="col-xs-12">
+            <button className='btn btn-full-width' onClick={this.props.clearData}><i className="fa fa-trash-o"></i> Löschen</button>
+          </div>
+
+        </div>
       </Section>
     );
   }

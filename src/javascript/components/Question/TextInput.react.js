@@ -19,6 +19,7 @@ var TextInput = React.createClass({
           <textarea
             className="text-input"
             rows="4"
+            placeholder= {this.props.placeholder} 
             value={this.props.value}
             onChange={this.update} />
          </div>

@@ -10,6 +10,7 @@ let QuestionTitle = require('./QuestionTitle.react.js')
 let QuestionModal = require('./QuestionModal.react.js')
 let SliderInput = require('./SliderInput.react.js')
 let ScrollIndicator = require('./ScrollIndicator.react.js')
+let Content = require('../../constants/localizableStringsDE.js')
 
 
 let FeelingQuestion = React.createClass({
@@ -27,16 +28,21 @@ let FeelingQuestion = React.createClass({
   render() {
     return (
       <Section indicator={true}>
-            <QuestionButton questionId="1" />
-            <QuestionTitle title={this.props.title} />
+            <div className="col-xs-1"></div>
+            <QuestionTitle title={ Content.QUESTION_FEELING_TITLE } />
             <div className="col-xs-10 col-xs-push-1">
               <SliderInput value={this.props.feeling} onChange={this.update} />
               <img className="emoticons" src="./images/emoticons.png" />
             </div>
+            <QuestionModal 
+              title ={ Content.QUESTION_FEELING_TITLE } 
+              body = { Content.QUESTION_FEELING_EXPLANATION } 
+            />
       </Section>
+      
     );
   }
 });
 
 module.exports = FeelingQuestion
-//<QuestionModal><p>Hello Feeling!</p></QuestionModal>
+

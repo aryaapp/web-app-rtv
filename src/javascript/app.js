@@ -1,8 +1,8 @@
 var jQuery = require('jquery');
-var $ = require('jquery');
+require('jquery');
 var React = require('react');
 var ReactDOM = require('react-dom');
-var fullPage = require('./fullpage.js');
+require('./fullpage.js');
 
 // var jQueryFullPage = require('../../node_modules/fullpage.js/jquery.fullPage.js');
 
@@ -17,7 +17,7 @@ var App = React.createClass({
     return {
       feeling: 90,
       body: 'body not yet',
-      thoughts: 'Mein Gedanken',
+      thoughts: '',
       situation:  [],
       reaction: [],
     };
@@ -26,6 +26,8 @@ var App = React.createClass({
     var newState = {}
     newState[question] = value
     this.setState(newState);
+    //tell fullpage to recalculate window size
+    $.fn.fullpage.reBuild();
   },
   clearData: function() {
     this.setState(this.getInitialState())

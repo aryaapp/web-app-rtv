@@ -13,7 +13,7 @@ let Section = React.createClass({
 		let indicator =  (this.props.indicator ? <ScrollIndicator />: "")
 
 		return (
-			<div className="section relative">
+			<div className="section relative scrollable">
         		{ indicator }
             <div className="container-fluid">
           		<div className=" row ">

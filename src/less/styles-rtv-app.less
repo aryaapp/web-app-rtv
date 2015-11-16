@@ -1,4 +1,7 @@
 
+@rtv-blue: #004170;
+@rtv-red: #b20035;
+
 #react-app{
     margin-top: 24px;
     background: white;
@@ -24,12 +27,21 @@ body{
     background: linear-gradient(left,#22b573, #05ab97); /* Standard syntax */
 }
 
-.rtv-title h3 {
+.rtv-title h3, .rtv-title {
     color: #333;
-    text-align: center !important;
     font-weight: normal;
     letter-spacing: -0.3px;
     margin-bottom: 18px;
+}
+
+.invert{
+    color: white;
+}
+
+.modal-trigger {
+    top: 26px;
+    position: absolute;
+    right: 16px;
 }
 
 .form-control{
@@ -52,9 +64,31 @@ textarea{
     resize:none;
 }
 
+.text-input{
+    padding-left: 32px;
+}
+
+.submit-form{
+    margin-bottom:16px;
+}
+.btn{
+    font-size: 16px;
+    font-weight:normal;
+}
+
+.btn-full-width{
+    width:100%;
+}
+
+.btn-success, .btn-success:focus, .btn-success:hover{
+    background-color: @rtv-blue;
+    color: #fff;
+    border-color: @rtv-blue;
+}
+
 img.emoticons{
     width:100%;
-    margin-top: 16px
+    margin-top: 16px;
 }
 
 // ul.rtv-list{
@@ -142,9 +176,9 @@ dl.rtv-results {
     right: 0px;
 }
 #fp-nav ul li a span, .fp-slidesNav ul li a span {
-    background: #767676;
+    background: @rtv-blue;
     background: white;
-    border: 2px solid #565656; // #004170; rtv brand blue #b20035; rtv brand red
+    border: 2px solid @rtv-blue; // #004170; rtv brand blue #b20035; rtv brand red
 }
 
 
@@ -164,3 +198,15 @@ dl.rtv-results {
 .rc-slider-track, .rc-slider-disabled .rc-slider-track {
     background-color: #05ab97; // make dynamic
 }
+
+//overrides react modal
+.React__Modal {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* border: 1px solid #ccc; */
+    background: rgba(0,0,0,0.8);
+    color: white;
+}
+    
