@@ -55,3 +55,5 @@ var QuestionModal = React.createClass({
 });
 
 module.exports = QuestionModal
+
+//modal toggle add classnames for desktop
