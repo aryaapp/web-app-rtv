@@ -1,3 +1,5 @@
+@import "../../../arya-website/less/styles.less";
+
 
 @rtv-blue: #004170;
 @rtv-red: #b20035;
@@ -10,7 +12,15 @@
     with: 100%;
     width: 100%;
     overflow: hidden;
+    @media (min-width: @screen-sm) {
+        margin-top:0;
+        border-radius: 0;
+        width:50%;
+        left:25%;
+    }
 }
+
+
 
 html, body {
   height: 100%;
@@ -32,6 +42,9 @@ body{
     font-weight: normal;
     letter-spacing: -0.3px;
     margin-bottom: 18px;
+    @media (min-width: @screen-sm) {
+        margin-top: 32px;
+    }
 }
 
 .invert{
@@ -42,6 +55,10 @@ body{
     top: 26px;
     position: absolute;
     right: 16px;
+    @media (min-width: @screen-sm) {
+        top: 68px;
+        right: 48px;
+    }
 }
 
 .form-control{
@@ -57,10 +74,45 @@ body{
     margin-bottom: 0;
 }
 
+.email-control{
+    border-width: 1px;
+    border-radius:8px;
+}
+
+
+.slider-range-container{
+    margin-top:24px;
+}
+@emo-width: 40px;
+.emo{
+    width: @emo-width;
+    // position:absolute;
+}
+
+// .emo-1{
+//     left: 0%;
+// }
+// .emo-2{
+//     left: 25%;
+// }
+// .emo-3{
+//     left: 50%;
+// }
+// .emo-4{
+//     left: 75%;
+//     left:-webkit-calc(75% - 20px);
+//     left:-moz-calc(75% - 20px);
+//     left:calc(75% - 20px);
+// }
+// .emo-5{
+//     right: 0%;
+// }
+
 textarea{
     background: #fafafa;
     height: 80px;
     width:100%;
+    border-radius: 0;
     resize:none;
 }
 
@@ -181,8 +233,11 @@ dl.rtv-results {
 }
 #fp-nav ul li a span, .fp-slidesNav ul li a span {
     background: @rtv-blue;
-    background: white;
+    background: transparent;
     border: 2px solid @rtv-blue; // #004170; rtv brand blue #b20035; rtv brand red
+    @media (min-width: @screen-sm) {
+        border-color: white;
+    }
 }
 
 
@@ -204,7 +259,7 @@ dl.rtv-results {
 }
 
 //overrides react modal
-.React__Modal {
+.ReactModal__Content--after-open {
     top: 0;
     left: 0;
     right: 0;
@@ -212,4 +267,9 @@ dl.rtv-results {
     /* border: 1px solid #ccc; */
     background: rgba(0,0,0,0.8);
     color: white;
+    @media (min-width: @screen-sm) {
+        padding-left:30% !important;
+        padding-right:30% !important;
+        background: rgba(0,0,0,0.9);
+    }
 }
