@@ -36,9 +36,9 @@ const BodyModal = React.createClass({
           isOpen={this.state.isOpen}
           onRequestClose={this.closeModal}
           style={customStyles} >
-          <button onClick={this.closeModal}>x</button>
           <h2>{this.props.title}</h2>
           <CheckBoxInput values={this.props.values} options={this.props.options} onChange={this.update} />
+          <button className="btn btn-full-width btn-success" onClick={this.closeModal}>OK</button>
         </Modal>
       </div>
     );
