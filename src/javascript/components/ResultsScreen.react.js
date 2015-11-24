@@ -4,10 +4,12 @@
 */
 import React from 'react';
 
+
 let Section = require('./Question/Section.react.js')
 let QuestionTitle = require('./Question/QuestionTitle.react.js')
 let FixedSectionFooter = require('./Question/FixedSectionFooter.react.js')
 let ReactSlider = require('rc-slider')
+let DisplayBody = require('./DisplayBody.react.js')
 
 var ResultsScreen = React.createClass({
   getDefaultProps: function () {
@@ -52,7 +54,7 @@ var ResultsScreen = React.createClass({
             <dt>Deine Befinden</dt>
             <dd><ReactSlider disabled={true} value={this.props.feeling} /></dd>
             <dt>Deine Körper</dt>
-            <dd>{this.props.body}</dd>
+            <dd><DisplayBody body={this.props.body} /></dd>
             <dt>Deine Gedanken</dt>
             <dd>{this.props.thoughts}</dd>
             <dt>Deine Situation</dt>
@@ -61,7 +63,6 @@ var ResultsScreen = React.createClass({
             <dd>{this.props.reaction}</dd>
           </dl>
         </div>
-        
         <div className="col-xs-12 no-padding submit-form">
           <div className="form-group">
             <input

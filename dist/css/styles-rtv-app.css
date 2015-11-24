@@ -140,6 +140,9 @@ dl.rtv-results {
 .relative {
   position: relative;
 }
+.touch-area {
+  cursor: pointer;
+}
 .fp-tableCell {
   vertical-align: inherit;
 }

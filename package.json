@@ -18,9 +18,13 @@
   "homepage": "https://github.com/aryaapp/web-app-rtv",
   "dependencies": {
     "bootstrap": "^3.3.5",
+    "fstream": "^1.0.8",
     "fullpage.js": "^2.7.4",
     "jquery": "^2.1.4",
     "react": "~0.14.2",
+    "react-addons": "^0.9.1-deprecated",
+    "react-addons-update": "^0.14.2",
+    "react-checkbox-list": "0.0.2",
     "react-dom": "~0.14.2",
     "react-modal": "~0.6.1"
   },

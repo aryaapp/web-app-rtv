@@ -26,15 +26,16 @@ let ReactionQuestion = React.createClass({
   render() {
     return (
       <Section>
-            <div className="col-xs-1"></div>
-            <QuestionTitle title={ Content.QUESTION_REACTION_TITLE } />
-            <div className="col-xs-12 no-padding">
-              <ListInput value={this.props.reaction} onChange={this.update} />
-            </div>
-            <QuestionModal 
-              title ={ Content.QUESTION_REACTION_TITLE } 
-              body = { Content.QUESTION_REACTION_EXPLANATION } 
-            />
+        <div className="col-xs-1"></div>
+        <QuestionTitle title={ Content.QUESTION_REACTION_TITLE } />
+
+        <div className="col-xs-12 no-padding">
+          <ListInput value={this.props.reaction} onChange={this.update} />
+        </div>
+        <QuestionModal
+          title ={ Content.QUESTION_REACTION_TITLE }
+          body = { Content.QUESTION_REACTION_EXPLANATION }
+        />
       </Section>
     );
   }
