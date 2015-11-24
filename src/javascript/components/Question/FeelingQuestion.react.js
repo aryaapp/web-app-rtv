@@ -7,8 +7,10 @@ import React from 'react';
 let Section = require('./Section.react.js')
 let QuestionButton = require('./QuestionButton.react.js')
 let QuestionTitle = require('./QuestionTitle.react.js')
+let QuestionMain = require('./QuestionMain.react.js')
 let QuestionModal = require('./QuestionModal.react.js')
 let SliderInput = require('./SliderInput.react.js')
+let SliderRange = require('./SliderRange.react.js')
 let ScrollIndicator = require('./ScrollIndicator.react.js')
 let Content = require('../../constants/localizableStringsDE.js')
 
@@ -30,10 +32,9 @@ let FeelingQuestion = React.createClass({
       <Section indicator={true}>
             <div className="col-xs-1"></div>
             <QuestionTitle title={ Content.QUESTION_FEELING_TITLE } />
-            <div className="col-xs-10 col-xs-push-1">
+            <QuestionMain>
               <SliderInput value={this.props.feeling} onChange={this.update} />
-              <img className="emoticons" src="./images/emoticons.png" />
-            </div>
+            </QuestionMain>
             <QuestionModal 
               title ={ Content.QUESTION_FEELING_TITLE } 
               body = { Content.QUESTION_FEELING_EXPLANATION } 
