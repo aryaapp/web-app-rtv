@@ -20,7 +20,7 @@ var 	gulp = require('gulp'),
       rsync: {
         src:  'dist/**',
         options: {
-          destination: '/var/www/html/rtv-web/',
+          destination: '/var/www/rtv-web.aryaapp.co/public_html',
           root: 'dist',
           hostname: 'arya-web', // needs to be setup in ~/.ssh/config
           username: 'root',

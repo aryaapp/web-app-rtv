@@ -1,4 +1,4 @@
 AuthName "rtv-web"
 AuthType Basic
-AuthUserFile /var/www/html/rtv-web/.htpasswd
+AuthUserFile /var/www/rtv-web.aryaapp.co/public_html/.htpasswd
 require valid-user
