@@ -1,51 +1,79 @@
 var jQuery = require('jquery');
-var $ = require('jquery');
+require('jquery');
 var React = require('react');
 var ReactDOM = require('react-dom');
-var fullPage = require('./fullpage.js');
+require('./fullpage.js');
+
 // var jQueryFullPage = require('../../node_modules/fullpage.js/jquery.fullPage.js');
 
 var FeelingQuestion = require('./components/Question/FeelingQuestion.react.js');
+var ThoughtsQuestion = require('./components/Question/ThoughtsQuestion.react.js');
+var SituationQuestion = require('./components/Question/SituationQuestion.react.js');
+var ReactionQuestion = require('./components/Question/ReactionQuestion.react.js');
+var BodyQuestion = require('./components/Question/BodyQuestion.react.js');
+var ResultsScreen = require('./components/ResultsScreen.react.js');
 
 var App = React.createClass({
   getInitialState: function() {
     return {
-      feeling: 50,
-      body: {}
+      feeling: 90,
+      body: {
+        head: [],
+        left_arm: [],
+        right_arm: [],
+        chest: [],
+        left_leg: [],
+        right_leg: [],
+        hip: []
+      },
+      thoughts: '',
+      situation:  [],
+      reaction: [],
     };
   },
   handleQuestionChange: function(question, value) {
     var newState = {}
     newState[question] = value
     this.setState(newState);
+    //tell fullpage to recalculate window size
+    $.fn.fullpage.reBuild();
+  },
+  clearData: function() {
+    this.setState(this.getInitialState())
   },
   render: function() {
+    //container-fluid?
     return (
-      <div className="container">
+      <div className="">
          <div id="fullpage">
-            <div className="section">
-                <div className="row">
-                  <FeelingQuestion
-                    feeling={this.state.feeling}
-                    onChange={this.handleQuestionChange.bind(this, 'feeling' )}
-                  />
-                </div>
-                <div className="row footer">
-                    <p>Swipe down</p>
-                </div>
-                <pre>Feeling: {this.state.feeling}</pre>
-            </div>
-            <div className="section"><h3>How is it going?</h3></div>
-            <div className="section"><h3>Fine Thanks</h3></div>
-            <div className="section"><h3>Ok, cheers</h3></div>
-            <div className="section">
-                <div className="row">
-                    <div className="col-sm-12">
-                        <h3>No, you hang up first</h3>
-                        <button className="btn btn-lg arya-btn margin-top">Hang Up</button>
-                    </div>
-                </div>
-            </div>
+            <FeelingQuestion
+              feeling={this.state.feeling}
+              onChange={this.handleQuestionChange.bind(this, 'feeling' )}
+            />
+            <BodyQuestion
+              body={this.state.body}
+              onChange={this.handleQuestionChange.bind(this, 'body' )}
+            />
+            <ThoughtsQuestion
+              thoughts={this.state.thoughts}
+              onChange={this.handleQuestionChange.bind(this, 'thoughts' )}
+            />
+            <SituationQuestion
+              situation={this.state.situation}
+              onChange={this.handleQuestionChange.bind(this, 'situation' )}
+            />
+
+            <ReactionQuestion
+              reaction={this.state.reaction}
+              onChange={this.handleQuestionChange.bind(this, 'reaction' )}
+            />
+            <ResultsScreen
+              feeling={this.state.feeling}
+              body={this.state.body}
+              thoughts={this.state.thoughts}
+              situation={this.state.situation}
+              reaction={this.state.reaction}
+              clearData={this.clearData} />
         </div>
       </div>
     );

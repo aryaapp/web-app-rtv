@@ -1,0 +1,4 @@
+AuthName "rtv-web"
+AuthType Basic
+AuthUserFile /var/www/html/rtv-web/.htpasswd
+require valid-user

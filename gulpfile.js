@@ -9,17 +9,45 @@ var 	gulp = require('gulp'),
 		babel = require("gulp-babel"),
 		less = require('gulp-less'),
 		path = require('path'),
+    rsync = require('gulp-rsync');
 		connect = require('gulp-connect'),
 		config = {
-			lessDir: '../arya-website/less',
+			lessDir: './src/less',
+			imagesDir: './src/images',
+			aryaLessDir: '../arya-website/less',
 			jsDir: './src/javascript',
-			staticDir: './src/static'
+			staticDir: './src/static',
+      rsync: {
+        src:  'dist/**',
+        options: {
+          destination: '/var/www/html/rtv-web/',
+          root: 'dist',
+          hostname: 'arya-web', // needs to be setup in ~/.ssh/config
+          username: 'root',
+          incremental: true,
+          progress: true,
+          relative: true,
+          emptyDirectories: true,
+          recursive: true,
+          clean: true,
+          exclude: [],
+          include: []
+        }
+      },
 		};
+
+
 
 // moves fonts to /public folder
 gulp.task('icons', function() {
     return gulp.src(config.bowerDir + '/fontawesome/fonts/**.*')
 		.pipe(gulp.dest('./dist/fonts'));
+});
+
+// moves images to /public folder
+gulp.task('images', function() {
+    return gulp.src(config.imagesDir + '/**.*')
+		.pipe(gulp.dest('./dist/images'));
 });
 
 // moves static folders to /public folder
@@ -29,7 +57,7 @@ gulp.task('static', function() {
 });
 
 gulp.task('less', function () {
-  return gulp.src(config.lessDir + '/**/styles_dash.less')
+  return gulp.src([config.aryaLessDir + '/**/styles.less', config.lessDir + '/**/styles-rtv-app.less'])
     .pipe(less({
       paths: [ path.join(__dirname, 'config.lessDir', 'includes') ]
     }))
@@ -92,9 +120,20 @@ gulp.task('html', function () {
 
 // Rerun the task when a file changes
 gulp.task('watch', function() {
-	gulp.watch(config.lessDir + '/**/*.less', ['less']);
+	gulp.watch([config.lessDir + '/**/*.less', config.aryaLessDir + '/**/*.less' ] , ['less']);
 	gulp.watch(config.jsDir + '/**/*.js', ['babel','bundle']);
 	gulp.watch(config.staticDir + '/**/*.*', ['static']);
 });
 // runs basic tasks when first using gulp
 gulp.task('default', ['bower', 'icons', 'css']);
+
+
+/**
+ * Copy files and folder to server
+ * via rsync
+ */
+gulp.task('deploy', function() {
+  return gulp.src(config.rsync.src)
+    .pipe(rsync(config.rsync.options));
+});
+

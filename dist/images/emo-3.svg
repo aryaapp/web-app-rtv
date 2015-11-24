@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="60px" height="60px" viewBox="0 0 60 60" enable-background="new 0 0 60 60" xml:space="preserve">
+<g>
+	<path fill="#CCCCCC" d="M30,60C13.458,60,0,46.541,0,29.999C0,13.458,13.458,0,30,0c16.541,0,30,13.458,30,29.999
+		C60,46.541,46.541,60,30,60z M30,3.308c-14.719,0-26.692,11.973-26.692,26.691c0,14.719,11.973,26.693,26.692,26.693
+		c14.72,0,26.692-11.975,26.692-26.693C56.692,15.281,44.72,3.308,30,3.308z"/>
+	<ellipse fill="#CCCCCC" cx="21.799" cy="23.688" rx="2.394" ry="3.607"/>
+	<ellipse fill="#CCCCCC" cx="37.854" cy="23.688" rx="2.393" ry="3.607"/>
+	<path fill="#CCCCCC" d="M36.046,45.094H24.707c-0.913,0-1.652-0.739-1.652-1.652c0-0.914,0.74-1.653,1.652-1.653h11.339
+		c0.914,0,1.654,0.739,1.654,1.653C37.7,44.354,36.96,45.094,36.046,45.094z"/>
+</g>
+</svg>
