@@ -17,7 +17,6 @@ const customStyles = {
     border                     : 'none',
     background                 : 'rgba(0,0,0,0.8)',
     borderRadius               : '0',
-    padding                    : '32px',
     color                      : '#fff'
   }
 }
@@ -36,7 +35,8 @@ var QuestionModal = React.createClass({
     return (
       <div>
         <div className="modal-trigger">
-          <i className="fa fa-lg fa-question-circle" onClick={this.openModal}></i>
+          <i className="fa fa-lg fa-question-circle visible-xs" onClick={this.openModal}></i>
+          <i className="fa fa-2x fa-question-circle hidden-xs trigger-desktop" onClick={this.openModal}></i>
         </div>
         <Modal
           isOpen={this.state.isOpen}
@@ -55,3 +55,5 @@ var QuestionModal = React.createClass({
 });
 
 module.exports = QuestionModal
+
+//modal toggle add classnames for desktop
