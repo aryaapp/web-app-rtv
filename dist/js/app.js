@@ -35883,33 +35883,37 @@ var SliderInput = _react2['default'].createClass({
         _react2['default'].createElement(
           'div',
           { className: 'col-xs-10 col-xs-push-1' },
-          _react2['default'].createElement(ReactSlider, { defaultValue: 90 })
+          _react2['default'].createElement(ReactSlider, { defaultValue: 90 }),
+          _react2['default'].createElement(
+            'div',
+            { id: 'emo-container' },
+            _react2['default'].createElement(
+              'a',
+              null,
+              _react2['default'].createElement('img', { src: 'images/emo-1.svg', className: 'svg emo emo-1' })
+            ),
+            _react2['default'].createElement(
+              'a',
+              null,
+              _react2['default'].createElement('img', { src: 'images/emo-2.svg', className: 'svg emo emo-2' })
+            ),
+            _react2['default'].createElement(
+              'a',
+              null,
+              _react2['default'].createElement('img', { src: 'images/emo-3.svg', className: 'svg emo emo-3' })
+            ),
+            _react2['default'].createElement(
+              'a',
+              null,
+              _react2['default'].createElement('img', { src: 'images/emo-4.svg', className: 'svg emo emo-4' })
+            ),
+            _react2['default'].createElement(
+              'a',
+              null,
+              _react2['default'].createElement('img', { src: 'images/emo-5.svg', className: 'svg emo emo-5' })
+            )
+          )
         )
-      ),
-      _react2['default'].createElement(
-        'div',
-        { className: 'col-xs-2 col-xs-push-1 no-padding' },
-        _react2['default'].createElement('img', { src: 'images/emo-1.svg', className: 'svg emo emo-1' })
-      ),
-      _react2['default'].createElement(
-        'div',
-        { className: 'col-xs-2 col-xs-push-1 no-padding' },
-        _react2['default'].createElement('img', { src: 'images/emo-2.svg', className: 'svg emo emo-2' })
-      ),
-      _react2['default'].createElement(
-        'div',
-        { className: 'col-xs-2 col-xs-push-1 no-padding' },
-        _react2['default'].createElement('img', { src: 'images/emo-3.svg', className: 'svg emo emo-3' })
-      ),
-      _react2['default'].createElement(
-        'div',
-        { className: 'col-xs-2 col-xs-push-1 no-padding' },
-        _react2['default'].createElement('img', { src: 'images/emo-4.svg', className: 'svg emo emo-4' })
-      ),
-      _react2['default'].createElement(
-        'div',
-        { className: 'col-xs-2 col-xs-push-1 no-padding' },
-        _react2['default'].createElement('img', { src: 'images/emo-5.svg', className: 'svg emo emo-5' })
       )
     );
   }

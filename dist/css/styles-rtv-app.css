@@ -10001,12 +10001,28 @@ body {
 .emo {
   width: 40px;
 }
+#emo-container {
+  display: table;
+  width: 120%;
+  margin: 20px auto;
+  margin-left: -10%;
+}
+#emo-container a {
+  display: table-cell;
+  text-align: center;
+  width: 20%;
+}
+#emo-container img {
+  width: 100%;
+  max-width: 30px;
+}
 textarea {
   background: #fafafa;
   height: 80px;
   width: 100%;
   border-radius: 0;
   resize: none;
+  margin-top: 6px;
 }
 .text-input {
   padding-left: 32px;
