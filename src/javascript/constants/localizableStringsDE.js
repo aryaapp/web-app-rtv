@@ -83,6 +83,8 @@ module.exports = {
 	"QUESTION_FINISH_TITLE" : "Du bist fertig!",
 	"QUESTION_FINISH_SUBTITLE" : "Bestätige, um deinen Eintrag auf dem Gerät zu speichern.",
 	"QUESTION_FINISH_CONFIRM" : "Bestätige deinen Eintrag",
+	"WELCOME_SCREEN_TITLE" : "Willkommen",
+	"WELCOME_SCREEN_INTRO" : "Hallo lieber Nutzer",
 
 	"UI_DONE" : "Fertig",
 	"UI_NO_SUGGESTIONS" : "Keine Vorschläge",

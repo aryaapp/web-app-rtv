@@ -8,23 +8,23 @@ let ScrollIndicator = require('./ScrollIndicator.react.js')
 
 
 let Section = React.createClass({
-	render() {
+  render() {
 
-		let indicator =  (this.props.indicator ? <ScrollIndicator />: "")
+    let indicator =  (this.props.indicator ? <ScrollIndicator />: "")
 
-		return (
-			<div className="section relative scrollable">
-        		{ indicator }
-            <div className="container-fluid">
-          		<div className=" row ">
-            			<div className="rtv-question">
-            				{this.props.children}
-            			</div>
-            		</div>
-            	</div>
+    return (
+      <div className="section relative scrollable">
+        { indicator }
+        <div className="container-fluid">
+          <div className="row">
+            <div className="rtv-question">
+               {this.props.children}
             </div>
-		);
-	}
+          </div>
+        </div>
+      </div>
+    );
+  }
 });
 
 module.exports = Section
