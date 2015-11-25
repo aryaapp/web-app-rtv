@@ -36,6 +36,9 @@ const ConfirmationModal = React.createClass({
   closeModal: function() {
     this.setState({ isOpen: false })
   },
+  newJournal: function() {
+    console.log('clear state and scroll to question 1')
+  },
   update: function(value) {
     this.props.onChange(value)
   },
@@ -53,7 +56,7 @@ const ConfirmationModal = React.createClass({
           <div className="alert alert-success" >Your mood journal was successfully sent to your email</div>
           <div className="alert alert-error" >Thank you for becoming more mindful. Want to read more about the topic?
            Look <a href="">here</a> </div>
-          <button className="btn btn-full-width btn-success" onClick={this.closeModal}>Close</button>
+          <button className="btn btn-full-width btn-success" onClick={this.newJournal}>New Journal</button>
         </Modal>
       </div>
     );

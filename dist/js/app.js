@@ -36823,6 +36823,9 @@ var ConfirmationModal = _react2['default'].createClass({
   closeModal: function closeModal() {
     this.setState({ isOpen: false });
   },
+  newJournal: function newJournal() {
+    console.log('clear state and scroll to question 1');
+  },
   update: function update(value) {
     this.props.onChange(value);
   },
@@ -36864,8 +36867,8 @@ var ConfirmationModal = _react2['default'].createClass({
         ),
         _react2['default'].createElement(
           'button',
-          { className: 'btn btn-full-width btn-success', onClick: this.closeModal },
-          'Close'
+          { className: 'btn btn-full-width btn-success', onClick: this.newJournal },
+          'New Journal'
         )
       )
     );
