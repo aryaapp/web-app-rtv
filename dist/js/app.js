@@ -36410,7 +36410,7 @@ var DisplayBody = _react2['default'].createClass({
 
 module.exports = DisplayBody;
 
-},{"../constants/localizableStringsDE.js":272,"react":249}],251:[function(require,module,exports){
+},{"../constants/localizableStringsDE.js":273,"react":249}],251:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -36733,7 +36733,7 @@ var BodyQuestion = _react2['default'].createClass({
 
 module.exports = BodyQuestion;
 
-},{"../../constants/localizableStringsDE.js":272,"./BodyImage.react.js":251,"./BodyModal.react.js":252,"./FixedSectionFooter.react.js":257,"./QuestionButton.react.js":259,"./QuestionModal.react.js":261,"./QuestionTitle.react.js":262,"./ScrollIndicator.react.js":264,"./Section.react.js":265,"./SliderInput.react.js":267,"react":249,"react-addons-update":70}],254:[function(require,module,exports){
+},{"../../constants/localizableStringsDE.js":273,"./BodyImage.react.js":251,"./BodyModal.react.js":252,"./FixedSectionFooter.react.js":257,"./QuestionButton.react.js":259,"./QuestionModal.react.js":261,"./QuestionTitle.react.js":262,"./ScrollIndicator.react.js":264,"./Section.react.js":265,"./SliderInput.react.js":267,"react":249,"react-addons-update":70}],254:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -36895,6 +36895,7 @@ var QuestionButton = require('./QuestionButton.react.js');
 var QuestionTitle = require('./QuestionTitle.react.js');
 var QuestionMain = require('./QuestionMain.react.js');
 var QuestionModal = require('./QuestionModal.react.js');
+var WelcomeModal = require('./WelcomeModal.react.js');
 var SliderInput = require('./SliderInput.react.js');
 var SliderRange = require('./SliderRange.react.js');
 var ScrollIndicator = require('./ScrollIndicator.react.js');
@@ -36935,7 +36936,7 @@ var FeelingQuestion = _react2['default'].createClass({
 
 module.exports = FeelingQuestion;
 
-},{"../../constants/localizableStringsDE.js":272,"./QuestionButton.react.js":259,"./QuestionMain.react.js":260,"./QuestionModal.react.js":261,"./QuestionTitle.react.js":262,"./ScrollIndicator.react.js":264,"./Section.react.js":265,"./SliderInput.react.js":267,"./SliderRange.react.js":268,"react":249}],257:[function(require,module,exports){
+},{"../../constants/localizableStringsDE.js":273,"./QuestionButton.react.js":259,"./QuestionMain.react.js":260,"./QuestionModal.react.js":261,"./QuestionTitle.react.js":262,"./ScrollIndicator.react.js":264,"./Section.react.js":265,"./SliderInput.react.js":267,"./SliderRange.react.js":268,"./WelcomeModal.react.js":271,"react":249}],257:[function(require,module,exports){
 "use strict";
 
 var React = require('react');
@@ -37276,7 +37277,7 @@ var ReactionQuestion = _react2['default'].createClass({
 
 module.exports = ReactionQuestion;
 
-},{"../../constants/localizableStringsDE.js":272,"./ListInput.react.js":258,"./QuestionButton.react.js":259,"./QuestionMain.react.js":260,"./QuestionModal.react.js":261,"./QuestionTitle.react.js":262,"./Section.react.js":265,"react":249}],264:[function(require,module,exports){
+},{"../../constants/localizableStringsDE.js":273,"./ListInput.react.js":258,"./QuestionButton.react.js":259,"./QuestionMain.react.js":260,"./QuestionModal.react.js":261,"./QuestionTitle.react.js":262,"./Section.react.js":265,"react":249}],264:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -37418,7 +37419,7 @@ var SituationQuestion = _react2['default'].createClass({
 
 module.exports = SituationQuestion;
 
-},{"../../constants/localizableStringsDE.js":272,"./ListInput.react.js":258,"./QuestionButton.react.js":259,"./QuestionMain.react.js":260,"./QuestionModal.react.js":261,"./QuestionTitle.react.js":262,"./Section.react.js":265,"react":249}],267:[function(require,module,exports){
+},{"../../constants/localizableStringsDE.js":273,"./ListInput.react.js":258,"./QuestionButton.react.js":259,"./QuestionMain.react.js":260,"./QuestionModal.react.js":261,"./QuestionTitle.react.js":262,"./Section.react.js":265,"react":249}],267:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -37652,7 +37653,84 @@ module.exports = ThoughtsQuestion;
 
 //<QuestionModal><p>Hello Thoughts!</p></QuestionModal>
 
-},{"../../constants/localizableStringsDE.js":272,"./QuestionButton.react.js":259,"./QuestionMain.react.js":260,"./QuestionModal.react.js":261,"./QuestionTitle.react.js":262,"./ScrollIndicator.react.js":264,"./Section.react.js":265,"./TextInput.react.js":269,"react":249}],271:[function(require,module,exports){
+},{"../../constants/localizableStringsDE.js":273,"./QuestionButton.react.js":259,"./QuestionMain.react.js":260,"./QuestionModal.react.js":261,"./QuestionTitle.react.js":262,"./ScrollIndicator.react.js":264,"./Section.react.js":265,"./TextInput.react.js":269,"react":249}],271:[function(require,module,exports){
+/**
+* @module rtv-mood tracker
+* @submodule Question
+*/
+'use strict';
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var Modal = require('react-modal');
+
+var customStyles = {
+  content: {
+    position: 'absolute',
+    top: '0',
+    left: '0',
+    right: '0',
+    bottom: '0',
+    border: 'none',
+    borderRadius: '0'
+  }
+};
+
+var WelcomeModal = _react2['default'].createClass({
+  displayName: 'WelcomeModal',
+
+  getInitialState: function getInitialState() {
+    return { isOpen: true };
+  },
+  openModal: function openModal() {
+    this.setState({ isOpen: true });
+  },
+  closeModal: function closeModal() {
+    this.setState({ isOpen: false });
+  },
+  render: function render() {
+    return _react2['default'].createElement(
+      'div',
+      null,
+      _react2['default'].createElement(
+        Modal,
+        {
+          isOpen: this.state.isOpen,
+          onRequestClose: this.closeModal,
+          style: customStyles },
+        _react2['default'].createElement(
+          'h3',
+          { className: 'rtv-title' },
+          'RTV Moodtracker'
+        ),
+        _react2['default'].createElement(
+          'p',
+          null,
+          'Nice to see you again! Let\'s get your mind empty and mindful'
+        ),
+        _react2['default'].createElement(
+          'button',
+          { className: 'btn btn-full-width btn-success', onClick: this.closeModal },
+          'Get Started'
+        )
+      )
+    );
+  }
+});
+
+module.exports = WelcomeModal;
+
+//modal toggle add classnames for desktop
+
+},{"react":249,"react-dom":72,"react-modal":79}],272:[function(require,module,exports){
 /**
 * @module rtv-mood tracker
 * @submodule Question
@@ -37818,7 +37896,7 @@ var ResultsScreen = _react2['default'].createClass({
 
 module.exports = ResultsScreen;
 
-},{"./DisplayBody.react.js":250,"./Question/ConfirmationModal.react.js":255,"./Question/FixedSectionFooter.react.js":257,"./Question/QuestionTitle.react.js":262,"./Question/Section.react.js":265,"rc-slider":8,"react":249}],272:[function(require,module,exports){
+},{"./DisplayBody.react.js":250,"./Question/ConfirmationModal.react.js":255,"./Question/FixedSectionFooter.react.js":257,"./Question/QuestionTitle.react.js":262,"./Question/Section.react.js":265,"rc-slider":8,"react":249}],273:[function(require,module,exports){
 "use strict";
 
 module.exports = {
@@ -37925,7 +38003,7 @@ module.exports = {
 	"LOG_OUT": "Abmelden"
 };
 
-},{}],273:[function(require,module,exports){
+},{}],274:[function(require,module,exports){
 'use strict';
 
 var jQuery = require('jquery');
@@ -37934,7 +38012,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 require('./fullpage.js');
 
-// var jQueryFullPage = require('../../node_modules/fullpage.js/jquery.fullPage.js');
+// var jQueryFullPage = require('../../node_modules/fullpage.js/jquery.fullPage.js')
 
 var FeelingQuestion = require('./components/Question/FeelingQuestion.react.js');
 var ThoughtsQuestion = require('./components/Question/ThoughtsQuestion.react.js');
@@ -37942,6 +38020,7 @@ var SituationQuestion = require('./components/Question/SituationQuestion.react.j
 var ReactionQuestion = require('./components/Question/ReactionQuestion.react.js');
 var BodyQuestion = require('./components/Question/BodyQuestion.react.js');
 var ResultsScreen = require('./components/ResultsScreen.react.js');
+var WelcomeModal = require('./components/Question/WelcomeModal.react.js');
 
 var App = React.createClass({
   displayName: 'App',
@@ -37974,48 +38053,18 @@ var App = React.createClass({
     this.setState(this.getInitialState());
   },
   render: function render() {
-    //container-fluid?
+    //can we lazy load the Fullpage app? While displaying the WelcomeModal?
     return React.createElement(
       'div',
       { className: '' },
-      React.createElement(
-        'div',
-        { id: 'fullpage' },
-        React.createElement(FeelingQuestion, {
-          feeling: this.state.feeling,
-          onChange: this.handleQuestionChange.bind(this, 'feeling')
-        }),
-        React.createElement(BodyQuestion, {
-          body: this.state.body,
-          onChange: this.handleQuestionChange.bind(this, 'body')
-        }),
-        React.createElement(ThoughtsQuestion, {
-          thoughts: this.state.thoughts,
-          onChange: this.handleQuestionChange.bind(this, 'thoughts')
-        }),
-        React.createElement(SituationQuestion, {
-          situation: this.state.situation,
-          onChange: this.handleQuestionChange.bind(this, 'situation')
-        }),
-        React.createElement(ReactionQuestion, {
-          reaction: this.state.reaction,
-          onChange: this.handleQuestionChange.bind(this, 'reaction')
-        }),
-        React.createElement(ResultsScreen, {
-          feeling: this.state.feeling,
-          body: this.state.body,
-          thoughts: this.state.thoughts,
-          situation: this.state.situation,
-          reaction: this.state.reaction,
-          clearData: this.clearData })
-      )
+      React.createElement(WelcomeModal, null)
     );
   }
 });
 
 ReactDOM.render(React.createElement(App, null), document.getElementById('react-app'));
 
-},{"./components/Question/BodyQuestion.react.js":253,"./components/Question/FeelingQuestion.react.js":256,"./components/Question/ReactionQuestion.react.js":263,"./components/Question/SituationQuestion.react.js":266,"./components/Question/ThoughtsQuestion.react.js":270,"./components/ResultsScreen.react.js":271,"./fullpage.js":274,"jquery":2,"react":249,"react-dom":72}],274:[function(require,module,exports){
+},{"./components/Question/BodyQuestion.react.js":253,"./components/Question/FeelingQuestion.react.js":256,"./components/Question/ReactionQuestion.react.js":263,"./components/Question/SituationQuestion.react.js":266,"./components/Question/ThoughtsQuestion.react.js":270,"./components/Question/WelcomeModal.react.js":271,"./components/ResultsScreen.react.js":272,"./fullpage.js":275,"jquery":2,"react":249,"react-dom":72}],275:[function(require,module,exports){
 // var $ = require('jquery')
 // var jQueryFullPage = require('../../node_modules/fullpage.js/jquery.fullPage.js')
 
@@ -38034,4 +38083,4 @@ $(document).ready(function () {
     });
 });
 
-},{}]},{},[273])
+},{}]},{},[274])

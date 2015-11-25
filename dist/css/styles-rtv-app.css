@@ -9935,6 +9935,13 @@ ul.dropdown-lang li a:hover {
     left: 25%;
   }
 }
+.welcome {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: white;
+  z-index: 200;
+}
 html,
 body {
   height: 100%;
