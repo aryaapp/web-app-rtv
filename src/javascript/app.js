@@ -1,17 +1,18 @@
-var jQuery = require('jquery');
-require('jquery');
-var React = require('react');
-var ReactDOM = require('react-dom');
-require('./fullpage.js');
+var jQuery = require('jquery')
+require('jquery')
+var React = require('react')
+var ReactDOM = require('react-dom')
+require('./fullpage.js')
 
-// var jQueryFullPage = require('../../node_modules/fullpage.js/jquery.fullPage.js');
+// var jQueryFullPage = require('../../node_modules/fullpage.js/jquery.fullPage.js')
 
-var FeelingQuestion = require('./components/Question/FeelingQuestion.react.js');
-var ThoughtsQuestion = require('./components/Question/ThoughtsQuestion.react.js');
-var SituationQuestion = require('./components/Question/SituationQuestion.react.js');
-var ReactionQuestion = require('./components/Question/ReactionQuestion.react.js');
-var BodyQuestion = require('./components/Question/BodyQuestion.react.js');
-var ResultsScreen = require('./components/ResultsScreen.react.js');
+var FeelingQuestion = require('./components/Question/FeelingQuestion.react.js')
+var ThoughtsQuestion = require('./components/Question/ThoughtsQuestion.react.js')
+var SituationQuestion = require('./components/Question/SituationQuestion.react.js')
+var ReactionQuestion = require('./components/Question/ReactionQuestion.react.js')
+var BodyQuestion = require('./components/Question/BodyQuestion.react.js')
+var ResultsScreen = require('./components/ResultsScreen.react.js')
+var WelcomeModal = require('./components/Question/WelcomeModal.react.js')
 
 var App = React.createClass({
   getInitialState: function() {
@@ -42,39 +43,11 @@ var App = React.createClass({
     this.setState(this.getInitialState())
   },
   render: function() {
-    //container-fluid?
+    //can we lazy load the Fullpage app? While displaying the WelcomeModal?
     return (
       <div className="">
-         <div id="fullpage">
-            <FeelingQuestion
-              feeling={this.state.feeling}
-              onChange={this.handleQuestionChange.bind(this, 'feeling' )}
-            />
-            <BodyQuestion
-              body={this.state.body}
-              onChange={this.handleQuestionChange.bind(this, 'body' )}
-            />
-            <ThoughtsQuestion
-              thoughts={this.state.thoughts}
-              onChange={this.handleQuestionChange.bind(this, 'thoughts' )}
-            />
-            <SituationQuestion
-              situation={this.state.situation}
-              onChange={this.handleQuestionChange.bind(this, 'situation' )}
-            />
-
-            <ReactionQuestion
-              reaction={this.state.reaction}
-              onChange={this.handleQuestionChange.bind(this, 'reaction' )}
-            />
-            <ResultsScreen
-              feeling={this.state.feeling}
-              body={this.state.body}
-              thoughts={this.state.thoughts}
-              situation={this.state.situation}
-              reaction={this.state.reaction}
-              clearData={this.clearData} />
-        </div>
+          <WelcomeModal />
+          
       </div>
     );
   }
