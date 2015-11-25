@@ -38057,7 +38057,42 @@ var App = React.createClass({
     return React.createElement(
       'div',
       { className: '' },
-      React.createElement(WelcomeModal, null)
+      React.createElement(
+        'div',
+        { className: 'welcome' },
+        React.createElement(WelcomeModal, null)
+      ),
+      React.createElement(
+        'div',
+        { id: 'fullpage' },
+        React.createElement(FeelingQuestion, {
+          feeling: this.state.feeling,
+          onChange: this.handleQuestionChange.bind(this, 'feeling')
+        }),
+        React.createElement(BodyQuestion, {
+          body: this.state.body,
+          onChange: this.handleQuestionChange.bind(this, 'body')
+        }),
+        React.createElement(ThoughtsQuestion, {
+          thoughts: this.state.thoughts,
+          onChange: this.handleQuestionChange.bind(this, 'thoughts')
+        }),
+        React.createElement(SituationQuestion, {
+          situation: this.state.situation,
+          onChange: this.handleQuestionChange.bind(this, 'situation')
+        }),
+        React.createElement(ReactionQuestion, {
+          reaction: this.state.reaction,
+          onChange: this.handleQuestionChange.bind(this, 'reaction')
+        }),
+        React.createElement(ResultsScreen, {
+          feeling: this.state.feeling,
+          body: this.state.body,
+          thoughts: this.state.thoughts,
+          situation: this.state.situation,
+          reaction: this.state.reaction,
+          clearData: this.clearData })
+      )
     );
   }
 });

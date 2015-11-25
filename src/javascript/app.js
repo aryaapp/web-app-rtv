@@ -46,8 +46,39 @@ var App = React.createClass({
     //can we lazy load the Fullpage app? While displaying the WelcomeModal?
     return (
       <div className="">
-          <WelcomeModal />
-          
+          <div className="welcome">
+            <WelcomeModal />
+          </div>
+          <div id="fullpage">
+            <FeelingQuestion
+              feeling={this.state.feeling}
+              onChange={this.handleQuestionChange.bind(this, 'feeling' )}
+            />
+            <BodyQuestion
+              body={this.state.body}
+              onChange={this.handleQuestionChange.bind(this, 'body' )}
+            />
+            <ThoughtsQuestion
+              thoughts={this.state.thoughts}
+              onChange={this.handleQuestionChange.bind(this, 'thoughts' )}
+            />
+            <SituationQuestion
+              situation={this.state.situation}
+              onChange={this.handleQuestionChange.bind(this, 'situation' )}
+            />
+
+            <ReactionQuestion
+              reaction={this.state.reaction}
+              onChange={this.handleQuestionChange.bind(this, 'reaction' )}
+            />
+            <ResultsScreen
+              feeling={this.state.feeling}
+              body={this.state.body}
+              thoughts={this.state.thoughts}
+              situation={this.state.situation}
+              reaction={this.state.reaction}
+              clearData={this.clearData} />
+        </div>
       </div>
     );
   }
