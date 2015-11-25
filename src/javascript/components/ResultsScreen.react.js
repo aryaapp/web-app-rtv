@@ -10,6 +10,7 @@ let QuestionTitle = require('./Question/QuestionTitle.react.js')
 let FixedSectionFooter = require('./Question/FixedSectionFooter.react.js')
 let ReactSlider = require('rc-slider')
 let DisplayBody = require('./DisplayBody.react.js')
+let ConfirmationModal = require('./Question/ConfirmationModal.react.js')
 
 var ResultsScreen = React.createClass({
   getDefaultProps: function () {
@@ -41,6 +42,7 @@ var ResultsScreen = React.createClass({
   sendResults: function(e) {
     if (this.checkEMail()) {
       console.log('E-Mail results to:', this.state.email)
+      this.openModal()
     }
   },
 
@@ -82,6 +84,7 @@ var ResultsScreen = React.createClass({
             </div>
           </div>
         </div>
+        <ConfirmationModal />
       </Section>
     );
   }
