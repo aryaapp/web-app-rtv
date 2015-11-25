@@ -10030,6 +10030,22 @@ textarea {
 .submit-form {
   margin-bottom: 16px;
 }
+#body-image-container {
+  height: 90%;
+  text-align: center;
+}
+#body-image {
+  height: 100%;
+}
+.body-part {
+  stroke: #565656;
+  stroke-width: 1px;
+}
+.checkbox {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #ccc;
+}
 .btn {
   font-size: 16px;
   font-weight: normal;
@@ -10101,7 +10117,7 @@ dl.rtv-results {
   background: white;
   z-index: 3;
   left: 0;
-  height: 180px;
+  height: 80%;
   width: 100%;
 }
 .relative {
@@ -10143,15 +10159,6 @@ dl.rtv-results {
 .rc-slider-track,
 .rc-slider-disabled .rc-slider-track {
   background-color: #05ab97;
-}
-.ReactModal__Content--after-open {
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  /* border: 1px solid #ccc; */
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
 }
 @media (min-width: 768px) {
   .ReactModal__Content--after-open {

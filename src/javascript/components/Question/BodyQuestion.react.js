@@ -15,6 +15,7 @@ let ScrollIndicator = require('./ScrollIndicator.react.js')
 let BodyModal = require('./BodyModal.react.js');
 let BodyImage = require('./BodyImage.react.js');
 let Content = require('../../constants/localizableStringsDE.js')
+let FixedSectionFooter = require('./FixedSectionFooter.react.js')
 
 let BodyQuestion = React.createClass({
   getDefaultProps: function () {
@@ -93,59 +94,61 @@ let BodyQuestion = React.createClass({
 
     return (
       <Section>
+        <div className="col-xs-1"></div>
         <QuestionTitle title={ Content.QUESTION_BODY_TITLE } />
-        <div className="col-xs-10 col-xs-push-1">
+        <FixedSectionFooter>
           <BodyImage body={this.props.body} openBodyModal={this.openBodyModal} />
-          <BodyModal
-            ref='body_head'
-            values={that.props.body['head']}
-            title='Kopf'
-            options={options['head']}
-            onChange={that.update.bind(that, 'head')}
-            />
-          <BodyModal
-            ref='body_left_arm'
-            values={that.props.body['left_arm']}
-            title="Linker Arm"
-            options={options['left_arm']}
-            onChange={that.update.bind(that, 'left_arm')}
-            />
-          <BodyModal
-            ref='body_right_arm'
-            values={that.props.body['right_arm']}
-            title="Rechter Arm"
-            options={options['right_arm']}
-            onChange={that.update.bind(that, 'right_arm')}
-            />
-          <BodyModal
-            ref='body_chest'
-            values={that.props.body['chest']}
-            title="Brust"
-            options={options['chest']}
-            onChange={that.update.bind(that, 'chest')}
-            />
-          <BodyModal
-            ref='body_hip'
-            values={that.props.body['hip']}
-            title="Unterleib"
-            options={options['hip']}
-            onChange={that.update.bind(that, 'hip')}
-            />
-          <BodyModal
-            ref='body_left_leg'
-            values={that.props.body['left_leg']}
-            title="Linkes Bein"
-            options={options['left_leg']}
-            onChange={that.update.bind(that, 'left_leg')}
-            />
-          <BodyModal
-            ref='body_right_leg'
-            values={that.props.body['right_leg']}
-            title="Rechtes Bein"
-            options={options['right_leg']}
-            onChange={that.update.bind(that, 'right_leg')}
-            />
-        </div>
+        </FixedSectionFooter>
+        
+        <BodyModal
+          ref='body_head'
+          values={that.props.body['head']}
+          title='Kopf'
+          options={options['head']}
+          onChange={that.update.bind(that, 'head')}
+          />
+        <BodyModal
+          ref='body_left_arm'
+          values={that.props.body['left_arm']}
+          title="Linker Arm"
+          options={options['left_arm']}
+          onChange={that.update.bind(that, 'left_arm')}
+          />
+        <BodyModal
+          ref='body_right_arm'
+          values={that.props.body['right_arm']}
+          title="Rechter Arm"
+          options={options['right_arm']}
+          onChange={that.update.bind(that, 'right_arm')}
+          />
+        <BodyModal
+          ref='body_chest'
+          values={that.props.body['chest']}
+          title="Brust"
+          options={options['chest']}
+          onChange={that.update.bind(that, 'chest')}
+          />
+        <BodyModal
+          ref='body_hip'
+          values={that.props.body['hip']}
+          title="Unterleib"
+          options={options['hip']}
+          onChange={that.update.bind(that, 'hip')}
+          />
+        <BodyModal
+          ref='body_left_leg'
+          values={that.props.body['left_leg']}
+          title="Linkes Bein"
+          options={options['left_leg']}
+          onChange={that.update.bind(that, 'left_leg')}
+          />
+        <BodyModal
+          ref='body_right_leg'
+          values={that.props.body['right_leg']}
+          title="Rechtes Bein"
+          options={options['right_leg']}
+          onChange={that.update.bind(that, 'right_leg')}
+          />
         <QuestionModal
               title ={ Content.QUESTION_BODY_TITLE }
               body = { Content.QUESTION_BODY_EXPLANATION }/>
