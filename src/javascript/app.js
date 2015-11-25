@@ -11,6 +11,7 @@ var ThoughtsQuestion = require('./components/Question/ThoughtsQuestion.react.js'
 var SituationQuestion = require('./components/Question/SituationQuestion.react.js');
 var ReactionQuestion = require('./components/Question/ReactionQuestion.react.js');
 var BodyQuestion = require('./components/Question/BodyQuestion.react.js');
+var WelcomeScreen = require('./components/WelcomeScreen.react.js');
 var ResultsScreen = require('./components/ResultsScreen.react.js');
 
 var App = React.createClass({
@@ -46,6 +47,8 @@ var App = React.createClass({
     return (
       <div className="">
          <div id="fullpage">
+            <WelcomeScreen
+            />
             <FeelingQuestion
               feeling={this.state.feeling}
               onChange={this.handleQuestionChange.bind(this, 'feeling' )}
