@@ -14,4 +14,7 @@ $(document).ready(function() {
         scrollingSpeed: 1000,
         scrollOverflow: true
     });
+    $.fn.fullpage.setAllowScrolling(false);
+    $.fn.fullpage.setKeyboardScrolling(false);
+    $('#fp-nav').hide();
 });

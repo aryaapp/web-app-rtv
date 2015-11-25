@@ -45,7 +45,7 @@ var App = React.createClass({
   render: function() {
     //can we lazy load the Fullpage app? While displaying the WelcomeModal?
     return (
-      <div className="">
+      <div className="main-app">
           <div className="welcome">
             <WelcomeModal />
           </div>
