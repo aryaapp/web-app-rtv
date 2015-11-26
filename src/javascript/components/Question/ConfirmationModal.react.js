@@ -31,9 +31,17 @@ const ConfirmationModal = React.createClass({
     return { isOpen: false };
   },
   openModal: function() {
+    $.fn.fullpage.setAllowScrolling(false);
+    $.fn.fullpage.setKeyboardScrolling(false);
+    $('#fp-nav').hide();
+
     this.setState({ isOpen: true })
   },
   closeModal: function() {
+    $('#fp-nav').show();
+    $.fn.fullpage.setAllowScrolling(true);
+    $.fn.fullpage.setKeyboardScrolling(true);
+
     this.setState({ isOpen: false })
   },
   newJournal: function() {
@@ -51,7 +59,7 @@ const ConfirmationModal = React.createClass({
         </div>
         <Modal
           isOpen={this.state.isOpen}
-          onRequestClose={this.closeModal} 
+          onRequestClose={this.closeModal}
           style={customStyles} >
           <div className="alert alert-success" >Your mood journal was successfully sent to your email</div>
           <div className="alert alert-error" >Thank you for becoming more mindful. Want to read more about the topic?

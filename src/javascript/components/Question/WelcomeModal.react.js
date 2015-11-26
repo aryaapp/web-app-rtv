@@ -27,6 +27,9 @@ var WelcomeModal = React.createClass({
     this.setState({ isOpen: true })
   },
   closeModal: function() {
+    $.fn.fullpage.setAllowScrolling(true);
+    $.fn.fullpage.setKeyboardScrolling(true);
+    $('#fp-nav').show();
     this.setState({ isOpen: false })
   },
   render() {
