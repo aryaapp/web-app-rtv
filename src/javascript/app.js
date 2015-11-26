@@ -3,7 +3,7 @@ require('jquery')
 var React = require('react')
 var ReactDOM = require('react-dom')
 require('./fullpage.js')
-
+// let's add some style
 // var jQueryFullPage = require('../../node_modules/fullpage.js/jquery.fullPage.js')
 
 var FeelingQuestion = require('./components/Question/FeelingQuestion.react.js')
