@@ -44,7 +44,7 @@ gulp.task('icons', function() {
 		.pipe(gulp.dest('./dist/fonts'));
 });
 
-// moves images to /public folder
+// moves images to /dist folder
 gulp.task('images', function() {
     return gulp.src(config.imagesDir + '/**.*')
 		.pipe(gulp.dest('./dist/images'));
@@ -85,6 +85,7 @@ gulp.task('bundle', ['babel'], function () {
     ))
     .pipe(gulp.dest('./dist/js'))
 });
+
 
 // gulp.task('bundle',function() {
 // 	return gulp.src('./src/js5/app.js')
