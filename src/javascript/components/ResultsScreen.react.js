@@ -33,16 +33,13 @@ var ResultsScreen = React.createClass({
   },
 
   checkEMail: function(e) {
-    if(this.state.email != '') {
-      return true
-    } else {
-      return false
-    }
+    var re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    return re.test(this.state.email)
   },
   sendResults: function(e) {
     if (this.checkEMail()) {
       console.log('E-Mail results to:', this.state.email)
-      this.openModal()
+      this.refs['confirmation'].openModal()
     }
   },
 
@@ -84,7 +81,7 @@ var ResultsScreen = React.createClass({
             </div>
           </div>
         </div>
-        <ConfirmationModal />
+        <ConfirmationModal ref="confirmation" />
       </Section>
     );
   }
