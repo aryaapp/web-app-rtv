@@ -19,13 +19,16 @@ let Content = require('../../constants/localizableStringsDE.js')
 let FeelingQuestion = React.createClass({
   getDefaultProps: function () {
     return {
-      feeling: 50,
+      feeling: {
+        value: 50,
+        color: ""
+      },
       title: "Wie fühlst du dich?"
     };
   },
 
-  update: function(value) {
-    this.props.onChange(value)
+  update: function(feeling) {
+    this.props.onChange(feeling)
   },
 
   render() {
@@ -34,7 +37,7 @@ let FeelingQuestion = React.createClass({
             <div className="col-xs-1"></div>
             <QuestionTitle title={ Content.QUESTION_FEELING_TITLE } />
             <QuestionMain>
-              <SliderInput value={this.props.feeling} onChange={this.update} />
+              <SliderInput feeling={this.props.feeling} onChange={this.update} />
             </QuestionMain>
             <QuestionModal 
               title ={ Content.QUESTION_FEELING_TITLE } 

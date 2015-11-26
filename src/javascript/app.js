@@ -17,7 +17,10 @@ var WelcomeModal = require('./components/Question/WelcomeModal.react.js')
 var App = React.createClass({
   getInitialState: function() {
     return {
-      feeling: 90,
+      feeling: {
+        value: 50,
+        color: ""
+      },
       body: {
         head: [],
         left_arm: [],
@@ -36,6 +39,7 @@ var App = React.createClass({
     var newState = {}
     newState[question] = value
     this.setState(newState);
+    console.log('something changed')
     //tell fullpage to recalculate window size
     $.fn.fullpage.reBuild();
   },
@@ -45,7 +49,8 @@ var App = React.createClass({
   render: function() {
     //can we lazy load the Fullpage app? While displaying the WelcomeModal?
     return (
-      <div className="main-app">
+      <div className="gradient-background">
+        <div id="main-app">
           <div className="welcome">
             <WelcomeModal />
           </div>
@@ -78,6 +83,7 @@ var App = React.createClass({
               situation={this.state.situation}
               reaction={this.state.reaction}
               clearData={this.clearData} />
+          </div>
         </div>
       </div>
     );
