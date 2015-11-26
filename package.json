@@ -18,6 +18,7 @@
   "homepage": "https://github.com/aryaapp/web-app-rtv",
   "dependencies": {
     "bootstrap": "^3.3.5",
+    "d3": "^3.5.9",
     "fstream": "^1.0.8",
     "fullpage.js": "^2.7.4",
     "jquery": "^2.1.4",
