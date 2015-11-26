@@ -1,0 +1,255 @@
+
+// ARYA UNIT ---------------------------
+// -------------------------------------------
+@arya-unit: 16px;
+
+// ARYA COLORS --------------------
+// -------------------------------------------
+/* 07-12-2013 */
+@arya-white: #ffffff; /* background, text , icons */
+@arya-almost-white: #fafafa; /* background */
+@arya-almost-white2: #fafafa; /* ios app */
+@arya-very-light-grey: #f5f5f2; /* background */
+@arya-very-light-grey2:#e6e6e6; /*blog menubar*/
+@arya-light-grey: #d9d9d9; //#c8c7cc; /* lines 1px */
+@arya-light-grey2: #d9d9d9; /* ios app */
+@arya-grey: #99968c; /* accents */
+@arya-dark-grey: #565656; /* text */
+@arya-very-dark-grey: #343433; /* shadow */
+@arya-almost-black: #131313; /* text */
+@arya-black: #000000; /* text */
+
+@arya-pink: #ff0066; /* accents, cta? */
+@arya-turquoise: #00a88e;
+@arya-blue: #379dd4;
+@arya-green: #2cf43a;
+@arya-red: #dc2400;
+@arya-purple: #c354ae;
+@arya-light-yellow: #FFFDF0; 
+@arya-bright-green: #44ED14; /* blog bdec2c*/
+
+@arya-grey-blue: #749EB4;
+
+@arya-extra-grey-1: #575755; /* works well */
+@arya-extra-grey-2: #898988; /* keyboardcolor in App */
+
+
+// ARYA GLOBAL COLORS
+@text-color: @arya-dark-grey;
+@gray-lighter:           @arya-almost-white; // #eee
+@brand-primary:         @arya-pink;
+/*
+@brand-success:         #5cb85c;
+@brand-warning:         #f0ad4e;
+@brand-danger:          #d9534f;
+@brand-info:            #5bc0de;
+*/
+
+// Links
+@link-color:            @brand-primary;
+@link-hover-color:      lighten(@link-color, 15%);
+
+
+// Bootstrap overwrites:
+/* dropdown arrow */
+@caret-width-base: 6px;
+
+//  ARYA TYPOGRAPHY ------------------------------------------------------------
+//-------------------------------------------------------------------------------------------
+
+@font-family-sans-serif:  'Open Sans',"Helvetica Neue", Helvetica, Arial, sans-serif !important;/* /* when chrome bug is fixed; change back to lato!! */    /*
+
+@font-size-base:          17px; /**/
+@font-size-large:         ceil((@font-size-base * 1.25)); // ~18px
+@font-size-medium:		  14px;
+@font-size-small:         ceil((@font-size-base * 0.85)); // ~12px
+
+@font-size-h1:            floor((@font-size-base * 2.94)); // ~36px
+@font-size-h2:            floor((@font-size-base * 1.88)); // ~28px
+@font-size-h3:            ceil((@font-size-base * 1.176)); // ~24px
+@font-size-h4:            ceil((@font-size-base * 1.2)); // ~18px
+@font-size-h5:            @font-size-base;
+@font-size-h6:            ceil((@font-size-base * 0.86)); // ~13px
+
+@line-height-base:      1.5;  // 1.6  20/14
+@line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px
+
+@headings-font-family:    inherit;
+@headings-font-weight:    500;
+@headings-line-height:    1.1;
+@headings-color:          inherit;
+
+// ARYA TABLES -------------------------
+// -------------------------------------------
+
+@table-cell-padding:                 8px;
+@table-condensed-cell-padding:       5px;
+
+@table-bg:                           transparent; // overall background-color
+@table-bg-accent:                    @arya-almost-white; // for striping
+@table-bg-hover:                    @arya-very-light-grey;
+@table-bg-active:                    @table-bg-hover;
+
+@table-border-color:                 @arya-light-grey; // table and cell border
+
+
+// ARYA BUTTONS-----------------
+
+@border-radius-base:        6px;
+@border-radius-large:       8px;
+@border-radius-small:       4px;
+
+// ----------------------------------------
+
+@btn-font-weight:                normal;
+
+@btn-default-color:              @arya-very-dark-grey;
+@btn-default-bg:                 @arya-white;
+@btn-default-border:             @arya-light-grey;
+
+@btn-primary-color:             @arya-white;
+@btn-primary-bg:                 @brand-primary;
+@btn-primary-border:           @btn-primary-bg;
+
+@btn-success-color:              @arya-white;
+@btn-success-bg:                 @brand-success;
+@btn-success-border:           @btn-success-bg;
+
+@btn-warning-color:              @arya-white;
+@btn-warning-bg:                 @brand-warning;
+@btn-warning-border:           @btn-warning-bg;
+
+@btn-danger-color:               @arya-white;
+@btn-danger-bg:                  @brand-danger;
+@btn-danger-border:           @btn-danger-bg;
+
+@btn-info-color:                 @arya-white;
+@btn-info-bg:                    @brand-info;
+@btn-info-border:              @btn-info-bg;
+
+@btn-link-disabled-color:        @gray-light;
+
+
+// ARYA FORMS
+// -------------------------
+
+@input-bg:                       @arya-white;
+@input-bg-disabled:              @gray-lighter;
+
+@input-color:                    @gray;
+@input-border:                   @arya-light-grey;
+@input-border-radius:            @border-radius-base;
+@input-border-focus:             @arya-dark-grey;
+
+@input-color-placeholder:        @gray-light;
+
+@input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 2);
+@input-height-large:             (ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
+@input-height-small:             (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
+
+@legend-color:                   @gray-dark;
+@legend-border-color:            @arya-very-light-grey2;
+
+@input-group-addon-bg:           @gray-lighter;
+@input-group-addon-border-color: @input-border;
+
+
+// ARYA DROPDOWNS
+// -------------------------
+
+@dropdown-bg:                    @arya-white;
+@dropdown-border:                rgba(0,0,0,.15);
+@dropdown-fallback-border:       @arya-light-grey;
+@dropdown-divider-bg:            @arya-very-light-grey2;
+
+@dropdown-link-color:            @gray-dark;
+@dropdown-link-hover-color:      darken(@gray-dark, 5%);
+@dropdown-link-hover-bg:         @arya-very-light-grey;
+
+@dropdown-link-active-color:     @component-active-color;
+@dropdown-link-active-bg:        @component-active-bg;
+
+@dropdown-link-disabled-color:   @gray-light;
+
+@dropdown-header-color:          @gray-light;
+
+// Note: Deprecated @dropdown-caret-color as of v3.1.0
+@dropdown-caret-color:           @arya-black;
+
+
+
+// Z-index master list
+// -------------------------
+// Used for a bird's eye view of components dependent on the z-axis
+// Try to avoid customizing these :)
+
+@zindex-navbar:            1000;
+@zindex-dropdown:          1000;
+@zindex-popover:           1010;
+@zindex-tooltip:           1030;
+@zindex-navbar-fixed:      1030;
+@zindex-modal-background:  1040;
+@zindex-modal:             1050;
+
+// Media queries breakpoints
+// --------------------------------------------------
+
+// Extra small screen / phone
+// Note: Deprecated @screen-xs and @screen-phone as of v3.0.1
+@screen-xs:                  480px;
+@screen-xs-min:              @screen-xs;
+@screen-phone:               @screen-xs-min;
+
+// Small screen / tablet
+// Note: Deprecated @screen-sm and @screen-tablet as of v3.0.1
+@screen-sm:                  768px;
+@screen-sm-min:              @screen-sm;
+@screen-tablet:              @screen-sm-min;
+
+// Medium screen / desktop
+// Note: Deprecated @screen-md and @screen-desktop as of v3.0.1
+@screen-md:                  992px;
+@screen-md-min:              @screen-md;
+@screen-desktop:             @screen-md-min;
+
+// Large screen / wide desktop
+// Note: Deprecated @screen-lg and @screen-lg-desktop as of v3.0.1
+@screen-lg:                  1200px;
+@screen-lg-min:              @screen-lg;
+@screen-lg-desktop:          @screen-lg-min;
+
+// So media queries don't overlap when required, provide a maximum
+@screen-xs-max:              (@screen-sm-min - 1);
+@screen-sm-max:              (@screen-md-min - 1);
+@screen-md-max:              (@screen-lg-min - 1);
+
+
+//  ARYA GRID
+// --------------------------------------------------
+
+// Number of columns in the grid system
+@grid-columns:              12;
+// Padding, to be divided by two and applied to the left and right of all columns
+@grid-gutter-width:         2* @arya-unit;
+
+
+// ARYA NAVBAR--------------------------------
+//------------------------------------------------------
+
+// Basics of a navbar
+@navbar-height:                    5*@arya-unit; //80
+
+// Inverted navbar
+//
+// Reset inverted navbar basics
+@navbar-inverse-color:                      @arya-white;
+@navbar-inverse-bg:                         transparent;
+@navbar-inverse-border:                     none;
+
+// Inverted navbar links
+@navbar-inverse-link-color:                 @arya-white;
+@navbar-inverse-link-hover-color:           @arya-white;
+
+@navbar-inverse-link-active-bg:             transparent;
+@navbar-inverse-link-hover-bg:               transparent;
+@navbar-inverse-link-active-color:          @brand-primary;

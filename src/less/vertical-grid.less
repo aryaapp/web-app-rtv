@@ -1,0 +1,286 @@
+
+/*  FONT SIZES AND LINE-HEIGHT */
+h1, .arya-text-title{
+	margin-top:0px;
+	padding-top:2px;
+	margin-bottom:32px;
+	font-size: 32px;
+	line-height:48px;
+	font-weight: lighter;
+	color:@arya-dark-grey;
+	@media (min-width:  @screen-sm-min){
+		font-size: 48px;
+		line-height:48px;
+	}
+	@media (min-width:  @screen-lg-min){
+		font-size: 60px;
+		line-height: 60px;
+	}
+}
+h2, .arya-text-lead{
+	font-size: 24px;
+	line-height:32px;
+	@media (min-width:  @screen-sm-min){
+		font-size: 24px;
+		line-height:32px;
+	}
+	@media (min-width:  @screen-lg-min){
+		font-size: 32px;
+		line-height: 48px;
+	}
+}
+.description, .form-control::-webkit-input-placeholder, .form-control {
+			font-size:16px;
+			line-height:24px;
+	@media (min-width:  @screen-sm-min){
+		font-size: 20px;
+		line-height:30px;
+	}
+	@media (min-width:  @screen-lg-min){
+		font-size: 28px;
+		line-height: 42px;
+	}
+}
+
+.form-control::-webkit-input-placeholder { 
+	font-size:16px;
+	font-style:italic;
+	line-height:1.6;
+	@media( min-width:@screen-sm-min) {
+		max-height:100%;
+		padding-top: 3px;
+		font-size: 16px ;
+	}
+	@media( min-width:@screen-lg-min) {
+		font-size: 24px;
+	}
+}
+
+.height64{
+	@media(min-width: @screen-md-min){
+		height:64px;
+	}
+}
+
+.form-control {
+	line-height:1.6;
+	@media( max-width:@screen-sm-min) {
+		line-height:1.5;
+	}
+	height:inherit;
+	@media( max-width:@screen-sm-max) {
+		height:inherit;
+	}
+}
+
+
+h3,h4, .arya-text-subtitle{
+	font-weight:bold;
+	font-size: 18px;
+	letter-spacing:.5px;
+	line-height:32px;
+	@media (min-width:  @screen-md-min){
+		font-size: 18px;
+		line-height:24px;
+		margin-bottom:18px !important;
+	}
+	@media (min-width:  @screen-lg-min){
+		font-size: 24px;
+		line-height: 32px;
+	}
+}
+
+.module-title {
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 13px;
+	line-height: 27px;
+}
+
+h6 {
+	font-size: 1.1rem;
+	margin-bottom: 22px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	color: #999;
+	background-color: #eee;
+	height: 1px;
+	position: relative;
+	margin-top: 8px;
+}
+
+ .arya-menu-text{
+	font-size: 16px;
+	line-height:24px;	
+	letter-spacing: 1px;
+	font-weight:normal;
+    letter-spacing: -0.3px
+ }
+
+
+p, .arya-text-body, .btn, .form-control::-webkit-input-placeholder, .form-control, ul.alert li {
+	margin-bottom:16px;
+	font-size: 14px;
+	line-height:26px;
+	@media (min-width:  @screen-sm-min){
+		font-size: 16px;
+		line-height:24px;
+	}
+	@media (min-width:  @screen-lg-min){
+		font-size: 16px;
+		line-height: 32px;
+	}
+}
+.title-tag{
+	font-size:12px;
+	text-transform: uppercase;
+}
+
+.arya-card-text {
+	font-size: 13px;
+	line-height: 21px;
+	letter-spacing: 0.1px;
+}
+.arya-table-header {
+	font-size: 16px;
+}
+
+small, .arya-text-small, .arya-footer a, .arya-footer p{
+	font-size: 12px;
+	line-height:26px;
+	@media (min-width:  @screen-sm-min){
+		font-size: 14px;
+		line-height:24px;
+	}
+	@media (min-width:  @screen-lg-min){
+		font-size: 14px;
+		line-height: 24px;
+	}
+}
+
+/* FONT AWESOME */
+.prev-next{
+	font-size:18px;
+	line-height: 27px;
+	margin-top:-8px;// dirty
+}
+
+/* VERTICAL MARGINS FOR BLOCK ELEMENTS */
+.margin-top{
+	margin-top: 2*@arya-unit;
+	@media (min-width:  @screen-lg){
+		margin-top: 4*@arya-unit;
+	}
+}
+.margin-bottom{
+	margin-bottom: 2*@arya-unit;
+	@media (min-width:  @screen-sm-min){
+		margin-bottom: 4*@arya-unit;
+	}
+}
+.margin-top-small{
+	margin-top: @arya-unit/2;
+	@media (min-width:  @screen-sm-min){
+		margin-top: @arya-unit;
+	}
+}
+.margin-bottom-small{
+	margin-bottom: @arya-unit/2;
+	@media (min-width:  @screen-sm-min){
+		margin-bottom: @arya-unit;
+	}
+}
+.margin-top-large{
+	margin-top: 3*@arya-unit;
+	@media (min-width:  @screen-lg){
+		margin-top: 6*@arya-unit;
+	}
+}
+.margin-bottom-large{
+	margin-bottom: 3*@arya-unit;
+	@media (min-width:  @screen-sm-min){
+		margin-bottom: 6*@arya-unit;
+	}
+}
+
+
+
+
+/* CUSTOM VERTICAL MARGINS AND PADDING FOR SPECIFIC ELEMENTS  */
+
+h1, h2 {
+	margin-top: 10px;
+	margin-bottom: 20px;
+	-webkit-font-smoothing: antialiased;
+}
+.logo{
+	margin-top: 48px;
+}
+
+.arya-logo-small{
+	margin-top:6px;
+}
+
+.navbar{
+	margin-bottom:0;
+	min-height: 0;
+}
+.arya-content{
+	padding-bottom: 30px;
+}
+
+.nav-component {
+	margin-top: 21px;
+}
+
+.benefits{
+	margin-bottom: 8px;
+}
+
+.content{
+
+	.description, .cta-text{
+		padding-bottom:4px;	
+		margin-bottom:@arya-unit;
+	}
+}
+
+.jumbotron{
+	padding-top:20px;
+	padding-bottom:0;
+}
+
+.arya-login{
+	padding-top:20px;
+	margin-top:80px;
+}
+
+
+/* ------KLEIN TABLET FORMAAT------ */
+@media (min-width:  @screen-sm-min) and (max-width:  @screen-md-min){	
+
+	
+	.logo{
+		width: 278px;
+	}
+	.description, .cta-text{
+		margin-top:32px;
+		padding-top:12px;
+		padding-bottom:4px;	
+		margin-bottom:32px;
+	}
+}
+/* VANAF GROOT TABLET FORMAAT*/
+@media (min-width:  @screen-md-min){	
+	.logo{
+		padding-top: 17px;
+		width: 417px;
+	}
+}
+
+/* total height stretches 100% of screen */
+html, body{
+	height:100%;
+}
+

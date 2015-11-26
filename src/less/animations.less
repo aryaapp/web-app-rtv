@@ -1,0 +1,65 @@
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+@-webkit-keyframes translateUp { from { -webkit-transform:translate(0px,48px) } to { -webkit-transform:translate(0px,0px)  } }
+
+@-webkit-keyframes blink{0%{opacity:.1}50%{opacity:.4}100%{opacity:.1}}
+@-moz-keyframes blink{0%{opacity:.1}50%{opacity:.4}100%{opacity:.1}}
+@-ms-keyframes blink{0%{opacity:.1}50%{opacity:.4}100%{opacity:.1}}
+@keyframes blink{0%{opacity:.1}50%{opacity:.4}100%{opacity:.1}}
+
+.blink {
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    -webkit-animation: blink 6s linear infinite;
+    -moz-animation: blink 6s linear infinite;
+    animation: blink 6s linear infinite;
+}
+
+.fade-in {
+    opacity:0;
+    -webkit-animation:fadeIn ease-in 1;
+}
+
+.translate-up {
+    opacity:0;  /* make things invisible upon start */
+	transform:translate(0px,48px);
+	-webkit-animation:fadeIn ease-in 1, translateUp ease both;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+    -moz-animation:fadeIn ease-out 1 , translateUp ease-out 1;
+    animation:fadeIn ease-in 1 , translateUp ease-out 1;
+}
+
+.translate-down {
+    opacity:0;  /* make things invisible upon start */
+    transform:translate(0px,-20px);
+    -webkit-animation:fadeIn ease-in 1, translateDown ease both;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+    -moz-animation:fadeIn ease-out 1 , translateDown ease-out 1;
+    animation:fadeIn ease-in 1 , translateDown ease-out 1;
+}
+
+.arya-animation{
+	-webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+    -moz-animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
+    -webkit-animation-duration: .5s;
+    -moz-animation-duration:.5s;
+    animation-duration:.5s;
+}
+
+.animation1{
+    -webkit-animation-duration: 1s;
+}
+
+.animation2{
+    -webkit-animation-delay: 1s;
+}
+.animation3{
+    -webkit-animation-delay: 1.5s;
+}
+.animation4{
+    -webkit-animation-delay: 2s;
+}

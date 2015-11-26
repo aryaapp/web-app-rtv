@@ -1,0 +1,545 @@
+
+
+html, body {
+	overflow-x: hidden;
+	-webkit-overflow-scrolling: touch;
+}
+/* --- COLOR --- */
+body{
+	overflow-y: scroll; /* has to be scroll, not auto */
+	color: @text-color;
+	padding-top:0px !important;
+	width: 100%;
+    
+}
+
+body .invert{
+	color: #ffffff;
+}
+
+// .animation-wrapper{
+// 	opacity: 0;
+// }
+
+// .slogan {
+// 	opacity: 0;
+// 	-webkit-transition: 1s opacity 400ms;
+// }
+
+/* --- PADDING --- */
+
+.padding{
+	padding: 2*@arya-unit;
+}
+.padding2x{
+	padding: 4*@arya-unit;
+}
+
+.no-padding{
+	padding: 0;
+}
+	
+.arya-logo{
+	width: 320px;
+}
+	
+#press-quotes {
+	@media (max-width: @screen-sm) {
+		padding-left:16px !important;
+		padding-right:16px !important;
+	}
+}
+
+/* ------SMARTPHONE FORMAAT------ */	
+@media (max-width:  @screen-sm-min){	
+	.logo{
+		.responsive-invisibility;
+	}
+	.arya-play-button{
+		font-size:24px;
+		}
+	.glyphicon-play-circle:before{
+		display:none !important;
+	}
+	.glyphicon-play-circle-small:before{
+		/*display:block !important;*/
+		margin-left:auto;
+		margin-right:auto;
+		/*font-size:60px !important;*/
+		float:none;
+		margin:0;
+	}
+	.cta-description{
+		.responsive-invisibility;
+	}
+	.slogan{
+		text-shadow: 0px 0px 25px rgba(0,0,0,.5);
+	}
+}
+	
+/* ------KLEIN TABLET FORMAAT------ */
+@media (min-width:  @screen-sm-min) and (max-width:  @screen-md-min){	
+	.cta-description{
+				.responsive-invisibility;
+	}
+	.glyphicon-play-circle, .glyphicon-play-circle-small:before {
+		margin: 0 20px 0 16px;
+		/*float:right;*/
+		}
+}
+
+/* ------VANAF GROOT TABLET FORMAAT------ */
+@media (min-width:  @screen-md-min){	
+	.logo{
+		width: 320px;
+	}
+
+	.glyphicon-play-circle-small:before{
+		display:none !important;
+		}
+		
+		.glyphicon-play-circle, .glyphicon-play-circle-small:before {
+		margin: 0 20px 0 16px;
+		/*float:right;*/
+		}
+	.arya-play-button div {
+		margin-left:auto;
+		margin-right:auto;
+	}
+	.arya-play-button{
+		margin-bottom:30px;
+		min-height:120px;
+	}
+	
+	.description{
+			margin-top:48px;
+			padding-top:12px;
+			padding-bottom:4px;	
+		}
+
+	.cta{
+			.block;
+			overflow:hidden;
+			margin-top:48px;
+			border-width: 1px;
+			border-type:solid;
+			padding-bottom:9px;
+			.cta-description{
+				margin-left: 16px;
+				padding-top:7px;
+			}
+	}
+	
+}
+
+/* Nested ruleset voor arya fullscreen op homepage */
+
+.arya-fullscreen{
+  /*min-height:200px;*/
+  position: relative;
+  overflow:hidden;
+  // background-color: @arya-dark-grey;
+  background-image: url("../images/background.jpg");
+  background-size: cover;
+ /* background-attachment: fixed;*/
+  background-position-y: 50%;
+  background-position-x: 50%;
+  border-bottom: 1px solid;
+	border-color: rgba(0,0,0,0.1) !important;
+
+  @media (max-width: @screen-sm){
+	  background-image: url("../images/backgroundC4-square.jpg");
+	  background-position-y:0%;
+	  background-position-x:50%;
+  }
+  @media (min-width:  @screen-sm){
+	  background-position-y:10%;
+  }
+  
+  .container{
+	height:100%;
+	@media(max-width:@screen-md-max){
+		padding-left:32px;
+		padding-right:32px;
+	}
+  }
+  .content{
+	text-align:left;
+	height:100%;	
+  }
+
+	/* play button */
+	.glyphicon-play-circle:before, .glyphicon-play-circle-small:before {
+		width: 21%;
+		float: left;
+		vertical-align: top;
+	}
+	.arya-play-button:hover{
+		color:@brand-primary;
+	}
+}/* end fullscreen nest */
+.arya-fullheight{
+	height:100%;
+	 @media (max-width:@screen-xs-max){
+		/*height: 80%;*/
+	}
+}
+
+.arya-background-stroke {
+	  /*min-height:200px;*/
+	  position: relative;
+	  overflow:visible;
+	  background-image: url("../images/background-stroke.png");
+	  background-size: cover;
+  }
+
+
+.arya-fullscreen-blurred{
+
+	background-image: url("../images/arya-fullscreen-bg3.jpg");
+	
+	@media (max-width:  @screen-sm-min){
+		background-image: url("../images/arya-fullscreen-bg-small-blurred.jpg");
+	  }
+}
+
+.arya-fullscreenB{
+	background-position-y: 0;
+	border-bottom: 1px solid;
+	border-color: rgba(0,0,0,0.1) !important;
+	overflow:visible;
+	@media (max-width:  @screen-xs-max){
+		background-image: url("../images/arya-fullscreen-bg-small3.jpg");
+	  }
+	  @media (min-width:  @screen-sm){
+		background:#ff0066;
+		li.active{
+				border-left: 1px solid;
+				border-right: 1px solid;
+				border-color:rgba(0,0,0,0.05);
+			}
+	  }
+
+	.navbar-inverse{
+		@media (min-width:  @screen-sm){
+			
+			li:hover, li.active{
+			.alpha20;
+			}
+		}
+	}
+}
+
+/* Nested ruleset voor arya 'features' op de homepage */
+.marketing{
+	img{
+		width:80px;
+	}
+	h3{
+		margin-top:0;
+	}
+}
+
+.bg-image-wall-of-fame{
+	background-image: url("../images/wall-of-fame.jpg");
+}
+
+.arya-supporter{
+	margin-bottom: 30px;
+}
+
+
+/* Nested ruleset voor arya 'how it works' op de homepage */
+.arya-works{
+	background-color:#fff;
+	margin-bottom:50px !important;
+}
+
+.featurette-image{
+		margin:auto;
+		//@media(max-width: @screen-xs-max){
+			//margin-left:-56px;
+		//}
+	}
+
+.arya-featurette-divider {
+margin: 50px 0 !important;
+}
+
+
+
+/* Nested ruleset voor arya 'how it works' op de homepage */
+.arya-footer{
+	background: @arya-white;
+	border-top:1px solid;
+	border-color: rgba(0,0,0,0.1) !important;
+	color: @text-color;
+	background: @arya-almost-white;
+	a{
+		color: @text-color;
+	}
+	a:hover{
+		color:@arya-pink;
+	}
+}
+
+
+
+
+.jumbotron{
+	margin-bottom:0;
+}
+
+/*.arya-team{
+	height:450px;
+  background-image: url("../images/arya-team.jpg");
+  background-size: cover;
+  background-attachment:fixed;
+  background-position:40%;
+}*/
+
+/* Nested ruleset voor arya 'bigger picture' op de homepage */
+.arya-fullscreen2{
+  overflow:hidden;
+  /*background-image: url("../images/arya-bg.jpg");
+  background-size: cover;
+  background-attachment:fixed;*/
+
+  border:none;
+  box-shadow:none;
+ } 
+  
+  
+  
+
+  /* Nested ruleset voor arya 'team' op de homepage */
+.arya-team{
+	background-color: #ffffff;
+	.arya-subtitle{
+		margin-bottom:15px;
+		@media (max-width:  @screen-md-min){
+			margin-bottom:30px;
+		}
+	}
+	.arya-teammember{
+		margin-bottom:30px;
+		@media (max-width:  @screen-md-min){
+			margin-bottom:60px;
+		}		
+	}
+}
+
+.arya-image{
+	margin-bottom:15px;
+}
+
+.arya-fullscreen3{
+  overflow:hidden;
+  /*background-image: url("../images/arya-bg.jpg");
+  background-size: cover;
+  background-attachment:fixed;*/
+  background-color: #B7C3AB;
+ } 
+ 
+.blur-30{
+	.blur(10px);
+} 
+.absolute{
+	position:absolute;
+	z-index:-100;
+	width:100%;
+	height:100%;
+}
+.fixed{
+	position:fixed;
+	z-index:-100;
+	width:110%;
+	height:110%;
+	left:-30px;
+	top:-30px;
+	min-width: 480px;
+}
+
+
+
+.fullscreen-container{
+	position:absolute;
+	height:100%;
+	width:100%;
+	overflow:hidden;
+}
+
+
+.transparent{
+	background: transparent;
+	color:@arya-white;
+	.form-control{
+		border:0;
+		border-radius:0;
+		background:rgba(255,255,255,0.8);			
+	}
+}
+
+.smartphone-layout{
+	p{
+		font-size: 16px;
+	}
+}
+
+ /* Nested ruleset voor footer */
+.arya-footer{
+	padding-bottom:16px;
+}
+ 
+
+
+body
+{
+    -webkit-animation-duration: 0.1s;
+	-webkit-animation-name: fontfix;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-delay: 0.1s;
+}
+
+@-webkit-keyframes fontfix{
+	from{ 	opacity: 1; }
+	to{	opacity: 1; }
+}
+
+.arya-fullscreen{
+	.colorset-inverse;
+}
+
+
+
+@media (max-width:@screen-md-max){
+	/*.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, 
+	.col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, 
+	.col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, 
+	.col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, 
+	.col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, 
+	.col-sm-12, .col-md-12, .col-lg-12*/ .container{
+		padding-left:64px !important;
+		padding-right:64px !important;
+		}
+}
+
+
+.arya-white, .arya-almost-white{
+
+	.arya-text-title, h1,h2{
+		color: @arya-very-dark-grey;
+	}
+	p, .subtitle{
+		color: #565656;
+	}
+
+}
+
+.subtitle{
+	font-weight:lighter;
+	letter-spacing:-0.5px;
+}
+.yolo{
+	font-weight: normal;
+}
+.help-block{
+	margin:0;
+}
+
+.dropdown-arrow{
+	margin-top: 12px;
+	margin-left: 4px;
+}
+
+.lang-toggle{
+	margin-top:5px;
+	border: 0px solid rgba(255,255,255,0.5);
+	background-color: transparent;
+	color: @arya-white;
+	padding:6px !important;
+	.caret{
+		margin-left:4px;
+		
+	}
+}
+
+img.flag-icon{
+	height:22px;
+}
+
+li.flag:active, li:flag:focused, ul.dropdown-lang li:hover{
+	border-left: 1px solid;
+	border-right: 1px solid;
+	border-color: rgba(0,0,0,.05);
+	background-color: rgba(0,0,0,.1);
+}
+
+ul.dropdown-lang{
+	height: initial;
+	padding: 0 !important;
+	min-width:0;
+	border-radius:0 !important;
+	background-color: rgba(255,255,255,0.1);
+	li:hover{	
+		border-left: 1px solid;
+		border-right: 1px solid;
+		border-color: rgba(0,0,0,.05);
+		background-color: rgba(0,0,0,.1);
+		}
+	li{
+		padding-left: 8px;
+		padding-right:8px;
+		a, a:hover{
+			padding-left: 6px;
+			padding-right:19px;
+			background-color:transparent;
+		}
+	}
+}
+
+.arya-bg-lightgrey{
+	background: #fcfcfc;
+}
+.arya-bg-grey{
+	background: #cccccc;
+	color: @arya-white;
+	a{
+		color:@arya-white !important;
+		}
+}
+.arya-bg-dark{
+	background: @arya-dark-grey;
+	color: @arya-white;
+	a{
+		color:@arya-white !important;
+	}
+}
+
+.arya-bg-light-grey{
+	background: @arya-very-light-grey;
+}
+.arya-bg-white{
+	background: @arya-white;
+	color: @arya-dark-grey;
+}
+
+.arya-bg-pink{
+	background: #2f2f2f;
+	color: @arya-white;
+	a{
+		color:@arya-white !important;
+		}
+}
+
+.progress-bar-arya {
+background-color: @brand-primary;
+}
+
+
+.tomato {
+    background: url('../images/arya-works-1.png');
+    background-image: url('../images/arya-works-1.svg'), none;
+    height: 211px;
+}

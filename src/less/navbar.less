@@ -1,0 +1,151 @@
+/* Nested ruleset voor arya navigatiebar */
+
+
+
+.small-logo{
+	padding:0;
+	height:24px;
+}
+.small-logo2{
+	@media(min-width:@screen-sm){
+	display:inline !important;
+	margin-top:12px;
+	}
+}
+
+.arya-navbar-wrapper{	
+	position:relative;
+	@media (max-width:  @screen-xs-max){
+		padding:11px;
+	}
+	border:0;
+	/* laptops and up */
+	@media (min-width:  @screen-sm-min){
+		min-height:64px;
+		margin-top: 0 !important;
+		padding:none;
+		padding-top:0px;
+	}
+	.toggle-button, .navbar-toggle{
+		padding:0;
+		margin-top:0;
+	}
+
+	/*navigation bar from mobile size up*/
+
+	
+	.navbar{	
+		@media(min-width:@screen-sm){
+			padding-bottom:0;
+		}
+		.navbar-collapse{
+			@media (max-width:  @screen-sm-min){
+				padding:0 !important;
+				margin-left:-29px;
+				ul{
+					width:100%;
+					position:relative;
+					left:-15px;/*
+					-webkit-padding-start: 0px !important;
+					-webkit-margin-before: 0em !important;
+					-webkit-margin-after: 0em !important;*/
+				}
+				li>a{
+					padding-left:0;
+				}
+			}
+			
+		}
+		
+		background-color: none;
+		opacity:1;
+		border-bottom: none;
+		.icon-bar {
+			background-color: @arya-white;
+		}
+		
+		.offcanvas-toggle {
+			border:none;
+			border-radius:0;
+			float:right;
+			margin-bottom:0;
+			margin-right:24px;
+		}
+		.toggle-button{
+			margin-top:-4px;
+		}
+		.offcanvas-toggle:hover{
+			background-color:transparent;
+		}
+		.offcanvas-toggle:focus{
+			background-color:transparent;
+		}
+		.navbar-collapse {
+			border-color: transparent;
+		}
+		.offcanvas-toggle .icon-bar {
+			width: 24px;
+			height: 4px;
+			border-radius: 0px;
+			margin-top:6px;
+		}
+		
+		/*navigation bar for bigger sizes*/
+		@media (min-width:  @screen-sm-min){
+			opacity:1;
+			background-color:transparent !important;	
+		}
+		
+	}
+	
+}
+.navbar-nav {
+		float: right;
+		@media (min-width:  @screen-sm-min){
+			background: none;
+			border-bottom: none;
+			}
+		li a{
+			padding-top:12px;
+			padding-bottom:12px;
+		}
+	}
+	.logo{
+		width: 240px;
+	}
+	
+.arya-navbar-secondary{
+	color: @text-color;
+	a{
+		color:@arya-white;
+	}
+	a:hover{
+		background:none !important;
+		color:@arya-pink !important;
+	}
+}
+
+.navbar-inverse{
+	.active a, a{
+		color:@arya-white !important;
+	}
+}
+.navbar{
+	border:0;
+	border-radius:0;
+	padding:8px;
+	@media(min-width:@screen-sm){
+		ul{
+			margin-top:-8px;
+			height:64px;
+			li{
+				padding:8px;
+				height:100%;
+				border-left: 1px solid;
+				border-right: 1px solid;
+				border-color:transparent;
+			}
+		
+		}
+	}
+}

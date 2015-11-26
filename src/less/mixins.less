@@ -1,0 +1,181 @@
+
+.arya-almost-white{
+	background: @arya-almost-white;
+}
+
+.arya-very-light-grey{
+	background: @arya-very-light-grey;
+}
+
+.arya-light-grey{
+	background: @arya-light-grey;
+}
+.arya-dark-grey{
+	background: @arya-dark-grey;
+	color: @arya-white;
+}
+.arya-gradient1{
+	#gradient > .horizontal(#7474BF, #348AC7);
+}
+.arya-gradient2{
+	#gradient > .horizontal(#757F9A, #D7DDE8);
+}
+.arya-gradient3{
+	#gradient > .horizontal(#8e9eab, #eef2f3);
+}
+.arya-gradient4{
+	#gradient > .horizontal(#324474, #427163 );
+}
+
+.arya-gradient-green{
+    #gradient > .horizontal(#22b573, #05ab97);
+}
+
+.arya-box-shadow{
+	box-shadow: 0px 0px 25px rgba(0,0,0,.2);
+}
+
+
+
+.arya-cover-bg(@image){
+  background-image: url(@image);
+  background-size: cover;
+  background-attachment:fixed;
+}
+
+.blur(@radius) {
+-webkit-filter: blur(@radius); 
+-moz-filter: blur(@radius);
+-o-filter: blur(@radius); 
+-ms-filter: blur(@radius); 
+filter: url(#blur); 
+filter: blur(@radius);  
+filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='30');
+-webkit-transition: .9s -webkit-filter linear;
+-moz-transition: .9s -moz-filter linear;
+-o-transition: .9s -o-filter linear;
+transition: .9s filter linear;
+}
+
+.vertical-align(@height){
+	height: @height;
+	line-height: @height;
+}
+.vertical-align-center{
+	// block element needs height set
+	position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+  	transform: translateY(-50%);
+}
+
+/*dark bg , light bg layouts */
+
+.colorset-inverse{
+	color: @arya-white;
+	a{
+		color: @arya-white;
+		};
+	border-color:@arya-white;
+}
+
+/* Custom Mixin to create responsive text on 32 px grid  */
+.make-arya-text(@desktop-font-size,@line-height-proportion){
+	font-size: ceil((@desktop-font-size/2));
+	line-height:ceil((@desktop-font-size/2))*@line-height-proportion;
+	@media (min-width:  @screen-sm-min){
+		font-size: ceil((@desktop-font-size*2/3));
+		line-height:ceil((@desktop-font-size*2/3))*@line-height-proportion;
+	}
+	@media (min-width:  @screen-lg-min){
+		font-size: @desktop-font-size;
+		line-height:@desktop-font-size*@line-height-proportion;
+	}
+}
+
+.block{
+			display:block;
+			position:relative;
+			overflow: auto;
+}
+
+.alpha20{
+/* Fallback for web browsers that don't support RGBa */
+    background-color: rgb(255, 255, 255);
+    /* RGBa with 0.6 opacity */
+    background-color: rgba(0, 0, 0, 0.1);
+    /* For IE 8*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99ffffff, endColorstr=#99ffffff)";
+}
+
+.form-inverse {
+	.colorset-inverse;
+	color:@arya-white;
+	.form-control::-webkit-input-placeholder {
+		color: white; 
+	}
+}
+
+.invert-colors{
+		.colorset-inverse;
+}
+
+.arya-bg-image{
+	background-image: url(../images/arya-bg3b.jpg);
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+.arya-bg-darkgrey{
+	background: #333333;
+	color: #ffffff;
+}
+.bg-very-light-grey{
+	background-color: @arya-very-light-grey;
+	color:@arya-very-dark-grey;
+}
+
+.flex-height {
+	height:inherit !important;
+}
+
+
+.arya-margin-left(@multiplier) {
+	margin-left: @multiplier * @arya-unit;
+}
+
+.arya-margin-right(@multiplier) {
+	margin-right: @multiplier * @arya-unit;
+}
+
+.give-space-left {
+	.arya-margin-left(1)
+}
+.give-space-right {
+	.arya-margin-right(1)
+}
+
+
+.lowercase{
+	text-transform: lowercase;
+}
+
+.calc-height(@substraction) {
+	height:100%;/* older browsers */
+	/* Firefox */
+	height: ~"-moz-calc(100% - @{substraction})";
+	/* WebKit */
+	height: ~"-webkit-calc(100% - @{substraction})";
+	/* Opera */
+	height: ~"-o-calc(100% - @{substraction})";
+	/* Standard */
+	height: ~"calc(100% - @{substraction})";
+	overflow: -moz-scrollbars-vertical; 
+  	overflow-y: scroll;
+}
+
+.box-shadow(@shadow) {
+	-webkit-box-shadow: @shadow;
+	box-shadow: @shadow;
+}
