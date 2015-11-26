@@ -3,7 +3,7 @@
 * @submodule Question
 */
 
-
+// let's change the bg color here
 import React from 'react'
 let ReactDOM = require('react-dom')
 let ReactSlider = require('rc-slider')
