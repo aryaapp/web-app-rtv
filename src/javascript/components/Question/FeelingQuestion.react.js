@@ -31,17 +31,17 @@ let FeelingQuestion = React.createClass({
   render() {
     return (
       <Section indicator={true}>
-            <div className="col-xs-1"></div>
-            <QuestionTitle title={ Content.QUESTION_FEELING_TITLE } />
-            <QuestionMain>
-              <SliderInput value={this.props.feeling} onChange={this.update} />
-            </QuestionMain>
-            <QuestionModal 
-              title ={ Content.QUESTION_FEELING_TITLE } 
-              body = { Content.QUESTION_FEELING_EXPLANATION } 
-            />
+        <div className="col-xs-1"></div>
+        <QuestionTitle title={ Content.QUESTION_FEELING_TITLE } />
+        <QuestionMain>
+          <SliderInput value={this.props.feeling} onChange={this.update} />
+        </QuestionMain>
+        <QuestionModal
+          title ={ Content.QUESTION_FEELING_TITLE }
+          body = { Content.QUESTION_FEELING_EXPLANATION }
+        />
       </Section>
-      
+
     );
   }
 });
