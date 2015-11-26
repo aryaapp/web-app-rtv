@@ -7,22 +7,55 @@
 import React from 'react'
 let ReactDOM = require('react-dom')
 let ReactSlider = require('rc-slider')
+let d3 = require('d3')
+require('jquery')
+
+//returns color belonging to moodrange 0-100
+let d3MoodColor = function(value) {
+  let colorScale = d3.scale.linear()
+        .domain([0,50,100])
+        .range(['#e86e6b','#fcd56b','#92D381']); //['#e86e6b','#e86e6c','#fcd56b','#59d1ba','#59d1bb','#a5d36e']
+  return colorScale(value)
+}
 
 let SliderInput = React.createClass({
   getDefaultProps() {
     return {
-      value: 50
-    };
+      feeling: {
+        value: "",
+        color: ""
+        }
+      };
   },
-  update: function(e) {
-    this.props.onChange(e.target.value);
+  update: function(value) {
+    console.log("value: " + value + "color: " + d3MoodColor(value))
+    let feeling = {
+      value: value,
+      color: d3MoodColor(value)
+    }
+    this.props.onChange(feeling)
   },
+
+  componentDidMount: function() {
+    //jQuery since not possible with rc-slider API
+    $(".rc-slider-track").css("background-color", d3MoodColor(this.props.feeling.value));
+    $(".rc-slider-handle").css("border-color", d3MoodColor(this.props.feeling.value));
+    $("#react-app").css("background-color", d3MoodColor(this.props.feeling.value));
+  },
+
+  componentDidUpdate: function() {
+    //jQuery since not possible with rc-slider API
+    $(".rc-slider-track").css("background-color", d3MoodColor(this.props.feeling.value));
+    $(".rc-slider-handle").css("border-color", d3MoodColor(this.props.feeling.value));
+    $("#react-app").css("background-color", d3MoodColor(this.props.feeling.value));
+  },
+
   render: function() {
     return (
       <div>
         <div className="row">
           <div className="col-xs-10 col-xs-push-1">
-            <ReactSlider defaultValue={ 90 } />
+            <ReactSlider defaultValue={ this.props.feeling.value } onChange={this.update} />
             <div id="emo-container">
               <a>
                 <img src="images/emo-1.svg" className="svg emo emo-1" />
