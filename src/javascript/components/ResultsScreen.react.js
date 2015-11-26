@@ -53,7 +53,7 @@ var ResultsScreen = React.createClass({
             <div className="col-xs-12 col-sm-8 col-sm-push-2 col-md-6 col-md-push-3 no-padding slim-scroll">
               <dl className="rtv-results">
                 <dt>Deine Befinden</dt>
-                <dd><ReactSlider disabled={true} value={this.props.feeling} /></dd>
+                <dd><ReactSlider disabled={true} value={this.props.feeling.value} /></dd>
                 <dt>Deine Körper</dt>
                 <dd><DisplayBody body={this.props.body} /></dd>
                 <dt>Deine Gedanken</dt>
