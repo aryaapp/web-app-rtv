@@ -21,7 +21,7 @@ let BodyImage = React.createClass({
   },
   
   fillColor: function(key) {
-    return this.props.body[key].length > 0 ? 'rgba(0,65,112,0.2)' : 'none'
+    return this.props.body[key].length > 0 ? '#d9d9d9' : 'none'
   },
   render() {
     var that = this
