@@ -17,6 +17,15 @@ let d3MoodColor = function(value) {
         .range(['#e86e6b','#fcd56b','#92D381']); //['#e86e6b','#e86e6c','#fcd56b','#59d1ba','#59d1bb','#a5d36e']
   return colorScale(value)
 }
+//returns color belonging to moodrange 0-100
+let d3MoodGradient = function(value) {
+  let lowVal = Math.max(value-10,0)
+  let highVal = Math.min(value+10,100)
+  let colorScale = d3.scale.linear()
+        .domain([0,50,100])
+        .range(['#e86e6b','#fcd56b','#92D381']); //['#e86e6b','#e86e6c','#fcd56b','#59d1ba','#59d1bb','#a5d36e']
+  return ("left, " + colorScale(lowVal) + ", " + colorScale(highVal))
+}
 
 let SliderInput = React.createClass({
   getDefaultProps() {
@@ -41,6 +50,7 @@ let SliderInput = React.createClass({
     $(".rc-slider-track").css("background-color", d3MoodColor(this.props.feeling.value));
     $(".rc-slider-handle").css("border-color", d3MoodColor(this.props.feeling.value));
     $("#react-app").css("background-color", d3MoodColor(this.props.feeling.value));
+    $("#react-app").css("background-image", "-webkit-linear-gradient(" + d3MoodGradient(this.props.feeling.value) + ")");
   },
 
   componentDidUpdate: function() {
@@ -48,6 +58,8 @@ let SliderInput = React.createClass({
     $(".rc-slider-track").css("background-color", d3MoodColor(this.props.feeling.value));
     $(".rc-slider-handle").css("border-color", d3MoodColor(this.props.feeling.value));
     $("#react-app").css("background-color", d3MoodColor(this.props.feeling.value));
+    $("#react-app").css("background-image", "-webkit-linear-gradient(" + d3MoodGradient(this.props.feeling.value) + ")");
+    console.log(d3MoodGradient(this.props.feeling.value))
   },
 
   render: function() {

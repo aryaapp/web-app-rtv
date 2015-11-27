@@ -51,18 +51,18 @@ var ResultsScreen = React.createClass({
             <div className="col-xs-1"></div>
             <QuestionTitle title={this.props.title} />
             <div className="col-xs-12 col-sm-8 col-sm-push-2 col-md-6 col-md-push-3 no-padding slim-scroll">
-              <dl className="rtv-results">
-                <dt>Deine Befinden</dt>
-                <dd><ReactSlider disabled={true} value={this.props.feeling.value} /></dd>
-                <dt>Deine Körper</dt>
-                <dd><DisplayBody body={this.props.body} /></dd>
-                <dt>Deine Gedanken</dt>
-                <dd>{this.props.thoughts}</dd>
-                <dt>Deine Situation</dt>
-                <dd>{this.props.situation}</dd>
-                <dt>Deine Reaktion</dt>
-                <dd>{this.props.reaction}</dd>
-              </dl>
+              <ul className="rtv-results list rtv-list">
+                <li className="list-item rtv-list-item result-title">Deine Befinden</li>
+                <li className="list-item rtv-list-item result-answer"><ReactSlider disabled={true} value={this.props.feeling.value} /></li>
+                <li className="list-item rtv-list-item result-title">Deine Körper</li>
+                <li className="list-item rtv-list-item result-answer"><DisplayBody body={this.props.body} /></li>
+                <li className="list-item rtv-list-item result-title">Deine Gedanken</li>
+                <li className="list-item rtv-list-item result-answer">{this.props.thoughts}</li>
+                <li className="list-item rtv-list-item result-title">Deine Situation</li>
+                <li className="list-item rtv-list-item result-answer">{this.props.situation}</li>
+                <li className="list-item rtv-list-item result-title">Deine Reaktion</li>
+                <li className="list-item rtv-list-item result-answer">{this.props.reaction}</li>
+              </ul>
             </div>
           </div>
           <div className="row">

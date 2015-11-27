@@ -9,6 +9,7 @@
     display: none;
 }
 
+
 #main-app{
     margin-top: 24px;
     background: white;
@@ -41,10 +42,11 @@ html, body, #react-app {
     background: red;
 }
 
+
 body{
     overflow: hidden;
     height: 100%;
-    background: -webkit-linear-gradient(left,#22b573, #05ab97); /* For Safari 5.1 to 6.0 */
+    background: -webkit-linear-gradient(left, rgb(188, 212, 120), rgb(146, 211, 129)); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(left,#22b573, #05ab97); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(left,#22b573, #05ab97); /* For Firefox 3.6 to 15 */
     background: linear-gradient(left,#22b573, #05ab97); /* Standard syntax */
@@ -244,18 +246,15 @@ li.rtv-list-counter{
     width:100%;
 }
 
-dl.rtv-results {
-    padding-left: 32px;
-    padding-right:32px;
-    text-align: center;
-}
 
-.rtv-results dt {
-    font-weight: normal;
-}
+li.result-title{
 
-.rtv-results dd{
-    font-weight: lighter;
+}
+li.result-answer{
+    border-bottom:1px solid #e9e9e9;
+    margin-bottom: 24px;
+    font-size:12px;
+    line-height:24px;
 }
 
 .fixed-section-footer{
@@ -293,12 +292,11 @@ dl.rtv-results {
     }
 }
 
-
 //overrides rc-slider
 
 .rc-slider {
     margin-top: 16px;
-    margin-bottom:8px;
+    margin-bottom:16px;
 }
 .rc-slider-handle, .rc-slider-handle:hover, .rc-slider-handle:focus{
     border-color: #05ab97; // make dynamic
