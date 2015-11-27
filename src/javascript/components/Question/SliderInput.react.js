@@ -37,7 +37,6 @@ let SliderInput = React.createClass({
       };
   },
   update: function(value) {
-    console.log("value: " + value + "color: " + d3MoodColor(value))
     let feeling = {
       value: value,
       color: d3MoodColor(value)
@@ -59,7 +58,6 @@ let SliderInput = React.createClass({
     $(".rc-slider-handle").css("border-color", d3MoodColor(this.props.feeling.value));
     $("#react-app").css("background-color", d3MoodColor(this.props.feeling.value));
     $("#react-app").css("background-image", "-webkit-linear-gradient(" + d3MoodGradient(this.props.feeling.value) + ")");
-    console.log(d3MoodGradient(this.props.feeling.value))
   },
 
   render: function() {
@@ -87,7 +85,7 @@ let SliderInput = React.createClass({
             </div>
           </div>
         </div>
-          
+
       </div>
     )
   }
@@ -95,14 +93,3 @@ let SliderInput = React.createClass({
 
 
 module.exports = SliderInput
-
-        // <div>
-        //   <h2 className="text-center">{this.props.value}</h2>
-        //   <input
-        //     type="range"
-        //     min="0"
-        //     max="100"
-        //     step="1"
-        //     value={this.props.value}
-        //     onChange={this.update} />
-        //  </div>

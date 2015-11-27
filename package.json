@@ -27,7 +27,9 @@
     "react-addons-update": "^0.14.2",
     "react-checkbox-list": "0.0.2",
     "react-dom": "~0.14.2",
-    "react-modal": "~0.6.1"
+    "react-google-recaptcha": "^0.5.2",
+    "react-modal": "~0.6.1",
+    "react-recaptcha": "^2.0.1"
   },
   "devDependencies": {
     "babel": "^6.0.15",
