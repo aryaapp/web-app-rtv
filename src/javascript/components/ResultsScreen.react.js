@@ -12,7 +12,9 @@ let ReactSlider = require('rc-slider')
 let DisplayBody = require('./DisplayBody.react.js')
 let ConfirmationModal = require('./Question/ConfirmationModal.react.js')
 
-var ResultsScreen = React.createClass({
+let Recaptcha = require('react-google-recaptcha');
+
+let ResultsScreen = React.createClass({
   getDefaultProps: function () {
     return {
       title: "Hier deine Eingabe",
@@ -25,21 +27,45 @@ var ResultsScreen = React.createClass({
   },
   getInitialState: function() {
     return {
-      email: ''
+      email: '',
+      recaptchaToken: ''
     }
   },
   update: function(e) {
     this.setState({ email: e.target.value })
   },
-
+  recaptchaVerify: function(value) {
+    this.setState({ recaptchaToken: value });
+  },
   checkEMail: function(e) {
-    var re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    let re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     return re.test(this.state.email)
   },
   sendResults: function(e) {
-    if (this.checkEMail()) {
-      console.log('E-Mail results to:', this.state.email)
-      this.refs['confirmation'].openModal()
+    let that = this
+    if (that.checkEMail()) {
+      let data = {
+        token: that.state.recaptchaToken,
+        email: that.state.email,
+        results: {
+          feeling:   that.props.feeling,
+          body:      that.props.body,
+          thoughts:  that.props.thoughts,
+          situation: that.props.situation,
+          reaction:  that.props.reaction,
+        },
+      }
+      $.ajax({
+        type: 'POST',
+        url: 'https://arya-api-dev.herokuapp.com/v1/email/rtv_mindfullness_results',
+        data: data
+      })
+      .done(function(data) {
+        that.refs['confirmation'].openModal()
+      })
+      .fail(function(jqXhr) {
+        console.log('failed to send request');
+      });
     }
   },
 
@@ -68,6 +94,11 @@ var ResultsScreen = React.createClass({
           <div className="row">
             <div className="col-xs-12 col-sm-8 col-sm-push-2 col-md-6 col-md-push-3 submit-form">
               <div className="form-group">
+                <Recaptcha
+                  ref="recaptcha"
+                  sitekey="6LdJ2RETAAAAAPHK7GmcRZTPnZY0E3AGY0sivpAs"
+                  onChange={this.recaptchaVerify}
+                />
                 <input
                   className="form-control email-control"
                   type='email'

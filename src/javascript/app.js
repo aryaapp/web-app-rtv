@@ -39,7 +39,6 @@ var App = React.createClass({
     var newState = {}
     newState[question] = value
     this.setState(newState);
-    console.log('something changed')
     //tell fullpage to recalculate window size
     $.fn.fullpage.reBuild();
   },
