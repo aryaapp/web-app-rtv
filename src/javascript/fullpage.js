@@ -16,9 +16,9 @@ $(document).ready(function() {
         scrollOverflow: true,
         normalScrollElements: "",
 
-    afterSlideLoad: function(link) {
-      console.log(link);
-    }
+        afterSlideLoad: function(link) {
+          console.log(link);
+        }
     });
     $.fn.fullpage.setAllowScrolling(false);
     $.fn.fullpage.setKeyboardScrolling(false);
