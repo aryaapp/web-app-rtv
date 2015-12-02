@@ -65,21 +65,21 @@ let SliderInput = React.createClass({
       <div>
         <div className="row">
           <div className="col-xs-10 col-xs-push-1">
-            <ReactSlider defaultValue={ this.props.feeling.value } onChange={this.update} />
+            <ReactSlider value={ this.props.feeling.value } defaultValue={ this.props.feeling.value } onChange={this.update} />
             <div id="emo-container">
-              <a>
+              <a onClick={this.update.bind(this, 2)}>
                 <img src="images/emo-1.svg" className="svg emo emo-1" />
               </a>
-              <a>
+              <a onClick={this.update.bind(this, 26)}>
                 <img src="images/emo-2.svg" className="svg emo emo-2" />
               </a>
-              <a>
+              <a onClick={this.update.bind(this, 50)}>
                 <img src="images/emo-3.svg" className="svg emo emo-3" />
               </a>
-              <a>
+              <a onClick={this.update.bind(this, 74)}>
                 <img src="images/emo-4.svg" className="svg emo emo-4" />
               </a>
-              <a>
+              <a onClick={this.update.bind(this, 100)}>
                 <img src="images/emo-5.svg" className="svg emo emo-5" />
               </a>
             </div>
