@@ -2,9 +2,7 @@ var jQuery = require('jquery')
 require('jquery')
 var React = require('react')
 var ReactDOM = require('react-dom')
-require('./fullpage.js')
 // let's add some style
-// var jQueryFullPage = require('../../node_modules/fullpage.js/jquery.fullPage.js')
 
 var FeelingQuestion = require('./components/Question/FeelingQuestion.react.js')
 var ThoughtsQuestion = require('./components/Question/ThoughtsQuestion.react.js')
@@ -13,6 +11,8 @@ var ReactionQuestion = require('./components/Question/ReactionQuestion.react.js'
 var BodyQuestion = require('./components/Question/BodyQuestion.react.js')
 var ResultsScreen = require('./components/ResultsScreen.react.js')
 var WelcomeModal = require('./components/Question/WelcomeModal.react.js')
+var PrevButton = require('./components/Reusable/PrevButton.react.js')
+var NextButton = require('./components/Reusable/NextButton.react.js')
 
 var App = React.createClass({
   getInitialState: function() {
@@ -33,6 +33,7 @@ var App = React.createClass({
       thoughts: '',
       situation:  [],
       reaction: [],
+      currentPage: 0
     };
   },
   handleQuestionChange: function(question, value) {
@@ -40,49 +41,53 @@ var App = React.createClass({
     newState[question] = value
     this.setState(newState);
     //tell fullpage to recalculate window size
-    $.fn.fullpage.reBuild();
   },
   clearData: function() {
     this.setState(this.getInitialState())
   },
+  handleClickNext: function() {
+    var newPage = Math.min( this.state.currentPage + 1 , 4 )
+    this.setState({ currentPage: newPage }) 
+    console.log('current Page change : ' + newPage)
+  },
+  handleClickPrev: function() {
+    var newPage = Math.max( this.state.currentPage + -1 , 0 )
+    this.setState({currentPage: newPage})
+    console.log('current Page change : ' + newPage)
+  },
   render: function() {
-    //can we lazy load the Fullpage app? While displaying the WelcomeModal?
-    return (
-      <div className="gradient-background">
-        <div id="main-app">
-          <div className="welcome">
-            <WelcomeModal />
-          </div>
-          <div id="fullpage">
-            <FeelingQuestion
+
+    var partial;
+    switch (this.state.currentPage) {
+      case 0:
+        partial = <div className="partial-container"><FeelingQuestion
               feeling={this.state.feeling}
               onChange={this.handleQuestionChange.bind(this, 'feeling' )}
+              onClickNext = { this.handleClickNext }
             />
+            <NextButton onClick={this.handleClickNext} />
+            </div>
+        break;
+      case 1:
+        partial = 
+          <div className="partial-container">
             <BodyQuestion
               body={this.state.body}
               onChange={this.handleQuestionChange.bind(this, 'body' )}
             />
-            <ThoughtsQuestion
-              thoughts={this.state.thoughts}
-              onChange={this.handleQuestionChange.bind(this, 'thoughts' )}
-            />
-            <SituationQuestion
-              situation={this.state.situation}
-              onChange={this.handleQuestionChange.bind(this, 'situation' )}
-            />
-
-            <ReactionQuestion
-              reaction={this.state.reaction}
-              onChange={this.handleQuestionChange.bind(this, 'reaction' )}
-            />
-            <ResultsScreen
-              feeling={this.state.feeling}
-              body={this.state.body}
-              thoughts={this.state.thoughts}
-              situation={this.state.situation}
-              reaction={this.state.reaction}
-              clearData={this.clearData} />
+            <PrevButton onClick={this.handleClickPrev} />
+            <NextButton onClick={this.handleClickNext} />
           </div>
+        console.log('body');
+        break;
+      default:
+        console.log('nothing to do here');
+    }
+
+    return (
+      <div className="gradient-background">
+        <div id="main-app">
+            { partial }
         </div>
       </div>
     );
