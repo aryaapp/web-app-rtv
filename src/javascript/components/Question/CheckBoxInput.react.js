@@ -4,7 +4,7 @@
 */
 import React from 'react';
 
-let CheckBoxList = require('react-checkbox-list');
+let CheckBoxList = require('../CheckBoxList.react.js');
 
 let CheckBoxInput = React.createClass({
   getDefaultProps() {
@@ -19,13 +19,12 @@ let CheckBoxInput = React.createClass({
     this.props.onChange(values);
   },
   render: function() {
-    var that = this
     return (
       <div>
         <CheckBoxList defaultData={this.props.options} onChange={this.update} />
       </div>
-        )
-    }
+    )
+  }
 })
 
 module.exports = CheckBoxInput
