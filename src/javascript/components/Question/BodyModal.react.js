@@ -10,7 +10,11 @@ const Modal = require('react-modal');
 const CheckBoxInput = require('./CheckBoxInput.react.js');
 let Content = require('../../constants/localizableStringsDE.js')
 
-const customStyles = {}
+const customStyles = {
+  content : {
+    padding                       : '0'
+  }
+}
 
 const BodyModal = React.createClass({
   statics: {
@@ -118,8 +122,7 @@ const BodyModal = React.createClass({
           isOpen={this.state.isOpen}
           onRequestClose={this.closeModal}
           style={customStyles} >
-          <h2>{this.props.title}</h2>
-          <CheckBoxInput values={this.props.values} options={this.state.options} onChange={this.update} />
+          <h2 className="body-modal-title">{this.props.title}</h2>
           <form onSubmit={this.addOption}>
             <input
               className="form-control"
@@ -128,8 +131,8 @@ const BodyModal = React.createClass({
               onChange={this.updateNewOption}
               placeholder='Meine Situation' />
           </form>
-
-          <button className="btn btn-full-width btn-success" onClick={this.closeModal}>OK</button>
+          <CheckBoxInput values={this.props.values} options={this.state.options} onChange={this.update} />
+          <button className="btn btn-full-width btn-success btn-square" onClick={this.closeModal}>OK</button>
         </Modal>
       </div>
     );

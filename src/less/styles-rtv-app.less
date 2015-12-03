@@ -40,6 +40,7 @@
 .partial-container{
     height:100%;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 .nav-button{
     position: absolute;
@@ -76,12 +77,13 @@ body{
     display: block;
 }
 
-.gradient-background {
-    background:blue;
+.page-number{
+    text-align: center;
+    color: white;
+    margin-top: 3px;
+    font-weight: lighter;
+    text-shadow: 0 0 25px #353535;
 }
-
-
-
 
 .rtv-title h3, .rtv-title {
     color: #333;
@@ -190,7 +192,7 @@ textarea{
 }
 
 #body-image-container {
-    height: 90%;
+    height: 100%;
     text-align: center;
 }
 
@@ -212,6 +214,12 @@ textarea{
 .btn{
     font-size: 16px;
     font-weight:normal;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:focus {
+    background: @rtv-blue;
+    border-color: @rtv-blue;
+    border-radius:0;
 }
 
 .btn-full-width{
@@ -352,8 +360,32 @@ li.result-answer{
         background: rgba(0,0,0,0.9);
     }
 }
+.ReactModal__Content {
+   .checkbox {
+    margin: 0 !important;
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 48px;
+    }
+    label {
+        width: 100%;
+        height: 100%;
+        padding-top:12px;
+        padding-bottom: 12px;
+    }
+    .checkbox input[type="checkbox"] {
+        position: relative;
+        margin-left:0;
+        margin-right: 12px;
+    } 
+}
 
+.btn-square{
+    border-radius: 0;
+    margin-top: 32px;
+}
 
-.ReactModalPortal{
-    z-index:1000;
+.body-modal-title{
+    text-align: center;
+    margin-top: 18px;
 }

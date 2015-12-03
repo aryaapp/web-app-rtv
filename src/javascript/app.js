@@ -13,6 +13,7 @@ var ResultsScreen = require('./components/ResultsScreen.react.js')
 var WelcomeModal = require('./components/Question/WelcomeModal.react.js')
 var PrevButton = require('./components/Reusable/PrevButton.react.js')
 var NextButton = require('./components/Reusable/NextButton.react.js')
+var PageNumber = require('./components/PageNumber.react.js')
 
 var App = React.createClass({
   getInitialState: function() {
@@ -48,12 +49,10 @@ var App = React.createClass({
   handleClickNext: function() {
     var newPage = Math.min( this.state.currentPage + 1 , 5 )
     this.setState({ currentPage: newPage }) 
-    console.log('current Page change : ' + newPage)
   },
   handleClickPrev: function() {
     var newPage = Math.max( this.state.currentPage + -1 , 0 )
     this.setState({currentPage: newPage})
-    console.log('current Page change : ' + newPage)
   },
   render: function() {
 
@@ -131,6 +130,7 @@ var App = React.createClass({
 
     return (
       <div className="gradient-background">
+        <PageNumber page={this.state.currentPage + 1} />
         <div id="main-app">
             { partial }
         </div>
