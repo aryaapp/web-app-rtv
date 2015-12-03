@@ -80,16 +80,16 @@ const BodyModal = React.createClass({
     };
   },
   openModal: function() {
-    $.fn.fullpage.setAllowScrolling(false);
-    $.fn.fullpage.setKeyboardScrolling(false);
-    $('#fp-nav').hide();
+    // $.fn.fullpage.setAllowScrolling(false);
+    // $.fn.fullpage.setKeyboardScrolling(false);
+    // $('#fp-nav').hide();
 
     this.setState({ isOpen: true })
   },
   closeModal: function() {
-    $('#fp-nav').show();
-    $.fn.fullpage.setAllowScrolling(true);
-    $.fn.fullpage.setKeyboardScrolling(true);
+    // $('#fp-nav').show();
+    // $.fn.fullpage.setAllowScrolling(true);
+    // $.fn.fullpage.setKeyboardScrolling(true);
 
     this.setState({ isOpen: false })
   },

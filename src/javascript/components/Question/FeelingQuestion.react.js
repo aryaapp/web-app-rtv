@@ -14,6 +14,7 @@ let SliderInput = require('./SliderInput.react.js')
 let SliderRange = require('./SliderRange.react.js')
 let ScrollIndicator = require('./ScrollIndicator.react.js')
 let Content = require('../../constants/localizableStringsDE.js')
+let NextButton = require('../Reusable/NextButton.react.js')
 
 
 let FeelingQuestion = React.createClass({
@@ -29,6 +30,9 @@ let FeelingQuestion = React.createClass({
 
   update: function(feeling) {
     this.props.onChange(feeling)
+  },
+  next: function(feeling) {
+    this.props.onClickNext()
   },
 
   render() {
