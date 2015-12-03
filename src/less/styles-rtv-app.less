@@ -4,13 +4,26 @@
 @rtv-blue: #004170;
 @rtv-red: #b20035;
 
+.mock-banner{
+    height: 52px;
+    background: white;
+    overflow: hidden;
+    border-bottom:1px solid #ccc;
+    text-align:center;
+    img {
+        height:32px;
+        margin-top:10px;
+    }
+}
 
 #react-app{
     display: none;
 }
 
-#main-app{
-    margin-top: 24px;
+
+#main-app {
+    top: 80px;
+    bottom: 0px;
     background: white;
     border-radius: 4px;
     position: absolute;
@@ -18,17 +31,32 @@
     width: 100%;
     overflow: hidden;
     @media (min-width: @screen-sm) {
-        margin-top:0;
+        top:52px;
         border-radius: 0;
         width:50%;
         left:25%;
     }
 }
+.partial-container{
+    height:100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.nav-button{
+    position: absolute;
+    bottom: 16px;
+}
+.prev-button{
+    left: 16px;
+}
+.next-button{
+    right: 16px;
+}
 
 .welcome {
-    position:absolute;
-    width:100%;
-    height:100%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
     background: white;
 }
 
@@ -36,18 +64,25 @@ html, body, #react-app {
   height: 100%;
   overflow: hidden;
 }
-
-#react-app{
-    background: red;
-}
-
 body{
     overflow: hidden;
     height: 100%;
-    background: -webkit-linear-gradient(left,#22b573, #05ab97); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(left,#22b573, #05ab97); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(left,#22b573, #05ab97); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(left,#22b573, #05ab97); /* Standard syntax */
+    // background: -webkit-linear-gradient(left, rgb(188, 212, 120), rgb(146, 211, 129)); /* For Safari 5.1 to 6.0 */
+    // background: -o-linear-gradient(left,#22b573, #05ab97); /* For Opera 11.1 to 12.0 */
+    // background: -moz-linear-gradient(left,#22b573, #05ab97); /* For Firefox 3.6 to 15 */
+    // background: linear-gradient(left,#22b573, #05ab97); /* Standard syntax */
+}
+
+#react-app{
+    display: block;
+}
+
+.page-number{
+    text-align: center;
+    color: white;
+    margin-top: 3px;
+    font-weight: lighter;
+    text-shadow: 0 0 25px #353535;
 }
 
 .rtv-title h3, .rtv-title {
@@ -157,7 +192,7 @@ textarea{
 }
 
 #body-image-container {
-    height: 90%;
+    height: 100%;
     text-align: center;
 }
 
@@ -181,14 +216,20 @@ textarea{
     font-weight:normal;
 }
 
+.btn-primary, .btn-primary:hover, .btn-primary:focus {
+    background: @rtv-blue;
+    border-color: @rtv-blue;
+    border-radius:0;
+}
+
 .btn-full-width{
     width:100%;
 }
 
 .btn-success, .btn-success:focus, .btn-success:hover{
-    background-color: @rtv-blue;
+    background-color: #449d44; // @rtv-blue;
     color: #fff;
-    border-color: @rtv-blue;
+    border-color: #449d44; //@rtv-blue;
 }
 
 img.emoticons{
@@ -244,25 +285,21 @@ li.rtv-list-counter{
     width:100%;
 }
 
-dl.rtv-results {
-    padding-left: 32px;
-    padding-right:32px;
-    text-align: center;
-}
 
-.rtv-results dt {
-    font-weight: normal;
-}
+li.result-title{
 
-.rtv-results dd{
-    font-weight: lighter;
+}
+li.result-answer{
+    border-bottom:1px solid #e9e9e9;
+    margin-bottom: 24px;
+    font-size:12px;
+    line-height:24px;
 }
 
 .fixed-section-footer{
     position: absolute;
     bottom: 0;
     background: white;
-    z-index: 3;
     left: 0;
     height: 80%;
     width: 100%;
@@ -285,20 +322,19 @@ dl.rtv-results {
     right: 0px;
 }
 #fp-nav ul li a span, .fp-slidesNav ul li a span {
-    background: @rtv-blue;
+    background: #767676; // @rtv-blue
     background: transparent;
-    border: 2px solid @rtv-blue; // #004170; rtv brand blue #b20035; rtv brand red
+    border: 2px solid #767676; // @rtv-blue
     @media (min-width: @screen-sm) {
         border-color: white;
     }
 }
 
-
 //overrides rc-slider
 
 .rc-slider {
     margin-top: 16px;
-    margin-bottom:8px;
+    margin-bottom:16px;
 }
 .rc-slider-handle, .rc-slider-handle:hover, .rc-slider-handle:focus{
     border-color: #05ab97; // make dynamic
@@ -312,11 +348,44 @@ dl.rtv-results {
 }
 
 //overrides react modal
-.ReactModal__Content--after-open {
+.ReactModal__Overlay--after-open {
+    z-index:100;
+}
 
+.ReactModal__Content--after-open {
+    
     @media (min-width: @screen-sm) {
         padding-left:30% !important;
         padding-right:30% !important;
         background: rgba(0,0,0,0.9);
     }
+}
+.ReactModal__Content {
+   .checkbox {
+    margin: 0 !important;
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 48px;
+    }
+    label {
+        width: 100%;
+        height: 100%;
+        padding-top:12px;
+        padding-bottom: 12px;
+    }
+    .checkbox input[type="checkbox"] {
+        position: relative;
+        margin-left:0;
+        margin-right: 12px;
+    } 
+}
+
+.btn-square{
+    border-radius: 0;
+    margin-top: 32px;
+}
+
+.body-modal-title{
+    text-align: center;
+    margin-top: 18px;
 }

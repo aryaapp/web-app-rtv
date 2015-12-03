@@ -55,7 +55,7 @@ var ListInput = React.createClass({
             value={this.state.newValue}
             onChange={this.updateState}
             placeholder='Meine Situation' />
-          
+
         </form>
         <ul className="list rtv-list">
           {
@@ -67,7 +67,7 @@ var ListInput = React.createClass({
               )
             })
           }
-          <li className="list-item rtv-list-counter">0 items</li>
+          <li className="list-item rtv-list-counter">{this.props.value.length} Einträge</li>
         </ul>
       </div>
         )
