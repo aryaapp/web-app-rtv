@@ -42,6 +42,7 @@ let SliderInput = React.createClass({
       color: d3MoodColor(value)
     }
     this.props.onChange(feeling)
+    console.log()
   },
 
   componentDidMount: function() {

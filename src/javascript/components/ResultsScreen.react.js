@@ -4,7 +4,7 @@
 */
 import React from 'react';
 
-
+let d3 = require('d3')
 let Section = require('./Question/Section.react.js')
 let QuestionTitle = require('./Question/QuestionTitle.react.js')
 let FixedSectionFooter = require('./Question/FixedSectionFooter.react.js')
@@ -14,11 +14,22 @@ let ConfirmationModal = require('./Question/ConfirmationModal.react.js')
 
 let Recaptcha = require('react-google-recaptcha');
 
+//returns color belonging to moodrange 0-100
+let d3MoodColor = function(value) {
+  let colorScale = d3.scale.linear()
+        .domain([0,50,100])
+        .range(['#e86e6b','#fcd56b','#92D381']); //['#e86e6b','#e86e6c','#fcd56b','#59d1ba','#59d1bb','#a5d36e']
+  return colorScale(value)
+}
+
 let ResultsScreen = React.createClass({
   getDefaultProps: function () {
     return {
       title: "Hier deine Eingabe",
-      feeling: 50,
+      feeling: {
+        value: 50,
+        color: ""
+      },
       body: {},
       thoughts: '',
       situation:  ['keine Eingabe'],
@@ -30,6 +41,9 @@ let ResultsScreen = React.createClass({
       email: '',
       recaptchaToken: ''
     }
+  },
+  componentDidMount: function() {
+    $(".rc-slider-track").css("background-color", d3MoodColor(this.props.feeling.value))
   },
   update: function(e) {
     this.setState({ email: e.target.value })
