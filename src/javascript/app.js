@@ -46,7 +46,7 @@ var App = React.createClass({
     this.setState(this.getInitialState())
   },
   handleClickNext: function() {
-    var newPage = Math.min( this.state.currentPage + 1 , 1 )
+    var newPage = Math.min( this.state.currentPage + 1 , 5 )
     this.setState({ currentPage: newPage }) 
     console.log('current Page change : ' + newPage)
   },
@@ -78,8 +78,53 @@ var App = React.createClass({
             <PrevButton onClick={this.handleClickPrev} />
             <NextButton onClick={this.handleClickNext} />
           </div>
-        console.log('body');
         break;
+      case 2:
+        partial = 
+          <div className="partial-container">
+            <ThoughtsQuestion
+              thoughts={this.state.thoughts}
+              onChange={this.handleQuestionChange.bind(this, 'thoughts' )}
+            />
+            <PrevButton onClick={this.handleClickPrev} />
+            <NextButton onClick={this.handleClickNext} />
+          </div>
+        break;
+      case 3:
+        partial = 
+          <div className="partial-container">
+            <SituationQuestion
+              situation={this.state.situation}
+              onChange={this.handleQuestionChange.bind(this, 'situation' )}
+            />
+            <PrevButton onClick={this.handleClickPrev} />
+            <NextButton onClick={this.handleClickNext} />
+          </div>
+        break;
+      case 4:
+        partial = 
+          <div className="partial-container">
+            <ReactionQuestion
+              reaction={this.state.reaction}
+              onChange={this.handleQuestionChange.bind(this, 'reaction' )}
+            />
+            <PrevButton onClick={this.handleClickPrev} />
+            <NextButton onClick={this.handleClickNext} />
+          </div>
+        break;  
+      case 5:
+        partial = 
+          <div className="partial-container">
+            <ResultsScreen
+              feeling={this.state.feeling}
+              body={this.state.body}
+              thoughts={this.state.thoughts}
+              situation={this.state.situation}
+              reaction={this.state.reaction}
+              clearData={this.clearData} />
+            <PrevButton onClick={this.handleClickPrev} />
+          </div>
+        break;  
       default:
         console.log('nothing to do here');
     }

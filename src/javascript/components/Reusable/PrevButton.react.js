@@ -10,9 +10,9 @@ let PrevButton = React.createClass({
 	},
 	render() { 
 		return (
-			<button onClick={this.handleClick} className="btn btn-primary">Go Back</button>
+			<button onClick={this.handleClick} className="btn btn-primary nav-button prev-button">Go Back</button>
 		)
 	}
 })
 
-module.exports = PrevButton
+module.exports = PrevButton 

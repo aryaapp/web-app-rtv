@@ -10,7 +10,7 @@ let NextButton = React.createClass({
 	},
 	render() { 
 		return (
-			<button onClick={this.handleClick} className="btn btn-primary">Hit meh</button>
+			<button onClick={this.handleClick} className="btn btn-primary nav-button next-button">Hit meh</button>
 		)
 	}
 })
