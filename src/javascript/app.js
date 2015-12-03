@@ -46,7 +46,7 @@ var App = React.createClass({
     this.setState(this.getInitialState())
   },
   handleClickNext: function() {
-    var newPage = Math.min( this.state.currentPage + 1 , 4 )
+    var newPage = Math.min( this.state.currentPage + 1 , 1 )
     this.setState({ currentPage: newPage }) 
     console.log('current Page change : ' + newPage)
   },
