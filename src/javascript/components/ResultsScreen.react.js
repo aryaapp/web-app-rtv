@@ -78,7 +78,7 @@ let ResultsScreen = React.createClass({
             <QuestionTitle title={this.props.title} />
             <div className="col-xs-12 col-sm-8 col-sm-push-2 col-md-6 col-md-push-3 no-padding slim-scroll">
               <ul className="rtv-results list rtv-list">
-                <li className="list-item rtv-list-item result-title">Deine Befinden</li>
+                <li className="list-item rtv-list-item result-title">Deine Befinden <strong>{this.props.feeling.value}</strong></li>
                 <li className="list-item rtv-list-item result-answer"><ReactSlider disabled={true} value={this.props.feeling.value} /></li>
                 <li className="list-item rtv-list-item result-title">Deine Körper</li>
                 <li className="list-item rtv-list-item result-answer"><DisplayBody body={this.props.body} /></li>
@@ -108,7 +108,7 @@ let ResultsScreen = React.createClass({
                   onChange={this.update} />
               </div>
               <button className='btn btn-full-width btn-success' onClick={this.sendResults}><i className="fa fa-envelope-o"></i> Report verschicken</button>
-              <button className='btn btn-full-width' onClick={this.props.clearData}><i className="fa fa-trash-o"></i> Löschen</button>
+              <button className='btn btn-full-width' onClick={this.props.clearData}><i className="fa fa-trash-o"></i> Report verwerfen</button>
             </div>
           </div>
         </div>
