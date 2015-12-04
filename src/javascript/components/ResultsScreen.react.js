@@ -121,8 +121,8 @@ let ResultsScreen = React.createClass({
                   value={this.state.email}
                   onChange={this.update} />
               </div>
-              <button className='btn btn-full-width btn-success' onClick={this.sendResults}><i className="fa fa-envelope-o"></i> Report verschicken</button>
-              <button className='btn btn-full-width' onClick={this.props.clearData}><i className="fa fa-trash-o"></i> Report verwerfen</button>
+              <button className='btn btn-primary nav-button next-button relative-button' onClick={this.sendResults}><i className="fa fa-envelope-o"></i> Report verschicken</button>
+             
             </div>
           </div>
         </div>
@@ -133,3 +133,4 @@ let ResultsScreen = React.createClass({
 });
 
 module.exports = ResultsScreen
+// <button className='btn btn-full-width' onClick={this.props.clearData}><i className="fa fa-trash-o"></i> Report verwerfen</button>

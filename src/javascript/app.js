@@ -121,7 +121,7 @@ var App = React.createClass({
               situation={this.state.situation}
               reaction={this.state.reaction}
               clearData={this.clearData} />
-            <PrevButton onClick={this.handleClickPrev} />
+            <PrevButton onClick={this.handleClickPrev} customClass="prev-button-relative" />
           </div>
         break;  
       default:
@@ -134,6 +134,7 @@ var App = React.createClass({
         <div id="main-app">
             { partial }
         </div>
+        <WelcomeModal />
       </div>
     );
   }

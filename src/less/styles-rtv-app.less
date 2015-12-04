@@ -41,10 +41,17 @@
     height:100%;
     overflow-y: auto;
     overflow-x: hidden;
+    padding-bottom:16px;
 }
 .nav-button{
     position: absolute;
     bottom: 16px;
+    border-radius: 40px !important;
+    margin-top:0px;
+    color: white;
+    border-width:6px;
+    margin-right:0;
+    margin-bottom:0;
 }
 .prev-button{
     left: 16px;
@@ -52,12 +59,51 @@
 .next-button{
     right: 16px;
 }
+.relative-button{
+    position: inherit;
+    width: 100%;
+    display: inline-block;
+    right: inherit;
+    margin-top:16px;
+}
+
+.rtv-white-space {
+    margin-bottom: 82px;
+}
+.prev-button-relative {
+    position: inherit;
+    display: block;
+    margin-left:16px;
+}
 
 .welcome {
     position: absolute;
     width: 100%;
     height: 100%;
     background: white;
+}
+
+.full-height {
+    height:100%;
+}
+.welcome-modal {
+    text-align: center;
+    height:100%;
+    img.welcome-rtv-image {
+        height:32px;
+        margin-top:24px;
+    }
+    .welcome-text-container {
+        width: 100%;
+        .quote {
+            font-size: 32px;
+            line-height: 40px;
+        }
+        .source {
+            font-size:14px;
+            line-height:28px;
+        }
+    }
 }
 
 html, body, #react-app {
@@ -125,6 +171,7 @@ body{
 .email-control{
     border-width: 1px;
     border-radius:8px;
+    margin-top:16px;
 }
 
 
