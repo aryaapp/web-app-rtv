@@ -31,17 +31,9 @@ const ConfirmationModal = React.createClass({
     return { isOpen: false };
   },
   openModal: function() {
-    $.fn.fullpage.setAllowScrolling(false);
-    $.fn.fullpage.setKeyboardScrolling(false);
-    $('#fp-nav').hide();
-
     this.setState({ isOpen: true })
   },
   closeModal: function() {
-    $('#fp-nav').show();
-    $.fn.fullpage.setAllowScrolling(true);
-    $.fn.fullpage.setKeyboardScrolling(true);
-
     this.setState({ isOpen: false })
   },
   newJournal: function() {
@@ -52,11 +44,6 @@ const ConfirmationModal = React.createClass({
   },
   render() {
     return (
-      <div>
-        <div className="modal-trigger">
-          <i className="fa fa-lg" onClick={this.openModal}>o</i>
-          <i className="fa fa-2x fa-question-circle hidden-xs trigger-desktop" onClick={this.openModal}></i>
-        </div>
         <Modal
           isOpen={this.state.isOpen}
           onRequestClose={this.closeModal}
@@ -66,7 +53,6 @@ const ConfirmationModal = React.createClass({
            Look <a href="">here</a> </div>
           <button className="btn btn-full-width btn-success" onClick={this.newJournal}>New Journal</button>
         </Modal>
-      </div>
     );
   }
 });

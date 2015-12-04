@@ -19,8 +19,9 @@ let BodyImage = React.createClass({
       }
     }
   },
+  
   fillColor: function(key) {
-    return this.props.body[key].length > 0 ? 'rgba(0,65,112,0.2)' : 'none'
+    return this.props.body[key].length > 0 ? '#d9d9d9' : 'none'
   },
   render() {
     var that = this
@@ -29,7 +30,7 @@ let BodyImage = React.createClass({
       <div id="body-image-container">
         <svg version="1.1" id="body-image" viewBox="0 0 180 380">
           <g id="body">
-            <path fill="#FAFAFA" stroke={ strokeColor } stroke-linejoin="round" stroke-miterlimit="10" d="M110.322,58.942
+            <path fill="none" stroke={ strokeColor } stroke-linejoin="round" stroke-miterlimit="10" d="M110.322,58.942
               c0.967-1.495,2.475-2.911,3.287-3.942c6.469-8.219,6.261-21.638,0.385-33.235c-3.924-7.743-12.24-10.77-21.643-8.521
               c-6.901,1.648-11.021,7.979-11.915,16.311C79.574,37.6,78.869,45.364,86.609,51c0.195,0.129,0.39,0.363,0.561,0.518l0,0
               c3.637,3.262,1.818,11.636-2.555,14.528c-0.756,0.5-1.78,1.178-2.66,1.29l-5.459,1.011l-5.512,1.35

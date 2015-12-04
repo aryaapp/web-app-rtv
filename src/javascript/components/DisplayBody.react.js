@@ -17,9 +17,9 @@ let DisplayBody = React.createClass({
       left_arm: Content.QUESTION_BODY_LEFT_ARM,
       right_arm: Content.QUESTION_BODY_RIGHT_ARM,
       chest: Content.QUESTION_BODY_CHEST,
-      left_leg: Content.QUESTION_LEFT_LEG,
-      right_leg: Content.QUESTION_RIGHT_LEG,
-      hip: Content.QUESTION_HIP
+      left_leg: Content.QUESTION_BODY_LEFT_LEG,
+      right_leg: Content.QUESTION_BODY_RIGHT_LEG,
+      hip: Content.QUESTION_BODY_HIP
     }
     var that = this
     return (

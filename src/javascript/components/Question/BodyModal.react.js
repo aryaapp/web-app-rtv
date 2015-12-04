@@ -10,20 +10,16 @@ const Modal = require('react-modal');
 const CheckBoxInput = require('./CheckBoxInput.react.js');
 let Content = require('../../constants/localizableStringsDE.js')
 
-const customStyles = {}
+const customStyles = {
+  content : {
+    padding                       : '0'
+  }
+}
 
 const BodyModal = React.createClass({
-getDefaultProps() {
-    return {
-      values: [],
-      role: 'head',
-      title: '',
-    }
-  },
-  getInitialState() {
-    return {
-      isOpen: false,
-      options: {
+  statics: {
+    getOptions: function(role) {
+      let optionTemplete = {
         head: [
           { value: Content.QUESTION_BODY_HEADACHE, label: Content.QUESTION_BODY_HEADACHE },
           { value: Content.QUESTION_BODY_FLUSHED_FACE, label: Content.QUESTION_BODY_FLUSHED_FACE },
@@ -70,25 +66,55 @@ getDefaultProps() {
           { value: Content.QUESTION_BODY_TINGLING, label: Content.QUESTION_BODY_TINGLING },
         ]
       }
+      return optionTemplete[role]
+    }
+  },
+  getDefaultProps() {
+    return {
+      values: [],
+      role: 'head',
+      title: '',
+    }
+  },
+  getInitialState() {
+    return {
+      isOpen: false,
+      newOption: '',
+      options: BodyModal.getOptions(this.props.role)
     };
   },
   openModal: function() {
-    $.fn.fullpage.setAllowScrolling(false);
-    $.fn.fullpage.setKeyboardScrolling(false);
-    $('#fp-nav').hide();
+    // $.fn.fullpage.setAllowScrolling(false);
+    // $.fn.fullpage.setKeyboardScrolling(false);
+    // $('#fp-nav').hide();
 
     this.setState({ isOpen: true })
   },
   closeModal: function() {
-    $('#fp-nav').show();
-    $.fn.fullpage.setAllowScrolling(true);
-    $.fn.fullpage.setKeyboardScrolling(true);
+    // $('#fp-nav').show();
+    // $.fn.fullpage.setAllowScrolling(true);
+    // $.fn.fullpage.setKeyboardScrolling(true);
 
     this.setState({ isOpen: false })
   },
+
   update: function(value) {
     this.props.onChange(value)
   },
+
+  addOption: function(e) {
+    e.preventDefault();
+    let newOptions = update(
+      this.state.options,
+      { $push: [{ value: this.state.newOption, label:this.state.newOption, checked: true }] }
+    )
+    this.setState({ options: newOptions, newOption: '' })
+  },
+
+  updateNewOption: function(e) {
+    this.setState({ newOption: e.target.value })
+  },
+
   render() {
     return (
       <div className="body-modal">
@@ -96,9 +122,17 @@ getDefaultProps() {
           isOpen={this.state.isOpen}
           onRequestClose={this.closeModal}
           style={customStyles} >
-          <h2>{this.props.title}</h2>
-          <CheckBoxInput values={this.props.values} options={this.state.options[this.props.role]} onChange={this.update} />
-          <button className="btn btn-full-width btn-success" onClick={this.closeModal}>OK</button>
+          <h2 className="body-modal-title">{this.props.title}</h2>
+          <form onSubmit={this.addOption}>
+            <input
+              className="form-control"
+              type='text'
+              value={this.state.newOption}
+              onChange={this.updateNewOption}
+              placeholder='Meine Situation' />
+          </form>
+          <CheckBoxInput values={this.props.values} options={this.state.options} onChange={this.update} />
+          <button className="btn btn-full-width btn-success btn-square" onClick={this.closeModal}>OK</button>
         </Modal>
       </div>
     );
