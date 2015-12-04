@@ -15,7 +15,8 @@ const customStyles = {
     right                      : '0',
     bottom                     : '0',
     border                     : 'none',
-    borderRadius               : '0'
+    borderRadius               : '0',
+    padding                    : '0'
   }
 }
 
@@ -27,24 +28,32 @@ var WelcomeModal = React.createClass({
     this.setState({ isOpen: true })
   },
   closeModal: function() {
-    $.fn.fullpage.setAllowScrolling(true);
-    $.fn.fullpage.setKeyboardScrolling(true);
-    $('#fp-nav').show();
-    $('#react-app').show();
     this.setState({ isOpen: false })
   },
   render() {
     return (
-      <div>
+      
         <Modal
           isOpen={this.state.isOpen}
           onRequestClose={this.closeModal}
           style={customStyles} >
-          <h3 className="rtv-title">RTV Moodtracker</h3>
-          <p>Nice to see you again! Let's get your mind empty and mindful</p>
-          <button className="btn btn-full-width btn-success" onClick={this.closeModal}>Get Started</button>
+          <div className="welcome-modal container-fluid">
+            <div className="row full-height">
+            <div className="col-xs-12 no-padding full-height">
+            <img src="./images/rtv_logo-1.png" className="welcome-rtv-image fade-in arya-animation animation2"/>
+            
+            <div className="welcome-text-container vertical-align-center fade-in arya-animation animation1">
+              <i className="quote">„Jedem Anfang wohnt ein Zauber inne”</i><br/> 
+                <span className="source">-Hermann Hesse</span>
+            </div>
+            <button className="btn btn-primary nav-button next-button fade-in arya-animation animation3" onClick={this.closeModal}>
+              Anfangen <i className="fa fa-arrow-right"></i>
+            </button>
+            </div>
+            </div>
+          </div>
         </Modal>
-      </div>
+      
     );
   }
 });
@@ -52,3 +61,4 @@ var WelcomeModal = React.createClass({
 module.exports = WelcomeModal
 
 //modal toggle add classnames for desktop
+//<h3 className="rtv-title welcome-title">Moodtracker</h3>

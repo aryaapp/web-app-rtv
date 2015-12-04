@@ -10,10 +10,9 @@ let PrevButton = React.createClass({
 	},
 	render() { 
 		return (
-			<button onClick={this.handleClick} className="btn btn-primary nav-button prev-button"><i className="fa fa-arrow-left"></i></button>
+			<button onClick={this.handleClick} className={ this.props.customClass + " btn nav-button prev-button" } ><i className="fa fa-arrow-left"></i></button>
 		)
 	}
 })
 
 module.exports = PrevButton 
- 
