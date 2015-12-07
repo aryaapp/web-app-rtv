@@ -4,6 +4,8 @@
 
 @-webkit-keyframes translateUp { from { -webkit-transform:translate(0px,48px) } to { -webkit-transform:translate(0px,0px)  } }
 
+@-webkit-keyframes moveLeft { from { -webkit-transform:translate(0px,0px) } to { -webkit-transform:translate(-200px,0px)  } }
+
 @-webkit-keyframes blink{0%{opacity:.1}50%{opacity:.4}100%{opacity:.1}}
 @-moz-keyframes blink{0%{opacity:.1}50%{opacity:.4}100%{opacity:.1}}
 @-ms-keyframes blink{0%{opacity:.1}50%{opacity:.4}100%{opacity:.1}}
@@ -40,6 +42,20 @@
     -moz-animation:fadeIn ease-out 1 , translateDown ease-out 1;
     animation:fadeIn ease-in 1 , translateDown ease-out 1;
 }
+
+.move-left {
+    transform:translate(-200px,0px);
+    -webkit-animation:fadeIn ease-in 1, moveLeft ease both;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+    -moz-animation:fadeIn ease-out 1 , moveLeft ease-out 1;
+    animation:fadeIn ease-in 1 , moveLeft ease-out 1;
+}
+.move-right {
+    transform:translate(200px,0px);
+    -webkit-animation:fadeIn ease-in 1, translateDown ease both;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+    -moz-animation:fadeIn ease-out 1 , translateDown ease-out 1;
+    animation:fadeIn ease-in 1 , translateDown ease-out 1;
+}
+
 
 .arya-animation{
 	-webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/

@@ -106,7 +106,7 @@ let ResultsScreen = React.createClass({
             </div>
           </div>
           <div className="row">
-            <div className="col-xs-12 col-sm-8 col-sm-push-2 col-md-6 col-md-push-3 submit-form">
+            <div className="col-xs-12 col-md-6 col-md-push-3 submit-form">
               <div className="form-group">
                 <Recaptcha
                   ref="recaptcha"

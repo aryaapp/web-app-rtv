@@ -132,7 +132,7 @@ const BodyModal = React.createClass({
               placeholder='Meine Situation' />
           </form>
           <CheckBoxInput values={this.props.values} options={this.state.options} onChange={this.update} />
-          <button className="btn btn-full-width btn-success btn-square" onClick={this.closeModal}>OK</button>
+          <button className="btn btn-full-width btn-primary btn-square" onClick={this.closeModal}>OK</button>
         </Modal>
       </div>
     );
