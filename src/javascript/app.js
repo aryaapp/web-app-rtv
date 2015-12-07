@@ -138,7 +138,9 @@ var App = React.createClass({
             { partial }
           </ReactCSSTransitionGroup>
         </div>
-        <WelcomeModal />
+        <ReactCSSTransitionGroup component="div" className="transition-group-modal" key="1" transitionName="modal" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+          <WelcomeModal />
+        </ReactCSSTransitionGroup>
       </div>
     );
   }

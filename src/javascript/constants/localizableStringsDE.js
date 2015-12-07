@@ -15,19 +15,19 @@ module.exports = {
 	"NOTES_TITLE" :"Meine Notizen",
 
 	"QUESTION_FEELING_TITLE" : "Wie fühlst du dich?",
-	"QUESTION_FEELING_SUBTITLE" : "Bewege den Regler, um deine Stimmung einzustellen",
-	"QUESTION_FEELING_EXPLANATION" : "Bewege den Regler, um deine Stimmung einzustellen",
+	"QUESTION_FEELING_SUBTITLE" : "Stell dein persönliches Stimmungsbarometer ein!",
+	"QUESTION_FEELING_EXPLANATION" : "Spür in dich hinein - Wie geht es dir gerade? Wie ist deine individuelle Wetterlage?  Heiter oder eher wolkig?\nMach eine kurze allgemeine Inventur. Gar nicht lange überlegen. Folge deinem Impuls und bewege den Regler, um deine momentane Stimmung einzustellen.",
 	"QUESTION_FEELING_VERY_BAD" : "SEHR SCHLECHT",
 	"QUESTION_FEELING_AVERAGE" : "DURCHSCHNITTLICH",
 	"QUESTION_FEELING_VERY_WELL" : "SEHR GUT",
 
 	"QUESTION_CIRCUMSTANCES_TITLE" : "Beschreibe die Situation",
-	"QUESTION_CIRCUMSTANCES_SUBTITLE" : "Where are you, with whom, what do you hear, etc.",
-	"QUESTION_CIRCUMSTANCES_EXPLANATION" : "Gibt es ein auslösende Situation für Deine Stimmung? Beschreibe sie.\nWenn nicht, dann beschreibe einfach diesen Moment. Umgebung, Menschen, Geräusche, Gerüche usw..\nTrenne die einzelnen Elemente wie im Beispiel:\n- Ich bin zu Hause\n- Ich mache Hausaufgaben\n- Max ist da\n- ich höre Vögel zwitschern",
+	"QUESTION_CIRCUMSTANCES_SUBTITLE" : "Wie ist die persönliche Lage der Nation? Gibt es Gründe für deine Stimmung?",
+	"QUESTION_CIRCUMSTANCES_EXPLANATION" : "Denk jetzt mal kurz nach. Gibt es einen bestimmten Grund oder Auslöser für deine derzeitige Stimmung? Und wer oder was ist aus deiner Sicht dafür verantwortlich? Beschreibe die Situation samt Grund. Wenn dir dazu gerade nichts einfällt, dann beschreibe einfach nur diesen Moment. Orte,  Tätigkeiten, beteiligte Menschen, Geräusche, Gerüche, Sonstiges - was auch immer dir dazu in den Sinn kommt.",
 
 	"QUESTION_BODY_TITLE" : "Wie fühlt sich Dein Körper an?",
-	"QUESTION_BODY_SUBTITLE" : "Tap a bodypart and select what you feel",
-	"QUESTION_BODY_EXPLANATION" : "Nimmst Du Empfindungen in deinem Körper wahr? Tippe auf die Abbildung, um eine oder mehrere Empfindungen auszuwählen.",
+	"QUESTION_BODY_SUBTITLE" : "Welche Empfindungen nimmst du wo in deinem Körper wahr?",
+	"QUESTION_BODY_EXPLANATION" : "Nimm dir nochmal Zeit und gehe auf innere Spurensuche. Was spürst du wo im Körper? Welche Empfindungen kannst du wahrnehmen? Wo ist dir warm und wohlig? Wo kribbelts? Wo ziepts? Wo tuts richtig weh? Wo ist mehr Weite und wo ist alles enger als sonst? Hüpft das Herz oder krampft der Magen? Zuckt das Auge? Es geht so Vieles in dir vor. Beobachte alles sorgfältig, tippe auf die Abbildung der Körperteile, um dort deine Empfindungen zu notieren.",
 
 	"QUESTION_BODY_HEAD" : "Kopf",
 	"QUESTION_BODY_NECK" : "Nacken",
@@ -55,10 +55,20 @@ module.exports = {
 	"QUESTION_BODY_RIGHT_LEG" : "Rechtes Bein",
 
 	"QUESTION_BODY_HEADACHE" : "Kopfschmerzen",
-	"QUESTION_BODY_FLUSHED_FACE" : "Erröted",
+	"QUESTION_BODY_FLUSHED_FACE" : "Errötet",
 	"QUESTION_BODY_DIZZY_AND_LIGHTHEADED" : "Schwindel und Bennommenheit",
 	"QUESTION_BODY_HEAVYHEADED" : "Schwerer Kopf",
 	"QUESTION_BODY_NECK_PAIN" : "Nackenschmerzen",
+
+	"QUESTION_BODY_HEAD_OPTIONS" : ["Kopfschmerzen","Erröted","Schwindel und Bennommenheit","Schwerer Kopf","Nackenschmerzen","Brennende Augen","Mundtrockenheit","Ohrenschmerzen"],
+	"QUESTION_BODY_CHEST_OPTIONS" : ["Brustschmerzen","Atemprobleme","Druck auf der Brust","Herzrasen","Rückenschmerzen","Steifheit"],
+	"QUESTION_BODY_ABDOMEN_OPTIONS" : ["Schmetterlinge im Bauch","Magenschmerzen","Übelkeit","Unterleibsschmerzen"],
+	"QUESTION_BODY_LEFT_ARM_OPTIONS" : ["Gelenkschmerzen"],
+	"QUESTION_BODY_RIGHT_ARM_OPTIONS" : ["Gelenkschmerzen"],
+	"QUESTION_BODY_HIP_OPTIONS" : [],
+	"QUESTION_BODY_LEFT_LEG_OPTIONS" : ["Gelenkschmerzen"],
+	"QUESTION_BODY_RIGHT_LEG_OPTIONS" : ["Gelenkschmerzen"],
+	"QUESTION_BODY_GENERIC_OPTIONS" : ["Hitze","Wärme","Kälte","Leichtigkeit","Schwere","Jucken","Prickeln","Anspannung","Taubheit","Muskelschmerzen","Kribbeln"],
 
 	"QUESTION_BODY_CHEST_PAIN" : "Brustschmerzen",
 	"QUESTION_BODY_BREATHING" : "Atemprobleme",
@@ -70,7 +80,6 @@ module.exports = {
 	"QUESTION_BODY_DIGESTIVE" : "Magenschmerzen",
 	"QUESTION_BODY_NAUSEOUS" : "Übelkeit",
 	"QUESTION_BODY_CROTCH" : "Unterleibsschmerzen",
-	"QUESTION_BODY_TENSION" : "Gelenkschmerzen",
 
 	"QUESTION_BODY_MUSCLE_ACHE" : "Muskelschmerzen",
 	"QUESTION_BODY_JOINT_PAIN" : "Gelenkschmerzen",
@@ -78,12 +87,12 @@ module.exports = {
 	"QUESTION_BODY_TINGLING" : "Kribbeln",
 
 	"QUESTION_THOUGHTS_TITLE" : "Was denkst du?",
-	"QUESTION_THOUGHTS_SUBTITLE" : "Write down whatever comes to mind",
-	"QUESTION_THOUGHTS_EXPLANATION" : "Vielleicht möchtest Du deine Augen schließen, spüre Deinen Atem und beobachte welche Gedanken Dir durch den Kopf gehen.",
+	"QUESTION_THOUGHTS_SUBTITLE" : "Welche Gedanken kommen hoch? Ganz ehrlich...;-)",	
+	"QUESTION_THOUGHTS_EXPLANATION" : "Vielleicht schließt du kurz die Augen, nimmst fur ein paar Sekunden Deinen Atem wahr. Dann bist du in der besten Position um deine Gedanken zu beobachten.  Wie Wolken am Himmel kommen sie und ziehen davon, mal stürmisch, mal gemach. Lass sie ziehen, aber schreib sie auf",
 
 	"QUESTION_REACTION_TITLE" : "Wie hast du reagiert?",
-	"QUESTION_REACTION_SUBTITLE" : "Optional. If your mood is related to external circumstances.",
-	"QUESTION_REACTION_EXPLANATION" : "Optional.\nIm Falle einer auslösenden Situation, wie hast Du darauf reagiert?\nWie hast Du dich verhalten?\nHandelte es sich um eine automatische Handlung/Reaktion oder konntest Du dich bewusst entscheiden?",
+	"QUESTION_REACTION_SUBTITLE" : "Ist dir was aufgefallen?",
+	"QUESTION_REACTION_EXPLANATION" : "Wenn es einen Grund oder konkreten Auslöser für eine bestimmte Situation gab, wie hast Du darauf reagiert? Wie hast Du dich in dieser Situation verhalten? War es eine automatische Handlung/Reaktion oder konntest Du innehalten und dich bewusst für eine Reaktion entscheiden?",
 
 	"QUESTION_FINISH_TITLE" : "Du bist fertig!",
 	"QUESTION_FINISH_SUBTITLE" : "Bestätige, um deinen Eintrag auf dem Gerät zu speichern.",

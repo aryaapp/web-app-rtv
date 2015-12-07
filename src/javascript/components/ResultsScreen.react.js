@@ -7,12 +7,14 @@ import React from 'react';
 let d3 = require('d3')
 let Section = require('./Question/Section.react.js')
 let QuestionTitle = require('./Question/QuestionTitle.react.js')
+let QuestionSubtitle = require('./Question/QuestionSubtitle.react.js')
 let QuestionHeader = require('./Question/QuestionHeader.react.js')
 let QuestionMain = require('./Question/QuestionMain.react.js')
 let FixedSectionFooter = require('./Question/FixedSectionFooter.react.js')
 let ReactSlider = require('rc-slider')
 let DisplayBody = require('./DisplayBody.react.js')
 let ConfirmationModal = require('./Question/ConfirmationModal.react.js')
+let Content = require('../constants/localizableStringsDE.js')
 
 let Recaptcha = require('react-google-recaptcha');
 
@@ -91,6 +93,7 @@ let ResultsScreen = React.createClass({
             <QuestionHeader>
               <div className="col-xs-1"></div>
               <QuestionTitle title={this.props.title} />
+              <QuestionSubtitle title={ Content.QUESTION_THOUGHTS_SUBTITLE } />
             </QuestionHeader>
             <QuestionMain>
                 <ul className="rtv-results list rtv-list">

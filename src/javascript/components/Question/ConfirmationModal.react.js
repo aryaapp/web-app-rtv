@@ -28,7 +28,7 @@ const ConfirmationModal = React.createClass({
     }
   },
   getInitialState() {
-    return { isOpen: false };
+    return { isOpen: true };
   },
   openModal: function() {
     this.setState({ isOpen: true })
@@ -48,10 +48,12 @@ const ConfirmationModal = React.createClass({
           isOpen={this.state.isOpen}
           onRequestClose={this.closeModal}
           style={customStyles} >
+          <div className="success-icon text-center"><i className="fa fa-3x fa-check"></i></div>
           <div className="alert alert-success" >Your mood journal was successfully sent to your email</div>
-          <div className="alert alert-error" >Thank you for becoming more mindful. Want to read more about the topic?
-           Look <a href="">here</a> </div>
-          <button className="btn btn-full-width btn-success" onClick={this.newJournal}>New Journal</button>
+          <div className="welcome-text-container vertical-align-center fade-in arya-animation animation2">
+            <i className="quote">Mach’s gut und bleib achtsam!</i><br/> 
+          </div>
+          <button className="btn btn-primary nav-button next-button" onClick={this.newJournal}>Weiter lesen über Achtsamkeit</button>
         </Modal>
     );
   }
