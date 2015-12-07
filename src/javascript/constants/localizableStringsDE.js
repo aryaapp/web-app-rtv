@@ -15,15 +15,18 @@ module.exports = {
 	"NOTES_TITLE" :"Meine Notizen",
 
 	"QUESTION_FEELING_TITLE" : "Wie fühlst du dich?",
+	"QUESTION_FEELING_SUBTITLE" : "Bewege den Regler, um deine Stimmung einzustellen",
 	"QUESTION_FEELING_EXPLANATION" : "Bewege den Regler, um deine Stimmung einzustellen",
 	"QUESTION_FEELING_VERY_BAD" : "SEHR SCHLECHT",
 	"QUESTION_FEELING_AVERAGE" : "DURCHSCHNITTLICH",
 	"QUESTION_FEELING_VERY_WELL" : "SEHR GUT",
 
 	"QUESTION_CIRCUMSTANCES_TITLE" : "Beschreibe die Situation",
+	"QUESTION_CIRCUMSTANCES_SUBTITLE" : "Where are you, with whom, what do you hear, etc.",
 	"QUESTION_CIRCUMSTANCES_EXPLANATION" : "Gibt es ein auslösende Situation für Deine Stimmung? Beschreibe sie.\nWenn nicht, dann beschreibe einfach diesen Moment. Umgebung, Menschen, Geräusche, Gerüche usw..\nTrenne die einzelnen Elemente wie im Beispiel:\n- Ich bin zu Hause\n- Ich mache Hausaufgaben\n- Max ist da\n- ich höre Vögel zwitschern",
 
 	"QUESTION_BODY_TITLE" : "Wie fühlt sich Dein Körper an?",
+	"QUESTION_BODY_SUBTITLE" : "Tap a bodypart and select what you feel",
 	"QUESTION_BODY_EXPLANATION" : "Nimmst Du Empfindungen in deinem Körper wahr? Tippe auf die Abbildung, um eine oder mehrere Empfindungen auszuwählen.",
 
 	"QUESTION_BODY_HEAD" : "Kopf",
@@ -75,9 +78,11 @@ module.exports = {
 	"QUESTION_BODY_TINGLING" : "Kribbeln",
 
 	"QUESTION_THOUGHTS_TITLE" : "Was denkst du?",
+	"QUESTION_THOUGHTS_SUBTITLE" : "Write down whatever comes to mind",
 	"QUESTION_THOUGHTS_EXPLANATION" : "Vielleicht möchtest Du deine Augen schließen, spüre Deinen Atem und beobachte welche Gedanken Dir durch den Kopf gehen.",
 
 	"QUESTION_REACTION_TITLE" : "Wie hast du reagiert?",
+	"QUESTION_REACTION_SUBTITLE" : "Optional. If your mood is related to external circumstances.",
 	"QUESTION_REACTION_EXPLANATION" : "Optional.\nIm Falle einer auslösenden Situation, wie hast Du darauf reagiert?\nWie hast Du dich verhalten?\nHandelte es sich um eine automatische Handlung/Reaktion oder konntest Du dich bewusst entscheiden?",
 
 	"QUESTION_FINISH_TITLE" : "Du bist fertig!",

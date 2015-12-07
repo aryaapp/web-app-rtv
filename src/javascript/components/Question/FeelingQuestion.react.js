@@ -6,7 +6,9 @@ import React from 'react';
 
 let Section = require('./Section.react.js')
 let QuestionButton = require('./QuestionButton.react.js')
+let QuestionHeader = require('./QuestionHeader.react.js')
 let QuestionTitle = require('./QuestionTitle.react.js')
+let QuestionSubtitle = require('./QuestionSubtitle.react.js')
 let QuestionMain = require('./QuestionMain.react.js')
 let QuestionModal = require('./QuestionModal.react.js')
 let WelcomeModal = require('./WelcomeModal.react.js')
@@ -38,15 +40,18 @@ let FeelingQuestion = React.createClass({
   render() {
     return (
       <Section indicator={true}>
-            <div className="col-xs-1"></div>
-            <QuestionTitle title={ Content.QUESTION_FEELING_TITLE } />
-            <QuestionMain>
-              <SliderInput feeling={this.props.feeling} onChange={this.update} />
-            </QuestionMain>
-            <QuestionModal 
-              title ={ Content.QUESTION_FEELING_TITLE } 
-              body = { Content.QUESTION_FEELING_EXPLANATION } 
-            />
+        <QuestionHeader>
+          <div className="col-xs-1"></div>
+          <QuestionTitle title={ Content.QUESTION_FEELING_TITLE } />
+          <QuestionSubtitle subtitle={ Content.QUESTION_FEELING_SUBTITLE } />
+        </QuestionHeader>
+        <QuestionMain>
+          <SliderInput feeling={this.props.feeling} onChange={this.update} />
+        </QuestionMain>
+        <QuestionModal 
+          title ={ Content.QUESTION_FEELING_TITLE } 
+          body = { Content.QUESTION_FEELING_EXPLANATION } 
+        />
       </Section>
 
     );

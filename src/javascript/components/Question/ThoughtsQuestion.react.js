@@ -6,7 +6,9 @@ import React from 'react'
 
 let QuestionModal = require('./QuestionModal.react.js')
 let QuestionButton = require('./QuestionButton.react.js')
+let QuestionHeader = require('./QuestionHeader.react.js')
 let QuestionTitle = require('./QuestionTitle.react.js')
+let QuestionSubtitle = require('./QuestionSubtitle.react.js')
 let QuestionMain = require('./QuestionMain.react.js')
 let TextInput = require('./TextInput.react.js')
 let ScrollIndicator = require('./ScrollIndicator.react.js')
@@ -27,8 +29,11 @@ let ThoughtsQuestion = React.createClass({
   render() {
     return (
       <Section>
-        <div className="col-xs-1"></div>
-        <QuestionTitle title={ Content.QUESTION_THOUGHTS_TITLE } />
+        <QuestionHeader>
+          <div className="col-xs-1"></div>
+          <QuestionTitle title={ Content.QUESTION_THOUGHTS_TITLE } />
+          <QuestionSubtitle subtitle={ Content.QUESTION_THOUGHTS_SUBTITLE } />
+        </QuestionHeader>
         <QuestionMain>
           <TextInput value={ this.props.thoughts } placeholder="Mein Gedanken" onChange={this.update} />
         </QuestionMain>

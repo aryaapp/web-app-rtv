@@ -7,6 +7,7 @@ import React from 'react';
 let d3 = require('d3')
 let Section = require('./Question/Section.react.js')
 let QuestionTitle = require('./Question/QuestionTitle.react.js')
+let QuestionHeader = require('./Question/QuestionHeader.react.js')
 let FixedSectionFooter = require('./Question/FixedSectionFooter.react.js')
 let ReactSlider = require('rc-slider')
 let DisplayBody = require('./DisplayBody.react.js')
@@ -88,8 +89,10 @@ let ResultsScreen = React.createClass({
       <Section>
         <div className="col-xs-12">
           <div className="row">
-            <div className="col-xs-1"></div>
-            <QuestionTitle title={this.props.title} />
+            <QuestionHeader>
+              <div className="col-xs-1"></div>
+              <QuestionTitle title={this.props.title} />
+            </QuestionHeader>
             <div className="col-xs-12 col-sm-8 col-sm-push-2 col-md-6 col-md-push-3 no-padding slim-scroll">
               <ul className="rtv-results list rtv-list">
                 <li className="list-item rtv-list-item result-title">Deine Befinden <strong>{this.props.feeling.value}</strong></li>
