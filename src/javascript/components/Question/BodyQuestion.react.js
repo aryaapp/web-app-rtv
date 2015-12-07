@@ -8,7 +8,9 @@ const update = require('react-addons-update');
 
 let Section = require('./Section.react.js')
 let QuestionButton = require('./QuestionButton.react.js')
+let QuestionHeader = require('./QuestionHeader.react.js')
 let QuestionTitle = require('./QuestionTitle.react.js')
+let QuestionSubtitle = require('./QuestionSubtitle.react.js')
 let QuestionModal = require('./QuestionModal.react.js')
 let SliderInput = require('./SliderInput.react.js')
 let ScrollIndicator = require('./ScrollIndicator.react.js')
@@ -47,8 +49,11 @@ let BodyQuestion = React.createClass({
     var that = this
     return (
       <Section>
-        <div className="col-xs-1"></div>
-        <QuestionTitle title={ Content.QUESTION_BODY_TITLE } />
+        <QuestionHeader>
+          <div className="col-xs-1"></div>
+          <QuestionTitle title={ Content.QUESTION_BODY_TITLE } />
+          <QuestionSubtitle subtitle={ Content.QUESTION_BODY_SUBTITLE } />
+        </QuestionHeader>
         <FixedSectionFooter>
           <BodyImage body={this.props.body} openBodyModal={this.openBodyModal} />
         </FixedSectionFooter>
