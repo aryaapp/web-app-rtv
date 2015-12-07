@@ -12,7 +12,7 @@ let Content = require('../../constants/localizableStringsDE.js')
 
 const customStyles = {
   content : {
-    padding                       : '0'
+    padding: '0'
   }
 }
 
@@ -84,17 +84,9 @@ const BodyModal = React.createClass({
     };
   },
   openModal: function() {
-    // $.fn.fullpage.setAllowScrolling(false);
-    // $.fn.fullpage.setKeyboardScrolling(false);
-    // $('#fp-nav').hide();
-
     this.setState({ isOpen: true })
   },
   closeModal: function() {
-    // $('#fp-nav').show();
-    // $.fn.fullpage.setAllowScrolling(true);
-    // $.fn.fullpage.setKeyboardScrolling(true);
-
     this.setState({ isOpen: false })
   },
 
@@ -104,11 +96,20 @@ const BodyModal = React.createClass({
 
   addOption: function(e) {
     e.preventDefault();
+    // check if value is there
+    if(this.state.newOption.length == 0) {
+      return false;
+    }
+    // check if value is allready there
+    if(this.state.options.map((e) => { return e.value }).indexOf(this.state.newOption) != -1) {
+      return false;
+    }
     let newOptions = update(
       this.state.options,
       { $push: [{ value: this.state.newOption, label:this.state.newOption, checked: true }] }
     )
     this.setState({ options: newOptions, newOption: '' })
+    this.update(update(this.props.values, { $push: [this.state.newOption] } ))
   },
 
   updateNewOption: function(e) {
