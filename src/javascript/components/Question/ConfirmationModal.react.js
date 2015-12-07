@@ -28,7 +28,7 @@ const ConfirmationModal = React.createClass({
     }
   },
   getInitialState() {
-    return { isOpen: true };
+    return { isOpen: false };
   },
   openModal: function() {
     this.setState({ isOpen: true })
