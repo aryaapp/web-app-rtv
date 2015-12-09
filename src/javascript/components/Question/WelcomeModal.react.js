@@ -21,6 +21,9 @@ const customStyles = {
   }
 }
 
+let date = new Date();
+var options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+
 var WelcomeModal = React.createClass({
   getInitialState() {
     return { isOpen: true };
@@ -48,7 +51,7 @@ var WelcomeModal = React.createClass({
               <h3>
                 <i className="">„Jedem Anfang wohnt ein Zauber inne” -Hermann Hesse</i>
               </h3>
-              <p className="col-xs-12 heute fade-in arya-animation animation3">Heute, hier und jetzt.<br/>Mittwoch, 9. Dezember 2015</p>
+              <p className="col-xs-12 heute fade-in arya-animation animation3">Heute, hier und jetzt.<br/>{ date.toLocaleDateString('de-DE', options) }</p>
             </div>
               
             <button className="btn btn-primary nav-button next-button fade-in arya-animation animation4" onClick={this.closeModal}>
