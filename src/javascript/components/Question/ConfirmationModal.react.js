@@ -55,7 +55,7 @@ const ConfirmationModal = React.createClass({
                 <div className="success-icon"><i className="fa fa-3x fa-check"></i></div>
                 <div className="alert alert-success" >Your mood journal was successfully sent to your email</div>
                 <div className="welcome-text-container rtv-title vertical-align-center fade-in arya-animation animation2">
-                  <h3><i>Danke dir! Ja. Danke dir selbst dafür, dass du auf dich achtest... Wie oft haben wir nur die Anderen im Auge. <br/><br/>Bleib bei dir! Es lohnt sich. Bis bald.</i></h3>
+                  <h3><i>Danke dir! Ja. Danke dir selbst dafür, dass du auf dich achtest... Wie oft haben wir nur die Anderen im Auge. Bleib bei dir! Es lohnt sich. Bis bald.</i></h3>
                 </div>
               </div>
             </div>
