@@ -26,6 +26,26 @@ let d3MoodColor = function(value) {
   return colorScale(value)
 }
 
+let markupBody = function(body) {
+    let markupBody = {}
+    for (var bodypart in body) {
+      markupBody[bodypart] = intersperse(body[bodypart], ", ")
+      console.log(markupBody)
+    }
+    return markupBody
+}
+
+let intersperse = function(arr, sep) {
+  console.log('intersperse start')
+    if (arr.length === 0) {
+        return [];
+    }
+    return arr.slice(1).reduce(function(xs, x, i) {
+        console.log('intersperse done')
+        return xs.concat([sep, x]);
+    }, [arr[0]]);
+}
+
 let ResultsScreen = React.createClass({
   getDefaultProps: function () {
     return {
@@ -97,16 +117,25 @@ let ResultsScreen = React.createClass({
             </QuestionHeader>
             <QuestionMain>
                 <ul className="rtv-results list rtv-list">
-                  <li className="list-item rtv-list-item result-title">Deine Befinden <strong>{this.props.feeling.value}</strong></li>
-                  <li className="list-item rtv-list-item result-answer"><ReactSlider disabled={true} value={this.props.feeling.value} /></li>
+                  <li className="list-item rtv-list-item result-title">Deine Befinden <strong></strong></li>
+                  <li className="list-item rtv-list-item result-answer">
+                    <div className="row">
+                      <div className="col-xs-2">
+                        <span className="feeling-value">{this.props.feeling.value}</span>
+                      </div>
+                      <div className="col-xs-10">
+                        <ReactSlider disabled={true} value={this.props.feeling.value} />
+                      </div>
+                    </div>
+                  </li>
                   <li className="list-item rtv-list-item result-title">Deine Körper</li>
-                  <li className="list-item rtv-list-item result-answer"><DisplayBody body={this.props.body} /></li>
+                  <li className="list-item rtv-list-item result-answer"><DisplayBody body={ markupBody(this.props.body) } /></li>
                   <li className="list-item rtv-list-item result-title">Deine Gedanken</li>
                   <li className="list-item rtv-list-item result-answer">{this.props.thoughts}</li>
                   <li className="list-item rtv-list-item result-title">Deine Situation</li>
-                  <li className="list-item rtv-list-item result-answer">{this.props.situation}</li>
+                  <li className="list-item rtv-list-item result-answer">{intersperse(this.props.situation,", ")}</li>
                   <li className="list-item rtv-list-item result-title">Deine Reaktion</li>
-                  <li className="list-item rtv-list-item result-answer">{this.props.reaction}</li>
+                  <li className="list-item rtv-list-item result-answer">{intersperse(this.props.reaction,", ")}</li>
                 </ul>
                 <div className="form-group col-xs-12">
                   <Recaptcha
