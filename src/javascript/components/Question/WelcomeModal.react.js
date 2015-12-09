@@ -44,13 +44,14 @@ var WelcomeModal = React.createClass({
             <img src="./images/rtv_logo-1.png" className="welcome-rtv-image fade-in arya-animation animation2"/>
             <div className="col-xs-12 tagebuch fade-in arya-animation animation2">Achtsamkeits-Tagebuch</div>
             <div className="welcome-text-container rtv-title col-xs-12 vertical-align-center fade-in arya-animation animation1">
+              
               <h3>
-              <i className="">„Jedem Anfang wohnt ein Zauber inne”</i><br/> 
-                <span className="source">-Hermann Hesse</span>
+                <i className="">„Jedem Anfang wohnt ein Zauber inne” -Hermann Hesse</i>
               </h3>
+              <p className="col-xs-12 heute fade-in arya-animation animation3">Heute, hier und jetzt.<br/>Mittwoch, 9. Dezember 2015</p>
             </div>
               
-            <button className="btn btn-primary nav-button next-button fade-in arya-animation animation3" onClick={this.closeModal}>
+            <button className="btn btn-primary nav-button next-button fade-in arya-animation animation4" onClick={this.closeModal}>
               <span className="btn-text">Anfangen </span><i className="fa fa-arrow-right"></i>
             </button>
             </div>
