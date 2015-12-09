@@ -113,7 +113,7 @@ let ResultsScreen = React.createClass({
             <QuestionHeader>
               <div className="col-xs-1"></div>
               <QuestionTitle title={this.props.title} />
-              <QuestionSubtitle title={ Content.QUESTION_THOUGHTS_SUBTITLE } />
+              <QuestionSubtitle subtitle="See your input below. Send it to your email to review later." />
             </QuestionHeader>
             <QuestionMain>
                 <ul className="rtv-results list rtv-list">
@@ -154,6 +154,7 @@ let ResultsScreen = React.createClass({
                 <div className="col-xs-12">
                   <button className='btn btn-primary nav-button next-button relative-button' onClick={this.sendResults}><i className="fa fa-envelope-o"></i> Report verschicken</button>
                 </div>
+                <div className="col-xs-12 text-center closetext">Or, close this window to quit (data will be lost)</div>
               </QuestionMain>
               <ConfirmationModal ref="confirmation" />
       </Section>
