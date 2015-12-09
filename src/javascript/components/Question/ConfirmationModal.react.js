@@ -11,6 +11,7 @@ const CheckBoxInput = require('./CheckBoxInput.react.js')
 const customStyles = {
   content : {
     position                   : 'absolute',
+    background                  : '#fafafa',
     top                        : '0',
     left                       : '0',
     right                      : '0',
@@ -48,12 +49,18 @@ const ConfirmationModal = React.createClass({
           isOpen={this.state.isOpen}
           onRequestClose={this.closeModal}
           style={customStyles} >
-          <div className="success-icon text-center"><i className="fa fa-3x fa-check"></i></div>
-          <div className="alert alert-success" >Your mood journal was successfully sent to your email</div>
-          <div className="welcome-text-container vertical-align-center fade-in arya-animation animation2">
-            <i className="quote">Mach’s gut und bleib achtsam!</i><br/> 
+          <div className="welcome-modal container-fluid">
+            <div className="row full-height">
+              <div className="col-xs-12 no-padding full-height">
+                <div className="success-icon"><i className="fa fa-3x fa-check"></i></div>
+                <div className="alert alert-success" >Your mood journal was successfully sent to your email</div>
+                <div className="welcome-text-container rtv-title vertical-align-center fade-in arya-animation animation2">
+                  <h3><i>Danke dir! Ja. Danke dir selbst dafür, dass du auf dich achtest... Wie oft haben wir nur die Anderen im Auge. <br/><br/>Bleib bei dir! Es lohnt sich. Bis bald.</i></h3>
+                </div>
+              </div>
+            </div>
           </div>
-          <button className="btn btn-primary nav-button next-button" onClick={this.newJournal}>Weiter lesen über Achtsamkeit</button>
+          <button className="btn btn-primary nav-button next-button fade-in arya-animation animation3" onClick={this.newJournal}>Weiter lesen über Achtsamkeit</button>
         </Modal>
     );
   }

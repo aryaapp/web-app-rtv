@@ -18,6 +18,7 @@ let BodyModal = require('./BodyModal.react.js');
 let BodyImage = require('./BodyImage.react.js');
 let Content = require('../../constants/localizableStringsDE.js')
 let FixedSectionFooter = require('./FixedSectionFooter.react.js')
+let ReactCSSTransitionGroup = require('react-addons-css-transition-group')
 
 let BodyQuestion = React.createClass({
   getDefaultProps: function() {
