@@ -20,53 +20,16 @@ const BodyModal = React.createClass({
   statics: {
     getOptions: function(role) {
       let optionTemplete = {
-        head: [
-          { value: Content.QUESTION_BODY_HEADACHE, label: Content.QUESTION_BODY_HEADACHE },
-          { value: Content.QUESTION_BODY_FLUSHED_FACE, label: Content.QUESTION_BODY_FLUSHED_FACE },
-          { value: Content.QUESTION_BODY_DIZZY_AND_LIGHTHEADED, label: Content.QUESTION_BODY_DIZZY_AND_LIGHTHEADED },
-          { value: Content.QUESTION_BODY_NECK_PAIN, label: Content.QUESTION_BODY_NECK_PAIN }
-        ],
-        chest: [
-          { value: Content.QUESTION_BODY_CHEST_PAIN, label: Content.QUESTION_BODY_CHEST_PAIN },
-          { value: Content.QUESTION_BODY_BREATHING, label: Content.QUESTION_BODY_BREATHING },
-          { value: Content.QUESTION_BODY_PRESSURE_CHEST, label: Content.QUESTION_BODY_PRESSURE_CHEST },
-          { value: Content.QUESTION_BODY_HEARTBEAT, label: Content.QUESTION_BODY_HEARTBEAT },
-          { value: Content.QUESTION_BODY_BACK_PAIN, label: Content.QUESTION_BODY_BACK_PAIN },
-          { value: Content.QUESTION_BODY_STIFNESS, label: Content.QUESTION_BODY_STIFNESS },
-          { value: Content.QUESTION_BODY_NAUSEOUS, label: Content.QUESTION_BODY_NAUSEOUS },
-        ],
-        hip: [
-          { value: Content.QUESTION_BODY_DIGESTIVE, label: Content.QUESTION_BODY_DIGESTIVE },
-          { value: Content.QUESTION_BODY_NAUSEOUS, label: Content.QUESTION_BODY_NAUSEOUS },
-          { value: Content.QUESTION_BODY_CROTCH, label: Content.QUESTION_BODY_CROTCH },
-          { value: Content.QUESTION_BODY_TENSION, label: Content.QUESTION_BODY_TENSION },
-        ],
-        left_arm: [
-          { value: Content.QUESTION_BODY_MUSCLE_ACHE, label: Content.QUESTION_BODY_MUSCLE_ACHE },
-          { value: Content.QUESTION_BODY_NAUSEOUS, label: Content.QUESTION_BODY_NAUSEOUS },
-          { value: Content.QUESTION_BODY_NUMBNESS, label: Content.QUESTION_BODY_NUMBNESS },
-          { value: Content.QUESTION_BODY_TINGLING, label: Content.QUESTION_BODY_TINGLING },
-        ],
-        right_arm: [
-          { value: Content.QUESTION_BODY_MUSCLE_ACHE, label: Content.QUESTION_BODY_MUSCLE_ACHE },
-          { value: Content.QUESTION_BODY_NAUSEOUS, label: Content.QUESTION_BODY_NAUSEOUS },
-          { value: Content.QUESTION_BODY_NUMBNESS, label: Content.QUESTION_BODY_NUMBNESS },
-          { value: Content.QUESTION_BODY_TINGLING, label: Content.QUESTION_BODY_TINGLING },
-        ],
-        left_leg: [
-          { value: Content.QUESTION_BODY_MUSCLE_ACHE, label: Content.QUESTION_BODY_MUSCLE_ACHE },
-          { value: Content.QUESTION_BODY_NAUSEOUS, label: Content.QUESTION_BODY_NAUSEOUS },
-          { value: Content.QUESTION_BODY_NUMBNESS, label: Content.QUESTION_BODY_NUMBNESS },
-          { value: Content.QUESTION_BODY_TINGLING, label: Content.QUESTION_BODY_TINGLING },
-        ],
-        right_leg: [
-          { value: Content.QUESTION_BODY_MUSCLE_ACHE, label: Content.QUESTION_BODY_MUSCLE_ACHE },
-          { value: Content.QUESTION_BODY_NAUSEOUS, label: Content.QUESTION_BODY_NAUSEOUS },
-          { value: Content.QUESTION_BODY_NUMBNESS, label: Content.QUESTION_BODY_NUMBNESS },
-          { value: Content.QUESTION_BODY_TINGLING, label: Content.QUESTION_BODY_TINGLING },
-        ]
+        head: Content.QUESTION_BODY_HEAD_OPTIONS.concat(Content.QUESTION_BODY_GENERIC_OPTIONS),
+        chest: Content.QUESTION_BODY_CHEST_OPTIONS.concat(Content.QUESTION_BODY_GENERIC_OPTIONS),
+        abdomen: Content.QUESTION_BODY_ABDOMEN_OPTIONS.concat(Content.QUESTION_BODY_GENERIC_OPTIONS),
+        hip: Content.QUESTION_BODY_HIP_OPTIONS.concat(Content.QUESTION_BODY_GENERIC_OPTIONS),
+        left_arm: Content.QUESTION_BODY_LEFT_ARM_OPTIONS.concat(Content.QUESTION_BODY_GENERIC_OPTIONS),
+        right_arm: Content.QUESTION_BODY_RIGHT_ARM_OPTIONS.concat(Content.QUESTION_BODY_GENERIC_OPTIONS),
+        left_leg: Content.QUESTION_BODY_LEFT_LEG_OPTIONS.concat(Content.QUESTION_BODY_GENERIC_OPTIONS),
+        right_leg: Content.QUESTION_BODY_RIGHT_LEG_OPTIONS.concat(Content.QUESTION_BODY_GENERIC_OPTIONS)
       }
-      return optionTemplete[role]
+      return optionTemplete[role].map((e) => { return { value: e, label: e } } )
     }
   },
   getDefaultProps() {

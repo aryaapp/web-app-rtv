@@ -27,6 +27,7 @@ let BodyQuestion = React.createClass({
         left_arm: [],
         right_arm: [],
         chest: [],
+        abdomen: [],
         left_leg: [],
         right_leg: [],
         hip: []
@@ -84,6 +85,13 @@ let BodyQuestion = React.createClass({
           title="Brust"
           role="chest"
           onChange={that.update.bind(that, 'chest')}
+          />
+        <BodyModal
+          ref='body_abdomen'
+          values={that.props.body['abdomen']}
+          title="Bauch"
+          role="abdomen"
+          onChange={that.update.bind(that, 'abdomen')}
           />
         <BodyModal
           ref='body_hip'

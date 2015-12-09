@@ -87,7 +87,7 @@ module.exports = {
 	"QUESTION_BODY_TINGLING" : "Kribbeln",
 
 	"QUESTION_THOUGHTS_TITLE" : "Was denkst du?",
-	"QUESTION_THOUGHTS_SUBTITLE" : "Welche Gedanken kommen hoch? Ganz ehrlich...;-)",	
+	"QUESTION_THOUGHTS_SUBTITLE" : "Welche Gedanken kommen hoch? Ganz ehrlich...;-)",
 	"QUESTION_THOUGHTS_EXPLANATION" : "Vielleicht schließt du kurz die Augen, nimmst fur ein paar Sekunden Deinen Atem wahr. Dann bist du in der besten Position um deine Gedanken zu beobachten.  Wie Wolken am Himmel kommen sie und ziehen davon, mal stürmisch, mal gemach. Lass sie ziehen, aber schreib sie auf",
 
 	"QUESTION_REACTION_TITLE" : "Wie hast du reagiert?",

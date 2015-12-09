@@ -29,6 +29,7 @@ var App = React.createClass({
         left_arm: [],
         right_arm: [],
         chest: [],
+        abdomen: [],
         left_leg: [],
         right_leg: [],
         hip: []
@@ -50,7 +51,7 @@ var App = React.createClass({
   },
   handleClickNext: function() {
     var newPage = Math.min( this.state.currentPage + 1 , 5 )
-    this.setState({ currentPage: newPage }) 
+    this.setState({ currentPage: newPage })
   },
   handleClickPrev: function() {
     var newPage = Math.max( this.state.currentPage + -1 , 0 )
@@ -70,7 +71,7 @@ var App = React.createClass({
             </div>
         break;
       case 1:
-        partial = 
+        partial =
           <div className="partial-container not-scrollable" key="1">
             <BodyQuestion
               body={this.state.body}
@@ -81,7 +82,7 @@ var App = React.createClass({
           </div>
         break;
       case 2:
-        partial = 
+        partial =
           <div className="partial-container" key="2">
             <ThoughtsQuestion
               thoughts={this.state.thoughts}
@@ -92,7 +93,7 @@ var App = React.createClass({
           </div>
         break;
       case 3:
-        partial = 
+        partial =
           <div className="partial-container" key="3">
             <SituationQuestion
               situation={this.state.situation}
@@ -103,7 +104,7 @@ var App = React.createClass({
           </div>
         break;
       case 4:
-        partial = 
+        partial =
           <div className="partial-container" key="4">
             <ReactionQuestion
               reaction={this.state.reaction}
@@ -112,9 +113,9 @@ var App = React.createClass({
             <PrevButton onClick={this.handleClickPrev} />
             <NextButton onClick={this.handleClickNext} />
           </div>
-        break;  
+        break;
       case 5:
-        partial = 
+        partial =
           <div className="partial-container" key="5">
             <ResultsScreen
               feeling={this.state.feeling}
@@ -125,7 +126,7 @@ var App = React.createClass({
               clearData={this.clearData} />
             <PrevButton onClick={this.handleClickPrev} customClass="prev-button-relative" />
           </div>
-        break;  
+        break;
       default:
         console.log('nothing to do here');
     }
