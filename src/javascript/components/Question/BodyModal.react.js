@@ -87,7 +87,7 @@ const BodyModal = React.createClass({
           onRequestClose={this.closeModal}
           style={customStyles} >
           <div className="scrollable-container">
-            <h2 className="body-modal-title">{this.props.title}</h2>
+            <h3 className="body-modal-title">{this.props.title}</h3>
             <form onSubmit={this.addOption}>
               <input
                 className="form-control"
