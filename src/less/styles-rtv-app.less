@@ -16,6 +16,14 @@
     }
 }
 
+.tagebuch {
+    color: @rtv-blue;
+    text-transform: lowercase;
+    font-size: 14px;
+    font-weight: semibold;
+    font-weight: 500;
+}
+
 #react-app{
     display: none;
 }
@@ -168,6 +176,7 @@ body{
     letter-spacing: -.3px;
     font-size: 13px;
     color: #797979;
+    margin-top:2px;
 }
 
 .invert{
@@ -175,7 +184,7 @@ body{
 }
 
 .modal-trigger {
-    top: 26px;
+    top: 16px;
     position: absolute;
     right: 16px;
     @media (min-width: @screen-sm) {
@@ -281,6 +290,7 @@ textarea{
     stroke-width:1px;
 }
 
+
 .checkbox {
     padding-top: 8px;
     padding-bottom: 8px;
@@ -296,9 +306,14 @@ textarea{
 }
 
 .btn-primary, .btn-primary:hover, .btn-primary:focus {
-    background: @rtv-blue;
-    border-color: @rtv-blue;
-    border-radius:0;
+    background: #004170;
+    border-color: #004170;
+    color: white;
+    font-weight: normal;
+    text-transform: lowercase;
+    span.btn-text{
+        margin-right:8px;
+    }
 }
 
 .btn-full-width{
@@ -378,7 +393,7 @@ li.result-answer{
 .fixed-section-footer{
     position: absolute;
     bottom: 0;
-    background: white;
+    // background: white;
     left: 0;
     height: 80%;
     width: 100%;
@@ -429,6 +444,23 @@ li.result-answer{
 //overrides react modal
 .ReactModal__Overlay--after-open {
     z-index:100;
+    //body modal options:
+    .scrollable-container{
+        padding: 0 !important;
+        position: absolute;
+        top: 0;
+        bottom: 38px;
+        width: 100%;
+        overflow-y: auto;
+        overflow-x:hidden;
+    }
+    .btn-square{
+        border-radius: 0;
+        margin-top: 0px;
+        position: absolute;
+        bottom: 0;
+        margin-bottom: 0;
+    }
 }
 
 .ReactModal__Content--after-open {
@@ -484,21 +516,37 @@ li.result-answer{
   opacity: 1;
   // transform:   translate(0,0);
   //   transform: translate3d(0,0,0);
-    transition-property: opacity;
+    transition-property: opacity,background;
     transition-duration: 300ms;
     transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1), linear;
 }
 
 .page-leave {
   opacity: 1;
-  background:green;
+  transition-property: opacity;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1), linear;
 }
 .page-leave.page-leave-active {
     opacity: 0.01;
+    
+}
+
+.question-modal-enter {
+  opacity: 0.01;
+  // transform:   translate(80%,0);
+  // transform: translate3d(80%,0,0);
+}
+
+.question-modal-enter.question-modal-enter-active {
+  opacity: 1;
+  // transform:   translate(0,0);
+  //   transform: translate3d(0,0,0);
     transition-property: opacity;
     transition-duration: 300ms;
     transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1), linear;
 }
+
 // .modal-leave {
 //   opacity: 1;
 // }
@@ -509,3 +557,32 @@ li.result-answer{
 // transition-duration: 300ms;
 // transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1), linear;
 // }
+
+.ReactModal__Overlay {
+  -webkit-perspective: 600;
+  perspective: 600;
+  opacity: 0;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+  transition: opacity 150ms ease-out;
+}
+
+.ReactModal__Content {
+  -webkit-transform: scale(0.5) rotateX(-30deg);
+}
+
+.ReactModal__Content--after-open {
+  -webkit-transform: scale(1) rotateX(0deg);
+  transition: all 150ms ease-in;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
+.ReactModal__Content--before-close {
+  -webkit-transform: scale(0.5) rotateX(30deg);
+  transition: all 150ms ease-in;
+}

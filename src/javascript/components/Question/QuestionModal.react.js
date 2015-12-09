@@ -49,6 +49,7 @@ var QuestionModal = React.createClass({
         <Modal
           isOpen={this.state.isOpen}
           onRequestClose={this.closeModal}
+          closeTimeoutMS={150}
           style={customStyles} >
           <div className="text-center">
             <i className="fa fa-lg fa-close" onClick={this.closeModal}></i>
