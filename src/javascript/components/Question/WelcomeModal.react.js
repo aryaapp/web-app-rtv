@@ -10,6 +10,7 @@ const Modal = require('react-modal');
 const customStyles = {
   content : {
     position                   : 'absolute',
+    background                  : '#fafafa',
     top                        : '0',
     left                       : '0',
     right                      : '0',
@@ -41,13 +42,16 @@ var WelcomeModal = React.createClass({
             <div className="row full-height">
             <div className="col-xs-12 no-padding full-height">
             <img src="./images/rtv_logo-1.png" className="welcome-rtv-image fade-in arya-animation animation2"/>
-            
-            <div className="welcome-text-container vertical-align-center fade-in arya-animation animation1">
-              <i className="quote">„Jedem Anfang wohnt ein Zauber inne”</i><br/> 
+            <div className="col-xs-12 tagebuch fade-in arya-animation animation2">Achtsamkeits-Tagebuch</div>
+            <div className="welcome-text-container rtv-title col-xs-12 vertical-align-center fade-in arya-animation animation1">
+              <h3>
+              <i className="">„Jedem Anfang wohnt ein Zauber inne”</i><br/> 
                 <span className="source">-Hermann Hesse</span>
+              </h3>
             </div>
+              
             <button className="btn btn-primary nav-button next-button fade-in arya-animation animation3" onClick={this.closeModal}>
-              Anfangen <i className="fa fa-arrow-right"></i>
+              <span className="btn-text">Anfangen </span><i className="fa fa-arrow-right"></i>
             </button>
             </div>
             </div>
@@ -62,3 +66,4 @@ module.exports = WelcomeModal
 
 //modal toggle add classnames for desktop
 //<h3 className="rtv-title welcome-title">Moodtracker</h3>
+

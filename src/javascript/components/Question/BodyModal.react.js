@@ -123,16 +123,18 @@ const BodyModal = React.createClass({
           isOpen={this.state.isOpen}
           onRequestClose={this.closeModal}
           style={customStyles} >
-          <h2 className="body-modal-title">{this.props.title}</h2>
-          <form onSubmit={this.addOption}>
-            <input
-              className="form-control"
-              type='text'
-              value={this.state.newOption}
-              onChange={this.updateNewOption}
-              placeholder='Meine Situation' />
-          </form>
-          <CheckBoxInput values={this.props.values} options={this.state.options} onChange={this.update} />
+          <div className="scrollable-container">
+            <h2 className="body-modal-title">{this.props.title}</h2>
+            <form onSubmit={this.addOption}>
+              <input
+                className="form-control"
+                type='text'
+                value={this.state.newOption}
+                onChange={this.updateNewOption}
+                placeholder='Meine Situation' />
+            </form>
+            <CheckBoxInput values={this.props.values} options={this.state.options} onChange={this.update} />
+          </div>
           <button className="btn btn-full-width btn-primary btn-square" onClick={this.closeModal}>OK</button>
         </Modal>
       </div>
