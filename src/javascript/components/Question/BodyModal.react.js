@@ -94,7 +94,7 @@ const BodyModal = React.createClass({
                 type='text'
                 value={this.state.newOption}
                 onChange={this.updateNewOption}
-                placeholder='Meine Situation' />
+                placeholder='Sonstiges' />
             </form>
             <CheckBoxInput values={this.props.values} options={this.state.options} onChange={this.update} />
           </div>
