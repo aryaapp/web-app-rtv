@@ -88,13 +88,14 @@ const BodyModal = React.createClass({
           style={customStyles} >
           <div className="scrollable-container">
             <h3 className="body-modal-title">{this.props.title}</h3>
-            <form onSubmit={this.addOption}>
+            <form className="relative" onSubmit={this.addOption}>
               <input
                 className="form-control"
                 type='text'
                 value={this.state.newOption}
                 onChange={this.updateNewOption}
                 placeholder='Sonstiges' />
+                <button id='list-submit-button' className="btn btn-primary" type="submit" ><i className="fa fa-plus"></i></button> 
             </form>
             <CheckBoxInput values={this.props.values} options={this.state.options} onChange={this.update} />
           </div>

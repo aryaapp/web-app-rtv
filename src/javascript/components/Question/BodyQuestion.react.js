@@ -9,6 +9,7 @@ const update = require('react-addons-update');
 let Section = require('./Section.react.js')
 let QuestionButton = require('./QuestionButton.react.js')
 let QuestionHeader = require('./QuestionHeader.react.js')
+let QuestionMain = require('./QuestionMain.react.js')
 let QuestionTitle = require('./QuestionTitle.react.js')
 let QuestionSubtitle = require('./QuestionSubtitle.react.js')
 let QuestionModal = require('./QuestionModal.react.js')
@@ -56,9 +57,9 @@ let BodyQuestion = React.createClass({
           <QuestionTitle title={ Content.QUESTION_BODY_TITLE } />
           <QuestionSubtitle subtitle={ Content.QUESTION_BODY_SUBTITLE } />
         </QuestionHeader>
-        <FixedSectionFooter>
+        <QuestionMain>
           <BodyImage body={this.props.body} openBodyModal={this.openBodyModal} />
-        </FixedSectionFooter>
+        </QuestionMain>
         <BodyModal
           ref='body_head'
           values={that.props.body['head']}
