@@ -62,61 +62,63 @@ var App = React.createClass({
     var partial;
     switch (this.state.currentPage) {
       case 0:
-        partial = <div className="partial-container" key="0"><FeelingQuestion
-              feeling={this.state.feeling}
-              onChange={this.handleQuestionChange.bind(this, 'feeling' )}
-              onClickNext = { this.handleClickNext }
-            />
-            <NextButton onClick={this.handleClickNext} />
+        partial = <div className="partial-wrapper">
+              <div className="partial-container" key="0"><FeelingQuestion
+                feeling={this.state.feeling}
+                onChange={this.handleQuestionChange.bind(this, 'feeling' )}
+                onClickNext = { this.handleClickNext }
+              /></div>
+              <NextButton onClick={this.handleClickNext} />
+              
             </div>
         break;
       case 1:
         partial =
-          <div className="partial-container not-scrollable" key="1">
+          <div className="partial-wrapper" key="1"><div className="partial-container" >
             <BodyQuestion
               body={this.state.body}
               onChange={this.handleQuestionChange.bind(this, 'body' )}
-            />
+            /></div>
             <PrevButton onClick={this.handleClickPrev} />
             <NextButton onClick={this.handleClickNext} />
           </div>
         break;
       case 2:
         partial =
-          <div className="partial-container" key="2">
+          <div className="partial-wrapper" key="2"><div className="partial-container" >
             <ThoughtsQuestion
               thoughts={this.state.thoughts}
               onChange={this.handleQuestionChange.bind(this, 'thoughts' )}
-            />
+            /></div>
             <PrevButton onClick={this.handleClickPrev} />
             <NextButton onClick={this.handleClickNext} />
           </div>
         break;
       case 3:
         partial =
-          <div className="partial-container" key="3">
+          <div className="partial-wrapper" key="3"><div className="partial-container" >
             <SituationQuestion
               situation={this.state.situation}
               onChange={this.handleQuestionChange.bind(this, 'situation' )}
-            />
+            /></div>
             <PrevButton onClick={this.handleClickPrev} />
             <NextButton onClick={this.handleClickNext} />
           </div>
         break;
       case 4:
         partial =
-          <div className="partial-container" key="4">
+          <div className="partial-wrapper" key="4"><div className="partial-container" >
             <ReactionQuestion
               reaction={this.state.reaction}
               onChange={this.handleQuestionChange.bind(this, 'reaction' )}
-            />
+            /></div>
             <PrevButton onClick={this.handleClickPrev} />
             <NextButton onClick={this.handleClickNext} />
           </div>
         break;
       case 5:
         partial =
-          <div className="partial-container" key="5">
+          <div className="partial-wrapper" key="5"><div className="partial-container" >
             <ResultsScreen
               feeling={this.state.feeling}
               body={this.state.body}
@@ -125,7 +127,7 @@ var App = React.createClass({
               reaction={this.state.reaction}
               clearData={this.clearData} />
             <PrevButton onClick={this.handleClickPrev} customClass="prev-button-relative" />
-          </div>
+          </div></div>
         break;
       default:
         console.log('nothing to do here');

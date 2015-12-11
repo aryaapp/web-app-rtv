@@ -36,12 +36,10 @@ let markupBody = function(body) {
 }
 
 let intersperse = function(arr, sep) {
-  console.log('intersperse start')
     if (arr.length === 0) {
         return [];
     }
     return arr.slice(1).reduce(function(xs, x, i) {
-        console.log('intersperse done')
         return xs.concat([sep, x]);
     }, [arr[0]]);
 }

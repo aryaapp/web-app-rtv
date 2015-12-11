@@ -55,7 +55,7 @@ var ListInput = React.createClass({
             value={this.state.newValue}
             onChange={this.updateState}
             placeholder='Meine Situation' />
-
+          <button id='list-submit-button' className="btn btn-primary" type="submit" ><i className="fa fa-plus"></i></button>  
         </form>
         <ul className="list rtv-list">
           {
