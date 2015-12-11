@@ -68,13 +68,12 @@ const BodyModal = React.createClass({
       return false;
     }
     let newOptions = update(
-      this.state.options,
-      { $push: [{ value: this.state.newOption, label:this.state.newOption, checked: true }] }
+      this.state.options, 
+      { $unshift: [{ value: this.state.newOption, label:this.state.newOption, checked: true }] }
     )
     this.setState({ options: newOptions, newOption: '' })
-    this.update(update(this.props.values, { $push: [this.state.newOption] } ))
+    this.update(update(this.props.values, { $unshift: [this.state.newOption] } ))
   },
-
   updateNewOption: function(e) {
     this.setState({ newOption: e.target.value })
   },
