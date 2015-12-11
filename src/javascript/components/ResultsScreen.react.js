@@ -63,7 +63,8 @@ let ResultsScreen = React.createClass({
   getInitialState: function() {
     return {
       email: '',
-      recaptchaToken: ''
+      recaptchaToken: '',
+      emailValid: true
     }
   },
   componentDidMount: function() {
@@ -104,10 +105,17 @@ let ResultsScreen = React.createClass({
       .fail(function(jqXhr) {
         console.log('failed to send request');
       });
+    } else {
+      this.setState({ emailValid: false})
     }
   },
 
   render() {
+
+    var emailInvalidLabel = <label>Bitte gib eine gültige E-Mailadresse ein.</label>
+    var captachNotConfirmed = <label>Bitte bestätige das du auch wirklich ein Mensch bist :)</label>
+
+
     return (
       <Section>
             <QuestionHeader>
@@ -143,6 +151,7 @@ let ResultsScreen = React.createClass({
                     sitekey="6LdJ2RETAAAAAPHK7GmcRZTPnZY0E3AGY0sivpAs"
                     onChange={this.recaptchaVerify}
                   />
+                  { this.state.recaptchaToken.length > 0 ? '' : captachNotConfirmed }
                   <input
                     className="form-control email-control"
                     type='email'
@@ -150,6 +159,7 @@ let ResultsScreen = React.createClass({
                     aria-describedby="basic-addon1"
                     value={this.state.email}
                     onChange={this.update} />
+                  { this.state.emailValid ? '' : emailInvalidLabel }
                 </div>
                 <div className="col-xs-12">
                   <button className='btn btn-primary nav-button next-button relative-button' onClick={this.sendResults}><i className="fa fa-envelope-o"></i> Report verschicken</button>
