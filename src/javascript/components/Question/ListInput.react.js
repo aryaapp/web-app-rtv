@@ -33,7 +33,7 @@ var ListInput = React.createClass({
     }
 
     var newParentState = this.props.value.slice()
-    newParentState.push(this.state.newValue)
+    newParentState.unshift(this.state.newValue)
 
     this.update(newParentState)
     this.setState({ newValue: '' })
