@@ -6,6 +6,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 const Modal = require('react-modal');
+const Content = require('../../constants/localizableStringsDE.js')
+
 
 const customStyles = {
   content : {
@@ -34,9 +36,12 @@ var WelcomeModal = React.createClass({
   closeModal: function() {
     this.setState({ isOpen: false })
   },
+  displayWelcomeMessage: function() {
+    return Content.INTRO_MESSAGES[Math.floor(Math.random() * Content.INTRO_MESSAGES.length)]
+  },
   render() {
     return (
-      
+
         <Modal
           isOpen={this.state.isOpen}
           onRequestClose={this.closeModal}
@@ -49,11 +54,9 @@ var WelcomeModal = React.createClass({
             <div className="welcome-text-container rtv-title col-xs-12 vertical-align-center ">
               <p className="col-xs-12 heute fade-in arya-animation animation2">Heute, hier und jetzt.<br/>{ date.toLocaleDateString('de-DE', options) }</p>
               <h3 className="fade-in arya-animation animation1">
-                <i className="">„Jedem Anfang wohnt ein Zauber inne” -Hermann Hesse</i>
+                <i className="">{ this.displayWelcomeMessage() }</i>
               </h3>
-              
             </div>
-              
             <button className="btn btn-primary nav-button next-button fade-in arya-animation animation3" onClick={this.closeModal}>
               <span className="btn-text">Anfangen </span><i className="fa fa-arrow-right"></i>
             </button>
@@ -61,7 +64,7 @@ var WelcomeModal = React.createClass({
             </div>
           </div>
         </Modal>
-      
+
     );
   }
 });

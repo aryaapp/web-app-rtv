@@ -7,6 +7,7 @@ import ReactDOM from 'react-dom'
 const Modal = require('react-modal')
 
 const CheckBoxInput = require('./CheckBoxInput.react.js')
+const Content = require('../../constants/localizableStringsDE.js')
 
 const customStyles = {
   content : {
@@ -43,6 +44,9 @@ const ConfirmationModal = React.createClass({
   update: function(value) {
     this.props.onChange(value)
   },
+  displayThankYouMessage: function() {
+    return Content.OUTRO_MESSAGES[Math.floor(Math.random() * Content.INTRO_MESSAGES.length)]
+  },
   render() {
     return (
         <Modal
@@ -55,7 +59,7 @@ const ConfirmationModal = React.createClass({
                 <div className="success-icon"><i className="fa fa-3x fa-check"></i></div>
                 <div className="alert alert-success" >Dein Eintrag wurde erfolgreich an deine Email Adresse geschickt.</div>
                 <div className="welcome-text-container rtv-title vertical-align-center fade-in arya-animation animation2">
-                  <h3><i>Danke dir! Ja. Danke dir selbst dafür, dass du auf dich achtest... Wie oft haben wir nur die Anderen im Auge. Bleib bei dir! Es lohnt sich. Bis bald.</i></h3>
+                  <h3><i>{ this.displayThankYouMessage() }</i></h3>
                 </div>
               </div>
             </div>
