@@ -44,17 +44,17 @@ var WelcomeModal = React.createClass({
           <div className="welcome-modal container-fluid">
             <div className="row full-height">
             <div className="col-xs-12 no-padding full-height">
-            <img src="./images/rtv_logo-1.png" className="welcome-rtv-image fade-in arya-animation animation2"/>
-            <div className="col-xs-12 tagebuch fade-in arya-animation animation2">Achtsamkeits-Tagebuch</div>
-            <div className="welcome-text-container rtv-title col-xs-12 vertical-align-center fade-in arya-animation animation1">
-              
-              <h3>
+            <img src="./images/rtv_logo-1.png" className="welcome-rtv-image"/>
+            <div className="col-xs-12 tagebuch">Achtsamkeits-Tagebuch</div>
+            <div className="welcome-text-container rtv-title col-xs-12 vertical-align-center ">
+              <p className="col-xs-12 heute fade-in arya-animation animation2">Heute, hier und jetzt.<br/>{ date.toLocaleDateString('de-DE', options) }</p>
+              <h3 className="fade-in arya-animation animation1">
                 <i className="">„Jedem Anfang wohnt ein Zauber inne” -Hermann Hesse</i>
               </h3>
-              <p className="col-xs-12 heute fade-in arya-animation animation3">Heute, hier und jetzt.<br/>{ date.toLocaleDateString('de-DE', options) }</p>
+              
             </div>
               
-            <button className="btn btn-primary nav-button next-button fade-in arya-animation animation4" onClick={this.closeModal}>
+            <button className="btn btn-primary nav-button next-button fade-in arya-animation animation3" onClick={this.closeModal}>
               <span className="btn-text">Anfangen </span><i className="fa fa-arrow-right"></i>
             </button>
             </div>

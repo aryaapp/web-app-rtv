@@ -28,7 +28,7 @@
     font-weight:600;
     font-size:13px;
     color:#444;
-    margin-top:64px;
+    margin-bottom:64px;
 }
 
 #react-app{
@@ -209,7 +209,7 @@ body{
     position:relative;
 }
 
-.form-control{
+.form-control {
     border-color: #d9d9d9;
     padding-left: 32px;
     padding-right: 64px;
@@ -220,6 +220,9 @@ body{
     -webkit-box-shadow: none;
     box-shadow: none;
     margin-bottom: 0;
+}
+.form-control:focus, input[type=text]:focus{
+    border-color: #d9d9d9;
 }
 
 .email-control{
@@ -323,8 +326,13 @@ textarea, input[type="text"], input[type="submit"], input[type="email"] {
 #list-submit-button{
     position: absolute;
     top: 0px;
-    right: 0;
+    right: 1px;
     border-radius: 0;
+    background: #797979;
+    border-color:#797979;
+    i, span {
+        vertical-align: middle;
+    }
 }
 
 .btn, .btn:hover, .btn:focus{
