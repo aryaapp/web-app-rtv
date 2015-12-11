@@ -30,7 +30,6 @@ let markupBody = function(body) {
     let markupBody = {}
     for (var bodypart in body) {
       markupBody[bodypart] = intersperse(body[bodypart], ", ")
-      console.log(markupBody)
     }
     return markupBody
 }
@@ -53,7 +52,7 @@ let ResultsScreen = React.createClass({
         color: ""
       },
       body: {},
-      thoughts: '',
+      thoughts: [],
       situation:  ['keine Eingabe'],
       reaction: ['keine Eingabe']
     };
@@ -129,7 +128,7 @@ let ResultsScreen = React.createClass({
                   <li className="list-item rtv-list-item result-title">Deine Körper</li>
                   <li className="list-item rtv-list-item result-answer"><DisplayBody body={ markupBody(this.props.body) } /></li>
                   <li className="list-item rtv-list-item result-title">Deine Gedanken</li>
-                  <li className="list-item rtv-list-item result-answer">{this.props.thoughts}</li>
+                  <li className="list-item rtv-list-item result-answer">{intersperse(this.props.thoughts,", ")}</li>
                   <li className="list-item rtv-list-item result-title">Deine Situation</li>
                   <li className="list-item rtv-list-item result-answer">{intersperse(this.props.situation,", ")}</li>
                   <li className="list-item rtv-list-item result-title">Deine Reaktion</li>

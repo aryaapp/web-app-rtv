@@ -34,7 +34,7 @@ var App = React.createClass({
         right_leg: [],
         hip: []
       },
-      thoughts: '',
+      thoughts: [],
       situation:  [],
       reaction: [],
       currentPage: 0
@@ -69,7 +69,7 @@ var App = React.createClass({
                 onClickNext = { this.handleClickNext }
               /></div>
               <NextButton onClick={this.handleClickNext} />
-              
+
             </div>
         break;
       case 1:

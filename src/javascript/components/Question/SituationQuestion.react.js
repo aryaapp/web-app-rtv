@@ -33,11 +33,11 @@ let SituationQuestion = React.createClass({
           <QuestionSubtitle subtitle={ Content.QUESTION_CIRCUMSTANCES_SUBTITLE } />
         </QuestionHeader>
         <QuestionMain>
-          <ListInput value={this.props.situation} onChange={this.update} />
+          <ListInput value={this.props.situation} placeholder="Meine Situation" onChange={this.update} />
         </QuestionMain>
-        <QuestionModal 
-          title ={ Content.QUESTION_CIRCUMSTANCES_TITLE } 
-          body = { Content.QUESTION_CIRCUMSTANCES_EXPLANATION } 
+        <QuestionModal
+          title ={ Content.QUESTION_CIRCUMSTANCES_TITLE }
+          body = { Content.QUESTION_CIRCUMSTANCES_EXPLANATION }
         />
       </Section>
     );

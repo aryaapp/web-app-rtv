@@ -35,7 +35,7 @@ let ReactionQuestion = React.createClass({
           <QuestionSubtitle subtitle={ Content.QUESTION_REACTION_SUBTITLE } />
         </QuestionHeader>
         <QuestionMain>
-          <ListInput value={this.props.reaction} onChange={this.update} />
+          <ListInput value={this.props.reaction} placeholder="Meine Reaktion" onChange={this.update} />
         </QuestionMain>
         <QuestionModal
           title ={ Content.QUESTION_REACTION_TITLE }

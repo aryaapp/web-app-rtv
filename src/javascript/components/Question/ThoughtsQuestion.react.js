@@ -10,7 +10,7 @@ let QuestionHeader = require('./QuestionHeader.react.js')
 let QuestionTitle = require('./QuestionTitle.react.js')
 let QuestionSubtitle = require('./QuestionSubtitle.react.js')
 let QuestionMain = require('./QuestionMain.react.js')
-let TextInput = require('./TextInput.react.js')
+let ListInput = require('./ListInput.react.js')
 let ScrollIndicator = require('./ScrollIndicator.react.js')
 let Section = require('./Section.react.js')
 let Content = require('../../constants/localizableStringsDE.js')
@@ -18,7 +18,7 @@ let Content = require('../../constants/localizableStringsDE.js')
 let ThoughtsQuestion = React.createClass({
   getDefaultProps: function () {
     return {
-      thoughts: ''
+      thoughts: []
     };
   },
 
@@ -35,7 +35,7 @@ let ThoughtsQuestion = React.createClass({
           <QuestionSubtitle subtitle={ Content.QUESTION_THOUGHTS_SUBTITLE } />
         </QuestionHeader>
         <QuestionMain>
-          <TextInput value={ this.props.thoughts } placeholder="Mein Gedanken" onChange={this.update} />
+          <ListInput value={this.props.thoughts} placeholder="Mein Gedanken" onChange={this.update} />
         </QuestionMain>
         <QuestionModal
           title ={ Content.QUESTION_THOUGHTS_TITLE }

@@ -8,6 +8,7 @@ var ListInput = React.createClass({
   getDefaultProps() {
     return {
       value: [],
+      placeholder: ''
     };
   },
   getInitialState: function() {
@@ -54,8 +55,8 @@ var ListInput = React.createClass({
             type='text'
             value={this.state.newValue}
             onChange={this.updateState}
-            placeholder='Meine Situation' />
-          <button id='list-submit-button' className="btn btn-primary" type="submit" ><i className="fa fa-plus"></i></button>  
+            placeholder={this.props.placeholder} />
+          <button id='list-submit-button' className="btn btn-primary" type="submit" ><i className="fa fa-plus"></i></button>
         </form>
         <ul className="list rtv-list">
           {
