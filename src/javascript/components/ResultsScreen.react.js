@@ -86,7 +86,7 @@ let ResultsScreen = React.createClass({
         token: that.state.recaptchaToken,
         email: that.state.email,
         results: {
-          feeling:   that.props.feeling,
+          feeling:   that.props.feeling.value,
           body:      that.props.body,
           thoughts:  that.props.thoughts,
           situation: that.props.situation,
