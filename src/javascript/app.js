@@ -74,7 +74,7 @@ var App = React.createClass({
         break;
       case 1:
         partial =
-          <div className="partial-wrapper"><div className="partial-container" key="1">
+          <div className="partial-wrapper" key="1"><div className="partial-container" >
             <BodyQuestion
               body={this.state.body}
               onChange={this.handleQuestionChange.bind(this, 'body' )}
@@ -85,7 +85,7 @@ var App = React.createClass({
         break;
       case 2:
         partial =
-          <div className="partial-wrapper"><div className="partial-container" key="2">
+          <div className="partial-wrapper" key="2"><div className="partial-container" >
             <ThoughtsQuestion
               thoughts={this.state.thoughts}
               onChange={this.handleQuestionChange.bind(this, 'thoughts' )}
@@ -96,7 +96,7 @@ var App = React.createClass({
         break;
       case 3:
         partial =
-          <div className="partial-wrapper"><div className="partial-container" key="3">
+          <div className="partial-wrapper" key="3"><div className="partial-container" >
             <SituationQuestion
               situation={this.state.situation}
               onChange={this.handleQuestionChange.bind(this, 'situation' )}
@@ -107,7 +107,7 @@ var App = React.createClass({
         break;
       case 4:
         partial =
-          <div className="partial-wrapper"><div className="partial-container" key="4">
+          <div className="partial-wrapper" key="4"><div className="partial-container" >
             <ReactionQuestion
               reaction={this.state.reaction}
               onChange={this.handleQuestionChange.bind(this, 'reaction' )}
@@ -118,7 +118,7 @@ var App = React.createClass({
         break;
       case 5:
         partial =
-          <div className="partial-wrapper"><div className="partial-container" key="5">
+          <div className="partial-wrapper" key="5"><div className="partial-container" >
             <ResultsScreen
               feeling={this.state.feeling}
               body={this.state.body}
