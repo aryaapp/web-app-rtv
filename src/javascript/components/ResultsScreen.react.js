@@ -117,8 +117,8 @@ let ResultsScreen = React.createClass({
       <Section>
             <QuestionHeader>
               <div className="col-xs-1"></div>
-              <QuestionTitle title={this.props.title} />
-              <QuestionSubtitle subtitle="See your input below. Send it to your email to review later." />
+              <QuestionTitle title={ Content.QUESTION_FINISH_TITLE } />
+              <QuestionSubtitle subtitle= { Content.QUESTION_FINISH_SUBTITLE } />
             </QuestionHeader>
             <QuestionMain>
                 <ul className="rtv-results list rtv-list">
