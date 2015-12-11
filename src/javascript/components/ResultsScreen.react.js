@@ -61,7 +61,8 @@ let ResultsScreen = React.createClass({
     return {
       email: '',
       recaptchaToken: '',
-      emailValid: true
+      emailValid: true,
+      tryToSend: false
     }
   },
   componentDidMount: function() {
@@ -78,6 +79,7 @@ let ResultsScreen = React.createClass({
     return re.test(this.state.email)
   },
   sendResults: function(e) {
+    this.setState({ tryToSend: true })
     let that = this
     if (that.checkEMail()) {
       let data = {
@@ -110,7 +112,7 @@ let ResultsScreen = React.createClass({
   render() {
 
     var emailInvalidLabel = <label>Bitte gib eine gültige E-Mailadresse ein.</label>
-    var captachNotConfirmed = <label>Bitte bestätige das du auch wirklich ein Mensch bist :)</label>
+    var captachNotConfirmed = <label>Bitte bestätige das du auch wirklich ein Mensch bist.</label>
 
 
     return (
@@ -148,7 +150,7 @@ let ResultsScreen = React.createClass({
                     sitekey="6LdJ2RETAAAAAPHK7GmcRZTPnZY0E3AGY0sivpAs"
                     onChange={this.recaptchaVerify}
                   />
-                  { this.state.recaptchaToken.length > 0 ? '' : captachNotConfirmed }
+                  { this.state.recaptchaToken.length == '' && this.state.tryToSend ? captachNotConfirmed : '' }
                   <input
                     className="form-control email-control"
                     type='email'
