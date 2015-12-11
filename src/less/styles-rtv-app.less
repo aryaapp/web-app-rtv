@@ -3,6 +3,7 @@
 
 @rtv-blue: #004170;
 @rtv-red: #b20035;
+@rtv-green: #9acb9b;
 
 .mock-banner{
     height: 52px;
@@ -202,7 +203,7 @@ body{
     position: absolute;
     right: 16px;
     @media (min-width: @screen-sm) {
-        top: 68px;
+        top: 48px;
         right: 48px;
     }
 }
@@ -348,8 +349,8 @@ textarea, input[type="text"], input[type="submit"], input[type="email"] {
 }
 
 .btn-primary, .btn-primary:hover, .btn-primary:focus {
-    background: #004170;
-    border-color: #004170;
+    background: @rtv-green; //#004170;
+    border-color: @rtv-green; //#004170;
     color: white;
     font-weight: normal;
     text-transform: lowercase;
@@ -363,9 +364,9 @@ textarea, input[type="text"], input[type="submit"], input[type="email"] {
 }
 
 .btn-success, .btn-success:focus, .btn-success:hover{
-    background-color: #449d44; // @rtv-blue;
+    background-color: @rtv-green; //#449d44; // @rtv-blue;
     color: #fff;
-    border-color: #449d44; //@rtv-blue;
+    border-color: @rtv-green; //#449d44; //@rtv-blue;
 }
 
 img.emoticons{
