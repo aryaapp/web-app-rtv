@@ -87,6 +87,7 @@ let ResultsScreen = React.createClass({
         email: that.state.email,
         results: {
           feeling:   that.props.feeling.value,
+          color:     d3MoodColor(this.props.feeling.value),
           body:      that.props.body,
           thoughts:  that.props.thoughts,
           situation: that.props.situation,
@@ -113,7 +114,6 @@ let ResultsScreen = React.createClass({
 
     var emailInvalidLabel = <label>Bitte gib eine gültige E-Mailadresse ein.</label>
     var captachNotConfirmed = <label>Bitte bestätige das du auch wirklich ein Mensch bist.</label>
-
 
     return (
       <Section>
@@ -163,7 +163,7 @@ let ResultsScreen = React.createClass({
                 <div className="col-xs-12">
                   <button className='btn btn-primary nav-button next-button relative-button' onClick={this.sendResults}><i className="fa fa-envelope-o"></i> Report verschicken</button>
                 </div>
-                <div className="col-xs-12 text-center closetext">Or, close this window to quit (data will be lost)</div>
+                <div className="col-xs-12 text-center closetext">Oder schließen Sie dieses Fenster, um die Daten zu löschen.</div>
               </QuestionMain>
               <ConfirmationModal ref="confirmation" />
       </Section>
