@@ -50,9 +50,12 @@ var WelcomeModal = React.createClass({
             <div className="row full-height">
             <div className="col-xs-12 no-padding full-height">
             <img src="./images/rtv_logo-1.png" className="welcome-rtv-image"/>
-            <div className="col-xs-12 tagebuch">Achtsamkeits-Tagebuch</div>
-            <div className="welcome-text-container rtv-title col-xs-12 vertical-align-center ">
+            <div className="col-xs-12 tagebuch">
+              Achtsamkeits-Tagebuch
               <p className="col-xs-12 heute fade-in arya-animation animation2">Heute, hier und jetzt.<br/>{ date.toLocaleDateString('de-DE', options) }</p>
+            </div>
+            <div className="welcome-text-container rtv-title col-xs-12 vertical-align-center ">
+              
               <h3 className="fade-in arya-animation animation1">
                 <i className="">{ this.displayWelcomeMessage() }</i>
               </h3>
