@@ -111,8 +111,8 @@ let ResultsScreen = React.createClass({
 
   render() {
 
-    var emailInvalidLabel = <label>Bitte gib eine gültige E-Mailadresse ein.</label>
-    var captachNotConfirmed = <label>Bitte bestätige das du auch wirklich ein Mensch bist.</label>
+    var emailInvalidLabel = <label className="validation-message">Bitte gib eine gültige E-Mailadresse ein.</label>
+    var captachNotConfirmed = <label className="validation-message">Bitte bestätige das du auch wirklich ein Mensch bist.</label>
 
 
     return (
@@ -144,6 +144,9 @@ let ResultsScreen = React.createClass({
                   <li className="list-item rtv-list-item result-title">Deine Reaktion</li>
                   <li className="list-item rtv-list-item result-answer">{intersperse(this.props.reaction,", ")}</li>
                 </ul>
+                <div className="col-xs-12">
+                  <QuestionSubtitle subtitle= "Enter your email below and confirm the security check" />
+                </div>
                 <div className="form-group col-xs-12">
                   <Recaptcha
                     ref="recaptcha"
@@ -163,7 +166,9 @@ let ResultsScreen = React.createClass({
                 <div className="col-xs-12">
                   <button className='btn btn-primary nav-button next-button relative-button' onClick={this.sendResults}><i className="fa fa-envelope-o"></i> Report verschicken</button>
                 </div>
-                <div className="col-xs-12 text-center closetext">Or, close this window to quit (data will be lost)</div>
+                <div className="col-xs-12">
+                  <QuestionSubtitle subtitle= "Or, close this window to quit (data will be lost)" />
+                </div>
               </QuestionMain>
               <ConfirmationModal ref="confirmation" />
       </Section>
