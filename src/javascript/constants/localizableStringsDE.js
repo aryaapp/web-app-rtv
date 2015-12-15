@@ -16,13 +16,13 @@ module.exports = {
 
 	"QUESTION_FEELING_TITLE" : "Wie fühlst du dich? Jetzt und hier.",
 	"QUESTION_FEELING_SUBTITLE" : "Stelle dein persönliches Stimmungsbarometer ein!",
-	"QUESTION_FEELING_EXPLANATION" : "Spüre in dich hinein - Wie geht es dir gerade? Wie ist deine persönliche innere ‘Wetterlage’? Heiter oder eher wolkig? Überlege dabei nicht allzu lange. Folge deinem Impuls und bewege den Regler, um deine momentane Stimmung einzustellen.",
+	"QUESTION_FEELING_EXPLANATION" : "Spüre in dich hinein - Wie geht es dir gerade? Wie ist deine persönliche Verfassung? Heiter oder eher wolkig? Überlege dabei nicht allzu lange. Folge deinem Impuls und bewege den Regler, um deine momentane Stimmung einzustellen.",
 	"QUESTION_FEELING_VERY_BAD" : "SEHR SCHLECHT",
 	"QUESTION_FEELING_AVERAGE" : "DURCHSCHNITTLICH",
 	"QUESTION_FEELING_VERY_WELL" : "SEHR GUT",
 
 	"QUESTION_CIRCUMSTANCES_TITLE" : "Beschreibe die Situation und begründe sie.",
-	"QUESTION_CIRCUMSTANCES_SUBTITLE" : "Wie ist deine ganz persönliche Lage der Nation? Gibt es Ursachen/Auslöser für deine Stimmung?",
+	"QUESTION_CIRCUMSTANCES_SUBTITLE" : "Wie ist deine persönliche Verfassung? Gibt es Ursachen/Auslöser für deine Stimmung?",
 	"QUESTION_CIRCUMSTANCES_EXPLANATION" : "Denke kurz nach. Gibt es einen bestimmten Grund oder Auslöser für deine derzeitige Stimmung? Und wer oder was ist aus deiner Sicht dafür verantwortlich? Beschreibe die Situation samt Grund. Wenn dir dazu gerade nichts einfällt, dann beschreibe einfach nur diesen Moment. Orte, Tätigkeiten, beteiligte Menschen, Geräusche, Gerüche, Sonstiges - was auch immer dir dazu in den Sinn kommt.",
 
 	"QUESTION_BODY_TITLE" : "Wie fühlt sich im Moment dein Körper an?",
