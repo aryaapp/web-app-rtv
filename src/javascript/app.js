@@ -135,7 +135,7 @@ var App = React.createClass({
 
     return (
       <div className="gradient-background">
-        <PageNumber page={this.state.currentPage + 1} />
+        <PageNumber page={ this.state.currentPage + 1 } />
         <div id="main-app">
           <ReactCSSTransitionGroup component="div" className="transition-group" transitionName="page" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
             { partial }

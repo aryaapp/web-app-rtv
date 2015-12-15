@@ -113,7 +113,7 @@ let ResultsScreen = React.createClass({
   render() {
 
     var emailInvalidLabel = <label className="validation-message">Bitte gib eine gültige E-Mailadresse ein.</label>
-    var captachNotConfirmed = <label className="validation-message">Bitte bestätige das du auch wirklich ein Mensch bist.</label>
+    var captachNotConfirmed = <label className="validation-message">Bitte bestätige, dass du auch wirklich ein Mensch bist ;-)</label>
 
     return (
       <Section>
@@ -145,7 +145,7 @@ let ResultsScreen = React.createClass({
                   <li className="list-item rtv-list-item result-answer">{intersperse(this.props.reaction,", ")}</li>
                 </ul>
                 <div className="col-xs-12">
-                  <QuestionSubtitle subtitle= "Enter your email below and confirm the security check" />
+                  <QuestionSubtitle subtitle= "Trage unten deine Email Adresse ein und bestätige den Sicherheitscheck." />
                 </div>
                 <div className="form-group col-xs-12">
                   <Recaptcha
