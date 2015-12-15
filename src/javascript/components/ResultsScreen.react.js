@@ -114,6 +114,10 @@ let ResultsScreen = React.createClass({
 
     var emailInvalidLabel = <label className="validation-message">Bitte gib eine gültige E-Mailadresse ein.</label>
     var captachNotConfirmed = <label className="validation-message">Bitte bestätige das du auch wirklich ein Mensch bist.</label>
+<<<<<<< HEAD
+=======
+
+>>>>>>> d20914bbe30ed0b2480698b1af546423b0eb7cf4
 
     return (
       <Section>
@@ -166,7 +170,6 @@ let ResultsScreen = React.createClass({
                 <div className="col-xs-12">
                   <button className='btn btn-primary nav-button next-button relative-button' onClick={this.sendResults}><i className="fa fa-envelope-o"></i> Report verschicken</button>
                 </div>
-
                 <div className="col-xs-12">
                   <QuestionSubtitle subtitle= "Oder schließen Sie dieses Fenster, um die Daten zu löschen." />
                 </div>
