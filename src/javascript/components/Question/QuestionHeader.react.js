@@ -3,6 +3,8 @@
 * @submodule Question
 */
 
+let PageNumber = require("../PageNumber.react.js")
+
 import React from 'react'
 
 let QuestionHeader = React.createClass({

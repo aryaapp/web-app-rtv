@@ -44,7 +44,7 @@ var QuestionModal = React.createClass({
       <div>
         <div className="modal-trigger">
           <i className="fa fa-lg fa-question-circle visible-xs" onClick={this.openModal}></i>
-          <i className="fa fa-2x fa-question-circle hidden-xs trigger-desktop" onClick={this.openModal}></i>
+          <i className="fa fa-lg fa-question-circle hidden-xs trigger-desktop" onClick={this.openModal}></i>
         </div>
         <Modal
           isOpen={this.state.isOpen}
