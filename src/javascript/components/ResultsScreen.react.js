@@ -145,7 +145,7 @@ let ResultsScreen = React.createClass({
                   <li className="list-item rtv-list-item result-answer">{intersperse(this.props.reaction,", ")}</li>
                 </ul>
                 <div className="col-xs-12">
-                  <QuestionSubtitle subtitle= "Trage unten deine Email Adresse ein und bestätige den Sicherheitscheck." />
+                  <QuestionSubtitle subtitle= "Bestätige den Sicherheitscheck und trage deine E-Mail-Adresse unten ein." />
                 </div>
                 <div className="form-group col-xs-12">
                   <Recaptcha
@@ -167,7 +167,7 @@ let ResultsScreen = React.createClass({
                   <button className='btn btn-primary nav-button next-button relative-button' onClick={this.sendResults}><i className="fa fa-envelope-o"></i> Report verschicken</button>
                 </div>
                 <div className="col-xs-12">
-                  <QuestionSubtitle subtitle= "Oder schließen Sie dieses Fenster, um die Daten zu löschen." />
+                  <QuestionSubtitle subtitle= "Oder schließe dieses Fenster und beende die Anwendung (deine Daten werden nicht gespeichert)" />
                 </div>
               </QuestionMain>
               <ConfirmationModal ref="confirmation" />
