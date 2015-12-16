@@ -4,6 +4,22 @@
 */
 import React from 'react';
 
+let detectMobile = function () { 
+ if( navigator.userAgent.match(/Android/i)
+ || navigator.userAgent.match(/webOS/i)
+ || navigator.userAgent.match(/iPhone/i)
+ || navigator.userAgent.match(/iPad/i)
+ || navigator.userAgent.match(/iPod/i)
+ || navigator.userAgent.match(/BlackBerry/i)
+ || navigator.userAgent.match(/Windows Phone/i)
+ ){
+    return true;
+  }
+ else {
+    return false;
+  }
+}
+
 var ListInput = React.createClass({
   getDefaultProps() {
     return {
@@ -21,11 +37,6 @@ var ListInput = React.createClass({
   },
   updateState: function(e) {
     this.setState({ newValue: e.target.value })
-    // check if value is there
-    if(e.target.value.length != 0 && this.props.value.indexOf(e.target.value) == -1) {
-      console.log('yup its new')
-
-    }
   },
   addValue: function(e) {
     if(e != undefined) {
@@ -55,12 +66,26 @@ var ListInput = React.createClass({
   componentWillUnmount : function () {
     this.addValue()
   },
+  handleFocus: function() {
+     if(detectMobile()) {
+      console.log('focus')
+      //make nav buttons invisible
+     }
+  },
+  handleBlur: function() {
+    if(detectMobile()) {
+     console.log('blur')
+     //make nav buttons visible
+    }
+  },
   render: function() {
     var that = this
     return (
       <div>
         <form onSubmit={this.addValue}>
           <input
+            onFocus={this.handleFocus} 
+            onBlur={this.handleBlur}
             className="form-control"
             type='text'
             value={this.state.newValue}
