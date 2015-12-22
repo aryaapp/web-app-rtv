@@ -21,9 +21,16 @@ var ListInput = React.createClass({
   },
   updateState: function(e) {
     this.setState({ newValue: e.target.value })
+    // check if value is there
+    if(e.target.value.length != 0 && this.props.value.indexOf(e.target.value) == -1) {
+      console.log('yup its new')
+
+    }
   },
   addValue: function(e) {
-    e.preventDefault();
+    if(e != undefined) {
+      e.preventDefault();
+    }
     // check if value is there
     if(this.state.newValue.length == 0) {
       return false;
@@ -44,6 +51,9 @@ var ListInput = React.createClass({
     newParentState.splice(i,1)
     this.update(newParentState)
 
+  },
+  componentWillUnmount : function () {
+    this.addValue()
   },
   render: function() {
     var that = this
