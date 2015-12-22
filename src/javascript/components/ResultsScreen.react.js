@@ -154,7 +154,7 @@ let ResultsScreen = React.createClass({
                   <li className="list-item rtv-list-item result-answer">{intersperse(reverseArray(this.props.reaction),", ")}</li>
                 </ul>
                 <div className="col-xs-12">
-                  <QuestionSubtitle subtitle= "Bestätige den Sicherheitscheck und trage deine E-Mail-Adresse unten ein." />
+                  <QuestionSubtitle subtitle= "Bitte bestätige, dass du auch wirklich ein Mensch bist ;-) und trage deine E-Mail-Adresse unten ein." />
                 </div>
                 <div className="form-group col-xs-12">
                   <Recaptcha
