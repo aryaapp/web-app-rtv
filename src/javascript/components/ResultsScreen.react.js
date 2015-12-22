@@ -34,6 +34,14 @@ let markupBody = function(body) {
     return markupBody
 }
 
+let reverseArray = function (input) {
+    var ret = new Array;
+    for(var i = input.length-1; i >= 0; i--) {
+        ret.push(input[i]);
+    }
+    return ret;
+}
+
 let intersperse = function(arr, sep) {
     if (arr.length === 0) {
         return [];
@@ -89,9 +97,9 @@ let ResultsScreen = React.createClass({
           feeling:   that.props.feeling.value,
           color:     d3MoodColor(this.props.feeling.value),
           body:      that.props.body,
-          thoughts:  that.props.thoughts,
-          situation: that.props.situation,
-          reaction:  that.props.reaction,
+          thoughts:  reverseArray(that.props.thoughts),
+          situation: reverseArray(that.props.situation),
+          reaction:  reverseArray(that.props.reaction),
         },
       }
       $.ajax({
@@ -114,6 +122,7 @@ let ResultsScreen = React.createClass({
 
     var emailInvalidLabel = <label className="validation-message">Bitte gib eine gültige E-Mailadresse ein.</label>
     var captachNotConfirmed = <label className="validation-message">Bitte bestätige, dass du auch wirklich ein Mensch bist ;-)</label>
+
 
     return (
       <Section>
@@ -138,11 +147,11 @@ let ResultsScreen = React.createClass({
                   <li className="list-item rtv-list-item result-title">Dein Körper</li>
                   <li className="list-item rtv-list-item result-answer"><DisplayBody body={ markupBody(this.props.body) } /></li>
                   <li className="list-item rtv-list-item result-title">Deine Gedanken</li>
-                  <li className="list-item rtv-list-item result-answer">{intersperse(this.props.thoughts,", ")}</li>
+                  <li className="list-item rtv-list-item result-answer">{intersperse(reverseArray(this.props.thoughts),", ")}</li>
                   <li className="list-item rtv-list-item result-title">Deine Situation</li>
-                  <li className="list-item rtv-list-item result-answer">{intersperse(this.props.situation,", ")}</li>
+                  <li className="list-item rtv-list-item result-answer">{intersperse(reverseArray(this.props.situation),", ")}</li>
                   <li className="list-item rtv-list-item result-title">Deine Reaktion</li>
-                  <li className="list-item rtv-list-item result-answer">{intersperse(this.props.reaction,", ")}</li>
+                  <li className="list-item rtv-list-item result-answer">{intersperse(reverseArray(this.props.reaction),", ")}</li>
                 </ul>
                 <div className="col-xs-12">
                   <QuestionSubtitle subtitle= "Bestätige den Sicherheitscheck und trage deine E-Mail-Adresse unten ein." />
