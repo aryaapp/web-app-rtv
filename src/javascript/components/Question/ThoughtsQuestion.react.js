@@ -35,7 +35,7 @@ let ThoughtsQuestion = React.createClass({
           <QuestionSubtitle subtitle={ Content.QUESTION_THOUGHTS_SUBTITLE } />
         </QuestionHeader>
         <QuestionMain>
-          <ListInput value={this.props.thoughts} placeholder="Mein Gedanken" onChange={this.update} />
+          <ListInput value={this.props.thoughts} placeholder="Meine Gedanken" onChange={this.update} />
         </QuestionMain>
         <QuestionModal
           title ={ Content.QUESTION_THOUGHTS_TITLE }

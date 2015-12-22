@@ -124,7 +124,7 @@ let ResultsScreen = React.createClass({
             </QuestionHeader>
             <QuestionMain>
                 <ul className="rtv-results list rtv-list">
-                  <li className="list-item rtv-list-item result-title">Deine Befinden <strong></strong></li>
+                  <li className="list-item rtv-list-item result-title">Dein Befinden <strong></strong></li>
                   <li className="list-item rtv-list-item result-answer">
                     <div className="row">
                       <div className="col-xs-2">
@@ -135,7 +135,7 @@ let ResultsScreen = React.createClass({
                       </div>
                     </div>
                   </li>
-                  <li className="list-item rtv-list-item result-title">Deine Körper</li>
+                  <li className="list-item rtv-list-item result-title">Dein Körper</li>
                   <li className="list-item rtv-list-item result-answer"><DisplayBody body={ markupBody(this.props.body) } /></li>
                   <li className="list-item rtv-list-item result-title">Deine Gedanken</li>
                   <li className="list-item rtv-list-item result-answer">{intersperse(this.props.thoughts,", ")}</li>
