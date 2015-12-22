@@ -67,17 +67,13 @@ var ListInput = React.createClass({
     this.addValue()
   },
   handleFocus: function() {
-    $( ".nav-button" ).hide;
      if(detectMobile()) {
-      console.log('focus')
-      //make nav buttons invisible
+      $( ".nav-button" ).hide();
      }
   },
   handleBlur: function() {
-    $( ".nav-button" ).show;
     if(detectMobile()) {
-     console.log('blur')
-     //make nav buttons visible
+     $( ".nav-button" ).show();
     }
   },
   render: function() {
