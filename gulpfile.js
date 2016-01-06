@@ -79,7 +79,7 @@ gulp.task('babel', function () {
 
 //bundle is dependant on babel to run first
 gulp.task('bundle', ['babel'], function () {
-	return gulp.src('./src/js5/app.js')
+	return gulp.src('./src/js5/index.js')
     .pipe(browserify(
     	{ transform: [reactify] }
     ))

@@ -1,23 +1,28 @@
-var jQuery = require('jquery')
+const jQuery = require('jquery')
 require('jquery')
-var React = require('react')
-var ReactDOM = require('react-dom')
-var ReactCSSTransitionGroup = require('react-addons-css-transition-group')
+import React from 'react'
+const ReactDOM = require('react-dom')
+const ReactCSSTransitionGroup = require('react-addons-css-transition-group')
 // let's add some style
 
-var FeelingQuestion = require('./components/Question/FeelingQuestion.react.js')
-var ThoughtsQuestion = require('./components/Question/ThoughtsQuestion.react.js')
-var SituationQuestion = require('./components/Question/SituationQuestion.react.js')
-var ReactionQuestion = require('./components/Question/ReactionQuestion.react.js')
-var BodyQuestion = require('./components/Question/BodyQuestion.react.js')
-var ResultsScreen = require('./components/ResultsScreen.react.js')
-var WelcomeModal = require('./components/Question/WelcomeModal.react.js')
-var PrevButton = require('./components/Reusable/PrevButton.react.js')
-var NextButton = require('./components/Reusable/NextButton.react.js')
-var PageNumber = require('./components/PageNumber.react.js')
+const FeelingQuestion = require('./components/Question/FeelingQuestion.react.js')
+const ThoughtsQuestion = require('./components/Question/ThoughtsQuestion.react.js')
+const SituationQuestion = require('./components/Question/SituationQuestion.react.js')
+const ReactionQuestion = require('./components/Question/ReactionQuestion.react.js')
+const BodyQuestion = require('./components/Question/BodyQuestion.react.js')
+const ResultsScreen = require('./components/ResultsScreen.react.js')
+const WelcomeModal = require('./components/Question/WelcomeModal.react.js')
+const PrevButton = require('./components/Reusable/PrevButton.react.js')
+const NextButton = require('./components/Reusable/NextButton.react.js')
+const PageNumber = require('./components/PageNumber.react.js')
 
 
-var App = React.createClass({
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { setFeeling, setBody, setThoughts, setSituation, setReaction } from './actions/actions'
+
+
+const App = React.createClass({
   getInitialState: function() {
     return {
       feeling: {
@@ -58,15 +63,14 @@ var App = React.createClass({
     this.setState({currentPage: newPage})
   },
   render: function() {
-
     var partial;
+    const { dispatch } = this.props;
     switch (this.state.currentPage) {
       case 0:
         partial = <div className="partial-wrapper">
               <div className="partial-container" key="0"><FeelingQuestion
-                feeling={this.state.feeling}
-                onChange={this.handleQuestionChange.bind(this, 'feeling' )}
-                onClickNext = { this.handleClickNext }
+                 feeling={this.props.feeling}
+                 updateFeeling={value => dispatch(setFeeling(value))}
               /></div>
               <NextButton onClick={this.handleClickNext} />
 
@@ -76,8 +80,8 @@ var App = React.createClass({
         partial =
           <div className="partial-wrapper" key="1"><div className="partial-container" >
             <BodyQuestion
-              body={this.state.body}
-              onChange={this.handleQuestionChange.bind(this, 'body' )}
+              body={this.props.body}
+              updateBody={ value => dispatch(setBody(value)) }
             /></div>
             <PrevButton onClick={this.handleClickPrev} />
             <NextButton onClick={this.handleClickNext} />
@@ -87,8 +91,8 @@ var App = React.createClass({
         partial =
           <div className="partial-wrapper" key="2"><div className="partial-container" >
             <ThoughtsQuestion
-              thoughts={this.state.thoughts}
-              onChange={this.handleQuestionChange.bind(this, 'thoughts' )}
+              thoughts={this.props.thoughts}
+              updateThoughts={ value => dispatch(setThoughts(value)) }
             /></div>
             <PrevButton onClick={this.handleClickPrev} />
             <NextButton onClick={this.handleClickNext} />
@@ -98,8 +102,8 @@ var App = React.createClass({
         partial =
           <div className="partial-wrapper" key="3"><div className="partial-container" >
             <SituationQuestion
-              situation={this.state.situation}
-              onChange={this.handleQuestionChange.bind(this, 'situation' )}
+              situation={this.props.situation}
+              updateSituation={ value => dispatch(setSituation(value)) }
             /></div>
             <PrevButton onClick={this.handleClickPrev} />
             <NextButton onClick={this.handleClickNext} />
@@ -109,8 +113,8 @@ var App = React.createClass({
         partial =
           <div className="partial-wrapper" key="4"><div className="partial-container" >
             <ReactionQuestion
-              reaction={this.state.reaction}
-              onChange={this.handleQuestionChange.bind(this, 'reaction' )}
+              reaction={this.props.reaction}
+              updateReaction={ value => dispatch(setReaction(value)) }
             /></div>
             <PrevButton onClick={this.handleClickPrev} />
             <NextButton onClick={this.handleClickNext} />
@@ -120,11 +124,11 @@ var App = React.createClass({
         partial =
           <div className="partial-wrapper" key="5"><div className="partial-container" >
             <ResultsScreen
-              feeling={this.state.feeling}
-              body={this.state.body}
-              thoughts={this.state.thoughts}
-              situation={this.state.situation}
-              reaction={this.state.reaction}
+              feeling={this.props.feeling}
+              body={this.props.body}
+              thoughts={this.props.thoughts}
+              situation={this.props.situation}
+              reaction={this.props.reaction}
               clearData={this.clearData} />
             <PrevButton onClick={this.handleClickPrev} customClass="prev-button-relative" />
           </div></div>
@@ -132,21 +136,21 @@ var App = React.createClass({
       default:
         console.log('nothing to do here');
     }
-
+    console.log('app.js',this.props)
     return (
-      <div className="gradient-background">
-        <PageNumber page={ this.state.currentPage + 1 } />
-        <div id="main-app">
-          <ReactCSSTransitionGroup component="div" className="transition-group" transitionName="page" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
-            { partial }
+        <div className="gradient-background">
+          <PageNumber page={ this.state.currentPage + 1 } />
+          <div id="main-app">
+            <ReactCSSTransitionGroup component="div" className="transition-group" transitionName="page" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
+              { partial }
+            </ReactCSSTransitionGroup>
+          </div>
+          <ReactCSSTransitionGroup component="div" className="transition-group-modal" key="1" transitionName="modal" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+            <WelcomeModal />
           </ReactCSSTransitionGroup>
         </div>
-        <ReactCSSTransitionGroup component="div" className="transition-group-modal" key="1" transitionName="modal" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
-          <WelcomeModal />
-        </ReactCSSTransitionGroup>
-      </div>
     );
   }
 });
 
-ReactDOM.render(<App />, document.getElementById('react-app'));
+export default connect((state) => state)(App)

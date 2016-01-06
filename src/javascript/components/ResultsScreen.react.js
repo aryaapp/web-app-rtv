@@ -52,19 +52,6 @@ let intersperse = function(arr, sep) {
 }
 
 let ResultsScreen = React.createClass({
-  getDefaultProps: function () {
-    return {
-      title: "Hier deine Eingabe",
-      feeling: {
-        value: 50,
-        color: ""
-      },
-      body: {},
-      thoughts: [],
-      situation:  ['keine Eingabe'],
-      reaction: ['keine Eingabe']
-    };
-  },
   getInitialState: function() {
     return {
       email: '',
