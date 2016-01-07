@@ -45,6 +45,6 @@ export default class SituationQuestion extends Component {
 }
 
 SituationQuestion.propTypes = {
-  situationUpdate: PropTypes.func.isRequired,
+  updateSituation: PropTypes.func.isRequired,
   situation: PropTypes.array.isRequired
 }

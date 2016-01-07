@@ -8,7 +8,6 @@ export function setFeeling(object) {
   }
 }
 
-
 export const SET_BODY = 'SET_BODY'
 
 export function setBody(value) {
@@ -45,11 +44,26 @@ export function setReaction(value) {
   }
 }
 
-export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
+export const NEXT_PAGE = 'NEXT_PAGE'
 
-export function setCurrentPage(value) {
+export function nextPage() {
   return {
-    type: SET_CURRENT_PAGE,
-    newValue: value
+    type: NEXT_PAGE
+  }
+}
+
+export const PREV_PAGE = 'PREV_PAGE'
+
+export function prevPage() {
+  return {
+    type: PREV_PAGE
+  }
+}
+
+export const CLEAR_DATA = 'CLEAR_DATA'
+
+export function clearDataAction() {
+  return {
+    type: CLEAR_DATA
   }
 }
