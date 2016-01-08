@@ -4,6 +4,10 @@
 */
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { pushPath } from 'redux-simple-router'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+
 
 const Modal = require('react-modal');
 const Content = require('../../constants/localizableStringsDE.js')
@@ -35,6 +39,7 @@ var WelcomeModal = React.createClass({
   },
   closeModal: function() {
     this.setState({ isOpen: false })
+    this.props.dispatch(pushPath('/feeling'))
   },
   displayWelcomeMessage: function() {
     return Content.INTRO_MESSAGES[Math.floor(Math.random() * Content.INTRO_MESSAGES.length)]
@@ -55,7 +60,7 @@ var WelcomeModal = React.createClass({
               <p className="col-xs-12 heute fade-in arya-animation animation2">Heute, hier und jetzt.<br/>{ date.toLocaleDateString('de-DE', options) }</p>
             </div>
             <div className="welcome-text-container rtv-title col-xs-12 vertical-align-center ">
-              
+
               <h3 className="fade-in arya-animation animation1">
                 <i className="">{ this.displayWelcomeMessage() }</i>
               </h3>
@@ -77,3 +82,4 @@ module.exports = WelcomeModal
 //modal toggle add classnames for desktop
 //<h3 className="rtv-title welcome-title">Moodtracker</h3>
 
+export default connect((state) => state)(WelcomeModal)
