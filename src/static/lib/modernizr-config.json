@@ -1,0 +1,16 @@
+{
+  "minify": true,
+  "options": [
+    "setClasses"
+  ],
+  "feature-detects": [
+    "test/svg",
+    "test/css/animations",
+    "test/css/boxshadow",
+    "test/css/rgba",
+    "test/css/transforms",
+    "test/css/transforms3d",
+    "test/svg/asimg",
+    "test/svg/inline"
+  ]
+}

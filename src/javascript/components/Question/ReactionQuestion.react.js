@@ -6,7 +6,9 @@ import React from 'react'
 
 let Section = require('./Section.react.js')
 let QuestionButton = require('./QuestionButton.react.js')
+let QuestionHeader = require('./QuestionHeader.react.js')
 let QuestionTitle = require('./QuestionTitle.react.js')
+let QuestionSubtitle = require('./QuestionSubtitle.react.js')
 let QuestionMain = require('./QuestionMain.react.js')
 let QuestionModal = require('./QuestionModal.react.js')
 let ListInput = require('./ListInput.react.js')
@@ -27,10 +29,13 @@ let ReactionQuestion = React.createClass({
   render() {
     return (
       <Section>
-        <div className="col-xs-1"></div>
-        <QuestionTitle title={ Content.QUESTION_REACTION_TITLE } />
+        <QuestionHeader>
+          <div className="col-xs-1"></div>
+          <QuestionTitle title={ Content.QUESTION_REACTION_TITLE } />
+          <QuestionSubtitle subtitle={ Content.QUESTION_REACTION_SUBTITLE } />
+        </QuestionHeader>
         <QuestionMain>
-          <ListInput value={this.props.reaction} onChange={this.update} />
+          <ListInput value={this.props.reaction} placeholder="Meine Reaktion" onChange={this.update} />
         </QuestionMain>
         <QuestionModal
           title ={ Content.QUESTION_REACTION_TITLE }

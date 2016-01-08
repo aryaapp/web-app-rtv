@@ -4,10 +4,27 @@
 */
 import React from 'react';
 
+let detectMobile = function () { 
+ if( navigator.userAgent.match(/Android/i)
+ || navigator.userAgent.match(/webOS/i)
+ // || navigator.userAgent.match(/iPhone/i)
+ // || navigator.userAgent.match(/iPad/i)
+ // || navigator.userAgent.match(/iPod/i)
+ || navigator.userAgent.match(/BlackBerry/i)
+ || navigator.userAgent.match(/Windows Phone/i)
+ ){
+    return true;
+  }
+ else {
+    return false;
+  }
+}
+
 var ListInput = React.createClass({
   getDefaultProps() {
     return {
       value: [],
+      placeholder: ''
     };
   },
   getInitialState: function() {
@@ -22,7 +39,9 @@ var ListInput = React.createClass({
     this.setState({ newValue: e.target.value })
   },
   addValue: function(e) {
-    e.preventDefault();
+    if(e != undefined) {
+      e.preventDefault();
+    }
     // check if value is there
     if(this.state.newValue.length == 0) {
       return false;
@@ -33,7 +52,7 @@ var ListInput = React.createClass({
     }
 
     var newParentState = this.props.value.slice()
-    newParentState.push(this.state.newValue)
+    newParentState.unshift(this.state.newValue)
 
     this.update(newParentState)
     this.setState({ newValue: '' })
@@ -44,18 +63,33 @@ var ListInput = React.createClass({
     this.update(newParentState)
 
   },
+  componentWillUnmount : function () {
+    this.addValue()
+  },
+  handleFocus: function() {
+     if(detectMobile()) {
+      $( ".nav-button" ).hide();
+     }
+  },
+  handleBlur: function() {
+    if(detectMobile()) {
+     $( ".nav-button" ).show();
+    }
+  },
   render: function() {
     var that = this
     return (
       <div>
         <form onSubmit={this.addValue}>
           <input
+            onFocus={this.handleFocus} 
+            onBlur={this.handleBlur}
             className="form-control"
             type='text'
             value={this.state.newValue}
             onChange={this.updateState}
-            placeholder='Meine Situation' />
-
+            placeholder={this.props.placeholder} />
+          <button id='list-submit-button' className="btn btn-primary" type="submit" ><i className="fa fa-plus"></i></button>
         </form>
         <ul className="list rtv-list">
           {

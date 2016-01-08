@@ -8,7 +8,10 @@ const update = require('react-addons-update');
 
 let Section = require('./Section.react.js')
 let QuestionButton = require('./QuestionButton.react.js')
+let QuestionHeader = require('./QuestionHeader.react.js')
+let QuestionMain = require('./QuestionMain.react.js')
 let QuestionTitle = require('./QuestionTitle.react.js')
+let QuestionSubtitle = require('./QuestionSubtitle.react.js')
 let QuestionModal = require('./QuestionModal.react.js')
 let SliderInput = require('./SliderInput.react.js')
 let ScrollIndicator = require('./ScrollIndicator.react.js')
@@ -16,6 +19,7 @@ let BodyModal = require('./BodyModal.react.js');
 let BodyImage = require('./BodyImage.react.js');
 let Content = require('../../constants/localizableStringsDE.js')
 let FixedSectionFooter = require('./FixedSectionFooter.react.js')
+let ReactCSSTransitionGroup = require('react-addons-css-transition-group')
 
 let BodyQuestion = React.createClass({
   getDefaultProps: function() {
@@ -25,6 +29,7 @@ let BodyQuestion = React.createClass({
         left_arm: [],
         right_arm: [],
         chest: [],
+        abdomen: [],
         left_leg: [],
         right_leg: [],
         hip: []
@@ -47,11 +52,14 @@ let BodyQuestion = React.createClass({
     var that = this
     return (
       <Section>
-        <div className="col-xs-1"></div>
-        <QuestionTitle title={ Content.QUESTION_BODY_TITLE } />
-        <FixedSectionFooter>
+        <QuestionHeader>
+          <div className="col-xs-1"></div>
+          <QuestionTitle title={ Content.QUESTION_BODY_TITLE } />
+          <QuestionSubtitle subtitle={ Content.QUESTION_BODY_SUBTITLE } />
+        </QuestionHeader>
+        <QuestionMain>
           <BodyImage body={this.props.body} openBodyModal={this.openBodyModal} />
-        </FixedSectionFooter>
+        </QuestionMain>
         <BodyModal
           ref='body_head'
           values={that.props.body['head']}
@@ -79,6 +87,13 @@ let BodyQuestion = React.createClass({
           title="Brust"
           role="chest"
           onChange={that.update.bind(that, 'chest')}
+          />
+        <BodyModal
+          ref='body_abdomen'
+          values={that.props.body['abdomen']}
+          title="Bauch"
+          role="abdomen"
+          onChange={that.update.bind(that, 'abdomen')}
           />
         <BodyModal
           ref='body_hip'
