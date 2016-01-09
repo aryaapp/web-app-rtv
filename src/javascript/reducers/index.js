@@ -1,4 +1,6 @@
 import { combineReducers } from 'redux'
+import { routeReducer } from 'redux-simple-router'
+
 import feeling from './feeling'
 import body from './body'
 import thoughts from './thoughts'
@@ -8,18 +10,18 @@ import currentPage from './currentPage'
 
 import { CLEAR_DATA } from '../actions/actions'
 
-
 /*
   This lets each reducer handle the state that corresponse to his name.
   I.e. the 'feeling' reducer will replace the feeling: {} part of the state.
 */
 const partialReducers = combineReducers({
-  feeling,
-  body,
-  thoughts,
-  situation,
-  reaction,
-  currentPage
+  feeling: feeling,
+  body: body,
+  thoughts: thoughts,
+  situation: situation,
+  reaction: reaction,
+  currentPage: currentPage,
+  routing: routeReducer
 })
 
 /*
