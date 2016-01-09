@@ -2,28 +2,28 @@
 * @module rtv-mood tracker
 * @submodule Question
 */
-import React from 'react';
+import React, { Component, PropTypes } from 'react'
 
-let Section = require('./Section.react.js')
-let QuestionButton = require('./QuestionButton.react.js')
-let QuestionHeader = require('./QuestionHeader.react.js')
-let QuestionTitle = require('./QuestionTitle.react.js')
-let QuestionSubtitle = require('./QuestionSubtitle.react.js')
-let QuestionMain = require('./QuestionMain.react.js')
-let QuestionModal = require('./QuestionModal.react.js')
-let ListInput = require('./ListInput.react.js')
-let Content = require('../../constants/localizableStringsDE.js')
+import Section from './Section.react.js'
+import QuestionButton from './QuestionButton.react.js'
+import QuestionHeader from './QuestionHeader.react.js'
+import QuestionTitle from './QuestionTitle.react.js'
+import QuestionSubtitle from './QuestionSubtitle.react.js'
+import QuestionMain from './QuestionMain.react.js'
+import QuestionModal from './QuestionModal.react.js'
+import ListInput from './ListInput.react.js'
+import Content from '../../constants/localizableStringsDE.js'
 
-let SituationQuestion = React.createClass({
-  getDefaultProps: function () {
-    return {
-      situation: [],
-      title: "Wie ist deine Situation?"
-    };
-  },
-  update: function(value) {
-    this.props.onChange(value)
-  },
+export default class SituationQuestion extends Component {
+  constructor(props) {
+    super(props)
+    this.update = this.update.bind(this)
+  }
+
+  update(value) {
+    this.props.updateSituation(value)
+  }
+
   render() {
     return (
       <Section>
@@ -40,8 +40,11 @@ let SituationQuestion = React.createClass({
           body = { Content.QUESTION_CIRCUMSTANCES_EXPLANATION }
         />
       </Section>
-    );
+    )
   }
-});
+}
 
-module.exports = SituationQuestion
+SituationQuestion.propTypes = {
+  updateSituation: PropTypes.func.isRequired,
+  situation: PropTypes.array.isRequired
+}

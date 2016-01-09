@@ -2,54 +2,40 @@
 * @module rtv-mood tracker
 * @submodule Question
 */
-import React from 'react';
-const update = require('react-addons-update');
+import React, { Component, PropTypes } from 'react'
+import update from 'react-addons-update'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
+import Section from './Section.react.js'
+import QuestionButton from './QuestionButton.react.js'
+import QuestionHeader from './QuestionHeader.react.js'
+import QuestionMain from './QuestionMain.react.js'
+import QuestionTitle from './QuestionTitle.react.js'
+import QuestionSubtitle from './QuestionSubtitle.react.js'
+import QuestionModal from './QuestionModal.react.js'
+import BodyModal from './BodyModal.react.js'
+import BodyImage from './BodyImage.react.js'
+import Content from '../../constants/localizableStringsDE.js'
 
-let Section = require('./Section.react.js')
-let QuestionButton = require('./QuestionButton.react.js')
-let QuestionHeader = require('./QuestionHeader.react.js')
-let QuestionMain = require('./QuestionMain.react.js')
-let QuestionTitle = require('./QuestionTitle.react.js')
-let QuestionSubtitle = require('./QuestionSubtitle.react.js')
-let QuestionModal = require('./QuestionModal.react.js')
-let SliderInput = require('./SliderInput.react.js')
-let ScrollIndicator = require('./ScrollIndicator.react.js')
-let BodyModal = require('./BodyModal.react.js');
-let BodyImage = require('./BodyImage.react.js');
-let Content = require('../../constants/localizableStringsDE.js')
-let FixedSectionFooter = require('./FixedSectionFooter.react.js')
-let ReactCSSTransitionGroup = require('react-addons-css-transition-group')
+export default class BodyQuestion extends Component {
+  constructor(props) {
+    super(props);
 
-let BodyQuestion = React.createClass({
-  getDefaultProps: function() {
-    return {
-      body: {
-        head: [],
-        left_arm: [],
-        right_arm: [],
-        chest: [],
-        abdomen: [],
-        left_leg: [],
-        right_leg: [],
-        hip: []
-      },
-    };
-  },
+    // There is no autobinding for the React ES6 implementation
+    this.update = this.update.bind(this);
+    this.openBodyModal = this.openBodyModal.bind(this);
+  }
 
-  update: function(key, symptoms) {
-    var bodyStateChange = {}
+  update(key, symptoms) {
+    let bodyStateChange = {}
     bodyStateChange[key] = symptoms
-    var newBodyState = update(this.props.body, { $merge: bodyStateChange })
-    this.props.onChange(newBodyState)
-  },
-
-  openBodyModal: function(key) {
+    let newBodyState = update(this.props.body, { $merge: bodyStateChange })
+    this.props.updateBody(newBodyState)
+  }
+  openBodyModal(key) {
     this.refs['body_'+ key].openModal();
-  },
-
+  }
   render() {
-    var that = this
     return (
       <Section>
         <QuestionHeader>
@@ -62,59 +48,59 @@ let BodyQuestion = React.createClass({
         </QuestionMain>
         <BodyModal
           ref='body_head'
-          values={that.props.body['head']}
+          values={this.props.body['head']}
           title='Kopf'
           role="head"
-          onChange={that.update.bind(that, 'head')}
+          onChange={this.update.bind(this, 'head')}
           />
         <BodyModal
           ref='body_left_arm'
-          values={that.props.body['left_arm']}
+          values={this.props.body['left_arm']}
           title="Linker Arm"
           role="left_arm"
-          onChange={that.update.bind(that, 'left_arm')}
+          onChange={this.update.bind(this, 'left_arm')}
           />
         <BodyModal
           ref='body_right_arm'
-          values={that.props.body['right_arm']}
+          values={this.props.body['right_arm']}
           title="Rechter Arm"
           role="right_arm"
-          onChange={that.update.bind(that, 'right_arm')}
+          onChange={this.update.bind(this, 'right_arm')}
           />
         <BodyModal
           ref='body_chest'
-          values={that.props.body['chest']}
+          values={this.props.body['chest']}
           title="Brust"
           role="chest"
-          onChange={that.update.bind(that, 'chest')}
+          onChange={this.update.bind(this, 'chest')}
           />
         <BodyModal
           ref='body_abdomen'
-          values={that.props.body['abdomen']}
+          values={this.props.body['abdomen']}
           title="Bauch"
           role="abdomen"
-          onChange={that.update.bind(that, 'abdomen')}
+          onChange={this.update.bind(this, 'abdomen')}
           />
         <BodyModal
           ref='body_hip'
-          values={that.props.body['hip']}
+          values={this.props.body['hip']}
           title="Unterleib"
           role="hip"
-          onChange={that.update.bind(that, 'hip')}
+          onChange={this.update.bind(this, 'hip')}
           />
         <BodyModal
           ref='body_left_leg'
-          values={that.props.body['left_leg']}
+          values={this.props.body['left_leg']}
           title="Linkes Bein"
           role="left_leg"
-          onChange={that.update.bind(that, 'left_leg')}
+          onChange={this.update.bind(this, 'left_leg')}
           />
         <BodyModal
           ref='body_right_leg'
-          values={that.props.body['right_leg']}
+          values={this.props.body['right_leg']}
           title="Rechtes Bein"
           role="right_leg"
-          onChange={that.update.bind(that, 'right_leg')}
+          onChange={this.update.bind(this, 'right_leg')}
           />
         <QuestionModal
               title ={ Content.QUESTION_BODY_TITLE }
@@ -122,6 +108,9 @@ let BodyQuestion = React.createClass({
       </Section>
     );
   }
-});
+}
 
-module.exports = BodyQuestion
+BodyQuestion.propTypes = {
+  updateBody: PropTypes.func.isRequired,
+  body: PropTypes.object.isRequired
+};

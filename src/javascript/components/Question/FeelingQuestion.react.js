@@ -2,41 +2,20 @@
 * @module rtv-mood tracker
 * @submodule Question
 */
-import React from 'react';
+import React, { Component, PropTypes } from 'react'
 
-let Section = require('./Section.react.js')
-let QuestionButton = require('./QuestionButton.react.js')
-let QuestionHeader = require('./QuestionHeader.react.js')
-let QuestionTitle = require('./QuestionTitle.react.js')
-let QuestionSubtitle = require('./QuestionSubtitle.react.js')
-let QuestionMain = require('./QuestionMain.react.js')
-let QuestionModal = require('./QuestionModal.react.js')
-let WelcomeModal = require('./WelcomeModal.react.js')
-let SliderInput = require('./SliderInput.react.js')
-let SliderRange = require('./SliderRange.react.js')
-let ScrollIndicator = require('./ScrollIndicator.react.js')
-let Content = require('../../constants/localizableStringsDE.js')
-let NextButton = require('../Reusable/NextButton.react.js')
+import Section from './Section.react.js'
+import QuestionButton from './QuestionButton.react.js'
+import QuestionHeader from './QuestionHeader.react.js'
+import QuestionTitle from './QuestionTitle.react.js'
+import QuestionSubtitle from './QuestionSubtitle.react.js'
+import QuestionMain from './QuestionMain.react.js'
+import QuestionModal from './QuestionModal.react.js'
+import WelcomeModal from './WelcomeModal.react.js'
+import SliderInput from './SliderInput.react.js'
+import Content from '../../constants/localizableStringsDE.js'
 
-
-let FeelingQuestion = React.createClass({
-  getDefaultProps: function () {
-    return {
-      feeling: {
-        value: 50,
-        color: ""
-      },
-      title: "Wie fühlst du dich?"
-    };
-  },
-
-  update: function(feeling) {
-    this.props.onChange(feeling)
-  },
-  next: function(feeling) {
-    this.props.onClickNext()
-  },
-
+export default class FeelingQuestion extends Component {
   render() {
     return (
       <Section indicator={true}>
@@ -46,16 +25,18 @@ let FeelingQuestion = React.createClass({
           <QuestionSubtitle subtitle={ Content.QUESTION_FEELING_SUBTITLE } />
         </QuestionHeader>
         <QuestionMain>
-          <SliderInput feeling={this.props.feeling} onChange={this.update} />
+          <SliderInput feeling={this.props.feeling} onChange={this.props.updateFeeling} />
         </QuestionMain>
-        <QuestionModal 
-          title ={ Content.QUESTION_FEELING_TITLE } 
-          body = { Content.QUESTION_FEELING_EXPLANATION } 
+        <QuestionModal
+          title ={ Content.QUESTION_FEELING_TITLE }
+          body = { Content.QUESTION_FEELING_EXPLANATION }
         />
       </Section>
-
-    );
+    )
   }
-});
+}
 
-module.exports = FeelingQuestion
+FeelingQuestion.propTypes = {
+  updateFeeling: PropTypes.func.isRequired,
+  feeling: PropTypes.object.isRequired
+};
