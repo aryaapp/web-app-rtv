@@ -27,7 +27,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default class ResultsView extends Component {
+class ResultsView extends Component {
   render() {
     return (
       <div className="partial-wrapper" key="5">

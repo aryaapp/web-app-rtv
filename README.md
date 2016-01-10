@@ -3,11 +3,8 @@ White Label Mindfulness App
 
 # Todos
 
-## Moving to redux
-
-* Change the result screens action
-** send email
-
+* remove redux form from login
+* unify name for reducers
 * update everything to es6 syntax with classes
 
 # Dependencies
