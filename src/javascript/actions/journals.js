@@ -61,7 +61,6 @@ export function journalSaved(data) {
 }
 
 export function executeSaveJournal(journal_data) {
-  console.log('executeSaveJournal journal_data', journal_data)
   return (dispatch, getState) => {
     dispatch(sendJournals(journal_data))
     const { access_token } = getState()
@@ -78,7 +77,6 @@ export function executeSaveJournal(journal_data) {
     })
     .then( response => response.json() )
     .then( json => {
-      console.log('response json', json)
       dispatch(journalSaved(json))
     })
     .catch( error => {

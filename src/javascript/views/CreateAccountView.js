@@ -16,7 +16,8 @@ const mapStateToProps = (state) => (state)
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    executeCreateAccount: (email, password) => dispatch(executeCreateAccount(email, password))
+    executeCreateAccount: (email, password) => dispatch(executeCreateAccount(email, password)),
+    navLogin: () => dispatch(pushPath('/login'))
   }
 }
 
@@ -35,10 +36,11 @@ class CreateAccountForm extends Component {
         <div className="col-xs-12">
           <input type="password" placeholder="Nochmal das Passwort" {...password_confirmation} />
         </div>
-
-        <button className="btn btn-primary nav-button next-button" onClick={ handleSubmit } >
-          <span className="btn-text">Create Account</span>
-        </button>
+        <div className="col-xs-12">
+          <button className="btn btn-primary relative-button" onClick={ handleSubmit } >
+            <span className="btn-text">Create Account</span>
+          </button>
+        </div>
       </form>
     )
   }
@@ -76,15 +78,19 @@ class CreateAccountView extends Component {
           <ReduxCreateAccountForm
             onSubmit={this.submitCreateAccount}
           />
+          <div className="col-xs-12">
+            <button className="btn btn-primary relative-button" onClick={ this.props.navLogin } >
+              <span className="btn-text">Home</span>
+            </button>
+          </div>
         </div>
       </div>
     )
   }
 }
 
-// CreateAccountView.propTypes = {
-//   user: PropTypes.object.isRequired,
-//   executeLoadJournals: PropTypes.func.isRequired
-// };
+CreateAccountView.propTypes = {
+  executeCreateAccount: PropTypes.func.isRequired
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateAccountView)
