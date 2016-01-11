@@ -7,6 +7,7 @@ import ReactDOM from 'react-dom';
 import { pushPath } from 'redux-simple-router'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { executeLogin } from '../../actions/login'
 
 import Modal from 'react-modal'
 import Content from '../../constants/localizableStringsDE.js'
@@ -31,7 +32,7 @@ let options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' 
 const mapDispatchToProps = (dispatch) => {
   return {
     navFeeling: () => dispatch(pushPath('/feeling')),
-    navLogin: () => dispatch(pushPath('/login'))
+    navLogin: () => dispatch(pushPath('/login')),
   }
 }
 
@@ -88,10 +89,10 @@ class WelcomeModal extends Component {
                     <i className="">{ this.displayWelcomeMessage() }</i>
                   </h3>
                 </div>
-                <button className="btn btn-primary nav-button prev-button fade-in arya-animation animation3" onClick={this.closeModal}>
+                <button className="btn btn-primary nav-button prev-button" onClick={this.moodTracking}>
                   <span className="btn-text">I'm new</span><i className="fa fa-arrow-right"></i>
                 </button>
-                <button className="btn btn-primary nav-button next-button fade-in arya-animation animation3" onClick={this.login}>
+                <button className="btn btn-primary nav-button next-button" onClick={this.login}>
                   <span className="btn-text">Log In </span><i className="fa fa-arrow-right"></i>
                 </button>
               </div>

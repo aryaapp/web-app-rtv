@@ -7,6 +7,7 @@ White Label Mindfulness App
 * unify name for reducers
 * update everything to es6 syntax with classes
 
+
 # Dependencies
 
 Install package with npm:

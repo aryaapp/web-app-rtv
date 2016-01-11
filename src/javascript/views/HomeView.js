@@ -18,9 +18,9 @@ const mapStateToProps = (state) => (state)
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    executeLoadJournals: () => dispatch(executeLoadJournals())
-    navMoodTracking: () => dispatch(pushPath('/feeling'))
-    navJournals: () => dispatch(pushPath('/journals'))
+    executeLoadJournals: () => dispatch(executeLoadJournals()),
+    navMoodTracking: () => dispatch(pushPath('/feeling')),
+    navJournals: () => dispatch(pushPath('/journals')),
     logout: () => dispatch(logout())
   }
 }
@@ -35,15 +35,28 @@ class HomeView extends Component {
       <div className="partial-wrapper">
         <div className="partial-container" >
           <h2>Home View</h2>
-          <button className="btn btn-primary nav-button next-button" onClick={this.props.navMoodTracking}>
-            <span className="btn-text">Create Journals </span><i className="fa fa-arrow-right"></i>
-          </button>
-          <button className="btn btn-primary nav-button next-button" onClick={this.props.navJournals}>
-            <span className="btn-text">My Journals </span><i className="fa fa-arrow-right"></i>
-          </button>
-          <button className="btn btn-primary nav-button next-button" onClick={this.props.logout}>
-            <span className="btn-text">logout</span><i className="fa fa-arrow-right"></i>
-          </button>
+          <ul>
+            {
+              this.props.journals.map((journal, i) => {
+                return (<li key={ 'journal_' + i } >Date:{ journal.created_at }, Feeling: { journal.feeling }</li> )
+              })
+            }
+          </ul>
+          <div className="col-xs-12">
+            <button className="btn nav-button relative-button" onClick={this.props.navMoodTracking}>
+              <span className="btn-text">Create Journals </span>
+            </button>
+          </div>
+          <div className="col-xs-12">
+            <button className="btn nav-button relative-button" onClick={this.props.executeLoadJournals}>
+              <span className="btn-text">Load Journals</span>
+            </button>
+          </div>
+          <div className="col-xs-12">
+            <button className="btn nav-button relative-button" onClick={this.props.logout}>
+              <span className="btn-text">logout</span>
+            </button>
+          </div>
         </div>
       </div>
     )

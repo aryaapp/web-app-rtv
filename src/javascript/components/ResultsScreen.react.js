@@ -3,6 +3,9 @@
 * @submodule Question
 */
 import React from 'react';
+import { connect } from 'react-redux'
+import { pushPath } from 'redux-simple-router'
+import { executeSaveJournal } from '../actions/journals'
 
 let d3 = require('d3')
 let Section = require('./Question/Section.react.js')
@@ -49,6 +52,14 @@ let intersperse = function(arr, sep) {
     return arr.slice(1).reduce(function(xs, x, i) {
         return xs.concat([sep, x]);
     }, [arr[0]]);
+}
+
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    executeSaveJournal: (journal_data) => dispatch(executeSaveJournal(journal_data)),
+    navHome: () => dispatch(pushPath('/home'))
+  }
 }
 
 let ResultsScreen = React.createClass({
@@ -105,10 +116,59 @@ let ResultsScreen = React.createClass({
     }
   },
 
+  saveResults: function(e) {
+    // let data = {
+    //   token: this.state.recaptchaToken,
+    //   email: this.state.email,
+    //   results: {
+    //     feeling:   this.props.feeling.value,
+    //     body:      this.props.body,
+    //     thoughts:  reverseArray(this.props.thoughts),
+    //     situation: reverseArray(this.props.situation),
+    //     reaction:  reverseArray(this.props.reaction),
+    //   },
+    // }
+    const defaultQuestionnaireId = '99dbdf90-327a-497b-8d1e-918d90a73642'
+    const feelingQuestionId = '13be5392-b860-4626-9fe5-7256da9b0482'
+    const bodyQuestionId = '4e5d82b4-4aec-4ec7-a44b-62316ef10741'
+    const thoughtsQuestionId = '381b6e0b-d93c-4b31-b93a-43ffa67963e6'
+    const situationQuestionId = 'df71408f-a6c2-4850-9106-e67b742df4d9'
+    const reactionQuestionId = 'f9a7521c-e5ed-4942-aad1-9cd5236d3c76'
+
+    let data = {
+      questionnaire_id: defaultQuestionnaireId,
+      feeling: this.props.feeling.value,
+      answers: [
+        {
+          question_id: bodyQuestionId,
+          values: this.props.body
+        }, {
+          question_id: thoughtsQuestionId,
+          values: reverseArray(this.props.thoughts)
+        }, {
+          question_id: situationQuestionId,
+          values: reverseArray(this.props.situation)
+        }, {
+          question_id: reactionQuestionId,
+          values: reverseArray(this.props.reaction)
+        }
+      ]
+    }
+    this.props.executeSaveJournal(data)
+  },
+
   render() {
 
-    var emailInvalidLabel = <label className="validation-message">Bitte gib eine gültige E-Mailadresse ein.</label>
-    var captachNotConfirmed = <label className="validation-message">Bitte bestätige, dass du auch wirklich ein Mensch bist ;-)</label>
+    let emailInvalidLabel = <label className="validation-message">Bitte gib eine gültige E-Mailadresse ein.</label>
+    let captachNotConfirmed = <label className="validation-message">Bitte bestätige, dass du auch wirklich ein Mensch bist ;-)</label>
+    let submitButton = ''
+    const { access_token } = this.props
+    console.log('access_token', access_token)
+    if( typeof access_token !== 'undefined' && access_token.length > 0) {
+      submitButton = <button className='btn btn-primary nav-button next-button relative-button' onClick={this.saveResults}><i className="fa fa-envelope-o"></i> Save Results</button>
+    } else {
+      submitButton = <button className='btn btn-primary nav-button next-button relative-button' onClick={this.signUp}><i className="fa fa-envelope-o"></i> Account anlegen</button>
+    }
 
     return (
       <Section>
@@ -159,11 +219,15 @@ let ResultsScreen = React.createClass({
                   { this.state.emailValid ? '' : emailInvalidLabel }
                 </div>
                 <div className="col-xs-12">
-                  <button className='btn btn-primary nav-button next-button relative-button' onClick={this.sendResults}><i className="fa fa-envelope-o"></i> Report verschicken</button>
+                  { submitButton }
                 </div>
                 <div className="col-xs-12">
                   <button className='btn nav-button next-button relative-button' onClick={this.props.clearData}>Eintrag verwerfen</button>
                 </div>
+                <div className="col-xs-12">
+                  <button className='btn nav-button relative-button' onClick={this.props.navHome}>Home</button>
+                </div>
+
                 <div className="col-xs-12">
                   <QuestionSubtitle subtitle= "Oder schließe dieses Fenster und beende die Anwendung (deine Daten werden nicht gespeichert)" />
                 </div>
@@ -174,5 +238,6 @@ let ResultsScreen = React.createClass({
   }
 });
 
-module.exports = ResultsScreen
 // <button className='btn btn-full-width' onClick={this.props.clearData}><i className="fa fa-trash-o"></i> Report verwerfen</button>
+
+export default connect(state => state, mapDispatchToProps)(ResultsScreen)

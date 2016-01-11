@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 import { routeReducer } from 'redux-simple-router'
-import {reducer as formReducer} from 'redux-form';
+import { reducer as formReducer } from 'redux-form';
 
 import feeling from './feeling'
 import body from './body'

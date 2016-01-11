@@ -42,3 +42,47 @@ export function executeLoadJournals() {
   }
 }
 
+export const SEND_JOURNAL = 'SEND_JOURNAL'
+
+export function sendJournals(journal) {
+  return {
+    type: SEND_JOURNAL,
+    journal: journal,
+  }
+}
+
+export const JOURNAL_SAVED = 'JOURNAL_SAVED'
+
+export function journalSaved(data) {
+  return {
+    type: JOURNAL_SAVED,
+    journal: data.journal
+  }
+}
+
+export function executeSaveJournal(journal_data) {
+  console.log('executeSaveJournal journal_data', journal_data)
+  return (dispatch, getState) => {
+    dispatch(sendJournals(journal_data))
+    const { access_token } = getState()
+
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${ access_token }`,
+     });
+
+    return fetch('https://arya-api-dev.herokuapp.com/v1/journals', {
+      method: 'POST',
+      body: JSON.stringify({ journal: journal_data }),
+      headers: headers
+    })
+    .then( response => response.json() )
+    .then( json => {
+      console.log('response json', json)
+      dispatch(journalSaved(json))
+    })
+    .catch( error => {
+      console.log('catch block error', error)
+    })
+  }
+}

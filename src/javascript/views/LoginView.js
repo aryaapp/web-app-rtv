@@ -59,6 +59,7 @@ class LoginView extends Component {
   onSubmit(data) {
     this.props.executeLogin(data.email, data.password)
   }
+
   render() {
     return (
       <div className="partial-wrapper">

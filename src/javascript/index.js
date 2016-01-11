@@ -19,7 +19,7 @@ import ReactionView from './views/ReactionView'
 import ResultsView from './views/ResultsView'
 import LoginView from './views/LoginView'
 import HomeView from './views/HomeView'
-
+import CreateAccountView from './views/CreateAccountView'
 
 const store = configureStore(reducer)
 const history = createHistory()
@@ -32,6 +32,7 @@ render((
         <Route path="/" component={App}>
           <Route path="/home" component={HomeView} />
           <Route path="/login" component={LoginView} />
+          <Route path="/anmelden" component={CreateAccountView} />
           <Route path="/feeling" component={FeelingView} />
           <Route path="/body" component={BodyView} />
           <Route path="/thoughts" component={ThoughtsView} />

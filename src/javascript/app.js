@@ -26,11 +26,11 @@ const App = React.createClass({
         <div className="gradient-background">
           <PageNumber page={ this.props.currentPage + 1 } />
           <div id="main-app">
-            <ReactCSSTransitionGroup component="div" className="transition-group" transitionName="page" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
+            <ReactCSSTransitionGroup component="div" className="transition-group" transitionName="page" transitionEnterTimeout={0} transitionLeaveTimeout={0}>
               { this.props.children }
             </ReactCSSTransitionGroup>
           </div>
-          <ReactCSSTransitionGroup component="div" className="transition-group-modal" key="1" transitionName="modal" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+          <ReactCSSTransitionGroup component="div" className="transition-group-modal" key="1" transitionName="modal" transitionEnterTimeout={0} transitionLeaveTimeout={0}>
             <WelcomeModal />
           </ReactCSSTransitionGroup>
         </div>
