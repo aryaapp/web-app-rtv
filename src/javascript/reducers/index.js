@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 import { routeReducer } from 'redux-simple-router'
+import { reducer as formReducer } from 'redux-form';
 
 import feeling from './feeling'
 import body from './body'
@@ -7,6 +8,8 @@ import thoughts from './thoughts'
 import situation from './situation'
 import reaction from './reaction'
 import currentPage from './currentPage'
+import userReducer from './user'
+import journalReducer from './journals'
 
 import { CLEAR_DATA } from '../actions/actions'
 
@@ -21,7 +24,11 @@ const partialReducers = combineReducers({
   situation: situation,
   reaction: reaction,
   currentPage: currentPage,
-  routing: routeReducer
+  routing: routeReducer,
+  form: formReducer,
+  access_token: (state = '') => state,
+  user: (state = {}) => state,
+  journals: journalReducer
 })
 
 /*
@@ -39,12 +46,19 @@ const reduceReducers = function(...reducers) {
 const clearDataReducer = function(state, action) {
   switch (action.type) {
     case CLEAR_DATA:
-      return partialReducers(undefined, action)
+      return Object.assign({}, state,{
+        feeling: feeling(undefined, action),
+        body: body(undefined, action),
+        thoughts: thoughts(undefined, action),
+        situation: situation(undefined, action),
+        reaction: reaction(undefined, action),
+        currentPage: currentPage(undefined, action)
+      })
     default:
       return state
   }
 }
 
-const globalReducers = reduceReducers(partialReducers, clearDataReducer)
+const globalReducers = reduceReducers(partialReducers, userReducer, clearDataReducer)
 
 export default globalReducers
