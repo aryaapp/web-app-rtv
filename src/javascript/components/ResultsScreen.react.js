@@ -8,7 +8,6 @@ import { connect } from 'react-redux'
 import { pushPath } from 'redux-simple-router'
 import { executeSaveJournal } from '../actions/journals'
 import d3 from 'd3'
-import Recaptcha from 'react-google-recaptcha'
 
 import Section from './Question/Section.react.js'
 import QuestionTitle from './Question/QuestionTitle.react.js'
@@ -68,35 +67,16 @@ class ResultsScreen extends Component {
     super(props)
 
     this.state = {
-      email: '',
-      recaptchaToken: '',
-      emailValid: true,
       tryToSend: false
     }
 
     this.componentDidMount = this.componentDidMount.bind(this)
-    this.update = this.update.bind(this)
-    this.recaptchaVerify = this.recaptchaVerify.bind(this)
-    this.checkEMail = this.checkEMail.bind(this)
     this.signUp = this.signUp.bind(this)
     this.saveResults = this.saveResults.bind(this)
   }
 
   componentDidMount() {
     $(".rc-slider-track").css("background-color", d3MoodColor(this.props.feeling.value))
-  }
-
-  update(e) {
-    this.setState({ email: e.target.value })
-  }
-
-  recaptchaVerify(value) {
-    this.setState({ recaptchaToken: value });
-  }
-
-  checkEMail(e) {
-    let re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    return re.test(this.state.email)
   }
 
   signUp(e) {
@@ -134,8 +114,6 @@ class ResultsScreen extends Component {
   }
 
   render() {
-    let emailInvalidLabel = <label className="validation-message">Bitte gib eine gültige E-Mailadresse ein.</label>
-    let captachNotConfirmed = <label className="validation-message">Bitte bestätige, dass du auch wirklich ein Mensch bist ;-)</label>
     let submitButton = ''
 
     const { access_token } = this.props
@@ -174,25 +152,7 @@ class ResultsScreen extends Component {
               <li className="list-item rtv-list-item result-title">Deine Reaktion</li>
               <li className="list-item rtv-list-item result-answer">{intersperse(reverseArray(this.props.reaction),", ")}</li>
             </ul>
-            <div className="col-xs-12">
-              <QuestionSubtitle subtitle= "Bitte bestätige, dass du auch wirklich ein Mensch bist ;-) und trage deine E-Mail-Adresse unten ein." />
-            </div>
-            <div className="form-group col-xs-12">
-              <Recaptcha
-                ref="recaptcha"
-                sitekey="6LdJ2RETAAAAAPHK7GmcRZTPnZY0E3AGY0sivpAs"
-                onChange={this.recaptchaVerify}
-              />
-              { this.state.recaptchaToken.length == '' && this.state.tryToSend ? captachNotConfirmed : '' }
-              <input
-                className="form-control email-control"
-                type='email'
-                placeholder="email"
-                aria-describedby="basic-addon1"
-                value={this.state.email}
-                onChange={this.update} />
-              { this.state.emailValid ? '' : emailInvalidLabel }
-            </div>
+
             <div className="col-xs-12">
               { submitButton }
             </div>

@@ -14,7 +14,6 @@ export function requestLogin(email) {
 export const LOGIN_RECEIVED = 'LOGIN_RECEIVED'
 
 export function receiveLogin(email, data) {
-  console.log('receiveLogin triggered')
   return {
     type: LOGIN_RECEIVED,
     data: data
@@ -41,3 +40,10 @@ export function executeLogin(email, password) {
   }
 }
 
+export const LOGOUT = 'LOGOUT'
+
+export function logout() {
+  return {
+    type: LOGOUT
+  }
+}

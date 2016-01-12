@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-fetch'
+import { clearDataAction } from './actions'
 
 export const LOAD_JOURNALS = 'LOAD_JOURNALS'
 
@@ -78,6 +79,7 @@ export function executeSaveJournal(journal_data) {
     .then( response => response.json() )
     .then( json => {
       dispatch(journalSaved(json))
+      dispatch(clearDataAction())
     })
     .catch( error => {
       console.log('catch block error', error)

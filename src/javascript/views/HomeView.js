@@ -21,6 +21,7 @@ const mapDispatchToProps = (dispatch) => {
     executeLoadJournals: () => dispatch(executeLoadJournals()),
     navMoodTracking: () => dispatch(pushPath('/feeling')),
     navJournals: () => dispatch(pushPath('/journals')),
+    navStart: () => dispatch(pushPath('/')),
     logout: () => dispatch(logout())
   }
 }
@@ -28,6 +29,13 @@ const mapDispatchToProps = (dispatch) => {
 class HomeView extends Component {
   constructor(props) {
     super(props)
+
+    this.logout = this.logout.bind(this)
+  }
+
+  logout() {
+    this.props.logout()
+    this.props.navStart()
   }
 
   render() {
@@ -53,7 +61,7 @@ class HomeView extends Component {
             </button>
           </div>
           <div className="col-xs-12">
-            <button className="btn nav-button relative-button" onClick={this.props.logout}>
+            <button className="btn nav-button relative-button" onClick={this.logout}>
               <span className="btn-text">logout</span>
             </button>
           </div>

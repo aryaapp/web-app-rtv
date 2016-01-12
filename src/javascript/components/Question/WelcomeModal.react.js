@@ -31,7 +31,7 @@ let options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' 
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    navFeeling: () => dispatch(pushPath('/feeling')),
+    navFeeling: () => dispatch(pushPath('/anmelden')),
     navLogin: () => dispatch(pushPath('/login')),
   }
 }

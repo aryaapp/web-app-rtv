@@ -46,7 +46,14 @@ const reduceReducers = function(...reducers) {
 const clearDataReducer = function(state, action) {
   switch (action.type) {
     case CLEAR_DATA:
-      return partialReducers(undefined, action)
+      return Object.assign({}, state,{
+        feeling: feeling(undefined, action),
+        body: body(undefined, action),
+        thoughts: thoughts(undefined, action),
+        situation: situation(undefined, action),
+        reaction: reaction(undefined, action),
+        currentPage: currentPage(undefined, action)
+      })
     default:
       return state
   }

@@ -19,8 +19,22 @@ var 	gulp = require('gulp'),
 			staticDir: './src/static',
       rsync: {
         src:  'dist/**',
-        options: {
+        options_prod: {
           destination: '/var/www/rtv-web.aryaapp.co/public_html',
+          root: 'dist',
+          hostname: 'arya-web', // needs to be setup in ~/.ssh/config
+          username: 'root',
+          incremental: true,
+          progress: true,
+          relative: true,
+          emptyDirectories: true,
+          recursive: true,
+          clean: true,
+          exclude: [],
+          include: []
+        },
+        options_dev: {
+          destination: '/var/www/rtv-web-dev.aryaapp.co/public_html',
           root: 'dist',
           hostname: 'arya-web', // needs to be setup in ~/.ssh/config
           username: 'root',
@@ -133,8 +147,13 @@ gulp.task('default', ['bower', 'icons', 'css']);
  * Copy files and folder to server
  * via rsync
  */
-gulp.task('deploy', function() {
+gulp.task('deploy-production', function() {
   return gulp.src(config.rsync.src)
-    .pipe(rsync(config.rsync.options));
+    .pipe(rsync(config.rsync.options_prod));
+});
+
+gulp.task('deploy-production', function() {
+  return gulp.src(config.rsync.src)
+    .pipe(rsync(config.rsync.options_dev));
 });
 
