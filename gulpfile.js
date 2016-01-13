@@ -87,7 +87,9 @@ gulp.task('jshint', function () {
 
 gulp.task('babel', function () {
 	return gulp.src(config.jsDir + '/**/*.js')
-    .pipe(babel()) //convert ES6 to ES5
+    .pipe(babel({
+      presets: ['react', 'es2015']
+    })) //convert ES6 to ES5
     .pipe(gulp.dest('./src/js5'))
 });
 
