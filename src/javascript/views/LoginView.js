@@ -12,6 +12,11 @@ import { executeLogin } from '../actions/login'
 import NextButton from '../components/Reusable/NextButton.react.js'
 import PrevButton from '../components/Reusable/PrevButton.react.js'
 
+import QuestionTitle from '../components/Question/QuestionTitle.react.js'
+import QuestionSubtitle from '../components/Question/QuestionSubtitle.react.js'
+import QuestionHeader from '../components/Question/QuestionHeader.react.js'
+import QuestionMain from '../components/Question/QuestionMain.react.js'
+
 const mapStateToProps = (state) => (state)
 
 const mapDispatchToProps = (dispatch) => {
@@ -27,9 +32,9 @@ class LoginForm extends Component {
 
     return(
       <form onSubmit={ handleSubmit }>
-        <input type='text' placeholder="E-Mail" { ...email } />
-        <input type='password' placeholder="Password" { ...password } />
-        <button onClick={ handleSubmit } className="btn btn-primary" type="submit" >Login</button>
+        <input className="form-control email-control" type='text' placeholder="E-Mail" { ...email } />
+        <input className="form-control email-control" type='password' placeholder="Password" { ...password } />
+        <button onClick={ handleSubmit } className="btn btn-primary nav-button next-button relative-button" type="submit" >Login</button>
       </form>
     )
   }
@@ -64,10 +69,17 @@ class LoginView extends Component {
     return (
       <div className="partial-wrapper">
         <div className="partial-container" >
-          <h2>Login View</h2>
-          <ReduxLoginFrom
-            onSubmit={this.onSubmit}
-          />
+          
+          <QuestionHeader>
+            <div className="col-xs-1"></div>
+            <QuestionTitle title="Einloggen"/>
+            <QuestionSubtitle subtitle="Log in to your Achtsamkeits-Tagebuch"/>
+          </QuestionHeader>
+          <QuestionMain>
+              <ReduxLoginFrom
+                onSubmit={this.onSubmit}
+              />
+          </QuestionMain>
         </div>
       </div>
     )
