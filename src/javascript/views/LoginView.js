@@ -64,7 +64,9 @@ class LoginView extends Component {
     return (
       <div className="partial-wrapper">
         <div className="partial-container" >
-          <h2>Login View</h2>
+          <div className="rtv-header-container">
+            <h2 className="col-xs-10 rtv-title text-center">Login</h2>
+          </div>
           <ReduxLoginFrom
             onSubmit={this.onSubmit}
           />
