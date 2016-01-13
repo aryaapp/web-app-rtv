@@ -64,10 +64,11 @@ const ConfirmationModal = React.createClass({
               </div>
             </div>
           </div>
-          <button className="btn btn-primary nav-button next-button fade-in arya-animation animation3" onClick={this.newJournal}>Mehr zum Thema Achtsamkeit</button>
         </Modal>
     );
   }
 });
 
 module.exports = ConfirmationModal
+
+// <button className="btn btn-primary nav-button next-button fade-in arya-animation animation3" onClick={this.newJournal}>Mehr zum Thema Achtsamkeit</button>
