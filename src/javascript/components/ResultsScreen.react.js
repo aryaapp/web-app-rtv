@@ -160,12 +160,10 @@ class ResultsScreen extends Component {
               <button className='btn nav-button next-button relative-button' onClick={this.props.clearData}>Eintrag verwerfen</button>
             </div>
             <div className="col-xs-12">
-              <button className='btn nav-button relative-button' onClick={this.props.navHome}>Home</button>
+              <button className='test-button' onClick={this.props.navHome}>Home</button>
             </div>
 
-            <div className="col-xs-12">
-              <QuestionSubtitle subtitle= "Oder schließe dieses Fenster und beende die Anwendung (deine Daten werden nicht gespeichert)" />
-            </div>
+            
           </QuestionMain>
           <ConfirmationModal ref="confirmation" />
       </Section>
@@ -174,3 +172,7 @@ class ResultsScreen extends Component {
 }
 
 export default connect(state => state, mapDispatchToProps)(ResultsScreen)
+
+//<div className="col-xs-12">
+//  <QuestionSubtitle subtitle= "Oder schließe dieses Fenster und beende die Anwendung (deine Daten werden nicht gespeichert)" />
+//</div>

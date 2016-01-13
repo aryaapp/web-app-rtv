@@ -13,6 +13,11 @@ import Recaptcha from 'react-google-recaptcha'
 import NextButton from '../components/Reusable/NextButton.react.js'
 import PrevButton from '../components/Reusable/PrevButton.react.js'
 
+import QuestionTitle from '../components/Question/QuestionTitle.react.js'
+import QuestionSubtitle from '../components/Question/QuestionSubtitle.react.js'
+import QuestionHeader from '../components/Question/QuestionHeader.react.js'
+import QuestionMain from '../components/Question/QuestionMain.react.js'
+
 const createAccountFormValidation = (values) => {
   const errors = {};
   if (!values.email) {
@@ -53,12 +58,11 @@ class CreateAccountForm extends Component {
     let captachNotConfirmed = <label className="validation-message">Bitte bestätige, dass du auch wirklich ein Mensch bist ;-)</label>
 
     return(
-      <div className="form-group col-xs-12">
+      <div className="form-group">
         <div className="col-xs-12">
-          <p>Bitte bestätige, dass du auch wirklich ein Mensch bist ;-) und trage deine E-Mail-Adresse unten ein.</p>
+          
         </div>
         <form onSubmit={ handleSubmit } >
-          <div className="col-xs-12">
             <input
               className="form-control email-control"
               type='text'
@@ -66,35 +70,29 @@ class CreateAccountForm extends Component {
               aria-describedby="basic-addon1"
               {...email} />
             { email.touched && email.error ? emailInvalidLabel : '' }
-          </div>
-          <div className="col-xs-12">
             <input
               className="form-control email-control"
               type="password"
               placeholder="Ihre Passwort"
               {...password} />
             { password.touched && password.error ? passwordInvalidLabel : '' }
-          </div>
-          <div className="col-xs-12">
             <input
               className="form-control email-control"
               type="password"
               placeholder="Nochmal das Passwort"
               {...password_confirmation} />
               { password_confirmation.touched && password_confirmation.error ? passwordConfirmationInvalidLabel : '' }
-          </div>
-          <div className="col-xs-12">
-            <Recaptcha
-              ref="recaptcha"
-              sitekey="6LdJ2RETAAAAAPHK7GmcRZTPnZY0E3AGY0sivpAs"
-              {...recaptcha}
-            />
-          </div>
-          <div className="col-xs-12">
-            <button className="btn btn-primary relative-button" onClick={ handleSubmit } >
-              <span className="btn-text">Create Account</span>
+            <div className="col-xs-12 margin-top">
+              <p>Bitte bestätige, dass du auch wirklich ein Mensch bist ;-)</p>
+              <Recaptcha
+                ref="recaptcha"
+                sitekey="6LdJ2RETAAAAAPHK7GmcRZTPnZY0E3AGY0sivpAs"
+                {...recaptcha}
+              />
+            </div>
+            <button className="btn btn-primary nav-button next-button relative-button" onClick={ handleSubmit } >
+              Create Account
             </button>
-          </div>
         </form>
       </div>
     )
@@ -141,15 +139,19 @@ class CreateAccountView extends Component {
     return (
       <div className="partial-wrapper">
         <div className="partial-container" >
-          <h2>Create Account</h2>
-          <ReduxCreateAccountForm
-            onSubmit={this.submitCreateAccount}
-          />
-          <div className="col-xs-12">
-            <button className="btn btn-primary relative-button" onClick={ this.props.navLogin } >
-              <span className="btn-text">Login</span>
-            </button>
-          </div>
+          <QuestionHeader>
+            <div className="col-xs-1"></div>
+            <QuestionTitle title="Create Account"/>
+            <QuestionSubtitle subtitle="Create an account to save this Eintrage in your personal Tagebuch"/>
+          </QuestionHeader>
+          <QuestionMain>
+            <ReduxCreateAccountForm
+              onSubmit={this.submitCreateAccount}
+            />
+          </QuestionMain>
+          <button className="test-btn" onClick={ this.props.navLogin } >
+            <span className="btn-text">To Login</span>
+          </button>
         </div>
       </div>
     )
