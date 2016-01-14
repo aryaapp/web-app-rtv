@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 import { pushPath } from 'redux-simple-router'
 import { executeSaveJournal } from '../actions/journals'
 import d3 from 'd3'
+require('jquery')
 
 import Section from './Question/Section.react.js'
 import QuestionTitle from './Question/QuestionTitle.react.js'
@@ -26,6 +27,16 @@ const d3MoodColor = function(value) {
         .domain([0,50,100])
         .range(['#e86e6b','#fcd56b','#92D381']); //['#e86e6b','#e86e6c','#fcd56b','#59d1ba','#59d1bb','#a5d36e']
   return colorScale(value)
+}
+
+//returns color belonging to moodrange 0-100
+const d3MoodGradient = function(value) {
+  let lowVal = Math.max(value-10,0)
+  let highVal = Math.min(value+10,100)
+  let colorScale = d3.scale.linear()
+        .domain([0,50,100])
+        .range(['#e86e6b','#fcd56b','#92D381']); //['#e86e6b','#e86e6c','#fcd56b','#59d1ba','#59d1bb','#a5d36e']
+  return ("left, " + colorScale(lowVal) + ", " + colorScale(highVal))
 }
 
 const markupBody = function(body) {
@@ -73,6 +84,8 @@ class ResultsScreen extends Component {
     this.componentDidMount = this.componentDidMount.bind(this)
     this.signUp = this.signUp.bind(this)
     this.saveResults = this.saveResults.bind(this)
+    this.resetBackground = this.resetBackground.bind(this)
+    this.navHome = this.navHome.bind(this)
   }
 
   componentDidMount() {
@@ -111,6 +124,17 @@ class ResultsScreen extends Component {
       ]
     }
     this.props.executeSaveJournal(data)
+  }
+
+  resetBackground() {
+    //jQuery since not possible with rc-slider API
+    $("#react-app").css("background-color", '#ffffff');
+    $("#react-app").css("background-image", 'none');
+  }
+
+  navHome() {
+    this.resetBackground()
+    this.props.navHome()
   }
 
   render() {
@@ -160,10 +184,10 @@ class ResultsScreen extends Component {
               <button className='btn nav-button next-button relative-button' onClick={this.props.clearData}>Eintrag verwerfen</button>
             </div>
             <div className="col-xs-12">
-              <button className='test-button' onClick={this.props.navHome}>Home</button>
+              <button className='test-button' onClick={this.navHome}>Home</button>
             </div>
 
-            
+
           </QuestionMain>
           <ConfirmationModal ref="confirmation" />
       </Section>

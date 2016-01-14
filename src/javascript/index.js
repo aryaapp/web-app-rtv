@@ -27,21 +27,21 @@ const history = createHistory()
 syncReduxAndRouter(history, store)
 
 render((
-    <Provider store={store}>
-      <Router history={history}>
-        <Route path="/" component={App}>
-          <Route path="/home" component={HomeView} />
-          <Route path="/login" component={LoginView} />
-          <Route path="/anmelden" component={CreateAccountView} />
-          <Route path="/feeling" component={FeelingView} />
-          <Route path="/body" component={BodyView} />
-          <Route path="/thoughts" component={ThoughtsView} />
-          <Route path="/situation" component={SituationView} />
-          <Route path="/reaction" component={ReactionView} />
-          <Route path="/results" component={ResultsView} />
-        </Route>
-      </Router>
-    </Provider>
+  <Provider store={store}>
+    <Router history={history}>
+      <Route path="/" component={App}>
+        <Route path="/home" component={HomeView} />
+        <Route path="/login" component={LoginView} />
+        <Route path="/anmelden" component={CreateAccountView} />
+        <Route path="/feeling" component={FeelingView} />
+        <Route path="/body" component={BodyView} />
+        <Route path="/thoughts" component={ThoughtsView} />
+        <Route path="/situation" component={SituationView} />
+        <Route path="/reaction" component={ReactionView} />
+        <Route path="/results" component={ResultsView} />
+      </Route>
+    </Router>
+  </Provider>
   ),
   document.getElementById('react-app')
 )
