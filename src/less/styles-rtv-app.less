@@ -183,6 +183,18 @@ body{
     margin-bottom:16px;
 }
 
+.absolute-header {
+    position:absolute;
+    z-index: 5;
+    margin-bottom:0;
+}
+.absolute-main {
+    position:absolute;
+    top: 136px;
+    bottom: 100px;
+    overflow-y:auto;
+}
+
 .rtv-title h3, .rtv-title {
     color: #444;
     font-weight: normal;
@@ -364,6 +376,17 @@ textarea, input[type="text"], input[type="submit"], input[type="email"] {
     }
 }
 
+
+//Home View Journal list
+ul.timeline-day {
+    border: 0;
+}
+
+ul.timeline-day .list-item {
+    border-bottom: 1px solid #e6e6e6;
+    border-top: 1px solid #e6e6e6;
+}
+
 .btn, .btn:hover, .btn:focus{
     font-size: 16px;
     font-weight:normal;
@@ -477,7 +500,7 @@ li.empty-list {
     bottom: 0;
     // background: white;
     left: 0;
-    height: 80%;
+    height: 72px;
     width: 100%;
 }
 
