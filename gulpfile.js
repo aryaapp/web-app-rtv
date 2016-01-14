@@ -93,6 +93,12 @@ gulp.task('babel', function () {
     .pipe(gulp.dest('./src/js5'))
 });
 
+gulp.task('babel_no_preset', function () {
+  return gulp.src(config.jsDir + '/**/*.js')
+    .pipe(babel()) //convert ES6 to ES5
+    .pipe(gulp.dest('./src/js5'))
+});
+
 //bundle is dependant on babel to run first
 gulp.task('bundle', ['babel'], function () {
 	return gulp.src('./src/js5/index.js')
@@ -102,14 +108,13 @@ gulp.task('bundle', ['babel'], function () {
     .pipe(gulp.dest('./dist/js'))
 });
 
-
-// gulp.task('bundle',function() {
-// 	return gulp.src('./src/js5/app.js')
-//     .pipe(browserify({ // combine nodes to single .js file
-//       transform: [reactify]
-//     })
-//     .pipe(gulp.dest('./public/js')) // save in public folder
-// });
+gulp.task('bundle_no_preset', ['babel_no_preset'], function () {
+  return gulp.src('./src/js5/index.js')
+    .pipe(browserify(
+      { transform: [reactify] }
+    ))
+    .pipe(gulp.dest('./dist/js'))
+});
 
 // makes it easy for collaborators to install everything by running gulp-bower
 gulp.task('bower', function() {
@@ -140,6 +145,12 @@ gulp.task('watch', function() {
 	gulp.watch([config.lessDir + '/**/*.less', config.aryaLessDir + '/**/*.less' ] , ['less']);
 	gulp.watch(config.jsDir + '/**/*.js', ['babel','bundle']);
 	gulp.watch(config.staticDir + '/**/*.*', ['static']);
+});
+
+gulp.task('watch_no_preset', function() {
+  gulp.watch([config.lessDir + '/**/*.less', config.aryaLessDir + '/**/*.less' ] , ['less']);
+  gulp.watch(config.jsDir + '/**/*.js', ['babel_no_preset','bundle_no_preset']);
+  gulp.watch(config.staticDir + '/**/*.*', ['static']);
 });
 // runs basic tasks when first using gulp
 gulp.task('default', ['bower', 'icons', 'css']);
