@@ -11,6 +11,7 @@ import ThoughtsQuestion from '../components/Question/ThoughtsQuestion.react.js'
 import NextButton from '../components/Reusable/NextButton.react.js'
 import PrevButton from '../components/Reusable/PrevButton.react.js'
 import { setThoughts as updateThoughts } from '../actions/actions'
+import PageNumber from '../components/PageNumber.react.js'
 
 const mapStateToProps = (state) => ({
   thoughts: state.thoughts
@@ -30,6 +31,7 @@ export default class ThoughtsView extends Component {
     return (
       <div className="partial-wrapper" key="2">
         <div className="partial-container" >
+          <PageNumber page={ 3 } />
           <ThoughtsQuestion
             thoughts={this.props.thoughts}
             updateThoughts={this.props.updateThoughts}

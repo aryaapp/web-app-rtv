@@ -23,17 +23,16 @@ import PageNumber from './components/PageNumber.react.js'
 const App = React.createClass({
   render: function() {
     return (
-        <div className="gradient-background">
-          <PageNumber page={ this.props.currentPage + 1 } />
-          <div id="main-app">
-            <ReactCSSTransitionGroup component="div" className="transition-group" transitionName="page" transitionEnterTimeout={0} transitionLeaveTimeout={0}>
-              { this.props.children }
-            </ReactCSSTransitionGroup>
-          </div>
-          <ReactCSSTransitionGroup component="div" className="transition-group-modal" key="1" transitionName="modal" transitionEnterTimeout={0} transitionLeaveTimeout={0}>
-            <WelcomeModal />
+      <div className="gradient-background">
+        <div id="main-app">
+          <ReactCSSTransitionGroup component="div" className="transition-group" transitionName="page" transitionEnterTimeout={0} transitionLeaveTimeout={0}>
+            { this.props.children }
           </ReactCSSTransitionGroup>
         </div>
+        <ReactCSSTransitionGroup component="div" className="transition-group-modal" key="1" transitionName="modal" transitionEnterTimeout={0} transitionLeaveTimeout={0}>
+          <WelcomeModal />
+        </ReactCSSTransitionGroup>
+      </div>
     );
   }
 });
