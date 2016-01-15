@@ -7,7 +7,6 @@ import body from './body'
 import thoughts from './thoughts'
 import situation from './situation'
 import reaction from './reaction'
-import currentPage from './currentPage'
 import userReducer from './user'
 import journalReducer from './journals'
 
@@ -23,7 +22,6 @@ const partialReducers = combineReducers({
   thoughts: thoughts,
   situation: situation,
   reaction: reaction,
-  currentPage: currentPage,
   routing: routeReducer,
   form: formReducer,
   access_token: (state = '') => state,
@@ -52,7 +50,6 @@ const clearDataReducer = function(state, action) {
         thoughts: thoughts(undefined, action),
         situation: situation(undefined, action),
         reaction: reaction(undefined, action),
-        currentPage: currentPage(undefined, action)
       })
     default:
       return state

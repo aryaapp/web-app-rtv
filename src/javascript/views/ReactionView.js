@@ -10,6 +10,7 @@ import { pushPath } from 'redux-simple-router'
 import ReactionQuestion from '../components/Question/ReactionQuestion.react.js'
 import NextButton from '../components/Reusable/NextButton.react.js'
 import PrevButton from '../components/Reusable/PrevButton.react.js'
+import PageNumber from '../components/PageNumber.react.js'
 
 import { setReaction } from '../actions/actions'
 
@@ -29,11 +30,14 @@ export default class ReactionView extends Component {
   render() {
     const { dispatch } = this.props;
     return (
-      <div className="partial-wrapper" key="4"><div className="partial-container" >
-        <ReactionQuestion
-          reaction={this.props.reaction}
-          updateReaction={this.props.updateReaction}
-        /></div>
+      <div className="partial-wrapper" key="4">
+        <div className="partial-container" >
+        <PageNumber page={ 5 } />
+          <ReactionQuestion
+            reaction={this.props.reaction}
+            updateReaction={this.props.updateReaction}
+          />
+        </div>
         <PrevButton onClick={this.props.prevPage} />
         <NextButton onClick={this.props.nextPage} />
       </div>

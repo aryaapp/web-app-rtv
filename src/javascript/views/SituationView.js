@@ -11,6 +11,7 @@ import { pushPath } from 'redux-simple-router'
 import SituationQuestion from '../components/Question/SituationQuestion.react.js'
 import NextButton from '../components/Reusable/NextButton.react.js'
 import PrevButton from '../components/Reusable/PrevButton.react.js'
+import PageNumber from '../components/PageNumber.react.js'
 
 import { setSituation } from '../actions/actions'
 
@@ -32,6 +33,7 @@ export default class SituationView extends Component {
     return (
       <div className="partial-wrapper" key="3">
         <div className="partial-container" >
+          <PageNumber page={ 4 } />
           <SituationQuestion
             situation={this.props.situation}
             updateSituation={this.props.updateSituation}

@@ -44,22 +44,6 @@ export function setReaction(value) {
   }
 }
 
-export const NEXT_PAGE = 'NEXT_PAGE'
-
-export function nextPage() {
-  return {
-    type: NEXT_PAGE
-  }
-}
-
-export const PREV_PAGE = 'PREV_PAGE'
-
-export function prevPage() {
-  return {
-    type: PREV_PAGE
-  }
-}
-
 export const CLEAR_DATA = 'CLEAR_DATA'
 
 export function clearDataAction() {
