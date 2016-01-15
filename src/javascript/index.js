@@ -1,5 +1,5 @@
 import 'babel-polyfill'
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { render } from 'react-dom'
 import { createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
@@ -20,11 +20,17 @@ import ResultsView from './views/ResultsView'
 import LoginView from './views/LoginView'
 import HomeView from './views/HomeView'
 import CreateAccountView from './views/CreateAccountView'
+import ThankYouView from './views/ThankYouView'
+
 
 const store = configureStore(reducer)
 const history = createHistory()
 
 syncReduxAndRouter(history, store)
+
+Provider.childContextTypes = {
+  store: React.PropTypes.object
+}
 
 render((
   <Provider store={store}>
@@ -39,6 +45,7 @@ render((
         <Route path="/situation" component={SituationView} />
         <Route path="/reaction" component={ReactionView} />
         <Route path="/results" component={ResultsView} />
+        <Route path="/thank-you" component={ThankYouView} />
       </Route>
     </Router>
   </Provider>

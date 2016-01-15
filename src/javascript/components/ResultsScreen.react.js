@@ -145,9 +145,9 @@ class ResultsScreen extends Component {
 
     const { access_token } = this.props
     if( typeof access_token !== 'undefined' && access_token.length > 0) {
-      submitButton = <button className='btn btn-primary nav-button next-button relative-button' onClick={this.saveResults}><i className="fa fa-envelope-o"></i> Save Results</button>
+      submitButton = <button className='btn btn-primary nav-button next-button relative-button' onClick={this.saveResults}><i className="fa fa-envelope-o"></i>Eintrag speichern</button>
     } else {
-      submitButton = <button className='btn btn-primary nav-button next-button relative-button' onClick={this.signUp}><i className="fa fa-envelope-o"></i> Account anlegen</button>
+      submitButton = <button className='btn btn-primary nav-button next-button relative-button' onClick={this.signUp}><i className="fa fa-envelope-o"></i>Zugang anlegen</button>
     }
 
     return (
@@ -189,13 +189,15 @@ class ResultsScreen extends Component {
             <div className="col-xs-12">
               <button className='test-button' onClick={this.navHome}>Home</button>
             </div>
-
-
           </QuestionMain>
           <ConfirmationModal ref="confirmation" />
       </Section>
     );
   }
+}
+
+ResultsScreen.contextTypes = {
+  store: React.PropTypes.object
 }
 
 export default connect(state => state, mapDispatchToProps)(ResultsScreen)

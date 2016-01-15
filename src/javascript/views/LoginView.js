@@ -29,7 +29,6 @@ const mapDispatchToProps = (dispatch) => {
 class LoginForm extends Component {
   render() {
     const { fields: { email, password }, handleSubmit } = this.props;
-
     return(
       <form onSubmit={ handleSubmit }>
         <input className="form-control email-control" type='text' placeholder="E-Mail" { ...email } />
@@ -69,7 +68,7 @@ class LoginView extends Component {
     return (
       <div className="partial-wrapper">
         <div className="partial-container" >
-          
+
           <QuestionHeader>
             <div className="col-xs-1"></div>
             <QuestionTitle title="Einloggen"/>
@@ -84,6 +83,10 @@ class LoginView extends Component {
       </div>
     )
   }
+}
+
+LoginView.contextTypes = {
+  store: React.PropTypes.object
 }
 
 LoginView.propTypes = {

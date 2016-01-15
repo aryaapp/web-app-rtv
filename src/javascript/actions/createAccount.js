@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch'
-import { getValues } from 'redux-form';
+import { pushPath } from 'redux-simple-router'
 
 export const REQUEST_CREATE_ACCOUNT = 'REQUEST_CREATE_ACCOUNT'
 
@@ -32,8 +32,9 @@ export function executeCreateAccount(email, password) {
         headers: headers
       })
       .then( response => response.json() )
-      .then( (json) => dispatch(receivedCreateAccount(email, json)) )
-      .catch( error => {
+      .then( (json) => {
+        dispatch(receivedCreateAccount(email, json))
+      }).catch( error => {
         console.log('catch block error', error)
       })
   }
