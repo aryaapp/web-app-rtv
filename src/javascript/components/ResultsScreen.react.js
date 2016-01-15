@@ -6,10 +6,12 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { pushPath } from 'redux-simple-router'
-import { executeSaveJournal } from '../actions/journals'
 import d3 from 'd3'
 require('jquery')
 
+
+import { executeSaveJournal } from '../actions/journals'
+import { clearDataAction } from '../actions/actions'
 import Section from './Question/Section.react.js'
 import QuestionTitle from './Question/QuestionTitle.react.js'
 import QuestionSubtitle from './Question/QuestionSubtitle.react.js'
@@ -69,7 +71,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     executeSaveJournal: (journal_data) => dispatch(executeSaveJournal(journal_data)),
     navHome: () => dispatch(pushPath('/home')),
-    navCreateAccount: () => dispatch(pushPath('/anmelden'))
+    navCreateAccount: () => dispatch(pushPath('/anmelden')),
+    clearData: () => dispatch(clearDataAction())
   }
 }
 

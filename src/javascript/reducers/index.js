@@ -50,7 +50,6 @@ const clearDataReducer = function(state, action) {
         thoughts: thoughts(undefined, action),
         situation: situation(undefined, action),
         reaction: reaction(undefined, action),
-        currentPage: currentPage(undefined, action)
       })
     default:
       return state
