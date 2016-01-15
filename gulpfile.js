@@ -33,8 +33,8 @@ var 	gulp = require('gulp'),
           exclude: [],
           include: []
         },
-        options_dev: {
-          destination: '/var/www/rtv-web-dev.aryaapp.co/public_html',
+        options_staging: {
+          destination: '/var/www/rtv-web-staging.aryaapp.co/public_html',
           root: 'dist',
           hostname: 'arya-web', // needs to be setup in ~/.ssh/config
           username: 'root',
@@ -165,8 +165,8 @@ gulp.task('deploy-production', function() {
     .pipe(rsync(config.rsync.options_prod));
 });
 
-gulp.task('deploy-production', function() {
+gulp.task('deploy-staging', function() {
   return gulp.src(config.rsync.src)
-    .pipe(rsync(config.rsync.options_dev));
+    .pipe(rsync(config.rsync.options_staging));
 });
 
