@@ -11,6 +11,7 @@ var 	gulp = require('gulp'),
 		path = require('path'),
     rsync = require('gulp-rsync');
 		connect = require('gulp-connect'),
+    history = require('connect-history-api-fallback'),
 		config = {
 			lessDir: './src/less',
 			imagesDir: './src/images',
@@ -126,7 +127,8 @@ gulp.task('connect', function() {
   connect.server({
     root: 'dist',
     livereload: true,
-    port: 4444
+    port: 4444,
+    fallback: './dist/index.html'
   });
 });
 gulp.task('html', function () {
