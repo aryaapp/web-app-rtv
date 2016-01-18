@@ -15,10 +15,11 @@ import SituationQuestion from './components/Question/SituationQuestion.react.js'
 import ReactionQuestion from './components/Question/ReactionQuestion.react.js'
 import BodyQuestion from './components/Question/BodyQuestion.react.js'
 import ResultsScreen from './components/ResultsScreen.react.js'
-import WelcomeModal from './components/Question/WelcomeModal.react.js'
 import PrevButton from './components/Reusable/PrevButton.react.js'
 import NextButton from './components/Reusable/NextButton.react.js'
 import PageNumber from './components/PageNumber.react.js'
+import WelcomeView from './views/WelcomeView'
+import LoginView from './views/LoginView'
 
 const App = React.createClass({
   render: function() {
@@ -29,9 +30,6 @@ const App = React.createClass({
             { this.props.children }
           </ReactCSSTransitionGroup>
         </div>
-        <ReactCSSTransitionGroup component="div" className="transition-group-modal" key="1" transitionName="modal" transitionEnterTimeout={0} transitionLeaveTimeout={0}>
-          <WelcomeModal />
-        </ReactCSSTransitionGroup>
       </div>
     );
   }
