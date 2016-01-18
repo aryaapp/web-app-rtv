@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react'
 import { render } from 'react-dom'
 import { createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
-import { Router, Route } from 'react-router'
+import { Router, Route, IndexRoute } from 'react-router'
 import { createHistory } from 'history'
 import { syncReduxAndRouter } from 'redux-simple-router'
 
@@ -21,6 +21,7 @@ import LoginView from './views/LoginView'
 import HomeView from './views/HomeView'
 import CreateAccountView from './views/CreateAccountView'
 import ThankYouView from './views/ThankYouView'
+import WelcomeView from './views/WelcomeView'
 
 
 const store = configureStore(reducer)
@@ -36,6 +37,7 @@ render((
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}>
+        <IndexRoute component={WelcomeView} />
         <Route path="/home" component={HomeView} />
         <Route path="/login" component={LoginView} />
         <Route path="/anmelden" component={CreateAccountView} />
