@@ -27,7 +27,7 @@ export default class FeelingSmiley extends Component {
 
   render() {
     return(
-      <img src={"images/emo-" + this.state.emotionLevel +".svg"} className={ "svg emo emo-" + this.state.emotionLevel } />
+      <img src={"images/emo-c" + this.state.emotionLevel +".svg"} className={ "svg emo emo-" + this.state.emotionLevel } />
     )
   }
 }
