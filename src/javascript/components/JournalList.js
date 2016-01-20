@@ -5,7 +5,10 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import d3 from 'd3'
+import ReactSlider from 'rc-slider'
 import { pushPath } from 'redux-simple-router'
+
 import DisplayBody from './DisplayBody.react.js'
 import {
   defaultQuestionnaireId,
@@ -19,14 +22,16 @@ import FeelingSmiley from './FeelingSmiley'
 
 import { formatDay, formatTime, journalSorter, mapJournal, reverseArray, intersperse} from '../utilities'
 
-import ReactSlider from 'rc-slider'
-
 export default class JournalList extends Component {
   constructor(props) {
     super(props)
   }
 
   render() {
+    console.log(
+      d3MoodColor(0),d3MoodColor(25),d3MoodColor(50),d3MoodColor(75),d3MoodColor(100)
+
+      )
     return(
       <ul className="timeline list">
         {
@@ -47,10 +52,13 @@ export default class JournalList extends Component {
                     />
                   </div>
                   <div className="col-xs-6">
-                    <span className="feeling-value">{ mappedJournal.feeling }</span>
+                    <span className="feeling-value">{ mappedJournal.feeling }<small> / 100</small></span>
+                  </div>
+                  <div className="col-xs-2">
+                    <button type="button" data-toggle="collapse" data-target={ "#collapse-" + i } aria-expanded="false" aria-controls="collapseExample">hit meh</button>
                   </div>
                 </div>
-                <div className="row">
+                <div className="row collapse" id={ "collapse-" + i }>
                   <ul className="timeline-day list primary-list">
                     <li className="list-item rtv-list-item result-title">Dein Körper</li>
                     <li className="list-item rtv-list-item result-answer"><DisplayBody body={mappedJournal.body} /></li>
