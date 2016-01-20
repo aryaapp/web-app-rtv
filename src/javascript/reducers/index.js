@@ -9,6 +9,8 @@ import situation from './situation'
 import reaction from './reaction'
 import userReducer from './user'
 import journalReducer from './journals'
+import homeViewReducer from './homeView'
+
 
 import { CLEAR_DATA } from '../actions/actions'
 
@@ -26,7 +28,8 @@ const partialReducers = combineReducers({
   form: formReducer,
   access_token: (state = '') => state,
   user: (state = {}) => state,
-  journals: journalReducer
+  journals: journalReducer,
+  homeView: (state = {}) => state
 })
 
 /*
@@ -56,6 +59,6 @@ const clearDataReducer = function(state, action) {
   }
 }
 
-const globalReducers = reduceReducers(partialReducers, userReducer, clearDataReducer)
+const globalReducers = reduceReducers(partialReducers, userReducer, homeViewReducer, clearDataReducer)
 
 export default globalReducers

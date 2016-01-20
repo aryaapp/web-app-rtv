@@ -60,7 +60,7 @@ class CreateAccountForm extends Component {
     return(
       <div className="form-group">
         <div className="col-xs-12">
-          
+
         </div>
         <form onSubmit={ handleSubmit } >
             <input
@@ -124,7 +124,6 @@ class CreateAccountView extends Component {
   }
 
   submitCreateAccount(data) {
-    console.log('submitCreateAccount called', data)
     this.props.executeCreateAccount(data.email, data.password)
   }
 

@@ -5,7 +5,8 @@ White Label Mindfulness App
 
 * save jounral after create account
 
-* remove redux form from login
+* remove redux form from login (same for create login form)
+* remove unused components
 * unify name for reducers
 * update everything to es6 syntax with classes
 

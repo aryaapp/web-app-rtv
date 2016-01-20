@@ -50,11 +50,9 @@ class LoginView extends Component {
 
     this.onSubmit = this.onSubmit.bind(this)
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
-
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('loginView nextProps', nextProps)
     if (typeof nextProps.access_token !== 'undefined' && nextProps.access_token.length > 0) {
       this.props.navHome();
     }

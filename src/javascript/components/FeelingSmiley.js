@@ -3,11 +3,7 @@ import React, { Component, PropTypes } from 'react'
 export default class FeelingSmiley extends Component {
   constructor(props) {
     super(props)
-
-    this.state = {
-      emotionLevel: this.calculateEmotionLevel(props.feeling)
-    }
-
+    this.state = { emotionLevel: this.calculateEmotionLevel(props.feeling) }
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
   }
 
@@ -26,7 +22,7 @@ export default class FeelingSmiley extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-     this.setState({ emotionLevel: calculateEmotionLevel(nextProps.feeling) })
+     this.setState({ emotionLevel: this.calculateEmotionLevel(nextProps.feeling) })
   }
 
   render() {

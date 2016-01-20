@@ -14,7 +14,6 @@ export function requestCreateAccount(email) {
 export const RECEIVED_CREATE_ACCOUNT = 'RECEIVED_CREATE_ACCOUNT'
 
 export function receivedCreateAccount(email, data) {
-  console.log('receivedCreateAccount triggered')
   return {
     type: RECEIVED_CREATE_ACCOUNT,
     data: data
