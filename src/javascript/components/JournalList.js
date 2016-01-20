@@ -19,7 +19,6 @@ import {
   reactionQuestionId
 } from '../constants/ids'
 import FeelingSmiley from './FeelingSmiley'
-
 import { formatDay, formatTime, journalSorter, mapJournal, reverseArray, intersperse} from '../utilities'
 
 //returns color belonging to moodrange 0-100
@@ -37,11 +36,7 @@ const calculateEmotionColor = function(feeling) {
      }
 }
 
-class JournalList extends Component {
-  constructor(props) {
-    super(props)
-  }
-
+export default class JournalList extends Component {
   render() {
     return(
       <ul className="timeline list">
@@ -50,6 +45,7 @@ class JournalList extends Component {
             let date = new Date(journal.created_at)
             let mappedJournal = mapJournal(journal)
             let style = { color : calculateEmotionColor(mappedJournal.feeling) }
+
             return (
               <div key={i} >
                 <p className="list-title">{formatDay(date)}</p>
