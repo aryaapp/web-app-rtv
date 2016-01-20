@@ -31,6 +31,8 @@ import {
   reactionQuestionId
 } from '../constants/ids'
 
+import { intersperse, reverseArray } from '../utilities'
+
 //returns color belonging to moodrange 0-100
 const d3MoodColor = function(value) {
   let colorScale = d3.scale.linear()
@@ -48,32 +50,6 @@ const d3MoodGradient = function(value) {
         .range(['#e86e6b','#fcd56b','#92D381']); //['#e86e6b','#e86e6c','#fcd56b','#59d1ba','#59d1bb','#a5d36e']
   return ("left, " + colorScale(lowVal) + ", " + colorScale(highVal))
 }
-
-const markupBody = function(body) {
-  let markupBody = {}
-  for (var bodypart in body) {
-    markupBody[bodypart] = intersperse(body[bodypart], ", ")
-  }
-  return markupBody
-}
-
-const reverseArray = function (input) {
-  var ret = new Array;
-  for(var i = input.length-1; i >= 0; i--) {
-      ret.push(input[i]);
-  }
-  return ret;
-}
-
-const intersperse = function(arr, sep) {
-  if (arr.length === 0) {
-      return [];
-  }
-  return arr.slice(1).reduce(function(xs, x, i) {
-      return xs.concat([sep, x]);
-  }, [arr[0]]);
-}
-
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -172,7 +148,7 @@ class ResultsScreen extends Component {
                 </div>
               </li>
               <li className="list-item rtv-list-item result-title">Dein Körper</li>
-              <li className="list-item rtv-list-item result-answer"><DisplayBody body={ markupBody(this.props.body) } /></li>
+              <li className="list-item rtv-list-item result-answer"><DisplayBody body={this.props.body} /></li>
               <li className="list-item rtv-list-item result-title">Deine Gedanken</li>
               <li className="list-item rtv-list-item result-answer">{intersperse(reverseArray(this.props.thoughts),", ")}</li>
               <li className="list-item rtv-list-item result-title">Deine Situation</li>
@@ -197,12 +173,4 @@ class ResultsScreen extends Component {
   }
 }
 
-ResultsScreen.contextTypes = {
-  store: React.PropTypes.object
-}
-
 export default connect(state => state, mapDispatchToProps)(ResultsScreen)
-
-//<div className="col-xs-12">
-//  <QuestionSubtitle subtitle= "Oder schließe dieses Fenster und beende die Anwendung (deine Daten werden nicht gespeichert)" />
-//</div>

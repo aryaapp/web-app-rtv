@@ -6,8 +6,11 @@ import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { pushPath } from 'redux-simple-router'
+import ReactSlider from 'rc-slider'
+
 import { executeLoadJournals } from '../actions/journals'
 import { logout } from '../actions/login'
+import { nextWeek, prevWeek } from '../actions/homeView'
 
 import NextButton from '../components/Reusable/NextButton.react.js'
 import PrevButton from '../components/Reusable/PrevButton.react.js'
@@ -18,11 +21,16 @@ import QuestionHeader from '../components/Question/QuestionHeader.react.js'
 import QuestionMain from '../components/Question/QuestionMain.react.js'
 import JournalList from '../components/JournalList'
 
-import ReactSlider from 'rc-slider'
-
 import FixedSectionFooter from '../components/Question/FixedSectionFooter.react.js'
 
-const mapStateToProps = (state) => (state)
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+    beginningDate: state.homeView.beginningDate,
+    endDate: state.homeView.endDate,
+    selectedJournals: state.homeView.selectedJournals
+  }
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -30,7 +38,9 @@ const mapDispatchToProps = (dispatch) => {
     navMoodTracking: () => dispatch(pushPath('/feeling')),
     navJournals: () => dispatch(pushPath('/journals')),
     navStart: () => dispatch(pushPath('/')),
-    logout: () => dispatch(logout())
+    logout: () => dispatch(logout()),
+    prevWeek: () => { dispatch(prevWeek()) },
+    nextWeek: () => { dispatch(nextWeek()) }
   }
 }
 
@@ -41,6 +51,11 @@ class HomeView extends Component {
     this.months = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember']
 
     this.logout = this.logout.bind(this)
+    this.componentWillMount = this.componentWillMount.bind(this)
+  }
+
+  componentWillMount() {
+    this.props.executeLoadJournals();
   }
 
   logout() {
@@ -55,11 +70,22 @@ class HomeView extends Component {
           <QuestionHeader absolute={true}>
             <div className="col-xs-1"></div>
             <QuestionTitle title="Achtsamkeits-Tagebuch"/>
-            <QuestionSubtitle subtitle="myemailadres@gmail.com"/>
+            <QuestionSubtitle subtitle={this.props.user.email}/>
           </QuestionHeader>
           <QuestionMain absolute={true}>
-          <JournalList />
-          <button className="test-button" onClick={this.logout}>
+            <div>
+              <button className="test-button" onClick={this.props.prevWeek}>
+                <span className="btn-text">prev week</span>
+              </button>
+              <p>{this.props.beginningDate.toDateString()} - {this.props.endDate.toDateString()}</p>
+              <button className="test-button" onClick={this.props.nextWeek}>
+                <span className="btn-text">next week</span>
+              </button>
+            </div>
+            <JournalList
+              journals={this.props.selectedJournals}
+            />
+            <button className="test-button" onClick={this.logout}>
               <span className="btn-text">logout</span>
             </button>
             <button className="test-button" onClick={this.props.executeLoadJournals}>
@@ -81,7 +107,14 @@ class HomeView extends Component {
 
 HomeView.propTypes = {
   user: PropTypes.object.isRequired,
-  executeLoadJournals: PropTypes.func.isRequired
+  beginningDate: PropTypes.object.isRequired,
+  endDate: PropTypes.object.isRequired,
+  selectedJournals: PropTypes.array.isRequired,
+  executeLoadJournals: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired,
+  prevWeek: PropTypes.func.isRequired,
+  nextWeek: PropTypes.func.isRequired,
+  navMoodTracking:  PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeView)
