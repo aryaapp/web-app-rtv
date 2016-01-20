@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch'
 import { getValues } from 'redux-form';
-
+import config from '../constants/config'
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST'
 
@@ -26,7 +26,7 @@ export function executeLogin(email, password) {
 
     let headers = new Headers({ 'Content-Type': 'application/json' });
 
-    return fetch('https://arya-api-dev.herokuapp.com/v1/oauth/token',
+    return fetch(config.aryaApiUrl + '/v1/oauth/token',
         {
           method: 'POST',
           body: JSON.stringify({ email: email, password: password}),

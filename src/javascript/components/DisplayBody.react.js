@@ -27,6 +27,11 @@ let DisplayBody = React.createClass({
       <div>
         {
           Object.keys(body_parts).map(function(element, i) {
+            if(typeof that.props.body[element] === 'undefined') {
+              console.log('bodypart', that.props.body[element])
+              return (<div key={i}></div>)
+            }
+
             return (
               <div key={i}>
                 { that.props.body[element].length > 0 ? <div><strong>{body_parts[element]}</strong><br/></div> : '' }

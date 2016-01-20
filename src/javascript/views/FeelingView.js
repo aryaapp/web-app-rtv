@@ -42,6 +42,7 @@ export default class FeelingView extends Component {
 
 FeelingView.propTypes = {
   updateFeeling: PropTypes.func.isRequired,
+  nextPage: PropTypes.func.isRequired,
   feeling: PropTypes.object.isRequired
 };
 

@@ -16,6 +16,7 @@ import QuestionTitle from '../components/Question/QuestionTitle.react.js'
 import QuestionSubtitle from '../components/Question/QuestionSubtitle.react.js'
 import QuestionHeader from '../components/Question/QuestionHeader.react.js'
 import QuestionMain from '../components/Question/QuestionMain.react.js'
+import JournalList from '../components/JournalList'
 
 import ReactSlider from 'rc-slider'
 
@@ -40,36 +41,6 @@ class HomeView extends Component {
     this.months = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember']
 
     this.logout = this.logout.bind(this)
-    this.getTheTime = this.getTheTime.bind(this)
-    this.getTheDate = this.getTheDate.bind(this)
-  }
-
-  getTheTime(date) {
-    if ( date != "") {
-      let doubleDigits = function(digit) {
-        digit = String(digit)
-        if(digit.length<2) {
-          digit = "0" + digit
-        }
-        return digit
-      }
-      let hours = date.getHours()
-      let minutes = date.getMinutes()
-      return doubleDigits(hours) + ":" + doubleDigits(minutes)
-    }
-    else return ""
-  }
-
-  getTheDate(date) {
-    if ( date && date instanceof Date ) {
-      let dayName = this.weekdays[date.getDay()]
-      let dayInMonth = date.getDate()
-      let monthName = this.months[date.getMonth()]
-      let year = date.getFullYear()
-
-      return dayName + "," + dayInMonth + " " + monthName + " " + year
-    }
-    else return ""
   }
 
   logout() {
@@ -87,30 +58,7 @@ class HomeView extends Component {
             <QuestionSubtitle subtitle="myemailadres@gmail.com"/>
           </QuestionHeader>
           <QuestionMain absolute={true}>
-          <ul className="timeline list">
-            {
-              this.props.journals.map((journal, i) => {
-                let date = new Date(journal.created_at)
-                return (
-                  <div>
-                    <p className="list-title">{this.getTheDate(date)}</p>
-                    <ul className="timeline-day list primary-list">
-                      <li className="timeline-item list-item clickable" key={ 'journal_' + i } >
-                        <div className="row">
-                          <div className="col-xs-2">
-                            <span className="feeling-value">{ journal.feeling }</span>
-                          </div>
-                          <div className="col-xs-10">
-                            <ReactSlider disabled={true} value={ journal.feeling } />
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                )
-              })
-            }
-          </ul>
+          <JournalList />
           <button className="test-button" onClick={this.logout}>
               <span className="btn-text">logout</span>
             </button>
@@ -137,5 +85,3 @@ HomeView.propTypes = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeView)
-
-// { journal.created_at }
