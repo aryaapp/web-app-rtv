@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-fetch'
 import { pushPath } from 'redux-simple-router'
+import config from '../constants/config'
 
 export const REQUEST_CREATE_ACCOUNT = 'REQUEST_CREATE_ACCOUNT'
 
@@ -26,7 +27,7 @@ export function executeCreateAccount(email, password) {
 
     let headers = new Headers({ 'Content-Type': 'application/json' });
 
-    return fetch('https://arya-api-dev.herokuapp.com/v1/users',{
+    return fetch(config.aryaApiUrl + '/v1/users',{
         method: 'POST',
         body: JSON.stringify({ user: { email: email, password: password, client_id: 'ios-app'} }),
         headers: headers

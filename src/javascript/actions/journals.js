@@ -1,6 +1,7 @@
 import fetch from 'isomorphic-fetch'
 import { clearDataAction } from './actions'
 import { pushPath } from 'redux-simple-router'
+import config from '../constants/config'
 
 export const LOAD_JOURNALS = 'LOAD_JOURNALS'
 
@@ -31,7 +32,7 @@ export function executeLoadJournals() {
       'Content-Type': 'application/json'
     });
 
-    return fetch('https://arya-api-dev.herokuapp.com/v1/journals',
+    return fetch(config.aryaApiUrl + '/v1/journals',
         {
           method: 'GET',
           headers: headers
@@ -72,7 +73,7 @@ export function executeSaveJournal(journal_data) {
       'Authorization': `Bearer ${ access_token }`,
      });
 
-    return fetch('https://arya-api-dev.herokuapp.com/v1/journals', {
+    return fetch(config.aryaApiUrl + '/v1/journals', {
       method: 'POST',
       body: JSON.stringify({ journal: journal_data }),
       headers: headers
