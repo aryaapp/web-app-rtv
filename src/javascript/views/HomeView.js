@@ -85,6 +85,8 @@ class HomeView extends Component {
             <JournalList
               journals={this.props.selectedJournals}
             />
+            <button className="btn btn-ghost btn-full-width">EINTRÄGE DIESER WOCHE HERUNTERLADEN</button>
+            <button className="btn btn-ghost btn-full-width">ALLE BISHERIGEN EINTRÄGE HERUNTERLADEN</button>
             <button className="test-button" onClick={this.logout}>
               <span className="btn-text">logout</span>
             </button>
@@ -95,7 +97,7 @@ class HomeView extends Component {
           <FixedSectionFooter>
           <div className="col-xs-12">
             <button className="btn nav-button btn-primary relative-button" onClick={this.props.navMoodTracking}>
-              <span className="btn-text">Neue Eintrag</span>
+              <span className="btn-text">Neuer Eintrag</span>
             </button>
           </div>
           </FixedSectionFooter>

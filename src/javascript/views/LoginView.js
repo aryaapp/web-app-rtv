@@ -70,7 +70,7 @@ class LoginView extends Component {
           <QuestionHeader>
             <div className="col-xs-1"></div>
             <QuestionTitle title="Einloggen"/>
-            <QuestionSubtitle subtitle="Log in to your Achtsamkeits-Tagebuch"/>
+            <QuestionSubtitle subtitle="Logge dich zu deinem persönlichen Achtsamkeits-Tagebuch ein"/>
           </QuestionHeader>
           <QuestionMain>
               <ReduxLoginFrom

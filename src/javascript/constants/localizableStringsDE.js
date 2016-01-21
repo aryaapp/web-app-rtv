@@ -95,7 +95,7 @@ module.exports = {
 	"QUESTION_REACTION_EXPLANATION" : "Wenn es einen Grund oder konkreten Auslöser für eine bestimmte Situation gab, wie hast du darauf reagiert? Wie hast du dich in dieser Situation verhalten? War es eine automatische Handlung/Reaktion oder konntest du innehalten und dich bewusst für eine Reaktion entscheiden? (Wie) hat sich deine Reaktion verändert?",
 
 	"QUESTION_FINISH_TITLE" : "Zusammenfassung deines heutigen Tagebuch-Eintrags.",
-	"QUESTION_FINISH_SUBTITLE" : "Folgend kannst du all deine Eingaben noch einmal anschauen. Um deinen Tagebuch-Eintrag zu archivieren, ist es erforderlich dass du ihn dir selbst per E-Mail schickst. Sonst war er ‘nur’ eine gute Übung!",
+	"QUESTION_FINISH_SUBTITLE" : "Folgend kannst du all deine Eingaben noch einmal anschauen. Du kannst deinen Eintrag in deinem persönlichen Achtsamkeits-Tagebuch speichern.",
 	"QUESTION_FINISH_CONFIRM" : "Bestätige deinen Eintrag",
 
 	"UI_DONE" : "Fertig",
@@ -132,6 +132,38 @@ module.exports = {
 		'Du bist dort, wo deine Gedanken sind. Sieh zu, dass deine Gedanken da sind, wo du sein möchtest.(Rabbi Nachman von Bratzlaw) - Nun gut… Bringe deine Gedanken auf den Punkt. Gute Einsicht!',
 		'Achte gut auf diesen Tag, denn genau er ist das Leben - Sei liebevoll und voller Achtsamkeit. Alles Gute!',
 	],
+	"SMART_INTRO_MESSAGES" : {
+		two : 'Hallo! Schön, dass du wieder da bist. Hast du die Sonne im Herzen oder ist sie nur irgendwo im Aussen? Bring dein Innerstes auf den Punkt. Es lohnt sich…',
+		four : 'Guten Tag und willkommen zurück - toll, dass du “dran bleibst”. Gönne dir jetzt einige Momente nur für dich und sei achtsam :)',
+		six : 'Willkommen zurück! Es ist toll, dass du es wieder geschafft hast. Führe jetzt fort, was du begonnen hast und nehme wahr, wie es dir geht.', 
+		ten : 'Wow! Du bist so regelmäßig hier! Das ist großartig! Nimm einen tiefen Atemzug und erfreue dich an diesem Moment.',
+		morning : [
+			'Wir wünschen dir einen wunderschönen guten Morgen! Egal ob heute die Sonne scheint oder ob es regnet - du trägst Licht in dir.',
+			'Guten Morgen! “Die wahre Lebenskunst besteht darin, im Alltäglichen das Wunderbare zu sehen.” (Pearl S. Buck) - Achte heute auf das Wunderbare.',
+			'Guten Morgen! “Alles, was ich heute tue, ist wichtig, gebe ich doch einen ganzen Tag meines Lebens dafür” (George Bernard Shaw) Sei gut zu dir und verbringe einen wunder-vollen Tag!',
+			'Hallo! “Alles, was ich heute tue, ist wichtig, gebe ich doch einen ganzen Tag meines Lebens dafür” (George Bernard Shaw) Sei gut zu dir und verbringe einen wunder-vollen Tag!',
+		],
+		evening : [
+			'Der Tag ist fast vorüber, der perfekte Zeitpunkt, um zurückzuschauen und wahrzunehmen, wie du dich fühlst und was heute geschehen ist. Viel Spaß dabei!',
+			'“Guten Abend. Das einzig Unveränderliche ist die Veränderung” (Tao Te King). Dem Winter folgt der Sommer, wie auch jedes Gefühl vergeht und jedem Gedanken folgt ein neuer, aber jeder Moment ist einzigartig. Horche in dein persönliches Hier und Jetzt hinein. Viel Spaß :)',
+			'“Guten Abend. Es liegt in der Macht der Menschen, zwischen Glück und Weh zu wählen” (Pearl S. Buck) - wähle das Glück und sei ganz im Hier und Jetzt. Bleibe achtsam und verliere es nicht aus den Augen!',
+			'Guten Abend! “Die hilfreichste Hand hängt an deinem eigenen Arm” (belgisches Sprichwort). Du allein hast dein Leben in der Hand, entscheide dich heute wieder für ein erfülltes und achtsames Leben.'
+		],
+		random : [
+			'Stille Nacht, lange Nacht? Das ist ganz wunderbar. Denn in der Stille ist es einfacher uns selbst zu hören. Welche Töne nimmst du in dir wahr? Geht es dir gut?',
+			'Hallo! Thich Nhat Hanh hat gesagt: "Wenn die Achtsamkeit etwas Schönes berührt, offenbart sie dessen Schönheit. Wenn sie etwas Schmerzvolles berührt, wandelt sie es um und heilt es." Wir wünschen dir viel Schönes und Heilsames!',
+			'“Das einzig Unveränderliche ist die Veränderung” (Tao Te King). Dem Winter folgt der Sommer, wie auch jedes Gefühl vergeht und jedem Gedanken folgt ein neuer, aber jeder Moment ist einzigartig. Horche in dein persönliches Hier und Jetzt hinein. Viel Spaß :)',
+			'“Es liegt in der Macht der Menschen, zwischen Glück und Weh zu wählen” (Pearl S. Buck) - wähle das Glück und sei ganz im Hier und Jetzt. Bleibe achtsam und verliere es nicht aus den Augen!',
+			'Hallo! “Die hilfreichste Hand hängt an deinem eigenen Arm” (belgisches Sprichwort). Du allein hast dein Leben in der Hand, entscheide dich heute wieder für ein erfülltes und achtsames Leben.',
+			'“Wenn man die Dinge versteht, sind sie, wie sie sind. Wenn man sie nicht versteht, sind sie, wie sie sind” Wir müssen nicht immer alles verstehen, es reicht einfach nur da zu sein.',
+			'Hallo! Ist dir, bei deiner Einkehr in Körper, Geist und Seele, schon etwas an dir aufgefallen? Wie geht es dir jetzt damit? Viel Freude heute!',
+			'Nur wenn du für dich da sein kannst, kannst du auch für andere da sein. Es ist so heilsam, dass du dir diese Zeit für dich nimmst! Alles Liebe und Gute für dich!',
+			'Glück entsteht oft durch Aufmerksamkeit in kleinen Dingen, Unglück oft durch Vernachlässigung kleiner Dinge. (Wilhelm Busch). Lenke jetzt wieder deine Aufmerksamkeit auf die kleinen Dinge und Freuden in dir und begegne dem Glück. Wir freuen uns mit dir.',
+			'“Alles, was wir für uns selbst tun, tun wir auch für andere, und alles, was wir für andere tun, tun wir auch für uns selbst” (Thich Nath Hanh) Tue dir selbst und der Welt etwas Gutes und sei bewusst und achtsam in Gedanken, Worten und Taten.',
+			'Hallo! “Die wahre Lebenskunst besteht darin, im Alltäglichen das Wunderbare zu sehen.” (Pearl S. Buck) - Achte heute auf das Wunderbare.',
+			'Du bist dort, wo deine Gedanken sind. Sieh zu, dass deine Gedanken da sind, wo du sein möchtest.(Rabbi Nachman von Bratzlaw) - Nun gut… Bringe deine Gedanken auf den Punkt. Gute Einsicht!'
+		]
+	},
 	"OUTRO_MESSAGES" : [
 		'Danke dir!  Komm bald wieder… zurück zu dir ;-)',
 		'Danke. Wir freuen uns mit dir! Denn wieder bist du dir ein Stück selbst begegnet.',
