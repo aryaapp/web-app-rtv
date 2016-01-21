@@ -13,7 +13,7 @@ const getMonday = function (original_date) {
 
 const getSunday = function(original_date) {
   let date = getMonday(new Date(original_date))
-  date.setDate(date.getDate() + 7)
+  date.setDate(date.getDate() + 6)
   date.setHours(23,59,59,999)
   return date
 }
