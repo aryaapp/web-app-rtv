@@ -38,6 +38,7 @@ const mapDispatchToProps = (dispatch) => {
     navMoodTracking: () => dispatch(pushPath('/feeling')),
     navJournals: () => dispatch(pushPath('/journals')),
     navStart: () => dispatch(pushPath('/')),
+    navPrint: () => dispatch(pushPath('/print')),
     logout: () => dispatch(logout()),
     prevWeek: () => { dispatch(prevWeek()) },
     nextWeek: () => { dispatch(nextWeek()) }
@@ -47,8 +48,6 @@ const mapDispatchToProps = (dispatch) => {
 class HomeView extends Component {
   constructor(props) {
     super(props)
-    this.weekdays = ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'],
-    this.months = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember']
 
     this.logout = this.logout.bind(this)
     this.componentWillMount = this.componentWillMount.bind(this)
@@ -92,6 +91,9 @@ class HomeView extends Component {
             </button>
             <button className="test-button" onClick={this.props.executeLoadJournals}>
               <span className="btn-text">load journals</span>
+            </button>
+            <button className="test-button" onClick={this.props.navPrint}>
+              <span className="btn-text">nav PDF Creation</span>
             </button>
           </QuestionMain>
           <FixedSectionFooter>

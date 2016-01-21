@@ -97,24 +97,42 @@ export function intersperse(arr, sep) {
 }
 
 export function prepareJournalData(props) {
-    let data = {
-      questionnaire_id: defaultQuestionnaireId,
-      feeling: props.feeling.value,
-      answers: [
-        {
-          question_id: bodyQuestionId,
-          values: props.body
-        }, {
-          question_id: thoughtsQuestionId,
-          values: reverseArray(props.thoughts)
-        }, {
-          question_id: situationQuestionId,
-          values: reverseArray(props.situation)
-        }, {
-          question_id: reactionQuestionId,
-          values: reverseArray(props.reaction)
-        }
-      ]
-    }
-    return data
+  let data = {
+    questionnaire_id: defaultQuestionnaireId,
+    feeling: props.feeling.value,
+    answers: [
+      {
+        question_id: bodyQuestionId,
+        values: props.body
+      }, {
+        question_id: thoughtsQuestionId,
+        values: reverseArray(props.thoughts)
+      }, {
+        question_id: situationQuestionId,
+        values: reverseArray(props.situation)
+      }, {
+        question_id: reactionQuestionId,
+        values: reverseArray(props.reaction)
+      }
+    ]
   }
+  return data
+}
+
+//returns color belonging to moodrange 0-100
+export function calculateEmotionColor(feeling) {
+  if(feeling == 100) {
+    return "#92d381"
+  } else if (feeling >= 74) {
+    return "#c7d476"
+  } else if (feeling >= 50) {
+    return "#fcd56b"
+  } else if (feeling >= 26) {
+    return "#f2a26b"
+  } else {
+    return "#e86e6b"
+  }
+}
+
+
+

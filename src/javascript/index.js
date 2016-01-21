@@ -22,6 +22,7 @@ import HomeView from './views/HomeView'
 import CreateAccountView from './views/CreateAccountView'
 import ThankYouView from './views/ThankYouView'
 import WelcomeView from './views/WelcomeView'
+import JournalPdfView from './views/JournalPdfView'
 
 
 const store = configureStore(reducer)
@@ -39,6 +40,7 @@ render((
       <Route path="/" component={App}>
         <IndexRoute component={WelcomeView} />
         <Route path="/home" component={HomeView} />
+        <Route path="/print" component={JournalPdfView} />
         <Route path="/login" component={LoginView} />
         <Route path="/anmelden" component={CreateAccountView} />
         <Route path="/feeling" component={FeelingView} />
