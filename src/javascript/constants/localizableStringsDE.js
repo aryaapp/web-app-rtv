@@ -180,6 +180,31 @@ module.exports = {
 		'Gut gemacht :) Wie oft warst du schon hier? Jede Reise fängt mit den ersten Schritten an….',
 		'Das ist jetzt kein Werbetext. Ganz aufrichtig: Wir freuen uns, dass du dabei bist - Danke!',
 		'Danke dir! Wenn du noch eine Minute Zeit hast, sitze still und spüre wie sich das anfühlt. Wir hoffen es kommt Freude und Dankbarkeit für diesen Tag auf!',
-	]
+	],
+	"SMART_OUTRO_MESSAGES" : {
+		drei : 'Schön, dass du schon wieder da warst!',
+		funfzehn : 'Gut gemacht :) Fantastisch, dass du so oft hier bist! Bleib dabei!',
+		morning : [
+			'Dankeschön. Wir wünschen dir einen Tag voller Liebe und Achtsamkeit!',
+			'Danke dir! Wenn du noch eine Minute Zeit hast, sitze still und spüre wie sich das anfühlt. Wir hoffen es kommt Freude und Dankbarkeit für diesen Tag auf!'
+		],
+		evening : [
+			'Toll, dass du heute achtsam warst. Wir wünschen dir eine gute Nacht mit schönen Träumen.'
+		],
+		random : [
+			'Danke dir!  Komm öfter zurück zu dir!',
+			'Danke. Wir freuen uns mit dir! Denn wieder bist du dir ein Stück selbst begegnet.',
+			'Danke. Das war’s für heute, zumindest auf ‘dem Papier’...',
+			'Danke. Pass weiterhin gut auf dich auf.',
+			'Es ist so gut, dass du im Hier und Jetzt warst. Danke dir für dich!',
+			'Danke dir! Versuche weiterhin achtsam zu bleiben… und Wunder geschehen...',
+			'Achtsame und herzliche Grüße für dich! Vergiss nicht… allem geht der Geist voran.',
+			'Danke dir! Du warst schon fleißig und hast auf dich geachtet - wir finden, heute ist eine Belohnung fällig :)',
+			'Danke dir selbst dafür, dass du auf dich achtest. Und gebe dir in Gedanken eine liebevolle Umarmung.',
+			'Danke! Bleib bei dir! Es lohnt sich… hast du morgen schon was vor ;-)?',
+			'Das ist jetzt kein Werbetext. Ganz aufrichtig: Wir freuen uns, dass du dabei bist - Danke!',
+			'Danke dir! Ja. Danke dir selbst dafür, dass du auf dich achtest... Wie oft haben wir nur die Anderen im Auge. Bleib bei dir! Es lohnt sich. Bis bald.'
+		]
+	}
 
 }
