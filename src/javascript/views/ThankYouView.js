@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { pushPath } from 'redux-simple-router'
 import Content from '../constants/localizableStringsDE.js'
+import FixedSectionFooter from '../components/Question/FixedSectionFooter.react.js'
 
 const mapStateToProps = (state) => (state)
 
@@ -31,18 +32,22 @@ class ThankYouView extends Component {
         <div className="partial-container" >
           <div className="welcome-modal container-fluid">
             <div className="row full-height">
-              <div className="col-xs-12 no-padding full-height">
+              <div className="col-xs-12 full-height">
                 <div className="success-icon"><i className="fa fa-3x fa-check"></i></div>
                 <div className="alert alert-success" >Dein Eintrag wurde erfolgreich gespeichert.</div>
-                <div className="welcome-text-container rtv-title vertical-align-center fade-in arya-animation animation2">
+                <div className="rtv-title vertical-align-center fade-in arya-animation animation2">
                   <h3><i>{ this.displayThankYouMessage() }</i></h3>
                 </div>
               </div>
             </div>
           </div>
-          <button className="btn btn-primary nav-button prev-button fade-in arya-animation animation3" onClick={this.props.navHome}>Home</button>
-          <button className="btn btn-primary nav-button next-button fade-in arya-animation animation3" >Mehr zum Thema Achtsamkeit</button>
         </div>
+        <FixedSectionFooter buttons={ 2 } >
+          <div className="col-xs-12 buttons-container">
+            <button className="btn btn-primary nav-button next-button relative-button fade-in arya-animation animation3" onClick={this.props.navHome}>Home</button>
+            <button className="btn nav-button next-button relative-button fade-in arya-animation animation3" >Mehr zum Thema Achtsamkeit</button>
+          </div>
+        </FixedSectionFooter>
       </div>
     )
   }
