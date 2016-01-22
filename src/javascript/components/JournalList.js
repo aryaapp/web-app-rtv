@@ -5,9 +5,10 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import d3 from 'd3'
+let _ = require('underscore')
 import ReactSlider from 'rc-slider'
 import { pushPath } from 'redux-simple-router'
+import underscore from 'underscore'
 
 import DisplayBody from './DisplayBody.react.js'
 import {
