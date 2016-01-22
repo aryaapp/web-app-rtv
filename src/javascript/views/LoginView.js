@@ -68,7 +68,6 @@ class LoginView extends Component {
     return (
       <div className="partial-wrapper">
         <div className="partial-container" >
-
           <QuestionHeader>
             <div className="col-xs-1"></div>
             <QuestionTitle title="Einloggen"/>
@@ -79,7 +78,6 @@ class LoginView extends Component {
               onSubmit={this.onSubmit}
             />
           </QuestionMain>
-
         </div>
       </div>
     )

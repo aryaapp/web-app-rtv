@@ -6,20 +6,12 @@ import React, { Component, PropTypes } from 'react'
 import { reverseArray, intersperse} from '../utilities'
 
 import Content from '../constants/localizableStringsDE.js'
+import { buildBodyForDisplay } from '../utilities'
+
 
 export default class DisplayBody extends Component {
   constructor(props) {
     super(props)
-
-    this.buildBodyForDisplay = this.buildBodyForDisplay.bind(this)
-  }
-
-  buildBodyForDisplay() {
-    let bodyForDisplay = {}
-    for (let bodypart in this.props.body) {
-      bodyForDisplay[bodypart] = intersperse(this.props.body[bodypart], ", ")
-    }
-    return bodyForDisplay
   }
 
   render() {
@@ -33,7 +25,7 @@ export default class DisplayBody extends Component {
       right_leg: Content.QUESTION_BODY_RIGHT_LEG,
       hip: Content.QUESTION_BODY_HIP
     }
-    let bodyForDisplay = this.buildBodyForDisplay()
+    let bodyForDisplay = buildBodyForDisplay(this.props.body)
 
     return (
       <div>

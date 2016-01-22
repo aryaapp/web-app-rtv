@@ -25,10 +25,12 @@ import {
   situationQuestionId,
   reactionQuestionId
 } from '../constants/ids'
+
 import FeelingSmiley from '../components/FeelingSmiley'
+import Content from '../constants/localizableStringsDE.js'
 
 import FixedSectionFooter from '../components/Question/FixedSectionFooter.react.js'
-import { calculateEmotionColor, formatDay, formatTime, journalSorter, mapJournal, reverseArray, intersperse} from '../utilities'
+import { imageForEmotion, buildBodyForDisplay, hexToRgb, calculateEmotionColor, formatDay, formatTime, journalSorter, mapJournal, reverseArray, intersperse} from '../utilities'
 
 const mapStateToProps = (state) => {
   return {
@@ -48,107 +50,141 @@ class JournalPdfView extends Component {
     super(props)
 
     this.createPDF = this.createPDF.bind(this)
-    this.getCanvas = this.getCanvas.bind(this)
   }
 
   createPDF() {
-    let app = $('#main-app')
-    let cachedWidth = app.width()
-    let doc = new jsPDF({ format:'a4' })
-    let specialElementHandlers = {
-      '#editor': function(element, renderer) {
-        return true;
+    const body_parts = {
+      head: Content.QUESTION_BODY_HEAD,
+      left_arm: Content.QUESTION_BODY_LEFT_ARM,
+      right_arm: Content.QUESTION_BODY_RIGHT_ARM,
+      chest: Content.QUESTION_BODY_CHEST,
+      abdomen: Content.QUESTION_BODY_ABDOMEN,
+      left_leg: Content.QUESTION_BODY_LEFT_LEG,
+      right_leg: Content.QUESTION_BODY_RIGHT_LEG,
+      hip: Content.QUESTION_BODY_HIP
+    }
+
+    let doc = new jsPDF({ unit: 'mm', format:'a4', 'orientation': 'P' })
+
+    // doc.text(20, 20, 'This is the default font.');
+    // doc.addFont("Open Sans", "Open Sans", 'normal')
+    // doc.setFont("Open Sans",'normal');
+
+    // doc.text(20, 70, 'This is Open Sans normal.');
+
+    // doc.setFont("courier",'normal');
+    // doc.text(20, 30, 'This is courier normal.');
+
+    // doc.setFont("times", 'normal');
+    // doc.setFontType("italic");
+    // doc.text(20, 40, 'This is times italic.');
+
+    // doc.setFont("helvetica", 'normal');
+    // doc.setFontType("bold");
+    // doc.text(20, 50, 'This is helvetica bold.');
+
+    // doc.setFont("courier", 'normal');
+    // doc.setFontType("bolditalic");
+    // doc.text(20, 60, 'This is courier bolditalic.');
+
+    // doc.save('Test.pdf');
+
+    let a4  = [210, 297]
+
+    doc.setFontType("normal")
+    doc.setFontSize(18)
+    doc.text(31, 47, "Achtsamkeits-Tagebuch")
+    doc.setFontSize(13)
+    doc.text(31, 53, "von " + this.props.user.email)
+    doc.setFontType("bold")
+    doc.text(31, 72, "ALLE EINTRÄGE")
+
+    let height_offset = 69 // for first page
+
+    this.props.pdfJournals.map((rawJournal) => {
+      let journal = mapJournal(rawJournal)
+      let journal_date = new Date(rawJournal.created_at)
+
+      let expectedBodyHight = _.size(_.filter(journal.body, (element) => element.length > 0)) * 10
+
+      if(height_offset + expectedBodyHight > 210) {
+        doc.addPage()
+        height_offset = 10
+      } else {
+        height_offset += 10
       }
-    };
-    // this.getCanvas().then((canvas) => {
-    //   let img = canvas.toDataURL("image/png")
-    //   let doc = new jsPDF({ format:'a4' })
-    //   doc.text(20, 20, 'Hello world!')
-    //   doc.text(20, 30, 'This is client-side Javascript, pumping out a PDF.')
-    //   doc.addImage(img, 'JPEG', 20, 20)
+
+      doc.setLineWidth(0.2)
+      doc.setDrawColor(212,209,208);
+      doc.line(31, height_offset, 177, height_offset)
+
+      doc.setFontSize(14)
+      doc.setFontType("normal")
+      doc.text(31, height_offset + 8, formatDay(journal_date) + ", " + formatTime(journal_date))
+
+      doc.setFontSize(13)
+      doc.text(31, height_offset + 16, "Dein Befinden:")
 
 
-    //   doc.save('techumber-html-to-pdf.pdf')
-    //   app.width(cachedWidth)
-    // })
-    doc.fromHTML(app.get(0), 15, 15, {
-      'width': 170,
-      'elementHandlers': specialElementHandlers
-    }, (e) => console.log(e))
-    doc.save('techumber-html-to-pdf.pdf')
-  }
+      let colors = hexToRgb(calculateEmotionColor(journal.feeling))
+      doc.setTextColor(colors.r, colors.g, colors.b)
+      doc.setFontSize(10)
+      let emoImage = imageForEmotion(journal.feeling)
+      console.log('feeling emoImage',journal.feeling, emoImage)
+      doc.addImage(emoImage, 'PNG', 31, height_offset + 17.5, 7, 7);
+      doc.text(42, height_offset + 23, journal.feeling + "/100")
+      doc.setTextColor(0, 0, 0)
 
-  getCanvas() {
-    let a4  = [ 595.28,  841.89]
-    let app = $('#main-app')
-    app.width((a4[0]*1.33333) -80).css('max-width','none')
+      doc.setFontSize(13)
+      doc.text(31, height_offset + 29, "Dein Körper:")
+      doc.setFontSize(10)
 
-    return html2canvas(app, {
-      imageTimeout: 2000,
-      removeContainer: true
+      let bodyElementCount = 0
+      Object.keys(body_parts).map((element) => {
+        if(journal.body[element].length > 0) {
+          doc.setFontType("bold")
+          doc.text(31, height_offset + 34 + (bodyElementCount * 10), body_parts[element])
+
+          doc.setFontType("normal")
+          doc.text(31, height_offset + 39 + (bodyElementCount * 10), journal.body[element].join(', '))
+          bodyElementCount = bodyElementCount + 1
+        }
+      })
+
+      let bodyOffset = bodyElementCount * 10
+
+      doc.setFontSize(13)
+      doc.text(31, height_offset + bodyOffset + 35, "Deine Gedanken:")
+      doc.setFontSize(10)
+      doc.text(31, height_offset + bodyOffset + 40, journal.thoughts.join(', '))
+
+      doc.setFontSize(13)
+      doc.text(31, height_offset + bodyOffset + 45, "Deine Situation:")
+      doc.setFontSize(10)
+      doc.text(31, height_offset + bodyOffset + 50, journal.situation.join(', '))
+
+      doc.setFontSize(13)
+      doc.text(31, height_offset + bodyOffset + 55, "Deine Reaktion:")
+      doc.setFontSize(10)
+      doc.text(31, height_offset + bodyOffset + 60, journal.reaction.join(', '))
+
+      height_offset = height_offset + bodyOffset + 60
     })
+
+    doc.save('journal_output.pdf')
   }
 
   render() {
     return (
-      <div className="partial-wrapper">
-        <div className="partial-container" >
-          <QuestionHeader absolute={true}>
-            <div className="col-xs-1"></div>
-            <QuestionTitle title="Achtsamkeits-Tagebuch"/>
-            <QuestionSubtitle subtitle={this.props.user.email}/>
-          </QuestionHeader>
-          <QuestionMain absolute={true}>
-            <ul className="timeline list">
-              {
-                this.props.pdfJournals.sort(journalSorter).map((journal, i) => {
-                  let date = new Date(journal.created_at)
-                  let mappedJournal = mapJournal(journal)
-                  let style = { color : calculateEmotionColor(mappedJournal.feeling) }
-
-                  return(
-                    <div key={i}>
-                      <div className="row">
-                        <p className="list-title">{formatDay(date)}</p>
-                        <div className="col-xs-2">
-                          {formatTime(date)}
-                        </div>
-                        <div className="col-xs-2">
-                          <FeelingSmiley
-                            feeling={mappedJournal.feeling}
-                          />
-                        </div>
-                        <div className="col-xs-6">
-                          <span className="feeling-value" style= { style } >{ mappedJournal.feeling }<small> / 100</small></span>
-                        </div>
-                      </div>
-                      <div className="row">
-                        <ul className="timeline-day list primary-list">
-                          <li className="list-item rtv-list-item result-title">Dein Körper</li>
-                          <li className="list-item rtv-list-item result-answer"><DisplayBody body={mappedJournal.body} /></li>
-                          <li className="list-item rtv-list-item result-title">Deine Gedanken</li>
-                          <li className="list-item rtv-list-item result-answer">{intersperse(reverseArray(mappedJournal.thoughts),", ")}</li>
-                          <li className="list-item rtv-list-item result-title">Deine Situation</li>
-                          <li className="list-item rtv-list-item result-answer">{intersperse(reverseArray(mappedJournal.situation),", ")}</li>
-                          <li className="list-item rtv-list-item result-title">Deine Reaktion</li>
-                          <li className="list-item rtv-list-item result-answer">{intersperse(reverseArray(mappedJournal.reaction),", ")}</li>
-                        </ul>
-                      </div>
-                    </div>
-                  ) // return
-                }) // map
-              }
-            </ul>
-          </QuestionMain>
-          <FixedSectionFooter>
-            <button className="test-button" onClick={this.createPDF}>
-              <span className="btn-text">create pdf</span>
-            </button>
-            <button className="test-button" onClick={this.navHome}>
-              <span className="btn-text">Home</span>
-            </button>
-          </FixedSectionFooter>
-        </div>
+      <div>
+        <FixedSectionFooter>
+          <button className="test-button" onClick={this.createPDF}>
+            <span className="btn-text">create pdf</span>
+          </button>
+          <button className="test-button" onClick={this.navHome}>
+            <span className="btn-text">Home</span>
+          </button>
+        </FixedSectionFooter>
       </div>
     )
   }
