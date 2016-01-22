@@ -91,7 +91,7 @@ class CreateAccountForm extends Component {
               />
             </div>
             <button className="btn btn-primary nav-button next-button relative-button" onClick={ handleSubmit } >
-              Create Account
+              Account erstellen
             </button>
         </form>
       </div>
@@ -129,7 +129,6 @@ class CreateAccountView extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (typeof nextProps.user !== 'undefined' && typeof nextProps.user.id !== 'undefined') {
-      console.log('account created')
       this.props.navLogin()
     }
   }
@@ -140,8 +139,8 @@ class CreateAccountView extends Component {
         <div className="partial-container" >
           <QuestionHeader>
             <div className="col-xs-1"></div>
-            <QuestionTitle title="Create Account"/>
-            <QuestionSubtitle subtitle="Create an account to save this Eintrage in your personal Tagebuch"/>
+            <QuestionTitle title="Account erstellen"/>
+            <QuestionSubtitle subtitle="Erstelle einen Account, um deine Einträge in deinem persönlichen Achtsamkeits-Tagebuch zu speichern"/>
           </QuestionHeader>
           <QuestionMain>
             <ReduxCreateAccountForm
@@ -149,7 +148,7 @@ class CreateAccountView extends Component {
             />
           </QuestionMain>
           <button className="test-btn" onClick={ this.props.navLogin } >
-            <span className="btn-text">To Login</span>
+            <span className="btn-text">Zum Einloggen</span>
           </button>
         </div>
       </div>
