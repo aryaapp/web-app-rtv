@@ -21,6 +21,13 @@ export function receivedJournals(user_id, data) {
     data: data.journals
   }
 }
+export const SCHEDULE_JOURNAL_SAVE = 'SCHEDULE_JOURNAL_SAVE'
+
+export function scheduleJournalSave() {
+  return {
+    type: SCHEDULE_JOURNAL_SAVE
+  }
+}
 
 export function executeLoadJournals() {
   return (dispatch, getState) => {
@@ -83,7 +90,6 @@ export function executeSaveJournal(journal_data) {
       dispatch(journalSaved(json))
       dispatch(clearDataAction())
       dispatch(pushPath('/thank-you'))
-
     })
     .catch( error => {
       console.log('catch block error', error)

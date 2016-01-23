@@ -10,6 +10,7 @@ import reaction from './reaction'
 import userReducer from './user'
 import journalReducer from './journals'
 import homeViewReducer from './homeView'
+import moodTrackingReducer from './moodTracking'
 
 
 import { CLEAR_DATA } from '../actions/actions'
@@ -29,7 +30,8 @@ const partialReducers = combineReducers({
   access_token: (state = '') => state,
   user: (state = {}) => state,
   journals: journalReducer,
-  homeView: (state = {}) => state
+  homeView: (state = {}) => state,
+  moodTracking: moodTrackingReducer,
 })
 
 /*

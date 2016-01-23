@@ -10,7 +10,7 @@ import d3 from 'd3'
 require('jquery')
 
 
-import { executeSaveJournal } from '../actions/journals'
+import { executeSaveJournal, scheduleJournalSave } from '../actions/journals'
 import { clearDataAction } from '../actions/actions'
 import Section from './Question/Section.react.js'
 import QuestionTitle from './Question/QuestionTitle.react.js'
@@ -56,6 +56,7 @@ const mapDispatchToProps = (dispatch) => {
     executeSaveJournal: (journal_data) => dispatch(executeSaveJournal(journal_data)),
     navHome: () => dispatch(pushPath('/home')),
     navCreateAccount: () => dispatch(pushPath('/anmelden')),
+    scheduleJournalSave: () => dispatch(scheduleJournalSave()),
     clearData: () => dispatch(clearDataAction())
   }
 }
@@ -73,6 +74,8 @@ class ResultsScreen extends Component {
     this.saveResults = this.saveResults.bind(this)
     this.resetBackground = this.resetBackground.bind(this)
     this.navHome = this.navHome.bind(this)
+    this.prepareJournalData = this.prepareJournalData.bind(this)
+    this.navHome = this.navHome.bind(this)
   }
 
   componentDidMount() {
@@ -80,10 +83,11 @@ class ResultsScreen extends Component {
   }
 
   signUp(e) {
+    this.props.scheduleJournalSave()
     this.props.navCreateAccount()
   }
 
-  saveResults(e) {
+  prepareJournalData() {
     let data = {
       questionnaire_id: defaultQuestionnaireId,
       feeling: this.props.feeling.value,
@@ -103,7 +107,12 @@ class ResultsScreen extends Component {
         }
       ]
     }
-    this.props.executeSaveJournal(data)
+
+    return data
+  }
+
+  saveResults(e) {
+    this.props.executeSaveJournal(this.prepareJournalData())
   }
 
   resetBackground() {

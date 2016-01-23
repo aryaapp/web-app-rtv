@@ -7,8 +7,19 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { pushPath } from 'redux-simple-router'
 import { reduxForm } from 'redux-form'
-import { executeCreateAccount } from '../actions/createAccount'
 import Recaptcha from 'react-google-recaptcha'
+
+import { executeCreateAccount } from '../actions/createAccount'
+import { executeSaveJournal } from '../actions/journals'
+import {
+  defaultQuestionnaireId,
+  feelingQuestionId,
+  bodyQuestionId,
+  thoughtsQuestionId,
+  situationQuestionId,
+  reactionQuestionId
+} from '../constants/ids'
+import { intersperse, reverseArray } from '../utilities'
 
 import NextButton from '../components/Reusable/NextButton.react.js'
 import PrevButton from '../components/Reusable/PrevButton.react.js'
@@ -111,6 +122,7 @@ const mapStateToProps = (state) => (state)
 const mapDispatchToProps = (dispatch) => {
   return {
     executeCreateAccount: (email, password) => dispatch(executeCreateAccount(email, password)),
+    executeSaveJournal: (journal_data) => dispatch(executeSaveJournal(journal_data)),
     navLogin: () => dispatch(pushPath('/login'))
   }
 }
@@ -121,15 +133,46 @@ class CreateAccountView extends Component {
 
     this.submitCreateAccount = this.submitCreateAccount.bind(this)
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
+    this.prepareJournalData = this.prepareJournalData.bind(this)
+    this.saveResults = this.saveResults.bind(this)
   }
 
   submitCreateAccount(data) {
     this.props.executeCreateAccount(data.email, data.password)
   }
 
+  prepareJournalData() {
+    let data = {
+      questionnaire_id: defaultQuestionnaireId,
+      feeling: this.props.feeling.value,
+      answers: [
+        {
+          question_id: bodyQuestionId,
+          values: this.props.body
+        }, {
+          question_id: thoughtsQuestionId,
+          values: reverseArray(this.props.thoughts)
+        }, {
+          question_id: situationQuestionId,
+          values: reverseArray(this.props.situation)
+        }, {
+          question_id: reactionQuestionId,
+          values: reverseArray(this.props.reaction)
+        }
+      ]
+    }
+    return data
+  }
+
+  saveResults(e) {
+    this.props.executeSaveJournal(this.prepareJournalData())
+  }
+
   componentWillReceiveProps(nextProps) {
-    if (typeof nextProps.user !== 'undefined' && typeof nextProps.user.id !== 'undefined') {
-      this.props.navLogin()
+    if (typeof nextProps.access_token !== 'undefined' && nextProps.access_token.length > 0) {
+      if(this.props.moodTracking.scheduledJournalSave) {
+        this.saveResults()
+      }
     }
   }
 
