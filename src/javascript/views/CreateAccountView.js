@@ -7,8 +7,19 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { pushPath } from 'redux-simple-router'
 import { reduxForm } from 'redux-form'
-import { executeCreateAccount } from '../actions/createAccount'
 import Recaptcha from 'react-google-recaptcha'
+
+import { executeCreateAccount } from '../actions/createAccount'
+import { executeSaveJournal, unscheduleJournalSave } from '../actions/journals'
+import {
+  defaultQuestionnaireId,
+  feelingQuestionId,
+  bodyQuestionId,
+  thoughtsQuestionId,
+  situationQuestionId,
+  reactionQuestionId
+} from '../constants/ids'
+import { intersperse, reverseArray } from '../utilities'
 
 import NextButton from '../components/Reusable/NextButton.react.js'
 import PrevButton from '../components/Reusable/PrevButton.react.js'
@@ -111,6 +122,8 @@ const mapStateToProps = (state) => (state)
 const mapDispatchToProps = (dispatch) => {
   return {
     executeCreateAccount: (email, password) => dispatch(executeCreateAccount(email, password)),
+    executeSaveJournal: (journal_data) => dispatch(executeSaveJournal(journal_data)),
+    unscheduleJournalSave: () => dispatch(unscheduleJournalSave()),
     navLogin: () => dispatch(pushPath('/login'))
   }
 }
@@ -120,17 +133,10 @@ class CreateAccountView extends Component {
     super(props)
 
     this.submitCreateAccount = this.submitCreateAccount.bind(this)
-    this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
   }
 
   submitCreateAccount(data) {
     this.props.executeCreateAccount(data.email, data.password)
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (typeof nextProps.user !== 'undefined' && typeof nextProps.user.id !== 'undefined') {
-      this.props.navLogin()
-    }
   }
 
   render() {

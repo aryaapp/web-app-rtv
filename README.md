@@ -4,6 +4,7 @@ White Label Mindfulness App
 # Todos
 
 * save jounral after create account
+* handle error responses from api
 
 * remove redux form from login (same for create login form)
 * remove unused components
