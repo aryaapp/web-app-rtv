@@ -95,3 +95,26 @@ export function intersperse(arr, sep) {
       return xs.concat([sep, x]);
   }, [arr[0]]);
 }
+
+export function prepareJournalData(props) {
+    let data = {
+      questionnaire_id: defaultQuestionnaireId,
+      feeling: props.feeling.value,
+      answers: [
+        {
+          question_id: bodyQuestionId,
+          values: props.body
+        }, {
+          question_id: thoughtsQuestionId,
+          values: reverseArray(props.thoughts)
+        }, {
+          question_id: situationQuestionId,
+          values: reverseArray(props.situation)
+        }, {
+          question_id: reactionQuestionId,
+          values: reverseArray(props.reaction)
+        }
+      ]
+    }
+    return data
+  }

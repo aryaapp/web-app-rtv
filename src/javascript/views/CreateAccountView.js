@@ -10,7 +10,7 @@ import { reduxForm } from 'redux-form'
 import Recaptcha from 'react-google-recaptcha'
 
 import { executeCreateAccount } from '../actions/createAccount'
-import { executeSaveJournal } from '../actions/journals'
+import { executeSaveJournal, unscheduleJournalSave } from '../actions/journals'
 import {
   defaultQuestionnaireId,
   feelingQuestionId,
@@ -123,6 +123,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     executeCreateAccount: (email, password) => dispatch(executeCreateAccount(email, password)),
     executeSaveJournal: (journal_data) => dispatch(executeSaveJournal(journal_data)),
+    unscheduleJournalSave: () => dispatch(unscheduleJournalSave()),
     navLogin: () => dispatch(pushPath('/login'))
   }
 }
@@ -132,48 +133,10 @@ class CreateAccountView extends Component {
     super(props)
 
     this.submitCreateAccount = this.submitCreateAccount.bind(this)
-    this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
-    this.prepareJournalData = this.prepareJournalData.bind(this)
-    this.saveResults = this.saveResults.bind(this)
   }
 
   submitCreateAccount(data) {
     this.props.executeCreateAccount(data.email, data.password)
-  }
-
-  prepareJournalData() {
-    let data = {
-      questionnaire_id: defaultQuestionnaireId,
-      feeling: this.props.feeling.value,
-      answers: [
-        {
-          question_id: bodyQuestionId,
-          values: this.props.body
-        }, {
-          question_id: thoughtsQuestionId,
-          values: reverseArray(this.props.thoughts)
-        }, {
-          question_id: situationQuestionId,
-          values: reverseArray(this.props.situation)
-        }, {
-          question_id: reactionQuestionId,
-          values: reverseArray(this.props.reaction)
-        }
-      ]
-    }
-    return data
-  }
-
-  saveResults(e) {
-    this.props.executeSaveJournal(this.prepareJournalData())
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (typeof nextProps.access_token !== 'undefined' && nextProps.access_token.length > 0) {
-      if(this.props.moodTracking.scheduledJournalSave) {
-        this.saveResults()
-      }
-    }
   }
 
   render() {

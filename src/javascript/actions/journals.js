@@ -29,6 +29,14 @@ export function scheduleJournalSave() {
   }
 }
 
+export const UNSCHEDULE_JOURNAL_SAVE = 'UNSCHEDULE_JOURNAL_SAVE'
+
+export function unscheduleJournalSave() {
+  return {
+    type: UNSCHEDULE_JOURNAL_SAVE
+  }
+}
+
 export function executeLoadJournals() {
   return (dispatch, getState) => {
     const { user, access_token } = getState()

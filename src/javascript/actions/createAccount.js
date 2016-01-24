@@ -2,6 +2,7 @@ import fetch from 'isomorphic-fetch'
 import { pushPath } from 'redux-simple-router'
 import config from '../constants/config'
 import { executeLogin } from './login'
+import { executeSaveJournal, unscheduleJournalSave } from './journals'
 
 export const REQUEST_CREATE_ACCOUNT = 'REQUEST_CREATE_ACCOUNT'
 
@@ -22,7 +23,7 @@ export function receivedCreateAccount(email, data) {
 }
 
 export function executeCreateAccount(email, password) {
-  return dispatch => {
+  return (dispatch, getState) => {
     dispatch(requestCreateAccount(email))
 
     let headers = new Headers({ 'Content-Type': 'application/json' });

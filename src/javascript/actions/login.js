@@ -1,6 +1,8 @@
 import fetch from 'isomorphic-fetch'
 import { getValues } from 'redux-form';
 import config from '../constants/config'
+import { unscheduleJournalSave, executeSaveJournal } from './journals'
+import { prepareJournalData } from '../utilities'
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST'
 
@@ -21,7 +23,7 @@ export function receiveLogin(email, data) {
 }
 
 export function executeLogin(email, password) {
-  return dispatch => {
+  return (dispatch, getState) => {
     dispatch(requestLogin(email))
 
     let headers = new Headers({ 'Content-Type': 'application/json' });
@@ -33,7 +35,13 @@ export function executeLogin(email, password) {
           headers: headers
         })
       .then( response => response.json() )
-      .then( json => dispatch(receiveLogin(email, json)) )
+      .then( json => {
+        dispatch(receiveLogin(email, json))
+         if(getState().moodTracking.scheduledJournalSave) {
+          dispatch(unscheduleJournalSave())
+          dispatch(executeSaveJournal(prepareJournalData(getState())))
+        }
+      })
       .catch( error => {
         console.log('catch block error', error)
       })
