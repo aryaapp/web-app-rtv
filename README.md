@@ -3,7 +3,8 @@ White Label Mindfulness App
 
 # Todos
 
-* save jounral after create account
+* journal selection for pdf downloads - and links
+
 * handle error responses from api
 
 * remove redux form from login (same for create login form)
