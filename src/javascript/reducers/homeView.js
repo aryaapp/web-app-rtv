@@ -1,4 +1,4 @@
-import { DISPLAY_NEXT_WEEK, DISPLAY_PREV_WEEK, SET_JOURNALS_FOR_PDF } from '../actions/homeView'
+import { DISPLAY_NEXT_WEEK, DISPLAY_PREV_WEEK, SET_JOURNALS_FOR_PDF, DISPLAY_LAST_JOURNAL } from '../actions/homeView'
 import { RECEIVED_JOURNALS } from '../actions/journals'
 import { journalSorter } from '../utilities'
 import _ from 'lodash'
@@ -38,26 +38,29 @@ const buildState = function(date = new Date(), state) {
   }
 }
 
+const lastJournalDate = function(journals) {
+  if(!_.isNil(journals)) {
+    return new Date(_.first(journals.sort(journalSorter)).created_at)
+  }
+  return new Date()
+}
+
 export default function homeView(state, action) {
   switch (action.type) {
     case DISPLAY_PREV_WEEK:
       return Object.assign({}, state, { homeView: buildState(state.homeView.beginningDate - 8, state) })
     case DISPLAY_NEXT_WEEK:
-        let nextWeekDate = new Date(state.homeView.beginningDate)
-        nextWeekDate.setDate(nextWeekDate.getDate() + 8)
-        // Don't show dates in the future
-        if(nextWeekDate > new Date()) {
-          nextWeekDate = new Date()
-        }
-        return Object.assign({}, state, { homeView: buildState(nextWeekDate, state) })
-    case RECEIVED_JOURNALS:
-      let lastJournalDate
-      if(!_.isNil(state.journals)) {
-        lastJournalDate = new Date(_.first(state.journals.sort(journalSorter)).created_at)
-      } else {
-        lastJournalDate = new Date()
+      let nextWeekDate = new Date(state.homeView.beginningDate)
+      nextWeekDate.setDate(nextWeekDate.getDate() + 8)
+      // Don't show dates in the future
+      if(nextWeekDate > new Date()) {
+        nextWeekDate = new Date()
       }
-      return Object.assign({}, state, { homeView: buildState(lastJournalDate, state) })
+      return Object.assign({}, state, { homeView: buildState(nextWeekDate, state) })
+    case DISPLAY_LAST_JOURNAL:
+      return Object.assign({}, state, { homeView: buildState(lastJournalDate(state.journals), state) })
+    case RECEIVED_JOURNALS:
+      return Object.assign({}, state, { homeView: buildState(lastJournalDate(state.journals), state) })
     case SET_JOURNALS_FOR_PDF:
       let homeViewState = buildState(state.homeView.beginningDate, state)
       homeViewState.journalsForPdf = action.journal_ids

@@ -10,7 +10,7 @@ import ReactSlider from 'rc-slider'
 
 import { executeLoadJournals } from '../actions/journals'
 import { logout } from '../actions/login'
-import { nextWeek, prevWeek, setJournalsForPdf } from '../actions/homeView'
+import { nextWeek, prevWeek, setJournalsForPdf, currentWeek } from '../actions/homeView'
 
 import QuestionTitle from '../components/Question/QuestionTitle.react.js'
 import QuestionSubtitle from '../components/Question/QuestionSubtitle.react.js'

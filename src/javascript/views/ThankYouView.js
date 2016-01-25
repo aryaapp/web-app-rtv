@@ -6,24 +6,34 @@ import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { pushPath } from 'redux-simple-router'
+
 import Content from '../constants/localizableStringsDE.js'
 import FixedSectionFooter from '../components/Question/FixedSectionFooter.react.js'
+
+import { displayLastJournal } from '../actions/homeView'
 
 const mapStateToProps = (state) => (state)
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    navHome: () => dispatch(pushPath('/home'))
+    navHome: () => dispatch(pushPath('/home')),
+    displayLastJournal: () => dispatch(displayLastJournal())
   }
 }
 
 class ThankYouView extends Component {
   constructor(props) {
     super(props)
+    this.navHome = this.navHome.bind(this)
   }
 
   displayThankYouMessage() {
     return Content.OUTRO_MESSAGES[Math.floor(Math.random() * Content.INTRO_MESSAGES.length)]
+  }
+
+  navHome() {
+    this.props.displayLastJournal()
+    this.props.navHome()
   }
 
   render() {
@@ -44,7 +54,7 @@ class ThankYouView extends Component {
         </div>
         <FixedSectionFooter buttons={ 2 } >
           <div className="col-xs-12 buttons-container">
-            <button className="btn btn-primary nav-button next-button relative-button fade-in arya-animation animation3" onClick={this.props.navHome}>Home</button>
+            <button className="btn btn-primary nav-button next-button relative-button fade-in arya-animation animation3" onClick={this.navHome}>Home</button>
             <button className="btn nav-button next-button relative-button fade-in arya-animation animation3" >Mehr zum Thema Achtsamkeit</button>
           </div>
         </FixedSectionFooter>

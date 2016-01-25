@@ -12,6 +12,7 @@ require('jquery')
 
 import { executeSaveJournal, scheduleJournalSave } from '../actions/journals'
 import { clearDataAction } from '../actions/actions'
+
 import Section from './Question/Section.react.js'
 import QuestionTitle from './Question/QuestionTitle.react.js'
 import QuestionSubtitle from './Question/QuestionSubtitle.react.js'

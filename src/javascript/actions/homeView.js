@@ -15,6 +15,14 @@ export function prevWeek() {
   }
 }
 
+export const DISPLAY_LAST_JOURNAL = 'DISPLAY_LAST_JOURNAL'
+
+export function displayLastJournal() {
+  return {
+    type: DISPLAY_LAST_JOURNAL
+  }
+}
+
 export const SET_JOURNALS_FOR_PDF = 'SET_JOURNALS_FOR_PDF'
 
 export function setJournalsForPdf(journal_ids) {
