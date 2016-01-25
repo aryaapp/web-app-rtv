@@ -102,7 +102,7 @@ class CreateAccountForm extends Component {
               />
             </div>
             <button className="btn btn-primary nav-button next-button relative-button" onClick={ handleSubmit } >
-              Account erstellen
+              Zugang erstellen
             </button>
         </form>
       </div>
@@ -145,8 +145,8 @@ class CreateAccountView extends Component {
         <div className="partial-container" >
           <QuestionHeader>
             <div className="col-xs-1"></div>
-            <QuestionTitle title="Account erstellen"/>
-            <QuestionSubtitle subtitle="Erstelle einen Account, um deine Einträge in deinem persönlichen Achtsamkeits-Tagebuch zu speichern"/>
+            <QuestionTitle title="Zugang erstellen"/>
+            <QuestionSubtitle subtitle="Erstelle einen Zugang, um deine Einträge in deinem persönlichen Achtsamkeits-Tagebuch zu speichern"/>
           </QuestionHeader>
           <QuestionMain>
             <ReduxCreateAccountForm
