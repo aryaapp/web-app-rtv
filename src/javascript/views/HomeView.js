@@ -12,14 +12,12 @@ import { executeLoadJournals } from '../actions/journals'
 import { logout } from '../actions/login'
 import { nextWeek, prevWeek, setJournalsForPdf } from '../actions/homeView'
 
-import NextButton from '../components/Reusable/NextButton.react.js'
-import PrevButton from '../components/Reusable/PrevButton.react.js'
-
 import QuestionTitle from '../components/Question/QuestionTitle.react.js'
 import QuestionSubtitle from '../components/Question/QuestionSubtitle.react.js'
 import QuestionHeader from '../components/Question/QuestionHeader.react.js'
 import QuestionMain from '../components/Question/QuestionMain.react.js'
 import JournalList from '../components/JournalList'
+import { formatDay } from '../utilities'
 
 import FixedSectionFooter from '../components/Question/FixedSectionFooter.react.js'
 
@@ -100,11 +98,11 @@ class HomeView extends Component {
           <QuestionMain absolute={true}>
             <div>
               <button className="test-button" onClick={this.props.prevWeek}>
-                <span className="btn-text">prev week</span>
+                <span className="btn-text">vorherige Woche</span>
               </button>
-              <p>{this.props.beginningDate.toDateString()} - {this.props.endDate.toDateString()}</p>
+              <p>{formatDay(this.props.beginningDate)} - {formatDay(this.props.endDate)}</p>
               <button className="test-button" onClick={this.props.nextWeek}>
-                <span className="btn-text">next week</span>
+                <span className="btn-text">nächste Woche</span>
               </button>
             </div>
             <JournalList
