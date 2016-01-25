@@ -125,9 +125,9 @@ class HomeView extends Component {
                 ALLE EINTRÄGE HERUNTERLADE
               </button>
             </div>
-            <button className="test-button" onClick={this.logout}>
-              <span className="btn-text">logout</span>
-            </button>
+            <div className="logout" onClick={this.logout}>
+              <span className="logout-text">ausloggen</span>
+            </div>
           </QuestionMain>
           <FixedSectionFooter>
           <div className="col-xs-12">

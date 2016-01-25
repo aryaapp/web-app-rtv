@@ -185,19 +185,39 @@ body{
     //hide for now
     //think about react component structure later; 
     //i.e. QuestionView with gradient bg that consists of PageNumber(transparant bg) and Page (white bg)
-    display:none;
     text-align: center;
     color: white;
-    margin-top: 3px;
+    margin-top: -25px;
+    width: 100%;
+    position:fixed;
     font-weight: normal;
     text-shadow: 0 0 25px #cccccc;
     @media(min-width: @screen-sm) {
         color: #444;
         position: absolute;
         z-index: 100;
-        left: 28%;
-        top: 117px;
+        left: 6px;
+        top: 42px;
+        background: rgba(255,255,255,0.9);
+        width: inherit;
+        padding: 5px 5px;
+        border-radius: 16px;
     }
+}
+
+.logout {
+    position: fixed;
+    top: 80px; //needs better solution
+    right: 8px;
+    font-size: 12px;
+    color:#444;
+    font-style: italic;
+    opacity: 0.7;
+}
+.logout:hover, .logout:focus {
+    opacity:1;
+    color:#444;
+    cursor:pointer;
 }
 
 .rtv-header-container {
@@ -215,6 +235,9 @@ body{
     top: 136px;
     bottom: 100px;
     overflow-y:auto;
+    @media(min-width: @screen-sm) {
+        top: 172px;
+    }
 }
 
 .rtv-title h3, .rtv-title {
@@ -224,9 +247,6 @@ body{
     margin-bottom: 0px;
     line-height:24px;
     margin-top:9px;
-    @media (min-width: @screen-sm) {
-        margin-top: 32px;
-    }
 }
 .rtv-subtitle h5 {
     font-weight: normal;
@@ -247,10 +267,10 @@ body{
     top: 23px;
     position: absolute;
     right: 16px;
-    @media (min-width: @screen-sm) {
+/*    @media (min-width: @screen-sm) {
         top: 64px;
         right: 48px;
-    }
+    }*/
 }
 
 .relative {

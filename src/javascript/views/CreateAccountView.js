@@ -153,9 +153,7 @@ class CreateAccountView extends Component {
               onSubmit={this.submitCreateAccount}
             />
           </QuestionMain>
-          <button className="test-btn" onClick={ this.props.navLogin } >
-            <span className="btn-text">Zum Einloggen</span>
-          </button>
+          
         </div>
       </div>
     )
@@ -167,3 +165,7 @@ CreateAccountView.propTypes = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateAccountView)
+
+// <button className="test-btn" onClick={ this.props.navLogin } >
+//             <span className="btn-text">Zum Einloggen</span>
+//           </button>
