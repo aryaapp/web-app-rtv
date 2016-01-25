@@ -25,6 +25,9 @@ const buildState = function(date = new Date(), state) {
   let selectedJournals = []
   if(!_.isNil(state.journals)) {
     selectedJournals = state.journals.filter(journal => {
+      if (_.isNil(journal)) {
+        return false
+      }
       let journal_date = new Date(journal.created_at.substring(0,10))
       return (journal_date > beginningOfWeek && journal_date < endOfWeek)
     })
