@@ -57,10 +57,10 @@ class WelcomeView extends Component {
         <FixedSectionFooter buttons={2}>
           <div className="col-xs-12 buttons-container">
             <button className="btn btn-primary nav-button next-button relative-button fade-in arya-animation animation3" onClick={this.props.navFeeling}>
-              <span className="btn-text">Ich bin neu hier</span><i className="fa fa-arrow-right"></i>
+              <span className="btn-text">Ich bin neu hier</span>
             </button>
             <button className="btn nav-button next-button relative-button fade-in arya-animation animation3" onClick={this.props.navLogin}>
-              <span className="btn-text">Anmelden </span><i className="fa fa-arrow-right"></i>
+              <span className="btn-text">Anmelden </span>
             </button>
           </div>
         </FixedSectionFooter>

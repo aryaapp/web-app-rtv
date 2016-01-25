@@ -138,9 +138,9 @@ class ResultsScreen extends Component {
 
     const { access_token } = this.props
     if( typeof access_token !== 'undefined' && access_token.length > 0) {
-      submitButton = <button className='btn btn-primary nav-button next-button relative-button' onClick={this.saveResults}><i className="fa fa-envelope-o"></i> Eintrag speichern</button>
+      submitButton = <button className='btn btn-primary nav-button next-button relative-button' onClick={this.saveResults}>Eintrag speichern</button>
     } else {
-      submitButton = <button className='btn btn-primary nav-button next-button relative-button' onClick={this.signUp}><i className="fa fa-envelope-o"></i> Zugang anlegen</button>
+      submitButton = <button className='btn btn-primary nav-button next-button relative-button' onClick={this.signUp}>Zugang anlegen</button>
     }
 
     return (
