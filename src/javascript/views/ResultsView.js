@@ -9,6 +9,8 @@ import { pushPath } from 'redux-simple-router'
 
 import ResultsScreen from '../components/ResultsScreen.react.js'
 import PrevButton from '../components/Reusable/PrevButton.react.js'
+import PageNumber from '../components/PageNumber.react.js'
+
 
 import { clearDataAction } from '../actions/actions'
 
@@ -32,6 +34,7 @@ class ResultsView extends Component {
     return (
       <div className="partial-wrapper" key="5">
         <div className="partial-container" >
+          <PageNumber page={ 6 } />
           <ResultsScreen
             feeling={this.props.feeling}
             body={this.props.body}
