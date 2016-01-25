@@ -35,7 +35,7 @@ class LoginForm extends Component {
       <form onSubmit={ handleSubmit }>
         <input className="form-control email-control" type='text' placeholder="E-Mail" { ...email } />
         <input className="form-control email-control" type='password' placeholder="Password" { ...password } />
-        <button onClick={ handleSubmit } className="btn btn-primary nav-button next-button relative-button" type="submit" >Login</button>
+        <button onClick={ handleSubmit } className="btn btn-primary nav-button next-button relative-button" type="submit" >Anmelden</button>
       </form>
     )
   }

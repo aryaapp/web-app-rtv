@@ -1,4 +1,4 @@
-import { DISPLAY_NEXT_WEEK, DISPLAY_PREV_WEEK  } from '../actions/homeView'
+import { DISPLAY_NEXT_WEEK, DISPLAY_PREV_WEEK, SET_JOURNALS_FOR_PDF } from '../actions/homeView'
 import { RECEIVED_JOURNALS } from '../actions/journals'
 import _ from 'lodash'
 
@@ -18,7 +18,7 @@ const getSunday = function(original_date) {
   return date
 }
 
-const buildState = function(date, state) {
+const buildState = function(date = new Date(), state) {
   let beginningOfWeek = getMonday(date)
   let endOfWeek = getSunday(date)
   let selectedJournals = []
@@ -32,7 +32,8 @@ const buildState = function(date, state) {
   return {
     beginningDate: beginningOfWeek,
     endDate: endOfWeek,
-    selectedJournals: selectedJournals
+    selectedJournals: selectedJournals,
+    journalsForPdf: typeof state.homeViewState === 'undefined' ? [] : (state.homeViewState.journalsForPdf || [])
   }
 }
 
@@ -47,6 +48,10 @@ export default function homeView(state, action) {
         return Object.assign({}, state, { homeView: buildState(nextWeekDate, state) })
     case RECEIVED_JOURNALS:
       return Object.assign({}, state, { homeView: buildState(new Date(), state) })
+    case SET_JOURNALS_FOR_PDF:
+      let homeViewState = buildState(state.homeView.beginningDate, state)
+      homeViewState.journalsForPdf = action.journal_ids
+      return Object.assign({}, state, { homeView: homeViewState })
     default:
       if(_.isEmpty(state.homeView)) {
        return Object.assign({}, state, { homeView: buildState(new Date(), state) })

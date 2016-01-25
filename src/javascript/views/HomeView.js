@@ -10,7 +10,7 @@ import ReactSlider from 'rc-slider'
 
 import { executeLoadJournals } from '../actions/journals'
 import { logout } from '../actions/login'
-import { nextWeek, prevWeek } from '../actions/homeView'
+import { nextWeek, prevWeek, setJournalsForPdf } from '../actions/homeView'
 
 import NextButton from '../components/Reusable/NextButton.react.js'
 import PrevButton from '../components/Reusable/PrevButton.react.js'
@@ -28,13 +28,15 @@ const mapStateToProps = (state) => {
     user: state.user,
     beginningDate: state.homeView.beginningDate,
     endDate: state.homeView.endDate,
-    selectedJournals: state.homeView.selectedJournals
+    selectedJournals: state.homeView.selectedJournals,
+    journals: state.journals
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     executeLoadJournals: () => dispatch(executeLoadJournals()),
+    setJournalsForPdf: (journal_ids) => dispatch(setJournalsForPdf(journal_ids)),
     navMoodTracking: () => dispatch(pushPath('/feeling')),
     navJournals: () => dispatch(pushPath('/journals')),
     navStart: () => dispatch(pushPath('/')),
@@ -51,10 +53,32 @@ class HomeView extends Component {
 
     this.logout = this.logout.bind(this)
     this.componentWillMount = this.componentWillMount.bind(this)
+    this.singleJournalPDF = this.singleJournalPDF.bind(this)
+    this.weekPDF = this.weekPDF.bind(this)
+    this.allJournalsPDF = this.allJournalsPDF.bind(this)
   }
 
   componentWillMount() {
     this.props.executeLoadJournals();
+  }
+
+  singleJournalPDF(journal) {
+    let journal_ids = [journal.id]
+    this.props.setJournalsForPdf(journal_ids)
+    this.props.navPrint()
+  }
+
+  weekPDF() {
+    let journal_ids = _.map(this.props.selectedJournals, (j) => j.id)
+    this.props.setJournalsForPdf(journal_ids)
+    this.props.navPrint()
+  }
+
+  allJournalsPDF() {
+    let journal_ids = _.map(this.props.journals, (j) => j.id)
+
+    this.props.setJournalsForPdf(journal_ids)
+    this.props.navPrint()
   }
 
   logout() {
@@ -83,9 +107,14 @@ class HomeView extends Component {
             </div>
             <JournalList
               journals={this.props.selectedJournals}
+              singleJournalPDF={this.singleJournalPDF}
             />
-            <button className="btn btn-ghost btn-full-width">EINTRÄGE DIESER WOCHE HERUNTERLADEN</button>
-            <button className="btn btn-ghost btn-full-width">ALLE BISHERIGEN EINTRÄGE HERUNTERLADEN</button>
+            <button className="btn btn-ghost btn-full-width" onClick={this.weekPDF}>
+              EINTRÄGE DIESER WOCHE HERUNTERLADEN
+            </button>
+            <button className="btn btn-ghost btn-full-width" onClick={this.allJournalsPDF}>
+              ALLE BISHERIGEN EINTRÄGE HERUNTERLADE
+            </button>
             <button className="test-button" onClick={this.logout}>
               <span className="btn-text">logout</span>
             </button>
