@@ -120,12 +120,6 @@ class HomeView extends Component {
             <button className="test-button" onClick={this.logout}>
               <span className="btn-text">logout</span>
             </button>
-            <button className="test-button" onClick={this.props.executeLoadJournals}>
-              <span className="btn-text">load journals</span>
-            </button>
-            <button className="test-button" onClick={this.props.navPrint}>
-              <span className="btn-text">nav PDF Creation</span>
-            </button>
           </QuestionMain>
           <FixedSectionFooter>
           <div className="col-xs-12">
