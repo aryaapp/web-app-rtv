@@ -52,14 +52,16 @@ class HomeView extends Component {
     super(props)
 
     this.logout = this.logout.bind(this)
-    this.componentWillMount = this.componentWillMount.bind(this)
+    this.componentDidMount = this.componentDidMount.bind(this)
     this.singleJournalPDF = this.singleJournalPDF.bind(this)
     this.weekPDF = this.weekPDF.bind(this)
     this.allJournalsPDF = this.allJournalsPDF.bind(this)
   }
 
-  componentWillMount() {
-    this.props.executeLoadJournals();
+  componentDidMount() {
+    if(_.isEmpty(this.props.journals)) {
+      this.props.executeLoadJournals();
+    }
   }
 
   singleJournalPDF(journal) {
@@ -117,12 +119,6 @@ class HomeView extends Component {
             </button>
             <button className="test-button" onClick={this.logout}>
               <span className="btn-text">logout</span>
-            </button>
-            <button className="test-button" onClick={this.props.executeLoadJournals}>
-              <span className="btn-text">load journals</span>
-            </button>
-            <button className="test-button" onClick={this.props.navPrint}>
-              <span className="btn-text">nav PDF Creation</span>
             </button>
           </QuestionMain>
           <FixedSectionFooter>

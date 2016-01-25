@@ -3,6 +3,7 @@ White Label Mindfulness App
 
 # Todos
 
+* don't show weeks in the future
 * clean up journal pdf view
 * handle error responses from api
 
