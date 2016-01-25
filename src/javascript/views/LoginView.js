@@ -9,6 +9,8 @@ import { pushPath } from 'redux-simple-router'
 import { reduxForm } from 'redux-form'
 import { executeLogin } from '../actions/login'
 
+// let jsPDF = require('jspdf')
+
 import NextButton from '../components/Reusable/NextButton.react.js'
 import PrevButton from '../components/Reusable/PrevButton.react.js'
 
@@ -66,16 +68,15 @@ class LoginView extends Component {
     return (
       <div className="partial-wrapper">
         <div className="partial-container" >
-
           <QuestionHeader>
             <div className="col-xs-1"></div>
             <QuestionTitle title="Einloggen"/>
             <QuestionSubtitle subtitle="Logge dich zu deinem persönlichen Achtsamkeits-Tagebuch ein"/>
           </QuestionHeader>
           <QuestionMain>
-              <ReduxLoginFrom
-                onSubmit={this.onSubmit}
-              />
+            <ReduxLoginFrom
+              onSubmit={this.onSubmit}
+            />
           </QuestionMain>
         </div>
       </div>

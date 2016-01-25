@@ -19,22 +19,7 @@ import {
   reactionQuestionId
 } from '../constants/ids'
 import FeelingSmiley from './FeelingSmiley'
-import { formatDay, formatTime, journalSorter, mapJournal, reverseArray, intersperse} from '../utilities'
-
-//returns color belonging to moodrange 0-100
-const calculateEmotionColor = function(feeling) {
-  if(feeling == 100) {
-      return "#92d381"
-     } else if (feeling >= 74) {
-      return "#c7d476"
-     } else if (feeling >= 50) {
-      return "#fcd56b"
-     } else if (feeling >= 26) {
-      return "#f2a26b"
-     } else {
-      return "#e86e6b"
-     }
-}
+import { calculateEmotionColor, formatDay, formatTime, journalSorter, mapJournal, reverseArray, intersperse} from '../utilities'
 
 export default class JournalList extends Component {
   render() {
