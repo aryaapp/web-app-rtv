@@ -3,6 +3,7 @@ White Label Mindfulness App
 
 # Todos
 
+* prevent reload on home view if journals are already there.
 * clean up journal pdf view
 * handle error responses from api
 
