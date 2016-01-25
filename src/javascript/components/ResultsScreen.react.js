@@ -76,6 +76,7 @@ class ResultsScreen extends Component {
     this.navHome = this.navHome.bind(this)
     this.prepareJournalData = this.prepareJournalData.bind(this)
     this.navHome = this.navHome.bind(this)
+    this.clearData = this.clearData.bind(this)
   }
 
   componentDidMount() {
@@ -126,14 +127,19 @@ class ResultsScreen extends Component {
     this.props.navHome()
   }
 
+  clearData() {
+    this.props.clearData()
+    this.navHome()
+  }
+
   render() {
     let submitButton = ''
 
     const { access_token } = this.props
     if( typeof access_token !== 'undefined' && access_token.length > 0) {
-      submitButton = <button className='btn btn-primary nav-button next-button relative-button' onClick={this.saveResults}><i className="fa fa-envelope-o"></i>Eintrag speichern</button>
+      submitButton = <button className='btn btn-primary nav-button next-button relative-button' onClick={this.saveResults}><i className="fa fa-envelope-o"></i> Eintrag speichern</button>
     } else {
-      submitButton = <button className='btn btn-primary nav-button next-button relative-button' onClick={this.signUp}><i className="fa fa-envelope-o"></i>Zugang anlegen</button>
+      submitButton = <button className='btn btn-primary nav-button next-button relative-button' onClick={this.signUp}><i className="fa fa-envelope-o"></i> Zugang anlegen</button>
     }
 
     return (
@@ -144,39 +150,35 @@ class ResultsScreen extends Component {
           <QuestionSubtitle subtitle= { Content.QUESTION_FINISH_SUBTITLE } />
         </QuestionHeader>
         <QuestionMain>
-            <ul className="rtv-results list rtv-list">
-              <li className="list-item rtv-list-item result-title">Dein Befinden <strong></strong></li>
-              <li className="list-item rtv-list-item result-answer">
-                <div className="row">
-                  <div className="col-xs-2">
-                    <span className="feeling-value">{this.props.feeling.value}</span>
-                  </div>
-                  <div className="col-xs-10">
-                    <ReactSlider disabled={true} value={this.props.feeling.value} />
-                  </div>
+          <ul className="rtv-results list rtv-list">
+            <li className="list-item rtv-list-item result-title">Dein Befinden <strong></strong></li>
+            <li className="list-item rtv-list-item result-answer">
+              <div className="row">
+                <div className="col-xs-2">
+                  <span className="feeling-value">{this.props.feeling.value}</span>
                 </div>
-              </li>
-              <li className="list-item rtv-list-item result-title">Dein Körper</li>
-              <li className="list-item rtv-list-item result-answer"><DisplayBody body={this.props.body} /></li>
-              <li className="list-item rtv-list-item result-title">Deine Gedanken</li>
-              <li className="list-item rtv-list-item result-answer">{intersperse(reverseArray(this.props.thoughts),", ")}</li>
-              <li className="list-item rtv-list-item result-title">Deine Situation</li>
-              <li className="list-item rtv-list-item result-answer">{intersperse(reverseArray(this.props.situation),", ")}</li>
-              <li className="list-item rtv-list-item result-title">Deine Reaktion</li>
-              <li className="list-item rtv-list-item result-answer">{intersperse(reverseArray(this.props.reaction),", ")}</li>
-            </ul>
-
-            <div className="col-xs-12">
-              { submitButton }
-            </div>
-            <div className="col-xs-12">
-              <button className='btn nav-button next-button relative-button' onClick={this.props.clearData}>Eintrag verwerfen</button>
-            </div>
-            <div className="col-xs-12">
-              <button className='test-button' onClick={this.navHome}>Home</button>
-            </div>
-          </QuestionMain>
-          <ConfirmationModal ref="confirmation" />
+                <div className="col-xs-10">
+                  <ReactSlider disabled={true} value={this.props.feeling.value} />
+                </div>
+              </div>
+            </li>
+            <li className="list-item rtv-list-item result-title">Dein Körper</li>
+            <li className="list-item rtv-list-item result-answer"><DisplayBody body={this.props.body} /></li>
+            <li className="list-item rtv-list-item result-title">Deine Gedanken</li>
+            <li className="list-item rtv-list-item result-answer">{intersperse(reverseArray(this.props.thoughts),", ")}</li>
+            <li className="list-item rtv-list-item result-title">Deine Situation</li>
+            <li className="list-item rtv-list-item result-answer">{intersperse(reverseArray(this.props.situation),", ")}</li>
+            <li className="list-item rtv-list-item result-title">Deine Reaktion</li>
+            <li className="list-item rtv-list-item result-answer">{intersperse(reverseArray(this.props.reaction),", ")}</li>
+          </ul>
+          <div className="col-xs-12">
+            { submitButton }
+          </div>
+          <div className="col-xs-12">
+            <button className='btn nav-button next-button relative-button' onClick={this.clearData}>Eintrag verwerfen</button>
+          </div>
+        </QuestionMain>
+        <ConfirmationModal ref="confirmation" />
       </Section>
     );
   }

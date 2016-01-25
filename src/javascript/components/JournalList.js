@@ -78,7 +78,7 @@ export default class JournalList extends Component {
                             <li className="list-item rtv-list-item result-title">Deine Reaktion</li>
                             <li className="list-item rtv-list-item result-answer">{intersperse(reverseArray(mappedJournal.reaction),", ")}</li>
                           </ul>
-                          <button className="btn btn-ghost btn-full-width">DIESEN EINTRAG HERUNTERLADEN</button>
+                          <button className="btn btn-ghost btn-full-width" onClick={this.props.singleJournalPDF.bind(null,journal)}>DIESEN EINTRAG HERUNTERLADEN</button>
                         </div>
                       </div>
                     )

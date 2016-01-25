@@ -10,16 +10,14 @@ import ReactSlider from 'rc-slider'
 
 import { executeLoadJournals } from '../actions/journals'
 import { logout } from '../actions/login'
-import { nextWeek, prevWeek } from '../actions/homeView'
-
-import NextButton from '../components/Reusable/NextButton.react.js'
-import PrevButton from '../components/Reusable/PrevButton.react.js'
+import { nextWeek, prevWeek, setJournalsForPdf } from '../actions/homeView'
 
 import QuestionTitle from '../components/Question/QuestionTitle.react.js'
 import QuestionSubtitle from '../components/Question/QuestionSubtitle.react.js'
 import QuestionHeader from '../components/Question/QuestionHeader.react.js'
 import QuestionMain from '../components/Question/QuestionMain.react.js'
 import JournalList from '../components/JournalList'
+import { formatDay } from '../utilities'
 
 import FixedSectionFooter from '../components/Question/FixedSectionFooter.react.js'
 
@@ -28,13 +26,15 @@ const mapStateToProps = (state) => {
     user: state.user,
     beginningDate: state.homeView.beginningDate,
     endDate: state.homeView.endDate,
-    selectedJournals: state.homeView.selectedJournals
+    selectedJournals: state.homeView.selectedJournals,
+    journals: state.journals
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     executeLoadJournals: () => dispatch(executeLoadJournals()),
+    setJournalsForPdf: (journal_ids) => dispatch(setJournalsForPdf(journal_ids)),
     navMoodTracking: () => dispatch(pushPath('/feeling')),
     navJournals: () => dispatch(pushPath('/journals')),
     navStart: () => dispatch(pushPath('/')),
@@ -50,11 +50,35 @@ class HomeView extends Component {
     super(props)
 
     this.logout = this.logout.bind(this)
-    this.componentWillMount = this.componentWillMount.bind(this)
+    this.componentDidMount = this.componentDidMount.bind(this)
+    this.singleJournalPDF = this.singleJournalPDF.bind(this)
+    this.weekPDF = this.weekPDF.bind(this)
+    this.allJournalsPDF = this.allJournalsPDF.bind(this)
   }
 
-  componentWillMount() {
-    this.props.executeLoadJournals();
+  componentDidMount() {
+    if(_.isEmpty(this.props.journals)) {
+      this.props.executeLoadJournals();
+    }
+  }
+
+  singleJournalPDF(journal) {
+    let journal_ids = [journal.id]
+    this.props.setJournalsForPdf(journal_ids)
+    this.props.navPrint()
+  }
+
+  weekPDF() {
+    let journal_ids = _.map(this.props.selectedJournals, (j) => j.id)
+    this.props.setJournalsForPdf(journal_ids)
+    this.props.navPrint()
+  }
+
+  allJournalsPDF() {
+    let journal_ids = _.map(this.props.journals, (j) => j.id)
+
+    this.props.setJournalsForPdf(journal_ids)
+    this.props.navPrint()
   }
 
   logout() {
@@ -74,26 +98,25 @@ class HomeView extends Component {
           <QuestionMain absolute={true}>
             <div>
               <button className="test-button" onClick={this.props.prevWeek}>
-                <span className="btn-text">prev week</span>
+                <span className="btn-text">vorherige Woche</span>
               </button>
-              <p>{this.props.beginningDate.toDateString()} - {this.props.endDate.toDateString()}</p>
+              <p>{formatDay(this.props.beginningDate)} - {formatDay(this.props.endDate)}</p>
               <button className="test-button" onClick={this.props.nextWeek}>
-                <span className="btn-text">next week</span>
+                <span className="btn-text">nächste Woche</span>
               </button>
             </div>
             <JournalList
               journals={this.props.selectedJournals}
+              singleJournalPDF={this.singleJournalPDF}
             />
-            <button className="btn btn-ghost btn-full-width">EINTRÄGE DIESER WOCHE HERUNTERLADEN</button>
-            <button className="btn btn-ghost btn-full-width">ALLE BISHERIGEN EINTRÄGE HERUNTERLADEN</button>
+            <button className="btn btn-ghost btn-full-width" onClick={this.weekPDF}>
+              EINTRÄGE DIESER WOCHE HERUNTERLADEN
+            </button>
+            <button className="btn btn-ghost btn-full-width" onClick={this.allJournalsPDF}>
+              ALLE BISHERIGEN EINTRÄGE HERUNTERLADE
+            </button>
             <button className="test-button" onClick={this.logout}>
               <span className="btn-text">logout</span>
-            </button>
-            <button className="test-button" onClick={this.props.executeLoadJournals}>
-              <span className="btn-text">load journals</span>
-            </button>
-            <button className="test-button" onClick={this.props.navPrint}>
-              <span className="btn-text">nav PDF Creation</span>
             </button>
           </QuestionMain>
           <FixedSectionFooter>
