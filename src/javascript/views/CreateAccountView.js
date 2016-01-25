@@ -53,7 +53,7 @@ const createAccountFormValidation = (values) => {
 
   }
   return errors;
-};
+}
 
 class CreateAccountForm extends Component {
   constructor(props) {

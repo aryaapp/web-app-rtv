@@ -1,4 +1,4 @@
-import { LOGIN_RECEIVED, LOGOUT } from '../actions/login'
+import { LOGIN_RECEIVED, LOGOUT, LOGIN_FAILED } from '../actions/login'
 import { RECEIVED_CREATE_ACCOUNT } from '../actions/createAccount'
 
 export default function user(state = {}, action) {
@@ -6,7 +6,12 @@ export default function user(state = {}, action) {
     case LOGIN_RECEIVED:
       return Object.assign({}, state, {
           access_token: action.data.access_token,
-          user: action.data.user
+          user: action.data.user,
+          errors: []
+        })
+    case LOGIN_FAILED:
+      return Object.assign({}, state, {
+          errors: action.errors
         })
     case RECEIVED_CREATE_ACCOUNT:
       return Object.assign({}, state, { user: action.data.user })

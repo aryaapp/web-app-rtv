@@ -22,6 +22,15 @@ export function receiveLogin(email, data) {
   }
 }
 
+export const LOGIN_FAILED = 'LOGIN_FAILED'
+
+export function loginFailed(errors) {
+  return {
+    type: LOGIN_FAILED,
+    errors: errors
+  }
+}
+
 export function executeLogin(email, password) {
   return (dispatch, getState) => {
     dispatch(requestLogin(email))
@@ -34,16 +43,26 @@ export function executeLogin(email, password) {
           body: JSON.stringify({ email: email, password: password}),
           headers: headers
         })
-      .then( response => response.json() )
-      .then( json => {
-        dispatch(receiveLogin(email, json))
-         if(getState().moodTracking.scheduledJournalSave) {
-          dispatch(unscheduleJournalSave())
-          dispatch(executeSaveJournal(prepareJournalData(getState())))
+      .then( response => {
+        console.log('response', response)
+
+        switch (response.status) {
+          case 401:
+            response.json().then(json => {
+              console.log('json', json)
+              dispatch(loginFailed(json.errors))
+            })
+            break
+          default:
+            response.json().then(json => {
+              console.log('json', json)
+              dispatch(receiveLogin(email, json))
+               if(getState().moodTracking.scheduledJournalSave) {
+                dispatch(unscheduleJournalSave())
+                dispatch(executeSaveJournal(prepareJournalData(getState())))
+              }
+            })
         }
-      })
-      .catch( error => {
-        console.log('catch block error', error)
       })
   }
 }

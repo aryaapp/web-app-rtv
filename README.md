@@ -3,6 +3,8 @@ White Label Mindfulness App
 
 # Todos
 
+* home view - show current week when load view
+
 * clean up journal pdf view
 * handle error responses from api
 

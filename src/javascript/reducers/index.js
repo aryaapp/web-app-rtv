@@ -31,6 +31,7 @@ const partialReducers = combineReducers({
   user: (state = {}) => state,
   journals: journalReducer,
   homeView: (state = {}) => state,
+  errors: (state = []) => state,
   moodTracking: moodTrackingReducer,
 })
 
