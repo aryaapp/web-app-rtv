@@ -42,7 +42,7 @@ export default class JournalList extends Component {
         {
           _.map(journalsPerDay, (journalsForTheDay, day_string) => {
             return(
-              <div key={day_string}>
+              <div className="timeline-item list-item" key={day_string}>
                 <p className="list-title">{day_string}</p>
                 {
                   journalsForTheDay.map((journal, i) => {
@@ -50,9 +50,9 @@ export default class JournalList extends Component {
                     let style = { color : calculateEmotionColor(mappedJournal.feeling) }
 
                     return(
-                      <div key={i}>
-                        <div className="row">
-                          <div className="col-xs-2">
+                      <div className="journal" key={i} data-toggle="collapse" data-target={ "#collapse-" + i }>
+                        <div className="row special-row">
+                          <div className="col-xs-2 time">
                             {formatTime(new Date(journal.created_at))}
                           </div>
                           <div className="col-xs-2">
@@ -60,25 +60,27 @@ export default class JournalList extends Component {
                               feeling={mappedJournal.feeling}
                             />
                           </div>
-                          <div className="col-xs-6">
-                            <span className="feeling-value" style= { style } >{ mappedJournal.feeling }<small> / 100</small></span>
+                          <div className="col-xs-6 ">
+                            <span className="feeling-value" style= { style } >{ mappedJournal.feeling }</span><span style= { style }> / 100</span>
                           </div>
                           <div className="col-xs-2">
-                            <button type="button" data-toggle="collapse" data-target={ "#collapse-" + i } aria-expanded="false" aria-controls="collapseExample">hit meh</button>
+                            <div type="button" ><i className="fa fa-lg fa-angle-down"></i></div>
                           </div>
                         </div>
-                        <div className="row collapse" id={ "collapse-" + i }>
+                        <div className="row special-row collapse" id={ "collapse-" + i }>
                           <ul className="timeline-day list primary-list">
-                            <li className="list-item rtv-list-item result-title">Dein Körper</li>
-                            <li className="list-item rtv-list-item result-answer"><DisplayBody body={mappedJournal.body} /></li>
-                            <li className="list-item rtv-list-item result-title">Deine Gedanken</li>
-                            <li className="list-item rtv-list-item result-answer">{intersperse(reverseArray(mappedJournal.thoughts),", ")}</li>
-                            <li className="list-item rtv-list-item result-title">Deine Situation</li>
-                            <li className="list-item rtv-list-item result-answer">{intersperse(reverseArray(mappedJournal.situation),", ")}</li>
-                            <li className="list-item rtv-list-item result-title">Deine Reaktion</li>
-                            <li className="list-item rtv-list-item result-answer">{intersperse(reverseArray(mappedJournal.reaction),", ")}</li>
+                            <li className="rtv-list-item result-title">Dein Körper</li>
+                            <li className="rtv-list-item result-answer"><DisplayBody body={mappedJournal.body} /></li>
+                            <li className="rtv-list-item result-title">Deine Gedanken</li>
+                            <li className="rtv-list-item result-answer">{intersperse(reverseArray(mappedJournal.thoughts),", ")}</li>
+                            <li className="rtv-list-item result-title">Deine Situation</li>
+                            <li className="rtv-list-item result-answer">{intersperse(reverseArray(mappedJournal.situation),", ")}</li>
+                            <li className="rtv-list-item result-title">Deine Reaktion</li>
+                            <li className="rtv-list-item result-answer">{intersperse(reverseArray(mappedJournal.reaction),", ")}</li>
                           </ul>
-                          <button className="btn btn-ghost btn-full-width" onClick={this.props.singleJournalPDF.bind(null,journal)}>DIESEN EINTRAG HERUNTERLADEN</button>
+                          <div className="col-xs-12">
+                            <button className="btn nav-button next-button relative-button" onClick={this.props.singleJournalPDF.bind(null,journal)}>DIESEN EINTRAG HERUNTERLADEN</button>
+                          </div>
                         </div>
                       </div>
                     )

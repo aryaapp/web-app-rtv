@@ -90,31 +90,41 @@ class HomeView extends Component {
     return (
       <div className="partial-wrapper">
         <div className="partial-container" >
-          <QuestionHeader absolute={true}>
-            <div className="col-xs-1"></div>
-            <QuestionTitle title="Achtsamkeits-Tagebuch"/>
-            <QuestionSubtitle subtitle={this.props.user.email}/>
+          <QuestionHeader>
+            <div className="container-fluid">
+              <div className="row">
+                <div className="col-xs-1"></div>
+                <QuestionTitle title="Achtsamkeits-Tagebuch"/>
+                <QuestionSubtitle subtitle={this.props.user.email}/>
+              </div>
+              <div className="row">
+                  <div className="col-xs-2" onClick={this.props.prevWeek}>
+                    <i className="fa fa-lg fa-caret-left week-nav-arrow"></i>
+                  </div>
+                  <div className="col-xs-8 text-center">
+                    <span className="week-date">{formatDay(this.props.beginningDate)} - {formatDay(this.props.endDate)}</span>
+                  </div>
+                  <div className="col-xs-2 text-right" onClick={this.props.nextWeek}>
+                    <i className="fa fa-lg fa-caret-right week-nav-arrow"></i>
+                  </div>
+              </div>
+            </div>
           </QuestionHeader>
           <QuestionMain absolute={true}>
-            <div>
-              <button className="test-button" onClick={this.props.prevWeek}>
-                <span className="btn-text">vorherige Woche</span>
-              </button>
-              <p>{formatDay(this.props.beginningDate)} - {formatDay(this.props.endDate)}</p>
-              <button className="test-button" onClick={this.props.nextWeek}>
-                <span className="btn-text">nächste Woche</span>
-              </button>
-            </div>
             <JournalList
               journals={this.props.selectedJournals}
               singleJournalPDF={this.singleJournalPDF}
             />
-            <button className="btn btn-ghost btn-full-width" onClick={this.weekPDF}>
-              EINTRÄGE DIESER WOCHE HERUNTERLADEN
-            </button>
-            <button className="btn btn-ghost btn-full-width" onClick={this.allJournalsPDF}>
-              ALLE BISHERIGEN EINTRÄGE HERUNTERLADE
-            </button>
+            <div className="col-xs-12">
+              <button className="btn nav-button next-button relative-button" onClick={this.weekPDF}>
+                WOCHE HERUNTERLADEN
+              </button>
+            </div>
+            <div className="col-xs-12">
+              <button className="btn nav-button next-button relative-button" onClick={this.allJournalsPDF}>
+                ALLE EINTRÄGE HERUNTERLADE
+              </button>
+            </div>
             <button className="test-button" onClick={this.logout}>
               <span className="btn-text">logout</span>
             </button>
