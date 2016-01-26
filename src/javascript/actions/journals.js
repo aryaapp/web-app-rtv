@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch'
 import { clearDataAction } from './actions'
-import { pushPath } from 'redux-simple-router'
+import { routeActions } from 'react-router-redux'
 import config from '../constants/config'
 
 export const LOAD_JOURNALS = 'LOAD_JOURNALS'
@@ -97,7 +97,7 @@ export function executeSaveJournal(journal_data) {
     .then( json => {
       dispatch(journalSaved(json))
       dispatch(clearDataAction())
-      dispatch(pushPath('/thank-you'))
+      dispatch(routeActions.push('/thank-you'))
     })
     .catch( error => {
       console.log('catch block error', error)

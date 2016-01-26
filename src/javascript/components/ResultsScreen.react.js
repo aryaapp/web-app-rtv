@@ -5,7 +5,7 @@
 
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { pushPath } from 'redux-simple-router'
+import { routeActions } from 'react-router-redux'
 import d3 from 'd3'
 require('jquery')
 
@@ -55,8 +55,8 @@ const d3MoodGradient = function(value) {
 const mapDispatchToProps = (dispatch) => {
   return {
     executeSaveJournal: (journal_data) => dispatch(executeSaveJournal(journal_data)),
-    navHome: () => dispatch(pushPath('/home')),
-    navCreateAccount: () => dispatch(pushPath('/anmelden')),
+    navHome: () => dispatch(routeActions.push('/home')),
+    navCreateAccount: () => dispatch(routeActions.push('/anmelden')),
     scheduleJournalSave: () => dispatch(scheduleJournalSave()),
     clearData: () => dispatch(clearDataAction())
   }

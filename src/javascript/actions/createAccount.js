@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch'
-import { pushPath } from 'redux-simple-router'
+import { routeActions } from 'react-router-redux'
 import config from '../constants/config'
 import { executeLogin } from './login'
 import { executeSaveJournal, unscheduleJournalSave } from './journals'

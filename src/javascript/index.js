@@ -1,15 +1,13 @@
 import 'babel-polyfill'
-import React, { PropTypes } from 'react'
+import React, { PropTypes, Component } from 'react'
 import { render } from 'react-dom'
-import { createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
 import { Router, Route, IndexRoute } from 'react-router'
 import { createHistory } from 'history'
-import { syncReduxAndRouter } from 'redux-simple-router'
-import { pushPath } from 'redux-simple-router'
+import { routeActions } from 'react-router-redux'
+import { persistStore } from 'redux-persist'
 
 import configureStore from './store/configureStore'
-import reducer from './reducers'
 
 import App from './app'
 import FeelingView from './views/FeelingView'
@@ -26,41 +24,55 @@ import WelcomeView from './views/WelcomeView'
 import JournalPdfView from './views/JournalPdfView'
 
 
-const store = configureStore(reducer)
-const history = createHistory()
-
-syncReduxAndRouter(history, store)
-
 Provider.childContextTypes = {
   store: React.PropTypes.object
 }
 
 const requireAuth = function(nextState, replaceState) {
   if (_.isEmpty(store.getState().access_token)) {
-    store.dispatch(pushPath('/'));
+    store.dispatch(routeActions.push('/'));
     replaceState(null, '/')
   }
 }
 
-render((
-  <Provider store={store}>
-    <Router history={history}>
-      <Route path="/" component={App}>
-        <IndexRoute component={WelcomeView} />
-        <Route path="/home" component={HomeView} onEnter={requireAuth} />
-        <Route path="/print" component={JournalPdfView} onEnter={requireAuth} />
-        <Route path="/login" component={LoginView} />
-        <Route path="/anmelden" component={CreateAccountView} />
-        <Route path="/feeling" component={FeelingView} />
-        <Route path="/body" component={BodyView} />
-        <Route path="/thoughts" component={ThoughtsView} />
-        <Route path="/situation" component={SituationView} />
-        <Route path="/reaction" component={ReactionView} />
-        <Route path="/results" component={ResultsView} />
-        <Route path="/thank-you" component={ThankYouView} />
-      </Route>
-    </Router>
-  </Provider>
-  ),
-  document.getElementById('react-app')
-)
+const history = createHistory()
+const store = configureStore(history)
+
+class AppProvider extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { rehydrated: false }
+  }
+  componentWillMount() {
+    persistStore(store, {}, () => {
+      this.setState({ rehydrated: true })
+    })
+  }
+  render() {
+    if(!this.state.rehydrated) {
+      return <div>Loading...</div>
+    }
+    return (
+      <Provider store={store}>
+        <Router history={history}>
+          <Route path="/" component={App}>
+            <IndexRoute component={WelcomeView} />
+            <Route path="/home" component={HomeView} onEnter={requireAuth} />
+            <Route path="/print" component={JournalPdfView} onEnter={requireAuth} />
+            <Route path="/login" component={LoginView} />
+            <Route path="/anmelden" component={CreateAccountView} />
+            <Route path="/feeling" component={FeelingView} />
+            <Route path="/body" component={BodyView} />
+            <Route path="/thoughts" component={ThoughtsView} />
+            <Route path="/situation" component={SituationView} />
+            <Route path="/reaction" component={ReactionView} />
+            <Route path="/results" component={ResultsView} />
+            <Route path="/thank-you" component={ThankYouView} />
+          </Route>
+        </Router>
+      </Provider>
+    )
+  }
+}
+
+render(<AppProvider />, document.getElementById('react-app') )

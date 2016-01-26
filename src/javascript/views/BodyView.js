@@ -5,7 +5,7 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { pushPath } from 'redux-simple-router'
+import { routeActions } from 'react-router-redux'
 
 
 import BodyQuestion from '../components/Question/BodyQuestion.react.js'
@@ -22,8 +22,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => {
   return {
     updateBody: (value) => dispatch(updateBody(value)),
-    prevPage: () => dispatch(pushPath('/feeling')),
-    nextPage: () => dispatch(pushPath('/thoughts'))
+    prevPage: () => dispatch(routeActions.push('/feeling')),
+    nextPage: () => dispatch(routeActions.push('/thoughts'))
   }
 }
 
