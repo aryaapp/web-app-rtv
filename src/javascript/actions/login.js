@@ -44,18 +44,14 @@ export function executeLogin(email, password) {
           headers: headers
         })
       .then( response => {
-        console.log('response', response)
-
         switch (response.status) {
           case 401:
             response.json().then(json => {
-              console.log('json', json)
               dispatch(loginFailed(json.errors))
             })
             break
           default:
             response.json().then(json => {
-              console.log('json', json)
               dispatch(receiveLogin(email, json))
                if(getState().moodTracking.scheduledJournalSave) {
                 dispatch(unscheduleJournalSave())

@@ -46,7 +46,6 @@ const createLoginFormValidation = (values) => {
 
 class LoginForm extends Component {
   render() {
-    console.log('login form props', this.props)
     const { fields: { email, password }, handleSubmit } = this.props;
     const emailInvalidLabel = <label className="validation-message">Bitte gib eine gültige E-Mailadresse ein.</label>
     const passwordInvalidLabel = <label className="validation-message">Dein Passwort hatte mindestes 8 Zeichen.</label>
