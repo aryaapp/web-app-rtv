@@ -6,6 +6,7 @@ import { Provider } from 'react-redux'
 import { Router, Route, IndexRoute } from 'react-router'
 import { createHistory } from 'history'
 import { syncReduxAndRouter } from 'redux-simple-router'
+import { pushPath } from 'redux-simple-router'
 
 import configureStore from './store/configureStore'
 import reducer from './reducers'
@@ -34,13 +35,20 @@ Provider.childContextTypes = {
   store: React.PropTypes.object
 }
 
+const requireAuth = function(nextState, replaceState) {
+  if (_.isEmpty(store.getState().access_token)) {
+    store.dispatch(pushPath('/'));
+    replaceState(null, '/')
+  }
+}
+
 render((
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}>
         <IndexRoute component={WelcomeView} />
-        <Route path="/home" component={HomeView} />
-        <Route path="/print" component={JournalPdfView} />
+        <Route path="/home" component={HomeView} onEnter={requireAuth} />
+        <Route path="/print" component={JournalPdfView} onEnter={requireAuth} />
         <Route path="/login" component={LoginView} />
         <Route path="/anmelden" component={CreateAccountView} />
         <Route path="/feeling" component={FeelingView} />
