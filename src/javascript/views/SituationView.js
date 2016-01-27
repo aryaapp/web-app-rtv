@@ -22,8 +22,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => {
   return {
     updateSituation: (value) => dispatch(setSituation(value)),
-    prevPage: () => dispatch(routeActions.push('/thoughts')),
-    nextPage: () => dispatch(routeActions.push('/reaction'))
+    prevPage: () => dispatch(routeActions.push('/tagebuch/gedanken')),
+    nextPage: () => dispatch(routeActions.push('/tagebuch/reaktion'))
   }
 }
 

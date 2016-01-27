@@ -76,14 +76,12 @@ import LoginView from './views/LoginView'
 const App = React.createClass({
   render: function() {
     return (
-      <div className="gradient-background">
-        <div id="main-app">
-          <ReactCSSTransitionGroup component="div" className="transition-group" transitionName="page" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
-            { this.props.children }
-          </ReactCSSTransitionGroup>
-        </div>
+      <div id="main-app">
+        <ReactCSSTransitionGroup component="div" className="transition-group" transitionName="page" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
+          { this.props.children }
+        </ReactCSSTransitionGroup>
       </div>
-    );
+    )
   }
 });
 

@@ -11,7 +11,6 @@ import QuestionTitle from './QuestionTitle.react.js'
 import QuestionSubtitle from './QuestionSubtitle.react.js'
 import QuestionMain from './QuestionMain.react.js'
 import QuestionModal from './QuestionModal.react.js'
-import WelcomeModal from './WelcomeModal.react.js'
 import SliderInput from './SliderInput.react.js'
 import Content from '../../constants/localizableStringsDE.js'
 

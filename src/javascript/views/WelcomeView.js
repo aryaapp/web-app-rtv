@@ -16,7 +16,7 @@ const mapStateToProps = (state) => (state)
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    navFeeling: () => dispatch(routeActions.push('/feeling')),
+    navFeeling: () => dispatch(routeActions.push('/tagebuch')),
     navLogin: () => dispatch(routeActions.push('/login')),
   }
 }
