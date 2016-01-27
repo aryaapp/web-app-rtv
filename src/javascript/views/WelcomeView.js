@@ -4,7 +4,7 @@
 */
 import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom';
-import { pushPath } from 'redux-simple-router'
+import { routeActions } from 'react-router-redux'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import FixedSectionFooter from '../components/Question/FixedSectionFooter.react.js'
@@ -16,8 +16,8 @@ const mapStateToProps = (state) => (state)
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    navFeeling: () => dispatch(pushPath('/feeling')),
-    navLogin: () => dispatch(pushPath('/login')),
+    navFeeling: () => dispatch(routeActions.push('/feeling')),
+    navLogin: () => dispatch(routeActions.push('/login')),
   }
 }
 

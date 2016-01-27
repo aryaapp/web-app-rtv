@@ -3,6 +3,7 @@ import { getValues } from 'redux-form';
 import config from '../constants/config'
 import { unscheduleJournalSave, executeSaveJournal } from './journals'
 import { prepareJournalData } from '../utilities'
+import { clearDataAction } from './actions'
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST'
 
@@ -68,5 +69,12 @@ export const LOGOUT = 'LOGOUT'
 export function logout() {
   return {
     type: LOGOUT
+  }
+}
+
+export function clearAndLogout() {
+  return (dispatch) => {
+    dispatch(clearDataAction())
+    dispatch(logout())
   }
 }

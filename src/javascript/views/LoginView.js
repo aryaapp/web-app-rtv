@@ -5,7 +5,7 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { pushPath } from 'redux-simple-router'
+import { routeActions } from 'react-router-redux'
 import { reduxForm } from 'redux-form'
 import { executeLogin } from '../actions/login'
 
@@ -24,7 +24,7 @@ const mapStateToProps = (state) => (state)
 const mapDispatchToProps = (dispatch) => {
   return {
     executeLogin: (email, password) => dispatch(executeLogin(email, password)),
-    navHome: () => dispatch(pushPath('/home'))
+    navHome: () => dispatch(routeActions.push('/home'))
   }
 }
 

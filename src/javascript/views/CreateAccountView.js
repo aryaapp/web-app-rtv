@@ -5,7 +5,7 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { pushPath } from 'redux-simple-router'
+import { routeActions } from 'react-router-redux'
 import { reduxForm } from 'redux-form'
 import Recaptcha from 'react-google-recaptcha'
 
@@ -124,7 +124,7 @@ const mapDispatchToProps = (dispatch) => {
     executeCreateAccount: (email, password) => dispatch(executeCreateAccount(email, password)),
     executeSaveJournal: (journal_data) => dispatch(executeSaveJournal(journal_data)),
     unscheduleJournalSave: () => dispatch(unscheduleJournalSave()),
-    navLogin: () => dispatch(pushPath('/login'))
+    navLogin: () => dispatch(routeActions.push('/login'))
   }
 }
 
@@ -153,7 +153,7 @@ class CreateAccountView extends Component {
               onSubmit={this.submitCreateAccount}
             />
           </QuestionMain>
-          
+
         </div>
       </div>
     )

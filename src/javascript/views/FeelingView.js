@@ -4,7 +4,7 @@
 */
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { pushPath } from 'redux-simple-router'
+import { routeActions } from 'react-router-redux'
 
 import FeelingQuestion from '../components/Question/FeelingQuestion.react.js'
 import NextButton from '../components/Reusable/NextButton.react.js'
@@ -19,7 +19,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => {
   return {
     updateFeeling: (value) => dispatch(updateFeeling(value)),
-    nextPage: () => dispatch(pushPath('/body'))
+    nextPage: () => dispatch(routeActions.push('/body'))
   }
 }
 
