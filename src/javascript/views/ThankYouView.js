@@ -5,7 +5,7 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { pushPath } from 'redux-simple-router'
+import { routeActions } from 'react-router-redux'
 
 import Content from '../constants/localizableStringsDE.js'
 import FixedSectionFooter from '../components/Question/FixedSectionFooter.react.js'
@@ -16,7 +16,7 @@ const mapStateToProps = (state) => (state)
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    navHome: () => dispatch(pushPath('/home')),
+    navHome: () => dispatch(routeActions.push('/home')),
     displayLastJournal: () => dispatch(displayLastJournal())
   }
 }

@@ -5,7 +5,7 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { pushPath } from 'redux-simple-router'
+import { routeActions } from 'react-router-redux'
 
 import ResultsScreen from '../components/ResultsScreen.react.js'
 import PrevButton from '../components/Reusable/PrevButton.react.js'
@@ -25,7 +25,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => {
   return {
     clearData: () => dispatch(clearDataAction()),
-    prevPage: () => dispatch(pushPath('/reaction')),
+    prevPage: () => dispatch(routeActions.push('/reaction')),
   }
 }
 

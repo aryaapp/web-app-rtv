@@ -16,7 +16,7 @@ export default function user(state = {}, action) {
     case RECEIVED_CREATE_ACCOUNT:
       return Object.assign({}, state, { user: action.data.user })
     case LOGOUT:
-      return Object.assign({}, state, { user: {}, access_token: '' })
+      return Object.assign({}, state, { user: {}, access_token: '', journals: [] })
     default:
       return state
   }

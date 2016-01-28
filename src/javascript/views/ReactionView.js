@@ -5,7 +5,7 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { pushPath } from 'redux-simple-router'
+import { routeActions } from 'react-router-redux'
 
 import ReactionQuestion from '../components/Question/ReactionQuestion.react.js'
 import NextButton from '../components/Reusable/NextButton.react.js'
@@ -21,8 +21,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => {
   return {
     updateReaction: (value) => dispatch(setReaction(value)),
-    prevPage: () => dispatch(pushPath('/situation')),
-    nextPage: () => dispatch(pushPath('/results'))
+    prevPage: () => dispatch(routeActions.push('/situation')),
+    nextPage: () => dispatch(routeActions.push('/results'))
   }
 }
 

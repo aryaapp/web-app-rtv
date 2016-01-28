@@ -3,6 +3,7 @@ import { getValues } from 'redux-form';
 import config from '../constants/config'
 import { unscheduleJournalSave, executeSaveJournal } from './journals'
 import { prepareJournalData } from '../utilities'
+import { clearDataAction } from './actions'
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST'
 
@@ -44,18 +45,14 @@ export function executeLogin(email, password) {
           headers: headers
         })
       .then( response => {
-        console.log('response', response)
-
         switch (response.status) {
           case 401:
             response.json().then(json => {
-              console.log('json', json)
               dispatch(loginFailed(json.errors))
             })
             break
           default:
             response.json().then(json => {
-              console.log('json', json)
               dispatch(receiveLogin(email, json))
                if(getState().moodTracking.scheduledJournalSave) {
                 dispatch(unscheduleJournalSave())
@@ -72,5 +69,12 @@ export const LOGOUT = 'LOGOUT'
 export function logout() {
   return {
     type: LOGOUT
+  }
+}
+
+export function clearAndLogout() {
+  return (dispatch) => {
+    dispatch(clearDataAction())
+    dispatch(logout())
   }
 }

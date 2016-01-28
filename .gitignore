@@ -3,3 +3,4 @@ src/js5/
 *.sublime-project
 *.sublime-workspace
 dist/*
+.DS_Store

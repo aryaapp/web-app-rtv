@@ -1,5 +1,7 @@
 import { DISPLAY_NEXT_WEEK, DISPLAY_PREV_WEEK, SET_JOURNALS_FOR_PDF, DISPLAY_LAST_JOURNAL } from '../actions/homeView'
 import { RECEIVED_JOURNALS } from '../actions/journals'
+import { REHYDRATE, REHYDRATE_COMPLETE } from 'redux-persist/constants'
+
 import { journalSorter } from '../utilities'
 import _ from 'lodash'
 
@@ -56,9 +58,7 @@ export default function homeView(state, action) {
       let nextWeekDate = new Date(state.homeView.beginningDate)
       nextWeekDate.setDate(nextWeekDate.getDate() + 8)
       // Don't show dates in the future
-      if(nextWeekDate > new Date()) {
-        nextWeekDate = new Date()
-      }
+      if(nextWeekDate > new Date()) nextWeekDate = new Date()
       return Object.assign({}, state, { homeView: buildState(nextWeekDate, state) })
     case DISPLAY_LAST_JOURNAL:
       return Object.assign({}, state, { homeView: buildState(lastJournalDate(state.journals), state) })
@@ -68,9 +68,13 @@ export default function homeView(state, action) {
       let homeViewState = buildState(state.homeView.beginningDate, state)
       homeViewState.journalsForPdf = action.journal_ids
       return Object.assign({}, state, { homeView: homeViewState })
+    case REHYDRATE:
+      if(action.key === 'homeView') {
+        return Object.assign({}, state, { homeView: buildState(new Date(), state) })
+      }
     default:
       if(_.isEmpty(state.homeView)) {
-       return Object.assign({}, state, { homeView: buildState(new Date(), state) })
+        return Object.assign({}, state, { homeView: buildState(new Date(), state) })
       }
       return state
   }

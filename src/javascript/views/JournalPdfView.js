@@ -5,7 +5,7 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { pushPath } from 'redux-simple-router'
+import { routeActions } from 'react-router-redux'
 import ReactSlider from 'rc-slider'
 
 import NextButton from '../components/Reusable/NextButton.react.js'
@@ -42,7 +42,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    navHome: () => dispatch(pushPath('/home')),
+    navHome: () => dispatch(routeActions.push('/home')),
   }
 }
 

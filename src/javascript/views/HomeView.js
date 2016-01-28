@@ -5,11 +5,11 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { pushPath } from 'redux-simple-router'
+import { routeActions } from 'react-router-redux'
 import ReactSlider from 'rc-slider'
 
 import { executeLoadJournals } from '../actions/journals'
-import { logout } from '../actions/login'
+import { clearAndLogout } from '../actions/login'
 import { nextWeek, prevWeek, setJournalsForPdf, currentWeek } from '../actions/homeView'
 
 import QuestionTitle from '../components/Question/QuestionTitle.react.js'
@@ -35,11 +35,11 @@ const mapDispatchToProps = (dispatch) => {
   return {
     executeLoadJournals: () => dispatch(executeLoadJournals()),
     setJournalsForPdf: (journal_ids) => dispatch(setJournalsForPdf(journal_ids)),
-    navMoodTracking: () => dispatch(pushPath('/feeling')),
-    navJournals: () => dispatch(pushPath('/journals')),
-    navStart: () => dispatch(pushPath('/')),
-    navPrint: () => dispatch(pushPath('/print')),
-    logout: () => dispatch(logout()),
+    navMoodTracking: () => dispatch(routeActions.push('/feeling')),
+    navJournals: () => dispatch(routeActions.push('/journals')),
+    navStart: () => dispatch(routeActions.push('/')),
+    navPrint: () => dispatch(routeActions.push('/print')),
+    logout: () => dispatch(clearAndLogout()),
     prevWeek: () => { dispatch(prevWeek()) },
     nextWeek: () => { dispatch(nextWeek()) }
   }
