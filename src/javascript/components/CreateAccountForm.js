@@ -50,14 +50,14 @@ class CreateAccountForm extends Component {
             <input
               className="form-control email-control"
               type='text'
-              placeholder="Ihre E-Mailadresse"
+              placeholder="Deine E-Mail-Adresse"
               aria-describedby="basic-addon1"
               {...email} />
             { email.touched && email.error ? emailInvalidLabel : '' }
             <input
               className="form-control email-control"
               type="password"
-              placeholder="Ihre Passwort"
+              placeholder="Dein Passwort"
               {...password} />
             { password.touched && password.error ? passwordInvalidLabel : '' }
             <input
