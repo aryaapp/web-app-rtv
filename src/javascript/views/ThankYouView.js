@@ -45,19 +45,17 @@ class ThankYouView extends Component {
               <div className="col-xs-12 full-height">
                 <div className="success-icon"><i className="fa fa-3x fa-check"></i></div>
                 <div className="alert alert-success" >Dein Eintrag wurde erfolgreich gespeichert.</div>
-                <div className="rtv-title vertical-align-center fade-in arya-animation animation2">
-                  <h3><i>{ this.displayThankYouMessage() }</i></h3>
+                <div className="col-xs-12 welcome-text margin-bottom fade-in arya-animation animation2">
+                  <i>{ this.displayThankYouMessage() }</i>
                 </div>
               </div>
             </div>
+            <div className="buttons-container">
+              <button className="btn btn-primary nav-button next-button relative-button fade-in arya-animation animation3" onClick={this.navHome}>Home</button>
+              <button className="btn nav-button next-button relative-button fade-in arya-animation animation3" >Mehr zum Thema Achtsamkeit</button>
+            </div>
           </div>
         </div>
-        <FixedSectionFooter buttons={ 2 } >
-          <div className="col-xs-12 buttons-container">
-            <button className="btn btn-primary nav-button next-button relative-button fade-in arya-animation animation3" onClick={this.navHome}>Home</button>
-            <button className="btn nav-button next-button relative-button fade-in arya-animation animation3" >Mehr zum Thema Achtsamkeit</button>
-          </div>
-        </FixedSectionFooter>
       </div>
     )
   }
