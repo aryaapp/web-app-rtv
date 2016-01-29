@@ -97,7 +97,7 @@ class HomeView extends Component {
                 <QuestionTitle title="Achtsamkeits-Tagebuch"/>
                 <QuestionSubtitle subtitle={this.props.user.email}/>
               </div>
-              <div className="row">
+              <div className="row week-navigator">
                   <div className="col-xs-2" onClick={this.props.prevWeek}>
                     <i className="fa fa-lg fa-caret-left week-nav-arrow"></i>
                   </div>
@@ -116,12 +116,12 @@ class HomeView extends Component {
               singleJournalPDF={this.singleJournalPDF}
             />
             <div className="col-xs-12">
-              <button className="btn nav-button next-button relative-button" onClick={this.weekPDF}>
+              <button className="btn btn-ghost nav-button next-button relative-button" onClick={this.weekPDF}>
                 WOCHE HERUNTERLADEN
               </button>
             </div>
             <div className="col-xs-12">
-              <button className="btn nav-button next-button relative-button" onClick={this.allJournalsPDF}>
+              <button className="btn btn-ghost nav-button next-button relative-button" onClick={this.allJournalsPDF}>
                 ALLE EINTRÄGE HERUNTERLADE
               </button>
             </div>
