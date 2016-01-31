@@ -35,7 +35,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     executeLoadJournals: () => dispatch(executeLoadJournals()),
     setJournalsForPdf: (journal_ids) => dispatch(setJournalsForPdf(journal_ids)),
-    navMoodTracking: () => dispatch(routeActions.push('/feeling')),
+    navMoodTracking: () => dispatch(routeActions.push('/tagebuch')),
     navJournals: () => dispatch(routeActions.push('/journals')),
     navStart: () => dispatch(routeActions.push('/')),
     navPrint: () => dispatch(routeActions.push('/print')),

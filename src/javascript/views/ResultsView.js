@@ -25,7 +25,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => {
   return {
     clearData: () => dispatch(clearDataAction()),
-    prevPage: () => dispatch(routeActions.push('/reaction')),
+    prevPage: () => dispatch(routeActions.push('/tagebuch/reaktion')),
   }
 }
 

@@ -19,7 +19,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => {
   return {
     updateFeeling: (value) => dispatch(updateFeeling(value)),
-    nextPage: () => dispatch(routeActions.push('/body'))
+    nextPage: () => dispatch(routeActions.push('/tagebuch/koerper'))
   }
 }
 
@@ -33,7 +33,6 @@ export default class FeelingView extends Component {
              feeling={this.props.feeling}
              updateFeeling={this.props.updateFeeling}
           />
-
         </div>
         <NextButton onClick={this.props.nextPage} />
       </div>

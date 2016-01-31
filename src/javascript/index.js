@@ -22,6 +22,7 @@ import CreateAccountView from './views/CreateAccountView'
 import ThankYouView from './views/ThankYouView'
 import WelcomeView from './views/WelcomeView'
 import JournalPdfView from './views/JournalPdfView'
+import MoodTrackingView from './views/MoodTrackingView'
 
 
 Provider.childContextTypes = {
@@ -61,12 +62,14 @@ class AppProvider extends Component {
             <Route path="/print" component={JournalPdfView} onEnter={requireAuth} />
             <Route path="/login" component={LoginView} />
             <Route path="/anmelden" component={CreateAccountView} />
-            <Route path="/feeling" component={FeelingView} />
-            <Route path="/body" component={BodyView} />
-            <Route path="/thoughts" component={ThoughtsView} />
-            <Route path="/situation" component={SituationView} />
-            <Route path="/reaction" component={ReactionView} />
-            <Route path="/results" component={ResultsView} />
+            <Route path="/tagebuch" component={MoodTrackingView}>
+              <IndexRoute component={FeelingView} />
+              <Route path="/tagebuch/koerper" component={BodyView} />
+              <Route path="/tagebuch/gedanken" component={ThoughtsView} />
+              <Route path="/tagebuch/situation" component={SituationView} />
+              <Route path="/tagebuch/reaktion" component={ReactionView} />
+              <Route path="/tagebuch/zusammenfassung" component={ResultsView} />
+            </Route>
             <Route path="/thank-you" component={ThankYouView} />
           </Route>
         </Router>

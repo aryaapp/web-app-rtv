@@ -127,9 +127,10 @@ gulp.task('connect', function() {
     root: 'dist',
     livereload: true,
     port: 4444,
-    fallback: './dist/index.html'
+    fallback: '/Users/m20io/workspace/web-app-rtv/dist/index.html'
   });
 });
+
 gulp.task('html', function () {
   gulp.src('./dist/index.html')
     .pipe(connect.reload());
