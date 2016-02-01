@@ -55,15 +55,15 @@ export default class JournalList extends Component {
                           <div className="col-xs-2 time">
                             {formatTime(new Date(journal.created_at))}
                           </div>
-                          <div className="col-xs-2">
+                          <div className="col-xs-1">
                             <FeelingSmiley
                               feeling={mappedJournal.feeling}
                             />
                           </div>
-                          <div className="col-xs-6 ">
+                          <div className="col-xs-7 ">
                             <span className="feeling-value" style= { style } >{ mappedJournal.feeling }</span><span style= { style }> / 100</span>
                           </div>
-                          <div className="col-xs-2">
+                          <div className="col-xs-1">
                             <div type="button" ><i className="fa fa-lg fa-angle-down"></i></div>
                           </div>
                         </div>
@@ -79,7 +79,7 @@ export default class JournalList extends Component {
                             <li className="rtv-list-item result-answer">{intersperse(reverseArray(mappedJournal.reaction),", ")}</li>
                           </ul>
                           <div className="col-xs-12">
-                            <button className="btn nav-button next-button relative-button" onClick={this.props.singleJournalPDF.bind(null,journal)}>DIESEN EINTRAG HERUNTERLADEN</button>
+                            <button className="btn btn-ghost nav-button next-button relative-button" onClick={this.props.singleJournalPDF.bind(null,journal)}>DIESEN EINTRAG HERUNTERLADEN</button>
                           </div>
                         </div>
                       </div>
