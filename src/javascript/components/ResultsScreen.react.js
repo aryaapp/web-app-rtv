@@ -70,18 +70,12 @@ class ResultsScreen extends Component {
       tryToSend: false
     }
 
-    this.componentDidMount = this.componentDidMount.bind(this)
     this.signUp = this.signUp.bind(this)
     this.saveResults = this.saveResults.bind(this)
-    this.resetBackground = this.resetBackground.bind(this)
     this.navHome = this.navHome.bind(this)
     this.prepareJournalData = this.prepareJournalData.bind(this)
     this.navHome = this.navHome.bind(this)
     this.clearData = this.clearData.bind(this)
-  }
-
-  componentDidMount() {
-    $(".rc-slider-track").css("background-color", d3MoodColor(this.props.feeling.value))
   }
 
   signUp(e) {
@@ -117,14 +111,7 @@ class ResultsScreen extends Component {
     this.props.executeSaveJournal(this.prepareJournalData())
   }
 
-  resetBackground() {
-    //jQuery since not possible with rc-slider API
-    $("#react-app").css("background-color", '#ffffff');
-    $("#react-app").css("background-image", 'none');
-  }
-
   navHome() {
-    this.resetBackground()
     this.props.navHome()
   }
 
