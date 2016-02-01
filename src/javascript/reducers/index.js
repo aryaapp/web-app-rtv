@@ -12,8 +12,28 @@ import journalReducer from './journals'
 import homeViewReducer from './homeView'
 import moodTrackingReducer from './moodTracking'
 
-
 import { CLEAR_DATA } from '../actions/actions'
+
+/* Refactor State
+  Thinks I don't like
+  - Reducers changing different parts of the state
+  -- Moodtracking - to distributed
+  -- User - also changes access token
+  - Errors reducer should exists and handle all error relate things
+  - Reducers - with access to global state
+  -- homeView - access journals
+
+  Toods:
+  - Moodtracking
+  -- Merge Moodtracking Reducer
+  - Errors
+  -- Move all errors to actions and be handlet by the error state
+  - User
+  -- Have an access reducer to react to the same action
+  - homeView
+  -- Move the calculation of the journals to a select function in the view (http://rackt.org/redux/docs/recipes/ComputingDerivedData.html)
+*/
+
 
 /*
   This lets each reducer handle the state that corresponse to his name.
