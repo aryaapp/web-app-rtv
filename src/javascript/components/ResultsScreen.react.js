@@ -154,11 +154,11 @@ class ResultsScreen extends Component {
           <ul className="rtv-results list rtv-list">
             <li className="list-item rtv-list-item result-title">Dein Befinden <strong></strong></li>
             <li className="list-item rtv-list-item result-answer">
-              <div className="row">
-                <div className="col-xs-1">
+              <div className="row special-row">
+                <div className="col-xs-1 no-padding">
                   <span className="feeling-value result-feeling-value">{this.props.feeling.value}</span>
                 </div>
-                <div className="col-xs-11">
+                <div className="col-xs-10 no-padding">
                   <ReactSlider disabled={true} value={this.props.feeling.value} />
                 </div>
               </div>
