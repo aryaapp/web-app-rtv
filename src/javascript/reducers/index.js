@@ -2,15 +2,11 @@ import { combineReducers } from 'redux'
 import { routeReducer } from 'react-router-redux'
 import { reducer as formReducer } from 'redux-form';
 
-import feeling from './feeling'
-import body from './body'
-import thoughts from './thoughts'
-import situation from './situation'
-import reaction from './reaction'
-import userReducer from './user'
-import journalReducer from './journals'
-import homeViewReducer from './homeView'
-import moodTrackingReducer from './moodTracking'
+import user from './user'
+import journals from './journals'
+import homeView from './homeView'
+import moodTracking from './moodTracking'
+import errors from './errors'
 
 /* Refactor State
   Thinks I don't like
@@ -33,7 +29,6 @@ import moodTrackingReducer from './moodTracking'
 
   Current Todo - Move all errors to a error reducer
 
-
 */
 
 /*
@@ -42,11 +37,11 @@ import moodTrackingReducer from './moodTracking'
 */
 const partialReducers = combineReducers({
   access_token: (state = '') => state,
-  errors: (state = []) => state,
+  errors: errors,
   form: formReducer,
   homeView: (state = {}) => state,
-  journals: journalReducer,
-  moodTracking: moodTrackingReducer,
+  journals: journals,
+  moodTracking: moodTracking,
   routing: routeReducer,
   user: (state = {}) => state,
 })
@@ -63,6 +58,6 @@ const reduceReducers = function(...reducers) {
     );
 }
 
-const globalReducers = reduceReducers(partialReducers, userReducer, homeViewReducer)
+const globalReducers = reduceReducers(partialReducers, user, homeView)
 
 export default globalReducers

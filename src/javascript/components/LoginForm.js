@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { reduxForm } from 'redux-form'
+import { includes } from 'lodash'
 
 const createLoginFormValidation = (values) => {
   const errors = {};
@@ -30,7 +31,7 @@ class LoginForm extends Component {
         { email.touched && email.error ? emailInvalidLabel : '' }
         <input className="form-control email-control" type='password' placeholder="Password" { ...password } />
         { password.touched && password.error ? passwordInvalidLabel : '' }
-        { _.includes(this.props.asyncErrors, 'invalid credentials') ? loginFailed : '' }
+        { includes(this.props.asyncErrors, 'invalid credentials') ? loginFailed : '' }
         <button onClick={ handleSubmit } className="btn btn-primary nav-button next-button relative-button" type="submit" >Anmelden</button>
       </form>
     )

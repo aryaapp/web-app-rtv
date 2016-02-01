@@ -9,10 +9,6 @@ export default function user(state = {}, action) {
           user: action.data.user,
           errors: []
         })
-    case LOGIN_FAILED:
-      return Object.assign({}, state, {
-          errors: action.errors
-        })
     case RECEIVED_CREATE_ACCOUNT:
       return Object.assign({}, state, { user: action.data.user })
     case LOGOUT:

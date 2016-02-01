@@ -1,5 +1,6 @@
 import { DISPLAY_NEXT_WEEK, DISPLAY_PREV_WEEK, SET_JOURNALS_FOR_PDF, DISPLAY_LAST_JOURNAL } from '../actions/homeView'
 import { RECEIVED_JOURNALS } from '../actions/journals'
+import { LOGOUT } from '../actions/login'
 import { REHYDRATE, REHYDRATE_COMPLETE } from 'redux-persist/constants'
 
 import { journalSorter } from '../utilities'
@@ -72,6 +73,8 @@ export default function homeView(state, action) {
       if(action.key === 'homeView') {
         return Object.assign({}, state, { homeView: buildState(new Date(), state) })
       }
+    case LOGOUT:
+      return Object.assign({}, state, { homeView: buildState(new Date(), state) })
     default:
       if(_.isEmpty(state.homeView)) {
         return Object.assign({}, state, { homeView: buildState(new Date(), state) })
