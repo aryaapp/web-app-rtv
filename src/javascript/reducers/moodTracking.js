@@ -1,5 +1,5 @@
 import { SCHEDULE_JOURNAL_SAVE, UNSCHEDULE_JOURNAL_SAVE } from '../actions/journals'
-import { SET_FEELING, SET_BODY, SET_THOUGHTS, SET_SITUATION, SET_REACTION } from '../actions/actions'
+import { CLEAR_DATA, SET_FEELING, SET_BODY, SET_THOUGHTS, SET_SITUATION, SET_REACTION } from '../actions/actions'
 import { assign } from 'lodash'
 
 const initialBodyState = {
@@ -50,6 +50,8 @@ export default function homeView(state = initialMoodTrackingState, action) {
       return assign({}, state, {
         reaction: action.reaction
       })
+    case CLEAR_DATA:
+      return initialMoodTrackingState
     case SCHEDULE_JOURNAL_SAVE:
       return { scheduledJournalSave: true }
     case UNSCHEDULE_JOURNAL_SAVE:

@@ -12,8 +12,6 @@ import journalReducer from './journals'
 import homeViewReducer from './homeView'
 import moodTrackingReducer from './moodTracking'
 
-import { CLEAR_DATA } from '../actions/actions'
-
 /* Refactor State
   Thinks I don't like
   - Reducers changing different parts of the state
@@ -25,21 +23,18 @@ import { CLEAR_DATA } from '../actions/actions'
 
   Tods:
   - Moodtracking
-  -- Merge Moodtracking Reducer
+  -- Merge Moodtracking Reducer - done
   - Errors
-  -- Move all errors to actions and be handlet by the error state
+  -- Move all errors to a error reducer
   - User
   -- Have an access reducer to react to the same action
   - homeView
   -- Move the calculation of the journals to a select function in the view (http://rackt.org/redux/docs/recipes/ComputingDerivedData.html)
 
-  Current Todo - Merge Moodtracking Reducer
-  -- update reducer-state mapping
-  -- update views with state access
+  Current Todo - Move all errors to a error reducer
 
 
 */
-
 
 /*
   This lets each reducer handle the state that corresponse to his name.
@@ -68,21 +63,6 @@ const reduceReducers = function(...reducers) {
     );
 }
 
-const clearDataReducer = function(state, action) {
-  switch (action.type) {
-    case CLEAR_DATA:
-      return Object.assign({}, state,{
-        feeling: feeling(undefined, action),
-        body: body(undefined, action),
-        thoughts: thoughts(undefined, action),
-        situation: situation(undefined, action),
-        reaction: reaction(undefined, action),
-      })
-    default:
-      return state
-  }
-}
-
-const globalReducers = reduceReducers(partialReducers, userReducer, homeViewReducer, clearDataReducer)
+const globalReducers = reduceReducers(partialReducers, userReducer, homeViewReducer)
 
 export default globalReducers
