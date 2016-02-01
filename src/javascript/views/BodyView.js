@@ -16,7 +16,7 @@ import PageNumber from '../components/PageNumber.react.js'
 import { setBody as updateBody } from '../actions/actions'
 
 const mapStateToProps = (state) => ({
-  body: state.body
+  body: state.moodTracking.body
 })
 
 const mapDispatchToProps = (dispatch) => {

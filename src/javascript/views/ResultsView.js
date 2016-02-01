@@ -15,11 +15,11 @@ import PageNumber from '../components/PageNumber.react.js'
 import { clearDataAction } from '../actions/actions'
 
 const mapStateToProps = (state) => ({
-  feeling: state.feeling,
-  body: state.body,
-  thoughts: state.thoughts,
-  situation: state.situation,
-  reaction: state.reaction
+  feeling: state.moodTracking.feeling,
+  body: state.moodTracking.body,
+  thoughts: state.moodTracking.thoughts,
+  situation: state.moodTracking.situation,
+  reaction: state.moodTracking.reaction
 })
 
 const mapDispatchToProps = (dispatch) => {

@@ -14,7 +14,7 @@ import { setThoughts as updateThoughts } from '../actions/actions'
 import PageNumber from '../components/PageNumber.react.js'
 
 const mapStateToProps = (state) => ({
-  thoughts: state.thoughts
+  thoughts: state.moodTracking.thoughts
 })
 
 const mapDispatchToProps = (dispatch) => {
@@ -27,7 +27,8 @@ const mapDispatchToProps = (dispatch) => {
 
 export default class ThoughtsView extends Component {
   render() {
-    const { dispatch } = this.props;
+    console.log(this.props.thoughts)
+
     return (
       <div className="partial-wrapper" key="2">
         <div className="partial-container" >

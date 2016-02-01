@@ -23,7 +23,7 @@ import { CLEAR_DATA } from '../actions/actions'
   - Reducers - with access to global state
   -- homeView - access journals
 
-  Toods:
+  Tods:
   - Moodtracking
   -- Merge Moodtracking Reducer
   - Errors
@@ -32,6 +32,12 @@ import { CLEAR_DATA } from '../actions/actions'
   -- Have an access reducer to react to the same action
   - homeView
   -- Move the calculation of the journals to a select function in the view (http://rackt.org/redux/docs/recipes/ComputingDerivedData.html)
+
+  Current Todo - Merge Moodtracking Reducer
+  -- update reducer-state mapping
+  -- update views with state access
+
+
 */
 
 
@@ -40,19 +46,14 @@ import { CLEAR_DATA } from '../actions/actions'
   I.e. the 'feeling' reducer will replace the feeling: {} part of the state.
 */
 const partialReducers = combineReducers({
-  feeling: feeling,
-  body: body,
-  thoughts: thoughts,
-  situation: situation,
-  reaction: reaction,
-  routing: routeReducer,
-  form: formReducer,
   access_token: (state = '') => state,
-  user: (state = {}) => state,
-  journals: journalReducer,
-  homeView: (state = {}) => state,
   errors: (state = []) => state,
+  form: formReducer,
+  homeView: (state = {}) => state,
+  journals: journalReducer,
   moodTracking: moodTrackingReducer,
+  routing: routeReducer,
+  user: (state = {}) => state,
 })
 
 /*

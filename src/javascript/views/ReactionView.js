@@ -15,7 +15,7 @@ import PageNumber from '../components/PageNumber.react.js'
 import { setReaction } from '../actions/actions'
 
 const mapStateToProps = (state) => ({
-  reaction: state.reaction
+  reaction: state.moodTracking.reaction
 })
 
 const mapDispatchToProps = (dispatch) => {

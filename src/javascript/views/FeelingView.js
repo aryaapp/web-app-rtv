@@ -13,7 +13,7 @@ import PageNumber from '../components/PageNumber.react.js'
 
 
 const mapStateToProps = (state) => ({
-  feeling: state.feeling
+  feeling: state.moodTracking.feeling
 })
 
 const mapDispatchToProps = (dispatch) => {
