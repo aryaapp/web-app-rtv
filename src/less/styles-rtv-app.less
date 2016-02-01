@@ -50,7 +50,7 @@
 }
 
 .week-nav-arrow {
-    border: 1px solid;
+    /*border: 1px solid;*/
     padding: 4px 8px;
     border-radius: 4px;
     margin-top: 8px;
@@ -61,7 +61,7 @@
 }
 
 #main-app {
-    top: 80px;
+    top: 52px;
     bottom: 0px;
     background: white;
     border-radius: 0;
@@ -76,8 +76,19 @@
         left:25%;
     }
 }
+
+#mood-tracker{
+    height: 100%;
+    .partial-wrapper {
+        top:24px;
+    }
+}
+
 .partial-wrapper {
-    height:100%;
+    background: white;
+    top: 0px;
+    position: absolute;
+    bottom: 0px;
 }
 
 .partial-container{
@@ -191,7 +202,7 @@ body{
     //i.e. QuestionView with gradient bg that consists of PageNumber(transparant bg) and Page (white bg)
     text-align: center;
     color: white;
-    margin-top: -25px;
+    margin-top: -22px;
     width: 100%;
     position:fixed;
     font-weight: normal;
