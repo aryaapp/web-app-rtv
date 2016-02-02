@@ -7,6 +7,7 @@ import journals from './journals'
 import homeView from './homeView'
 import moodTracking from './moodTracking'
 import errors from './errors'
+import auth from './auth'
 
 /* Refactor State
   Thinks I don't like
@@ -21,9 +22,9 @@ import errors from './errors'
   - Moodtracking
   -- Merge Moodtracking Reducer - done
   - Errors
-  -- Move all errors to a error reducer
+  -- Move all errors to a error reducer - done
   - User
-  -- Have an access reducer to react to the same action
+  -- Have an access reducer to react to the same action - done
   - homeView
   -- Move the calculation of the journals to a select function in the view (http://rackt.org/redux/docs/recipes/ComputingDerivedData.html)
 
@@ -36,14 +37,14 @@ import errors from './errors'
   I.e. the 'feeling' reducer will replace the feeling: {} part of the state.
 */
 const partialReducers = combineReducers({
-  access_token: (state = '') => state,
+  access_token: auth,
   errors: errors,
   form: formReducer,
   homeView: (state = {}) => state,
   journals: journals,
   moodTracking: moodTracking,
   routing: routeReducer,
-  user: (state = {}) => state,
+  user: user,
 })
 
 /*
@@ -58,6 +59,6 @@ const reduceReducers = function(...reducers) {
     );
 }
 
-const globalReducers = reduceReducers(partialReducers, user, homeView)
+const globalReducers = reduceReducers(partialReducers, homeView)
 
 export default globalReducers
