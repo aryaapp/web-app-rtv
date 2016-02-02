@@ -10,23 +10,25 @@ import ReactSlider from 'rc-slider'
 
 import { executeLoadJournals } from '../actions/journals'
 import { clearAndLogout } from '../actions/login'
-import { nextWeek, prevWeek, setJournalsForPdf, currentWeek } from '../actions/homeView'
+import { nextWeek, prevWeek, setJournalsForPdf, displayJournalsForWeek } from '../actions/homeView'
+
+import { formatDay, getSunday, journalSorter } from '../utilities'
+import { first, map, isEmpty } from 'lodash'
+import journalSelector from '../selectors/journalSelector'
 
 import QuestionTitle from '../components/Question/QuestionTitle.react.js'
 import QuestionSubtitle from '../components/Question/QuestionSubtitle.react.js'
 import QuestionHeader from '../components/Question/QuestionHeader.react.js'
 import QuestionMain from '../components/Question/QuestionMain.react.js'
 import JournalList from '../components/JournalList'
-import { formatDay } from '../utilities'
-
 import FixedSectionFooter from '../components/Question/FixedSectionFooter.react.js'
 
 const mapStateToProps = (state) => {
   return {
     user: state.user,
     beginningDate: state.homeView.beginningDate,
-    endDate: state.homeView.endDate,
-    selectedJournals: state.homeView.selectedJournals,
+    endDate: getSunday(state.homeView.beginningDate),
+    selectedJournals: journalSelector(state),
     journals: state.journals
   }
 }
@@ -40,8 +42,10 @@ const mapDispatchToProps = (dispatch) => {
     navStart: () => dispatch(routeActions.push('/')),
     navPrint: () => dispatch(routeActions.push('/print')),
     logout: () => dispatch(clearAndLogout()),
-    prevWeek: () => { dispatch(prevWeek()) },
-    nextWeek: () => { dispatch(nextWeek()) }
+    prevWeek: () => dispatch(prevWeek()),
+    nextWeek: () => dispatch(nextWeek()),
+    displayJournalsForWeek: (date) => dispatch(displayJournalsForWeek(date))
+
   }
 }
 
@@ -57,8 +61,11 @@ class HomeView extends Component {
   }
 
   componentDidMount() {
-    if(_.isEmpty(this.props.journals)) {
+    if(isEmpty(this.props.journals)) {
       this.props.executeLoadJournals();
+    } else {
+      let latestJournal = first(this.props.journals)
+      this.props.displayJournalsForWeek(new Date(latestJournal.created_at))
     }
   }
 
@@ -69,13 +76,13 @@ class HomeView extends Component {
   }
 
   weekPDF() {
-    let journal_ids = _.map(this.props.selectedJournals, (j) => j.id)
+    let journal_ids = map(this.props.selectedJournals, (j) => j.id)
     this.props.setJournalsForPdf(journal_ids)
     this.props.navPrint()
   }
 
   allJournalsPDF() {
-    let journal_ids = _.map(this.props.journals, (j) => j.id)
+    let journal_ids = map(this.props.journals, (j) => j.id)
 
     this.props.setJournalsForPdf(journal_ids)
     this.props.navPrint()

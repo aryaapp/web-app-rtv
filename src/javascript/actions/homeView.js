@@ -15,11 +15,12 @@ export function prevWeek() {
   }
 }
 
-export const DISPLAY_LAST_JOURNAL = 'DISPLAY_LAST_JOURNAL'
+export const DISPLAY_JOURNAL_FOR_WEEK = 'DISPLAY_JOURNAL_FOR_WEEK'
 
-export function displayLastJournal() {
+export function displayJournalsForWeek(date) {
   return {
-    type: DISPLAY_LAST_JOURNAL
+    type: DISPLAY_JOURNAL_FOR_WEEK,
+    date: date
   }
 }
 

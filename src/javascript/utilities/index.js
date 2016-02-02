@@ -7,9 +7,33 @@ import {
   reactionQuestionId
 } from '../constants/ids'
 import d3 from 'd3'
+import { isNil, first } from 'lodash'
 
 export const weekdays = ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag']
 export const months = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember']
+
+export function lastJournalDate(journals) {
+  if(!isNil(journals)) {
+    return new Date(first(journals.sort(journalSorter)).created_at)
+  }
+  return new Date()
+}
+
+export function getMonday(original_date) {
+  let date = new Date(original_date)
+  let day = date.getDay()
+  let diff = date.getDate() - day + (day == 0 ? -6:1); // adjust when day is sunday
+  date.setDate(diff)
+  date.setHours(0,0,0,0)
+  return date
+}
+
+export function getSunday(original_date) {
+  let date = getMonday(new Date(original_date))
+  date.setDate(date.getDate() + 6)
+  date.setHours(23,59,59,999)
+  return date
+}
 
 export function formatTime(date) {
   if ( date != "") {
