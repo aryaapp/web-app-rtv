@@ -2,9 +2,9 @@
 * @module rtv-mood tracker
 * @submodule Question
 */
-import React from 'react';
+import React, { Component, PropTypes } from 'react'
 
-let detectMobile = function () { 
+let detectMobile = function () {
  if( navigator.userAgent.match(/Android/i)
  || navigator.userAgent.match(/webOS/i)
  // || navigator.userAgent.match(/iPhone/i)
@@ -20,25 +20,30 @@ let detectMobile = function () {
   }
 }
 
-var ListInput = React.createClass({
-  getDefaultProps() {
-    return {
-      value: [],
-      placeholder: ''
-    };
-  },
-  getInitialState: function() {
-      return {
-        newValue: ''
-      }
-  },
-  update: function(value) {
+export default class ListInput extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = { newValue: '' }
+
+    this.update = this.update.bind(this)
+    this.updateState = this.updateState.bind(this)
+    this.addValue = this.addValue.bind(this)
+    this.removeValue = this.removeValue.bind(this)
+    this.componentWillUnmount = this.componentWillUnmount.bind(this)
+    this.handleFocus = this.handleFocus.bind(this)
+    this.handleBlur = this.handleBlur.bind(this)
+  }
+
+  update(value) {
     this.props.onChange(value);
-  },
-  updateState: function(e) {
+  }
+
+  updateState(e) {
     this.setState({ newValue: e.target.value })
-  },
-  addValue: function(e) {
+  }
+
+  addValue(e) {
     if(e != undefined) {
       e.preventDefault();
     }
@@ -56,33 +61,37 @@ var ListInput = React.createClass({
 
     this.update(newParentState)
     this.setState({ newValue: '' })
-  },
-  removeValue: function(i) {
+  }
+
+  removeValue(i) {
     var newParentState = this.props.value.slice()
     newParentState.splice(i,1)
+    console.log('list update remove old new', this.props.value, newParentState)
     this.update(newParentState)
+  }
 
-  },
-  componentWillUnmount : function () {
+  componentWillUnmount() {
     this.addValue()
-  },
-  handleFocus: function() {
+  }
+
+  handleFocus() {
      if(detectMobile()) {
       $( ".nav-button" ).hide();
      }
-  },
-  handleBlur: function() {
+  }
+
+  handleBlur() {
     if(detectMobile()) {
      $( ".nav-button" ).show();
     }
-  },
-  render: function() {
-    var that = this
+  }
+
+  render() {
     return (
       <div>
         <form onSubmit={this.addValue}>
           <input
-            onFocus={this.handleFocus} 
+            onFocus={this.handleFocus}
             onBlur={this.handleBlur}
             className="form-control"
             type='text'
@@ -93,10 +102,10 @@ var ListInput = React.createClass({
         </form>
         <ul className="list rtv-list">
           {
-            this.props.value.map(function(element, i) {
+            this.props.value.map((element, i) => {
               return (
                 <li
-                  className="list-item rtv-list-item" key={i}>{element} <i style={ {cursor: 'pointer'} } className="fa fa-close rtv-list-item-delete" onClick={that.removeValue.bind(null,i)}></i>
+                  className="list-item rtv-list-item" key={i}>{element} <i style={ {cursor: 'pointer'} } className="fa fa-close rtv-list-item-delete" onClick={this.removeValue.bind(null,i)}></i>
                 </li>
               )
             })
@@ -104,11 +113,10 @@ var ListInput = React.createClass({
           <li className="list-item rtv-list-counter">{this.props.value.length} Einträge</li>
         </ul>
       </div>
-        )
-    }
-})
-
-
-module.exports = ListInput
-
-// <button type='submit' onClick={this.addValue}>add</button>
+    )
+  }
+}
+ListInput.defaultProps = {
+  value: [],
+  placeholder: ''
+}

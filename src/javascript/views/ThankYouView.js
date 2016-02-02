@@ -10,14 +10,11 @@ import { routeActions } from 'react-router-redux'
 import Content from '../constants/localizableStringsDE.js'
 import FixedSectionFooter from '../components/Question/FixedSectionFooter.react.js'
 
-import { displayLastJournal } from '../actions/homeView'
-
 const mapStateToProps = (state) => (state)
 
 const mapDispatchToProps = (dispatch) => {
   return {
     navHome: () => dispatch(routeActions.push('/home')),
-    displayLastJournal: () => dispatch(displayLastJournal())
   }
 }
 
@@ -32,7 +29,6 @@ class ThankYouView extends Component {
   }
 
   navHome() {
-    this.props.displayLastJournal()
     this.props.navHome()
   }
 

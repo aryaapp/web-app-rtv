@@ -43,8 +43,8 @@ export function executeLoadJournals() {
     dispatch(requestJournals(user.id))
 
     let headers = new Headers({
+      'Content-Type': 'application/json',
       'Authorization': `Bearer ${ access_token }`,
-      'Content-Type': 'application/json'
     });
 
     return fetch(config.aryaApiUrl + '/v1/journals',
