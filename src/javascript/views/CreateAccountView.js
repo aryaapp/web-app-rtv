@@ -13,6 +13,12 @@ import QuestionHeader from '../components/Question/QuestionHeader.react.js'
 import QuestionMain from '../components/Question/QuestionMain.react.js'
 import CreateAccountForm from '../components/CreateAccountForm'
 
+const mapStateToProps = (state) => {
+  return {
+    errors: state.errors.createAccount
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     executeCreateAccount: (email, password) => dispatch(executeCreateAccount(email, password))
@@ -42,6 +48,7 @@ class CreateAccountView extends Component {
           <QuestionMain>
             <CreateAccountForm
               onSubmit={this.submitCreateAccount}
+              asyncErrors={this.props.errors}
             />
           </QuestionMain>
 
@@ -55,4 +62,4 @@ CreateAccountView.propTypes = {
   executeCreateAccount: PropTypes.func.isRequired
 };
 
-export default connect(null, mapDispatchToProps)(CreateAccountView)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateAccountView)

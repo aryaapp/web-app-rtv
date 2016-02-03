@@ -13,7 +13,12 @@ import QuestionSubtitle from '../components/Question/QuestionSubtitle.react.js'
 import QuestionHeader from '../components/Question/QuestionHeader.react.js'
 import QuestionMain from '../components/Question/QuestionMain.react.js'
 
-const mapStateToProps = (state) => (state)
+const mapStateToProps = (state) => {
+  return {
+    errors: state.errors.login,
+    access_token: state.access_token
+  }
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -28,12 +33,20 @@ class LoginView extends Component {
 
     this.onSubmit = this.onSubmit.bind(this)
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
+    this.componentDidMount = this.componentDidMount.bind(this)
+    this.checkForRedirect = this.checkForRedirect.bind(this)
+  }
+  checkForRedirect(props) {
+    if (typeof props.access_token !== 'undefined' && props.access_token.length > 0) {
+      props.navHome();
+    }
+  }
+  componentDidMount() {
+    this.checkForRedirect(this.props)
   }
 
   componentWillReceiveProps(nextProps) {
-    if (typeof nextProps.access_token !== 'undefined' && nextProps.access_token.length > 0) {
-      this.props.navHome();
-    }
+    this.checkForRedirect(nextProps)
   }
 
   onSubmit(data) {

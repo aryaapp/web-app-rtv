@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default class FeelingView extends Component {
+class FeelingView extends Component {
   render() {
     return (
       <div className="partial-wrapper">

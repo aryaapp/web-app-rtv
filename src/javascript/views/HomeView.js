@@ -3,7 +3,6 @@
 * @submodule Question
 */
 import React, { Component, PropTypes } from 'react'
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { routeActions } from 'react-router-redux'
 import ReactSlider from 'rc-slider'

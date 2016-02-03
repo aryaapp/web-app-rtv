@@ -14,4 +14,3 @@ export default function user(journals = [], action) {
       return journals
   }
 }
-

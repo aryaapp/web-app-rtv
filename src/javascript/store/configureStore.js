@@ -2,6 +2,7 @@ import { persistStore, autoRehydrate } from 'redux-persist'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
+import promiseMiddleware from 'redux-promise';
 import { syncHistory } from 'react-router-redux'
 import rootReducer from '../reducers'
 
@@ -12,6 +13,7 @@ export default function configureStore(history) {
 
   const createStoreWithMiddleware = applyMiddleware(
     thunk,
+    promiseMiddleware,
     loggerMiddleware,
     reduxRouterMiddleware
   )(createStore);

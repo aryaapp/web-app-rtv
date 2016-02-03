@@ -36,9 +36,6 @@ export default function homeView(state = initialMoodTrackingState, action) {
         body: action.bodyState,
       })
     case SET_THOUGHTS:
-    console.log('thoughts to set', {
-        thoughts: action.thoughts
-      })
       return assign({}, state, {
         thoughts: action.thoughts
       })

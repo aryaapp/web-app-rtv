@@ -4,6 +4,7 @@ import config from '../constants/config'
 import { unscheduleJournalSave, executeSaveJournal } from './journals'
 import { prepareJournalData } from '../utilities'
 import { clearDataAction } from './actions'
+import { routeActions } from 'react-router-redux'
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST'
 
@@ -45,20 +46,27 @@ export function executeLogin(email, password) {
           headers: headers
         })
       .then( response => {
-        switch (response.status) {
-          case 401:
-            response.json().then(json => {
-              dispatch(loginFailed(json.errors))
-            })
-            break
-          default:
-            response.json().then(json => {
+        const s = response.status
+        switch(true) {
+          case (s >= 200 && s < 300):
+            response.json().then( json => {
               dispatch(receiveLogin(email, json))
                if(getState().moodTracking.scheduledJournalSave) {
                 dispatch(unscheduleJournalSave())
                 dispatch(executeSaveJournal(prepareJournalData(getState())))
+                dispatch(routeActions.push('/thank-you'))
+              } else {
+                dispatch(routeActions.push('/home'))
               }
             })
+            break;
+          case (s >= 400 && s < 500):
+            response.json().then( json => dispatch(loginFailed(json.errors)))
+            break;
+          default:
+            let error = new Error(response.statusText)
+            error.reponse = reponse
+            throw new error
         }
       })
   }

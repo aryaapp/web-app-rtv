@@ -5,7 +5,6 @@ import { executeLogin } from './login'
 import { executeSaveJournal, unscheduleJournalSave } from './journals'
 
 export const REQUEST_CREATE_ACCOUNT = 'REQUEST_CREATE_ACCOUNT'
-
 export function requestCreateAccount(email) {
   return {
     type: requestCreateAccount,
@@ -14,11 +13,18 @@ export function requestCreateAccount(email) {
 }
 
 export const RECEIVED_CREATE_ACCOUNT = 'RECEIVED_CREATE_ACCOUNT'
-
 export function receivedCreateAccount(email, data) {
   return {
     type: RECEIVED_CREATE_ACCOUNT,
     data: data
+  }
+}
+
+export const CREATE_ACCOUNT_FAILED = 'CREATE_ACCOUNT_FAILED'
+export function createAccountFailed(errors) {
+  return {
+    type: CREATE_ACCOUNT_FAILED,
+    errors: errors
   }
 }
 
@@ -28,17 +34,30 @@ export function executeCreateAccount(email, password) {
 
     let headers = new Headers({ 'Content-Type': 'application/json' });
 
-    return fetch(config.aryaApiUrl + '/v1/users',{
+    return fetch(config.aryaApiUrl + '/v1/users', {
         method: 'POST',
         body: JSON.stringify({ user: { email: email, password: password, client_id: 'ios-app'} }),
         headers: headers
       })
-      .then( response => response.json() )
-      .then( (json) => {
-        dispatch(receivedCreateAccount(email, json))
-        dispatch(executeLogin(email, password))
-      }).catch( error => {
-        console.log('catch block error', error)
+      .then( response => {
+        const s = response.status
+        switch(true) {
+          case (s >= 200 && s < 300):
+            response.json().then( json => {
+              dispatch(receivedCreateAccount(email, json))
+              dispatch(executeLogin(email, password))
+            })
+            break;
+          case (s >= 400 && s <= 510):
+            response.json().then( json => {
+              dispatch(createAccountFailed(json.field_errors))
+            })
+            break;
+          default:
+            let error = new Error(response.statusText)
+            error.response = response
+            throw new error
+        }
       })
   }
 }

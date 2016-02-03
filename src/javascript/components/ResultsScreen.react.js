@@ -21,7 +21,6 @@ import QuestionMain from './Question/QuestionMain.react.js'
 import FixedSectionFooter from './Question/FixedSectionFooter.react.js'
 import ReactSlider from 'rc-slider'
 import DisplayBody from './DisplayBody.react.js'
-import ConfirmationModal from './Question/ConfirmationModal.react.js'
 import Content from '../constants/localizableStringsDE.js'
 import {
   defaultQuestionnaireId,
@@ -166,7 +165,6 @@ class ResultsScreen extends Component {
             <button className='btn nav-button next-button relative-button' onClick={this.clearData}>Eintrag verwerfen</button>
           </div>
         </QuestionMain>
-        <ConfirmationModal ref="confirmation" />
       </Section>
     );
   }

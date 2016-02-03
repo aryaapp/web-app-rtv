@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { reduxForm } from 'redux-form'
 import Recaptcha from 'react-google-recaptcha'
+import { includes, isNil } from 'lodash'
 
 const createAccountFormValidation = (values) => {
   const errors = {};
@@ -34,9 +35,13 @@ class CreateAccountForm extends Component {
   }
 
   render() {
-    const { fields: { email, password, password_confirmation, recaptcha}, handleSubmit } = this.props;
+    const {
+      fields: { email, password, password_confirmation, recaptcha },
+      handleSubmit, asyncErrors
+    } = this.props;
 
     let emailInvalidLabel = <label className="validation-message">Bitte gib eine gültige E-Mailadresse ein.</label>
+    let emailTaken = <label className="validation-message">Ihre E-Mailadresse wird bereits verwendet.</label>
     let passwordInvalidLabel = <label className="validation-message">Bitte gib eine Passwort mit mindestes 8 Zeichen ein.</label>
     let passwordConfirmationInvalidLabel = <label className="validation-message">Bitte gib das Password ein zweites mal genau gleich ein.</label>
     let captachNotConfirmed = <label className="validation-message">Bitte bestätige, dass du auch wirklich ein Mensch bist ;-)</label>
@@ -54,6 +59,7 @@ class CreateAccountForm extends Component {
               aria-describedby="basic-addon1"
               {...email} />
             { email.touched && email.error ? emailInvalidLabel : '' }
+            { !isNil(asyncErrors['user[email]']) && includes(asyncErrors['user[email]'], 'ist bereits vergeben') ? emailTaken : ''}
             <input
               className="form-control email-control"
               type="password"
@@ -83,10 +89,16 @@ class CreateAccountForm extends Component {
   }
 }
 
+CreateAccountForm.defaultProps = {
+  asyncErrors: {}
+}
+
 const ReduxCreateAccountForm = reduxForm({
   form: 'createAccount',
   fields: ['email', 'password', 'password_confirmation', 'recaptcha'],
   validate: createAccountFormValidation
 })(CreateAccountForm);
+
+
 
 export default ReduxCreateAccountForm
