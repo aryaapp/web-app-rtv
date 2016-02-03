@@ -11,7 +11,6 @@ import ResultsScreen from '../components/ResultsScreen.react.js'
 import PrevButton from '../components/Reusable/PrevButton.react.js'
 import PageNumber from '../components/PageNumber.react.js'
 
-
 import { clearDataAction } from '../actions/actions'
 
 const mapStateToProps = (state) => ({

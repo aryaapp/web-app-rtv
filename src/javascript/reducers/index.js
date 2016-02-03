@@ -10,6 +10,12 @@ import errors from './errors'
 import auth from './auth'
 
 /*
+  Improve error handling
+  - react on create account with setting an error message
+  - Integrate form validation and actions
+*/
+
+/*
   This lets each reducer handle the state that corresponse to his name.
   I.e. the 'feeling' reducer will replace the feeling: {} part of the state.
 */
