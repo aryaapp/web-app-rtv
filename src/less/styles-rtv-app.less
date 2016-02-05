@@ -62,11 +62,12 @@
 
 #react-app{
     display: none;
-    background: #e9e9e9;
+    background: #ffffff;
 }
 
 #main-app {
     top: 52px;
+    box-shadow: 0 0 20px -10px #000;
     bottom: 0px;
     background: white;
     border-radius: 0;
@@ -75,7 +76,7 @@
     width: 100%;
     overflow: hidden;
     @media (min-width: @screen-sm) {
-        top:52px;
+        top:60px;
         border-radius: 0;
         width:50%;
         left:25%;
@@ -96,6 +97,7 @@
     background: white;
     top: 0px;
     position: absolute;
+    width:100%;
     bottom: 0px;
 }
 
@@ -296,6 +298,16 @@ body{
     }*/
 }
 
+.logout-button {
+    top: 23px;
+    position: absolute;
+    right: 16px;
+/*    @media (min-width: @screen-sm) {
+        top: 64px;
+        right: 48px;
+    }*/
+}
+
 .relative {
     position:relative;
 }
@@ -443,6 +455,25 @@ textarea, input[type="text"], input[type="submit"], input[type="email"] {
 
 
 //Home View Journal list
+
+ul.home-timeline {
+    padding-top:0px;
+    li.rtv-list-item {
+        padding-left: 0px;
+    }
+    li.result-title {
+        color: #333;
+    }
+    ul.timeline {
+        padding-top:16px
+    }
+    p.list-title {
+        margin-top:16px;
+        padding-bottom:0px;
+    }
+
+}
+
 ul.timeline-day {
     border: 0;
 }
@@ -511,6 +542,9 @@ li.rtv-list-item {
     line-height: 26px;
     padding: 6px 32px;
     color: #797979;
+}
+ul.list-input li {
+    border-bottom: 1px solid #f9f9f9;
 }
 
 .timeline .time {

@@ -100,7 +100,7 @@ export default class ListInput extends Component {
             placeholder={this.props.placeholder} />
           <button id='list-submit-button' className="btn btn-primary" type="submit" ><i className="fa fa-plus"></i></button>
         </form>
-        <ul className="list rtv-list">
+        <ul className="list rtv-list list-input">
           {
             this.props.value.map((element, i) => {
               return (
