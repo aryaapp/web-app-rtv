@@ -152,11 +152,11 @@ class ResultsScreen extends Component {
             <li className="list-item rtv-list-item result-title">Dein Körper</li>
             <li className="list-item rtv-list-item result-answer"><DisplayBody body={this.props.body} /></li>
             <li className="list-item rtv-list-item result-title">Deine Gedanken</li>
-            <li className="list-item rtv-list-item result-answer">{intersperse(reverseArray(this.props.thoughts),", ")}</li>
+            <li className="list-item rtv-list-item result-answer">{intersperse(reverseArray(this.props.thoughts),". ")}</li>
             <li className="list-item rtv-list-item result-title">Deine Situation</li>
-            <li className="list-item rtv-list-item result-answer">{intersperse(reverseArray(this.props.situation),", ")}</li>
+            <li className="list-item rtv-list-item result-answer">{intersperse(reverseArray(this.props.situation),". ")}</li>
             <li className="list-item rtv-list-item result-title">Deine Reaktion</li>
-            <li className="list-item rtv-list-item result-answer">{intersperse(reverseArray(this.props.reaction),", ")}</li>
+            <li className="list-item rtv-list-item result-answer">{intersperse(reverseArray(this.props.reaction),". ")}</li>
           </ul>
           <div className="col-xs-12">
             { submitButton }

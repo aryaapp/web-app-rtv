@@ -72,11 +72,11 @@ export default class JournalList extends Component {
                             <li className="rtv-list-item result-title">Dein Körper</li>
                             <li className="rtv-list-item result-answer"><DisplayBody body={mappedJournal.body} /></li>
                             <li className="rtv-list-item result-title">Deine Gedanken</li>
-                            <li className="rtv-list-item result-answer">{intersperse(reverseArray(mappedJournal.thoughts),", ")}</li>
+                            <li className="rtv-list-item result-answer">{intersperse(reverseArray(mappedJournal.thoughts),". ")}</li>
                             <li className="rtv-list-item result-title">Deine Situation</li>
-                            <li className="rtv-list-item result-answer">{intersperse(reverseArray(mappedJournal.situation),", ")}</li>
+                            <li className="rtv-list-item result-answer">{intersperse(reverseArray(mappedJournal.situation),". ")}</li>
                             <li className="rtv-list-item result-title">Deine Reaktion</li>
-                            <li className="rtv-list-item result-answer">{intersperse(reverseArray(mappedJournal.reaction),", ")}</li>
+                            <li className="rtv-list-item result-answer">{intersperse(reverseArray(mappedJournal.reaction),". ")}</li>
                           </ul>
                           <div className="col-xs-12">
                             <button className="btn btn-ghost nav-button next-button relative-button" onClick={this.props.singleJournalPDF.bind(null,journal)}>DIESEN EINTRAG HERUNTERLADEN</button>
