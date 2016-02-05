@@ -38,7 +38,7 @@ export default class JournalList extends Component {
     }))
 
     return(
-      <ul className="timeline list">
+      <ul className="timeline list home-timeline">
         {
           _.map(journalsPerDay, (journalsForTheDay, day_string) => {
             return(
@@ -68,7 +68,7 @@ export default class JournalList extends Component {
                           </div>
                         </div>
                         <div className="row special-row collapse" id={ "collapse-" + i }>
-                          <ul className="timeline-day list primary-list">
+                          <ul className="timeline-day col-xs-10 col-xs-push-2 list primary-list home-list">
                             <li className="rtv-list-item result-title">Dein Körper</li>
                             <li className="rtv-list-item result-answer"><DisplayBody body={mappedJournal.body} /></li>
                             <li className="rtv-list-item result-title">Deine Gedanken</li>
