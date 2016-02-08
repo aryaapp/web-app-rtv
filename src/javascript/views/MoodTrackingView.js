@@ -41,4 +41,10 @@ class MoodTrackingView extends Component {
   }
 }
 
+MoodTrackingView.defaultProps = {
+  feeling: {
+    value: 50, color: '#FCD56B'
+  }
+}
+
 export default connect(mapStateToProps)(MoodTrackingView)

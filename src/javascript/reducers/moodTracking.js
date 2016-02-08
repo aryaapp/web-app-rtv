@@ -14,7 +14,7 @@ const initialBodyState = {
 }
 
 const initialMoodTrackingState = {
-  feeling: { value: 50, color: '' },
+  feeling: { value: 50, color: '#FCD56B' },
   body: initialBodyState,
   thoughts: [],
   situation: [],

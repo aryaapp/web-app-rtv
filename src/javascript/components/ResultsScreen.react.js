@@ -9,7 +9,6 @@ import { routeActions } from 'react-router-redux'
 import d3 from 'd3'
 require('jquery')
 
-
 import { executeSaveJournal, scheduleJournalSave } from '../actions/journals'
 import { clearDataAction } from '../actions/actions'
 
@@ -32,24 +31,6 @@ import {
 } from '../constants/ids'
 
 import { intersperse, reverseArray } from '../utilities'
-
-//returns color belonging to moodrange 0-100
-const d3MoodColor = function(value) {
-  let colorScale = d3.scale.linear()
-        .domain([0,50,100])
-        .range(['#e86e6b','#fcd56b','#92D381']); //['#e86e6b','#e86e6c','#fcd56b','#59d1ba','#59d1bb','#a5d36e']
-  return colorScale(value)
-}
-
-//returns color belonging to moodrange 0-100
-const d3MoodGradient = function(value) {
-  let lowVal = Math.max(value-10,0)
-  let highVal = Math.min(value+10,100)
-  let colorScale = d3.scale.linear()
-        .domain([0,50,100])
-        .range(['#e86e6b','#fcd56b','#92D381']); //['#e86e6b','#e86e6c','#fcd56b','#59d1ba','#59d1bb','#a5d36e']
-  return ("left, " + colorScale(lowVal) + ", " + colorScale(highVal))
-}
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -128,7 +109,8 @@ class ResultsScreen extends Component {
     } else {
       submitButton = <button className='btn btn-primary nav-button next-button relative-button' onClick={this.signUp}>Zugang anlegen</button>
     }
-
+    const trackStyles = { backgroundColor: this.props.feeling.color }
+    const handleStyle = { borderColor: this.props.feeling.color }
     return (
       <Section>
         <QuestionHeader>
@@ -145,7 +127,11 @@ class ResultsScreen extends Component {
                   <span className="feeling-value result-feeling-value">{this.props.feeling.value}</span>
                 </div>
                 <div className="col-xs-10 no-padding">
-                  <ReactSlider disabled={true} value={this.props.feeling.value} />
+                  <ReactSlider
+                    disabled={true}
+                    value={this.props.feeling.value}
+                    additionalHandleStyles={ handleStyle }
+                    additionalTrackStyles={ trackStyles } />
                 </div>
               </div>
             </li>
