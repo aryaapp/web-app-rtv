@@ -18,12 +18,32 @@ const mapDispatchToProps = (dispatch) => {
   return {
     navFeeling: () => dispatch(routeActions.push('/tagebuch')),
     navLogin: () => dispatch(routeActions.push('/login')),
+    navHome: () => dispatch(routeActions.push('/home')),
   }
 }
 
 class WelcomeView extends Component {
   constructor(props) {
     super(props)
+
+    this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
+    this.componentDidMount = this.componentDidMount.bind(this)
+    this.checkForRedirect = this.checkForRedirect.bind(this)
+  }
+
+  checkForRedirect(props) {
+    console.log('checkForRedirect', props)
+    if (typeof props.access_token !== 'undefined' && props.access_token.length > 0) {
+      console.log('redirect')
+      props.navHome();
+    }
+  }
+  componentDidMount() {
+    this.checkForRedirect(this.props)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.checkForRedirect(nextProps)
   }
 
   displayWelcomeMessage() {
@@ -40,7 +60,7 @@ class WelcomeView extends Component {
           <div className="welcome-modal container-fluid">
             <div className="row full-height">
               <div className="col-xs-12 no-padding full-height">
-                
+
                 <div className="col-xs-12 tagebuch fade-in arya-animation animation2">
                   Achtsamkeits-Tagebuch
                   <p className="col-xs-12 heute fade-in arya-animation animation2">Heute, hier und jetzt.<br/>{ date.toLocaleDateString('de-DE', options) }</p>
@@ -60,7 +80,7 @@ class WelcomeView extends Component {
             </button>
           </div>
         </div>
-        
+
       </div>
     )
   }
