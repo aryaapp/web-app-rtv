@@ -30,7 +30,7 @@ import {
   reactionQuestionId
 } from '../constants/ids'
 
-import { intersperse, reverseArray } from '../utilities'
+import { intersperse, reverseArray, prepareJournalData } from '../utilities'
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -53,7 +53,6 @@ class ResultsScreen extends Component {
     this.signUp = this.signUp.bind(this)
     this.saveResults = this.saveResults.bind(this)
     this.navHome = this.navHome.bind(this)
-    this.prepareJournalData = this.prepareJournalData.bind(this)
     this.navHome = this.navHome.bind(this)
     this.clearData = this.clearData.bind(this)
   }
@@ -63,32 +62,8 @@ class ResultsScreen extends Component {
     this.props.navCreateAccount()
   }
 
-  prepareJournalData() {
-    let data = {
-      questionnaire_id: defaultQuestionnaireId,
-      feeling: this.props.feeling.value,
-      answers: [
-        {
-          question_id: bodyQuestionId,
-          values: this.props.body
-        }, {
-          question_id: thoughtsQuestionId,
-          values: reverseArray(this.props.thoughts)
-        }, {
-          question_id: situationQuestionId,
-          values: reverseArray(this.props.situation)
-        }, {
-          question_id: reactionQuestionId,
-          values: reverseArray(this.props.reaction)
-        }
-      ]
-    }
-
-    return data
-  }
-
   saveResults(e) {
-    this.props.executeSaveJournal(this.prepareJournalData())
+    this.props.executeSaveJournal(prepareJournalData(this.props))
   }
 
   navHome() {

@@ -121,23 +121,23 @@ export function intersperse(arr, sep) {
   }, [arr[0]]);
 }
 
-export function prepareJournalData(props) {
+export function prepareJournalData(moodTracking) {
   let data = {
     questionnaire_id: defaultQuestionnaireId,
-    feeling: props.feeling.value,
+    feeling: moodTracking.feeling.value,
     answers: [
       {
         question_id: bodyQuestionId,
-        values: props.body
+        values: moodTracking.body
       }, {
         question_id: thoughtsQuestionId,
-        values: reverseArray(props.thoughts)
+        values: reverseArray(moodTracking.thoughts)
       }, {
         question_id: situationQuestionId,
-        values: reverseArray(props.situation)
+        values: reverseArray(moodTracking.situation)
       }, {
         question_id: reactionQuestionId,
-        values: reverseArray(props.reaction)
+        values: reverseArray(moodTracking.reaction)
       }
     ]
   }

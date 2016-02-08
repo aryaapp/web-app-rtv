@@ -13,7 +13,6 @@ export default function configureStore(history) {
 
   const createStoreWithMiddleware = applyMiddleware(
     thunk,
-    promiseMiddleware,
     loggerMiddleware,
     reduxRouterMiddleware
   )(createStore);

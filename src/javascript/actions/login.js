@@ -53,7 +53,7 @@ export function executeLogin(email, password) {
               dispatch(receiveLogin(email, json))
                if(getState().moodTracking.scheduledJournalSave) {
                 dispatch(unscheduleJournalSave())
-                dispatch(executeSaveJournal(prepareJournalData(getState())))
+                dispatch(executeSaveJournal(prepareJournalData(getState().moodTracking)))
                 dispatch(routeActions.push('/thank-you'))
               } else {
                 dispatch(routeActions.push('/home'))

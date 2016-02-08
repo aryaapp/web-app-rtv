@@ -28,7 +28,7 @@ let SliderInput = React.createClass({
   render: function() {
     let trackStyles = { backgroundColor: this.props.feeling.color }
     let handleStyle = { borderColor: this.props.feeling.color }
-    console.log(this.props.feeling.color)
+
     return (
       <div>
         <div className="row">

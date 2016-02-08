@@ -27,8 +27,6 @@ const mapDispatchToProps = (dispatch) => {
 
 export default class ThoughtsView extends Component {
   render() {
-    console.log(this.props.thoughts)
-
     return (
       <div className="partial-wrapper" key="2">
         <div className="partial-container" >

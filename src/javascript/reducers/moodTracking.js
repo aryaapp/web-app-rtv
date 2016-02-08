@@ -50,9 +50,9 @@ export default function homeView(state = initialMoodTrackingState, action) {
     case CLEAR_DATA:
       return initialMoodTrackingState
     case SCHEDULE_JOURNAL_SAVE:
-      return { scheduledJournalSave: true }
+      return assign({}, state, { scheduledJournalSave: true })
     case UNSCHEDULE_JOURNAL_SAVE:
-      return { scheduledJournalSave: false }
+      return assign({}, state, { scheduledJournalSave: false })
     default:
       return state
   }
