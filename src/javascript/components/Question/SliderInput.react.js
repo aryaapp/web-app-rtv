@@ -7,28 +7,29 @@ import Rcslider from 'rc-slider'
 
 import { d3MoodColor, d3MoodGradient } from '../../utilities'
 
-require('jquery')
+export default class SliderInput extends Component {
+  constructor(props) {
+    super(props)
 
-let SliderInput = React.createClass({
-  getDefaultProps() {
+    this.state = this.calculateStyles(this.props.feeling.color)
+    this.update = this.update.bind(this)
+  }
+
+  calculateStyles(color) {
     return {
-      feeling: {
-        value: "",
-        color: ""
-        }
-      };
-  },
-  update: function(value) {
+      trackStyles: { backgroundColor: color },
+      handleStyle: { borderColor: color }
+    }
+  }
+  update(value) {
     let feeling = {
       value: value,
       color: d3MoodColor(value)
     }
     this.props.onChange(feeling)
-  },
-  render: function() {
-    let trackStyles = { backgroundColor: this.props.feeling.color }
-    let handleStyle = { borderColor: this.props.feeling.color }
-
+    this.setState(this.calculateStyles(feeling.color))
+  }
+  render() {
     return (
       <div>
         <div className="row">
@@ -36,8 +37,8 @@ let SliderInput = React.createClass({
             <Rcslider
               value={ this.props.feeling.value }
               defaultValue={ this.props.feeling.value }
-              additionalHandleStyles={ handleStyle }
-              additionalTrackStyles={ trackStyles }
+              additionalHandleStyles={ this.state.handleStyle }
+              additionalTrackStyles={ this.state.trackStyles }
               onChange={this.update}
             />
             <div id="emo-container">
@@ -63,7 +64,8 @@ let SliderInput = React.createClass({
       </div>
     )
   }
-})
+}
 
-
-module.exports = SliderInput
+SliderInput.defaultProps = {
+  feeling: { value: 50, color: '#FCD56B' }
+}

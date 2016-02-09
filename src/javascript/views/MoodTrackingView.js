@@ -13,7 +13,8 @@ const mapStateToProps = (state) => ({
 class MoodTrackingView extends Component {
   constructor(props) {
     super(props)
-    this.state = { moodTrackingStyles: this.calcMoodTrackingStyles() }
+    const { color, value } = this.props.feeling
+    this.state = { moodTrackingStyles: this.calcMoodTrackingStyles(color, value) }
 
     this.calcMoodTrackingStyles = this.calcMoodTrackingStyles.bind(this)
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
@@ -21,14 +22,15 @@ class MoodTrackingView extends Component {
 
   componentWillReceiveProps(nextProps) {
     if(nextProps.feeling.value != this.props.feeling.value) {
-      this.setState({ moodTrackingStyles: this.calcMoodTrackingStyles() })
+      const { color, value } = nextProps.feeling
+      this.setState({ moodTrackingStyles: this.calcMoodTrackingStyles(color, value) })
     }
   }
 
-  calcMoodTrackingStyles() {
+  calcMoodTrackingStyles(color, value) {
     return {
-      backgroundColor: this.props.feeling.color,
-      backgroundImage: "-webkit-linear-gradient(" + d3MoodGradient(this.props.feeling.value) + ")",
+      backgroundColor: color,
+      backgroundImage: "-webkit-linear-gradient(" + d3MoodGradient(value) + ")",
     }
   }
 
