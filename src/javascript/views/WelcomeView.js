@@ -32,9 +32,7 @@ class WelcomeView extends Component {
   }
 
   checkForRedirect(props) {
-    console.log('checkForRedirect', props)
     if (typeof props.access_token !== 'undefined' && props.access_token.length > 0) {
-      console.log('redirect')
       props.navHome();
     }
   }
