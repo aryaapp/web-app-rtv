@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-fetch'
 import { clearDataAction } from './actions'
+import { logout, clearAndLogout } from './login'
 import { routeActions } from 'react-router-redux'
 import config from '../constants/config'
 
@@ -42,22 +43,35 @@ export function executeLoadJournals() {
     const { user, access_token } = getState()
     dispatch(requestJournals(user.id))
 
-    let headers = new Headers({
+    const headers = new Headers({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${ access_token }`,
     });
 
     return fetch(config.aryaApiUrl + '/v1/journals',
-        {
-          method: 'GET',
-          headers: headers
-        })
-      .then( response => response.json() )
-      .then( json => dispatch(receivedJournals(user.id, json)) )
-      .catch( error => {
-        console.log('catch block error', error)
+      {
+        method: 'GET',
+        headers: headers
       })
-  }
+      .then( response => {
+        const s = response.status
+        switch(true) {
+          case (s >= 200 && s < 300):
+            response.json().then( json => {
+              dispatch(receivedJournals(user.id, json))
+            })
+            break;
+          case (s >= 400 && s < 500):
+            dispatch(logout())
+            dispatch(routeActions.push('/login'))
+            break;
+          default:
+            let error = new Error(response.statusText)
+            error.reponse = reponse
+            throw new error
+        }
+      })
+    }
 }
 
 export const SEND_JOURNAL = 'SEND_JOURNAL'
@@ -93,14 +107,25 @@ export function executeSaveJournal(journal_data) {
       body: JSON.stringify({ journal: journal_data }),
       headers: headers
     })
-    .then( response => response.json() )
-    .then( json => {
-      dispatch(journalSaved(json))
-      dispatch(clearDataAction())
-      dispatch(routeActions.push('/thank-you'))
-    })
-    .catch( error => {
-      console.log('catch block error', error)
+    .then( response => {
+      const s = response.status
+      switch(true) {
+        case (s >= 200 && s < 300):
+          response.json().then( json => {
+            dispatch(journalSaved(json))
+            dispatch(clearDataAction())
+            dispatch(routeActions.push('/thank-you'))
+          })
+          break;
+        case (s >= 400 && s < 500):
+          dispatch(clearAndLogout())
+          dispatch(routeActions.push('/login'))
+          break;
+        default:
+          let error = new Error(response.statusText)
+          error.reponse = reponse
+          throw new error
+      }
     })
   }
 }

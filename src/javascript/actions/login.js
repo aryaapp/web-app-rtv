@@ -7,7 +7,6 @@ import { clearDataAction } from './actions'
 import { routeActions } from 'react-router-redux'
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST'
-
 export function requestLogin(email) {
   return {
     type: LOGIN_REQUEST,
@@ -16,7 +15,6 @@ export function requestLogin(email) {
 }
 
 export const LOGIN_RECEIVED = 'LOGIN_RECEIVED'
-
 export function receiveLogin(email, data) {
   return {
     type: LOGIN_RECEIVED,
@@ -25,7 +23,6 @@ export function receiveLogin(email, data) {
 }
 
 export const LOGIN_FAILED = 'LOGIN_FAILED'
-
 export function loginFailed(errors) {
   return {
     type: LOGIN_FAILED,
@@ -38,7 +35,6 @@ export function executeLogin(email, password) {
     dispatch(requestLogin(email))
 
     const headers = new Headers({ 'Content-Type': 'application/json' });
-
     return fetch(config.aryaApiUrl + '/v1/oauth/token',
         {
           method: 'POST',
@@ -77,13 +73,11 @@ export function executePasswordRequest(email) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     let returnUrl = window.location.protocol + '//' + window.location.host + '/passwort'
 
-    return fetch(config.aryaApiUrl + '/v1/users/password_request',
-        {
-          method: 'POST',
-          body: JSON.stringify({ email: email, return_url: returnUrl }),
-          headers: headers
-        }
-      )
+    return fetch(config.aryaApiUrl + '/v1/users/password_request', {
+        method: 'POST',
+        body: JSON.stringify({ email: email, return_url: returnUrl }),
+        headers: headers
+      })
       .then( response => {
         const s = response.status
         switch(true) {
@@ -107,7 +101,6 @@ export function executePasswordRequest(email) {
 }
 
 export const PASSWORD_RESET_REQUEST = 'PASSWORD_RESET_REQUEST'
-
 export function passwordResetRequest() {
   return {
     type: PASSWORD_RESET_REQUEST
@@ -115,7 +108,6 @@ export function passwordResetRequest() {
 }
 
 export const PASSWORD_RESET_REQUEST_ERROR = 'PASSWORD_RESET_REQUEST_ERROR'
-
 export function passwordResetRequestError(errors) {
   return {
     type: PASSWORD_RESET_REQUEST_ERROR,
@@ -127,12 +119,11 @@ export function executePasswordSet(passwordToken, password) {
   return (dispatch, getState) => {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     return fetch(config.aryaApiUrl + '/v1/users/password_set',
-        {
-          method: 'POST',
-          body: JSON.stringify({ password_token: passwordToken, password: password }),
-          headers: headers
-        }
-      )
+      {
+        method: 'POST',
+        body: JSON.stringify({ password_token: passwordToken, password: password }),
+        headers: headers
+      })
       .then( response => {
         const s = response.status
         switch(true) {
@@ -156,7 +147,6 @@ export function executePasswordSet(passwordToken, password) {
 }
 
 export const PASSWORD_SET = 'PASSWORD_SET'
-
 export function passwordSet() {
   return {
     type: PASSWORD_SET
@@ -164,7 +154,6 @@ export function passwordSet() {
 }
 
 export const PASSWORD_SET_ERROR = 'PASSWORD_SET_ERROR'
-
 export function passwordSetError(errors) {
   return {
     type: PASSWORD_SET_ERROR,
@@ -173,7 +162,6 @@ export function passwordSetError(errors) {
 }
 
 export const LOGOUT = 'LOGOUT'
-
 export function logout() {
   return {
     type: LOGOUT
