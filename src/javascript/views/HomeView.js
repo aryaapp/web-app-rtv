@@ -12,7 +12,7 @@ import { clearAndLogout } from '../actions/login'
 import { nextWeek, prevWeek, setJournalsForPdf, displayJournalsForWeek } from '../actions/homeView'
 
 import { formatDay, getSunday, journalSorter } from '../utilities'
-import { first, map, isEmpty } from 'lodash'
+import { first, map, isEmpty, isEqual } from 'lodash'
 import journalSelector from '../selectors/journalSelector'
 
 import QuestionTitle from '../components/Question/QuestionTitle.react.js'
@@ -53,17 +53,20 @@ class HomeView extends Component {
     super(props)
 
     this.logout = this.logout.bind(this)
-    this.componentDidMount = this.componentDidMount.bind(this)
+    this.componentWillMount = this.componentWillMount.bind(this)
+    this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
     this.singleJournalPDF = this.singleJournalPDF.bind(this)
     this.weekPDF = this.weekPDF.bind(this)
     this.allJournalsPDF = this.allJournalsPDF.bind(this)
   }
 
-  componentDidMount() {
-    if(isEmpty(this.props.journals)) {
-      this.props.executeLoadJournals();
-    } else {
-      let latestJournal = first(this.props.journals)
+  componentWillMount() {
+    this.props.executeLoadJournals();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(!isEmpty(nextProps.journals) && !isEqual(nextProps.journals, this.props.journals)) {
+      let latestJournal = first(nextProps.journals)
       this.props.displayJournalsForWeek(new Date(latestJournal.created_at))
     }
   }

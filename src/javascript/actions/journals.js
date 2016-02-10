@@ -5,7 +5,6 @@ import { routeActions } from 'react-router-redux'
 import config from '../constants/config'
 
 export const LOAD_JOURNALS = 'LOAD_JOURNALS'
-
 export function requestJournals(user_id) {
   return {
     type: LOAD_JOURNALS,
@@ -14,7 +13,6 @@ export function requestJournals(user_id) {
 }
 
 export const RECEIVED_JOURNALS = 'RECEIVED_JOURNALS'
-
 export function receivedJournals(user_id, data) {
   return {
     type: RECEIVED_JOURNALS,
@@ -22,8 +20,8 @@ export function receivedJournals(user_id, data) {
     data: data.journals
   }
 }
-export const SCHEDULE_JOURNAL_SAVE = 'SCHEDULE_JOURNAL_SAVE'
 
+export const SCHEDULE_JOURNAL_SAVE = 'SCHEDULE_JOURNAL_SAVE'
 export function scheduleJournalSave() {
   return {
     type: SCHEDULE_JOURNAL_SAVE
@@ -31,7 +29,6 @@ export function scheduleJournalSave() {
 }
 
 export const UNSCHEDULE_JOURNAL_SAVE = 'UNSCHEDULE_JOURNAL_SAVE'
-
 export function unscheduleJournalSave() {
   return {
     type: UNSCHEDULE_JOURNAL_SAVE
@@ -75,7 +72,6 @@ export function executeLoadJournals() {
 }
 
 export const SEND_JOURNAL = 'SEND_JOURNAL'
-
 export function sendJournals(journal) {
   return {
     type: SEND_JOURNAL,
@@ -84,7 +80,6 @@ export function sendJournals(journal) {
 }
 
 export const JOURNAL_SAVED = 'JOURNAL_SAVED'
-
 export function journalSaved(data) {
   return {
     type: JOURNAL_SAVED,
