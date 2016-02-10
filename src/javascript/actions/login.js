@@ -37,7 +37,7 @@ export function executeLogin(email, password) {
   return (dispatch, getState) => {
     dispatch(requestLogin(email))
 
-    let headers = new Headers({ 'Content-Type': 'application/json' });
+    const headers = new Headers({ 'Content-Type': 'application/json' });
 
     return fetch(config.aryaApiUrl + '/v1/oauth/token',
         {
@@ -69,6 +69,106 @@ export function executeLogin(email, password) {
             throw new error
         }
       })
+  }
+}
+
+export function executePasswordRequest(email) {
+  return (dispatch, getState) => {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    let returnUrl = window.location.protocol + '//' + window.location.host + '/passwort'
+
+    return fetch(config.aryaApiUrl + '/v1/users/password_request',
+        {
+          method: 'POST',
+          body: JSON.stringify({ email: email, return_url: returnUrl }),
+          headers: headers
+        }
+      )
+      .then( response => {
+        const s = response.status
+        switch(true) {
+          case (s >= 200 && s < 300):
+            response.json().then( json => {
+              dispatch(passwordResetRequest())
+            })
+            break
+          case (s >= 400 && s < 500):
+            response.json().then( json => {
+              dispatch(passwordResetRequestError(json.errors))
+            })
+            break
+          default:
+            let error = new Error(response.statusText)
+            error.response = response
+            throw new error
+        }
+      })
+  }
+}
+
+export const PASSWORD_RESET_REQUEST = 'PASSWORD_RESET_REQUEST'
+
+export function passwordResetRequest() {
+  return {
+    type: PASSWORD_RESET_REQUEST
+  }
+}
+
+export const PASSWORD_RESET_REQUEST_ERROR = 'PASSWORD_RESET_REQUEST_ERROR'
+
+export function passwordResetRequestError(errors) {
+  return {
+    type: PASSWORD_RESET_REQUEST_ERROR,
+    errors: errors
+  }
+}
+
+export function executePasswordSet(passwordToken, password) {
+  return (dispatch, getState) => {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    return fetch(config.aryaApiUrl + '/v1/users/password_set',
+        {
+          method: 'POST',
+          body: JSON.stringify({ password_token: passwordToken, password: password }),
+          headers: headers
+        }
+      )
+      .then( response => {
+        const s = response.status
+        switch(true) {
+          case (s >= 200 && s < 300):
+            response.json().then( json => {
+              dispatch(passwordSet())
+            })
+            break
+          case (s >= 400 && s < 500):
+            response.json().then( json => {
+              dispatch(passwordSetError(json.errors))
+            })
+            break
+          default:
+            let error = new Error(response.statusText)
+            error.response = response
+            throw new error
+        }
+      })
+  }
+}
+
+export const PASSWORD_SET = 'PASSWORD_SET'
+
+export function passwordSet() {
+  return {
+    type: PASSWORD_SET
+  }
+}
+
+export const PASSWORD_SET_ERROR = 'PASSWORD_SET_ERROR'
+
+export function passwordSetError(errors) {
+  return {
+    type: PASSWORD_SET_ERROR,
+    errors: errors
   }
 }
 

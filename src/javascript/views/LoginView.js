@@ -23,7 +23,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     executeLogin: (email, password) => dispatch(executeLogin(email, password)),
-    navHome: () => dispatch(routeActions.push('/home'))
+    navHome: () => dispatch(routeActions.push('/home')),
+    navPassword: () => dispatch(routeActions.push('/passwort'))
   }
 }
 
@@ -67,6 +68,7 @@ class LoginView extends Component {
               asyncErrors={this.props.errors}
               onSubmit={this.onSubmit}
             />
+            <button onClick={this.props.navPassword}>Passwort vergessen</button>
           </QuestionMain>
         </div>
       </div>

@@ -3,8 +3,6 @@ White Label Mindfulness App
 
 # Todos
 
-* error when save journal after signup
-
 * clean up journal pdf view
 * remove unused components
 * unify name for reducers
