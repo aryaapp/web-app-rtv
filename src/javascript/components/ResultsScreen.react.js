@@ -48,13 +48,16 @@ class ResultsScreen extends Component {
     super(props)
 
     this.state = {
-      tryToSend: false
+      tryToSend: false,
+      isOpen: false
     }
 
     this.signUp = this.signUp.bind(this)
     this.saveResults = this.saveResults.bind(this)
     this.navHome = this.navHome.bind(this)
     this.navHome = this.navHome.bind(this)
+    this.openModal = this.openModal.bind(this)
+    this.closeModal = this.closeModal.bind(this)
     this.clearData = this.clearData.bind(this)
   }
 
@@ -72,8 +75,15 @@ class ResultsScreen extends Component {
   }
 
   clearData() {
+    this.closeModal()
     this.props.clearData()
     this.navHome()
+  }
+  openModal() {
+      this.setState({ isOpen: true })
+  }
+  closeModal() {
+      this.setState({ isOpen: false })
   }
 
   render() {
@@ -124,10 +134,10 @@ class ResultsScreen extends Component {
             { submitButton }
           </div>
           <div className="col-xs-12">
-            <button className='btn nav-button next-button relative-button' onClick={this.confirmClearData}>Eintrag verwerfen</button>
+            <button className='btn nav-button next-button relative-button' onClick={this.openModal}>Eintrag verwerfen</button>
           </div>
         </QuestionMain>
-        <ConfirmationModal onClick={this.clearData} />
+        <ConfirmationModal onClick={this.clearData} isOpen={this.state.isOpen} />
       </Section>
     );
   }
