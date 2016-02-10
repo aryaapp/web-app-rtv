@@ -21,6 +21,7 @@ import FixedSectionFooter from './Question/FixedSectionFooter.react.js'
 import ReactSlider from 'rc-slider'
 import DisplayBody from './DisplayBody.react.js'
 import Content from '../constants/localizableStringsDE.js'
+import ConfirmationModal from './ConfirmationModal.react.js'
 import {
   defaultQuestionnaireId,
   feelingQuestionId,
@@ -123,9 +124,10 @@ class ResultsScreen extends Component {
             { submitButton }
           </div>
           <div className="col-xs-12">
-            <button className='btn nav-button next-button relative-button' onClick={this.clearData}>Eintrag verwerfen</button>
+            <button className='btn nav-button next-button relative-button' onClick={this.confirmClearData}>Eintrag verwerfen</button>
           </div>
         </QuestionMain>
+        <ConfirmationModal onClick={this.clearData} />
       </Section>
     );
   }
