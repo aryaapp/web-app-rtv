@@ -21,6 +21,7 @@ import QuestionHeader from '../components/Question/QuestionHeader.react.js'
 import QuestionMain from '../components/Question/QuestionMain.react.js'
 import JournalList from '../components/JournalList'
 import FixedSectionFooter from '../components/Question/FixedSectionFooter.react.js'
+import ConfirmationModal from '../components/ConfirmationModal.react.js'
 
 const mapStateToProps = (state) => {
   return {
@@ -52,11 +53,18 @@ class HomeView extends Component {
   constructor(props) {
     super(props)
 
+    //confirmation modal state
+    this.state = {
+      isOpen: false
+    }
+
     this.logout = this.logout.bind(this)
     this.componentDidMount = this.componentDidMount.bind(this)
     this.singleJournalPDF = this.singleJournalPDF.bind(this)
     this.weekPDF = this.weekPDF.bind(this)
     this.allJournalsPDF = this.allJournalsPDF.bind(this)
+    this.openModal = this.openModal.bind(this)
+    this.closeModal = this.closeModal.bind(this)
   }
 
   componentDidMount() {
@@ -88,8 +96,15 @@ class HomeView extends Component {
   }
 
   logout() {
+    this.closeModal()
     this.props.logout()
     this.props.navStart()
+  }
+  openModal() {
+      this.setState({ isOpen: true })
+  }
+  closeModal() {
+      this.setState({ isOpen: false })
   }
 
   render() {
@@ -139,10 +154,11 @@ class HomeView extends Component {
             </button>
           </div>
           </FixedSectionFooter>
-          <div className="logout-button" onClick={this.logout} title="Ausloggen">
+          <div className="logout-button" onClick={this.openModal} title="Ausloggen">
             <i className="fa fa-lg fa-sign-out"></i>
           </div>
         </div>
+        <ConfirmationModal onClick={this.logout} isOpen={this.state.isOpen} />
       </div>
     )
   }
