@@ -50,7 +50,7 @@ export default class JournalList extends Component {
                     let style = { color : calculateEmotionColor(mappedJournal.feeling) }
 
                     return(
-                      <div className="journal" key={i} data-toggle="collapse" data-target={ "#collapse-" + i }>
+                      <div className="journal" key={i} data-toggle="collapse" data-target={ "#collapse-"+ day_string.slice(0,3) + i }>
                         <div className="row special-row">
                           <div className="col-xs-2 time">
                             {formatTime(new Date(journal.created_at))}
@@ -67,7 +67,7 @@ export default class JournalList extends Component {
                             <div type="button" ><i className="fa fa-lg fa-angle-down"></i></div>
                           </div>
                         </div>
-                        <div className="row special-row collapse" id={ "collapse-" + i }>
+                        <div className="row special-row collapse" id={ "collapse-" + day_string.slice(0,3) + i }>
                           <ul className="timeline-day col-xs-10 col-xs-push-2 list primary-list home-list">
                             <li className="rtv-list-item result-title">Dein Körper</li>
                             <li className="rtv-list-item result-answer"><DisplayBody body={mappedJournal.body} /></li>
