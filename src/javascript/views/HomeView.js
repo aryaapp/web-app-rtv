@@ -70,6 +70,7 @@ class HomeView extends Component {
 
   componentWillMount() {
     this.props.executeLoadJournals();
+
   }
 
   componentWillReceiveProps(nextProps) {
