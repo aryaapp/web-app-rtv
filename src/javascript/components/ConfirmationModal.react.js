@@ -2,7 +2,7 @@
 * @module rtv-mood tracker
 * @submodule Question
 */
-import React from 'react';
+import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom';
 import { update } from 'react-addons-update';
 import Modal from 'react-modal';
@@ -25,40 +25,42 @@ const customStyles = {
   }
 }
 
-const ConfirmationModal = React.createClass({
+class ConfirmationModal extends Component {
+  constructor(props) {
+    super(props)
 
-	defaultProps: function() {
-		return ({
+    this.state = {
 			isOpen : false
-		})
-	},
-	handleClick: function() {
+    }
+
+    this.handleClick = this.handleClick.bind(this)
+    this.closeModal = this.closeModal.bind(this)
+  }
+	handleClick() {
 		this.props.onClick()
-	},
-  closeModal: function() {
+	}
+  closeModal() {
     this.props.closeModal()
-  },
-
-
-  	render() {
+  }
+  render() {
     return (
-      	<div className="confirmation-modal">
-	        <Modal
-	          	isOpen={this.props.isOpen}
-	          	onRequestClose={this.closeModal} 
-	          	style={customStyles}>
-	          	<p className="text-center padding">Bist du Sicher?</p>
-              <div className="col-xs-12">
-	          	  <button className="btn btn-primary nav-button next-button relative-button" onClick={this.handleClick}>OK</button>
-              </div>
-              <div className="col-xs-12">
-                <button className="btn nav-button next-button relative-button" onClick={this.closeModal}>Abbrechen</button>
-	            </div>
-          </Modal>
-      	</div>
-    	);
-  	}
+    	<div className="confirmation-modal">
+        <Modal
+          	isOpen={this.props.isOpen}
+          	onRequestClose={this.closeModal} 
+          	style={customStyles}>
+          	<p className="text-center padding">Bist du Sicher?</p>
+            <div className="col-xs-12">
+          	  <button className="btn btn-primary nav-button next-button relative-button" onClick={this.handleClick}>OK</button>
+            </div>
+            <div className="col-xs-12">
+              <button className="btn nav-button next-button relative-button" onClick={this.closeModal}>Abbrechen</button>
+            </div>
+        </Modal>
+    	</div>
+  	);
+  }
 
-});
+}
 
-module.exports = ConfirmationModal
+export default (ConfirmationModal)
