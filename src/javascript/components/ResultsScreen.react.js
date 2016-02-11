@@ -137,7 +137,7 @@ class ResultsScreen extends Component {
             <button className='btn nav-button next-button relative-button' onClick={this.openModal}>Eintrag verwerfen</button>
           </div>
         </QuestionMain>
-        <ConfirmationModal onClick={this.clearData} isOpen={this.state.isOpen} />
+        <ConfirmationModal onClick={this.clearData} closeModal={this.closeModal} isOpen={this.state.isOpen} />
       </Section>
     );
   }

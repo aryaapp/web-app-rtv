@@ -158,7 +158,7 @@ class HomeView extends Component {
             <i className="fa fa-lg fa-sign-out"></i>
           </div>
         </div>
-        <ConfirmationModal onClick={this.logout} isOpen={this.state.isOpen} />
+        <ConfirmationModal onClick={this.logout} closeModal={this.closeModal}  isOpen={this.state.isOpen} />
       </div>
     )
   }
