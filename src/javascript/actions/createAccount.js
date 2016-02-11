@@ -32,11 +32,15 @@ export function executeCreateAccount(email, password) {
   return (dispatch, getState) => {
     dispatch(requestCreateAccount(email))
 
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const returnUrl = window.location.protocol + '//' + window.location.host + '/email'
     return fetch(config.aryaApiUrl + '/v1/users', {
         method: 'POST',
-        body: JSON.stringify({ user: { email: email, password: password, client_id: 'ios-app'} }),
+        body: JSON.stringify(
+          {
+            user: { email: email, password: password, client_id: 'ios-app'},
+            return_url: returnUrl
+          }),
         headers: headers
       })
       .then( response => {

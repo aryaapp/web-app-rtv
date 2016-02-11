@@ -24,6 +24,7 @@ import WelcomeView from './views/WelcomeView'
 import JournalPdfView from './views/JournalPdfView'
 import MoodTrackingView from './views/MoodTrackingView'
 import PasswordResetView from './views/PasswordResetView'
+import EmailConfirmationView from './views/EmailConfirmationView'
 
 Provider.childContextTypes = {
   store: React.PropTypes.object
@@ -61,6 +62,7 @@ class AppProvider extends Component {
             <Route path="/home" component={HomeView} onEnter={requireAuth} />
             <Route path="/print" component={JournalPdfView} onEnter={requireAuth} />
             <Route path="/login" component={LoginView} />
+            <Route path="/email" component={EmailConfirmationView} />
             <Route path="/passwort(/:password_token)" component={PasswordResetView} />
             <Route path="/anmelden" component={CreateAccountView} />
             <Route path="/tagebuch" component={MoodTrackingView}>
