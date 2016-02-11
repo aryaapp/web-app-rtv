@@ -55,7 +55,8 @@ class HomeView extends Component {
 
     //confirmation modal state
     this.state = {
-      isOpen: false
+      isOpen: false,
+      hasJournals: false
     }
 
     this.logout = this.logout.bind(this)
@@ -70,7 +71,6 @@ class HomeView extends Component {
 
   componentWillMount() {
     this.props.executeLoadJournals();
-
   }
 
   componentWillReceiveProps(nextProps) {
@@ -112,6 +112,11 @@ class HomeView extends Component {
   }
 
   render() {
+    let toggleDisplay = "no-journals"
+    if (this.props.selectedJournals.length > 0) {
+      toggleDisplay ="journals"
+    }
+
     return (
       <div className="partial-wrapper">
         <div className="partial-container" >
@@ -136,12 +141,13 @@ class HomeView extends Component {
             </div>
           </QuestionHeader>
           <QuestionMain absolute={true}>
+            <p className={ toggleDisplay + " no-journals-text" } >Keine Einträge in dieser Woche</p>
             <JournalList
               journals={this.props.selectedJournals}
               singleJournalPDF={this.singleJournalPDF}
             />
             <div className="col-xs-12">
-              <button className="btn btn-ghost nav-button next-button relative-button" onClick={this.weekPDF}>
+              <button className={ toggleDisplay + " btn btn-ghost nav-button next-button relative-button"} onClick={this.weekPDF}>
                 WOCHE HERUNTERLADEN
               </button>
             </div>

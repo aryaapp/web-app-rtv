@@ -68,7 +68,9 @@ class LoginView extends Component {
               asyncErrors={this.props.errors}
               onSubmit={this.onSubmit}
             />
-            <button onClick={this.props.navPassword}>Passwort vergessen</button>
+            <div className="col-xs-12 padding">
+              <a className="forgot-password" onClick={this.props.navPassword}>Passwort vergessen</a>
+            </div>
           </QuestionMain>
         </div>
       </div>

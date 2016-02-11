@@ -5,6 +5,15 @@
 @rtv-red: #b20035;
 @rtv-green: #9acb9b;
 
+a, a:hover, a:focus {
+    color: @rtv-blue;
+    cursor: pointer;
+    text-decoration: underline;
+}
+a.forgot-password{
+    margin-top:8px;
+}
+
 .mock-banner{
     height: 52px;
     background: white;
@@ -48,6 +57,20 @@
 .journal {
     border-bottom: 1px solid #efefef;
 }
+button.no-journals {
+    display:none;
+}
+p.journals {
+    display:none;
+}
+p.no-journals-text {
+    text-align: center;
+    font-style: italic;
+    color: #9A9A9A;
+    margin-top: 16px;
+}
+
+
 .week-navigator {
     padding: 8px 0;
     border-bottom: 1px solid #e9e9e9;
