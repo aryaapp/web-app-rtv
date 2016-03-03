@@ -123,7 +123,7 @@ module.exports = {
 		'“Es liegt in der Macht der Menschen, zwischen Glück und Weh zu wählen” (Pearl S. Buck) - wähle das Glück und sei ganz im Hier und Jetzt. Bleibe achtsam und verliere es nicht aus den Augen!',
 		'Hallo! “Die hilfreichste Hand hängt an deinem eigenen Arm” (belgisches Sprichwort). Du allein hast dein Leben in der Hand, entscheide dich heute wieder für ein erfülltes und achtsames Leben.',
 		'“Wenn man die Dinge versteht, sind sie, wie sie sind. Wenn man sie nicht versteht, sind sie, wie sie sind” Wir müssen nicht immer alles verstehen, es reicht einfach nur da zu sein.',
-		'Hallo! Ist dir, bei deiner Einkehr in Körper, Geist und Seele, schon etwas an dir aufgefallen? Wie geht es dir jetzt damit? Viel Freude heute!',
+		'Hallo! Ist dir bei deiner Einkehr in Körper, Geist und Seele, schon etwas an dir aufgefallen? Wie geht es dir jetzt damit? Viel Freude heute!',
 		'Nur wenn du für dich da sein kannst, kannst du auch für andere da sein. Es ist so heilsam, dass du dir diese Zeit für dich nimmst! Alles Liebe und Gute für dich!',
 		'Glück entsteht oft durch Aufmerksamkeit in kleinen Dingen, Unglück oft durch Vernachlässigung kleiner Dinge. (Wilhelm Busch). Lenke jetzt wieder deine Aufmerksamkeit auf die kleinen Dinge und Freuden in dir und begegne dem Glück. Wir freuen uns mit dir.',
 		'“Alles, was wir für uns selbst tun, tun wir auch für andere, und alles, was wir für andere tun, tun wir auch für uns selbst” (Thich Nath Hanh) Tue dir selbst und der Welt etwas Gutes und sei bewusst und achtsam in Gedanken, Worten und Taten.',

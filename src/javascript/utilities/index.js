@@ -211,7 +211,7 @@ export function hexToRgb(hex) {
 export function buildBodyForDisplay(body) {
   let bodyForDisplay = {}
   for (let bodypart in body) {
-    bodyForDisplay[bodypart] = intersperse(body[bodypart], ", ")
+    bodyForDisplay[bodypart] = intersperse(body[bodypart], ".")
   }
   return bodyForDisplay
 }

@@ -126,7 +126,7 @@ gulp.task('connect', function() {
   connect.server({
     root: 'dist',
     livereload: true,
-    port: 4444,
+    port: 8080,
     fallback: '/Users/m20io/workspace/web-app-rtv/dist/index.html'
   });
 });

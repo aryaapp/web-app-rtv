@@ -39,6 +39,7 @@ export default class DisplayBody extends Component {
                 { bodyForDisplay[element].length > 0 ? <div><strong>{body_parts[element]}</strong><br/></div> : '' }
                 {
                   bodyForDisplay[element].map( (value, j) => {
+                    console.log('value, ', value, j)
                     return (
                       <span key={j}>{value} </span>
                     )
